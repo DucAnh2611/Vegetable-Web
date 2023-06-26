@@ -11,6 +11,7 @@ const Signup = require('./Rest/Signup');
 const NavigationBar = require('./Rest/NavigationBar');
 const Home = require('./Rest/Home');
 const Product = require('./Rest/Product');
+const ProductDetails = require('./Rest/ProductDetails');
 
 const PORT = process.env.PORT || 3001;
 
@@ -27,6 +28,8 @@ NavigationBar(app, db);
 Home(app, db);
 
 Product(app, db);
+
+ProductDetails(app, db);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

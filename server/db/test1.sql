@@ -32,7 +32,7 @@ CREATE TABLE [Product] (
   [id] integer PRIMARY KEY AUTOINCREMENT NOT NULL, 
   [PdName] nvarchar(255) NOT NULL, 
   [price] float NOT NULL, 
-  [image] avatar nvarchar(255) NOT NULL,
+  [image] nvarchar(255) NOT NULL,
   [description] nvarchar(255), 
   [modifyDate] datetime NOT NULL, 
   [quantity] integer NOT NULL
