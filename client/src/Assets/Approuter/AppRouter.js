@@ -21,9 +21,6 @@ export default function AppRouter() {
             </>
         )
     }
-    const newFunc = () => {
-        
-    }
 
     return (
 
