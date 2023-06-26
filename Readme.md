@@ -26,7 +26,7 @@ This project utilizes the following technologies:
 
 ## How to Use
 
-1. Clone the repository: `git clone https://github.com/username/project.git`
+1. Clone the repository: `git clone https://github.com/username/project.git](https://github.com/DucAnh2611/Vegetable-Web.git`
 2. Go to Server folder : `cd .\server`
 3. Install dependencies: `npm install`
 4. Start backend server: `npm start`
