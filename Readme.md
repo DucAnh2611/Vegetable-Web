@@ -1,8 +1,8 @@
 # Project Name
 
-[![ReactJS](https://link-to-react-logo.png)](https://reactjs.org/)
-[![NodeJS](https://link-to-node-logo.png)](https://nodejs.org/)
-[![SQLite](https://link-to-sqlite-logo.png)](https://sqlite.org/)
+<center>
+<span style="font-size: 24px;">Web bán thực phẩm sạch VEGETABLE</span>
+</center>
 
 ## Contributors
 
@@ -27,10 +27,14 @@ This project utilizes the following technologies:
 ## How to Use
 
 1. Clone the repository: `git clone https://github.com/username/project.git`
-2. Install dependencies: `npm install`
-3. Start the frontend development server: `npm start`
-4. Start the backend server: `npm run start:backend`
-5. Visit `http://localhost:3000` in your browser to access the application.
+2. Go to Server folder : `cd .\server`
+3. Install dependencies: `npm install`
+4. Start backend server: `npm start`
+5. Go back to Vege main folder: `cd ../../`
+6. 2. Go to Client folder : `cd .\client`
+3. Install dependencies: `npm install`
+6. Start the frontend development server: `npm start`
+7. Visit `http://localhost:3000` in your browser to access the application.
 
 Note: Provide any additional instructions or configuration details if required.
 
