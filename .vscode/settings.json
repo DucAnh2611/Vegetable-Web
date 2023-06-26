@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "DucAnh",
+            "database": "${workspaceFolder:Vegety}/server/db/vegetable.db"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
