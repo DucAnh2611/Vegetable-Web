@@ -1,3 +1,15 @@
+:root {
+  --Primary_Green: #416a0f;
+  --Secondary_Green: #c6edb3;
+  --Third_Green: #93bd94;
+  --Fourth_Green: #406830;
+  --Primary_White: #f4fdfe;
+  --Primary_Black: #010101;
+  --Primary_Yellow: #406830;
+  --Secondary_Yellow: #93bd94;
+  --Third_Yellow: #ce7329;
+}
+
 .App {
   text-align: center;
 }
