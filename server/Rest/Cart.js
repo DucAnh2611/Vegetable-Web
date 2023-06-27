@@ -2,7 +2,7 @@ const { fetchData, InsertData } = require("./Setup");
 
 module.exports = function Cart(app, db) {
 
-  app.post("/cart/remove", async (req, res) => {
+  app.post("/cart/check-out", async (req, res) => {
     let responseContext = {
       json: {
         status: "denied",
@@ -11,28 +11,113 @@ module.exports = function Cart(app, db) {
       status: 404,
     };
 
-    let { userid } = req.query;
+    let { methodid, userinfo} = req.body;
 
-    let ProductFiltered = await fetchData(
+    let allCartUser = await fetchData(
       `
-          SELECT *
+          SELECT PdId, quantity
           FROM Cart
           WHERE UserId == ${userid}
-        `,
+      `,
       db
     );
 
-    if (ProductFiltered.length !== 0) {
-      let removeAllItem = await InsertData(
+    let getMethodid = await fetchData(`
+      SELECT * 
+      FROM Method_User
+      WHERE UserId == ${userinfo.userid} AND id == ${methodid}
+    `, db)
+
+    if (getMethodid.length !== 0) {
+
+      let InsertToOrder = await InsertData(`
+        INSERT INTO Order (
+            UserId,
+            OrderAdress,
+            OrderDate,
+            OrderFullname,
+            OrderEmail,
+            OrderPhoneNum,
+            OrderDescription,
+            OrderStateId,
+            MethodId
+          )
+        VALUES (
+          ${userinfo.userid}, 
+          '${userinfo.orderadress}', 
+          '${userinfo.orerdate}',
+          '${userinfo.fullname}',
+          '${userinfo.email}',
+          '${userinfo.phonenum}',
+          '${userinfo.description}',
+          1,
+          ${methodid}
+          );
+      `, db)
+
+      if(InsertToOrder === "Inserted") {
+
+        let GetCurrentOrder = await fetchData(`
+          SELECT id
+          FROM Order
+          WHERE UserId == ${userinfo.userid}
+          ORDER BY OrderDate DESC 
+          LIMIT 1
+        `,db);
+
+        allCartUser.forEach(async e => {
+
+          let InsertProductToOrder = await InsertData(`
+            INSERT INTO Orders_Product (PdId, OrderId, quantity)
+            VALUES (${e.PdId}, ${GetCurrentOrder[0].id}, ${e.quantity});
+          `,db);
+          let updateStockProduct= await InsertData(`
+            UPDATE Product SET quantity = quantity - ${e.quantity} WHERE id == ${e.PdId}
+          `)
+
+        });
+
+        let removeAllItem = await InsertData(
         `
-            DELETE FROM Cart WHERE UserId == ${userid}
-          `,
-        db
-      );
+          DELETE FROM Cart WHERE UserId == ${userid}
+        `,
+          db
+        );
+
+        responseContext.json = {
+          status: "accepted",
+        };
+        responseContext.status = 200;
+
+      }
+    }
+
+    res.status(responseContext.status).json({ ...responseContext.json });
+  });
+
+  app.post("/cart/set-quantity", async (req, res) => {
+    let responseContext = {
+      json: {
+        status: "denied",
+        field: [],
+      },
+      status: 404,
+    };
+
+    let { userid, productid, quantity } = req.body;
+
+    let UpdateQuantity = await InsertData(
+      `
+        UPDATE Cart SET quantiry =${quantity} WHERE PdId== ${productid} AND UserId == ${userid}
+      `,
+      db
+    );
+
+    if(UpdateQuantity === "Inserted") {
       responseContext.json = {
         status: "accepted",
       };
-      responseContext.status = 200;
+      responseContext.status = 200;      
     }
 
     res.status(responseContext.status).json({ ...responseContext.json });
