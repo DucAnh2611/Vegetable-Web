@@ -38,12 +38,12 @@ export default function HomeNavigation() {
             </Navigation_Subtitle_Wrapper>
 
             <Navigation_Icon_Wrapper>
+                    <Navigation_Icon><FontAwesomeIcon icon = {faSolid.faMagnifyingGlass}/></Navigation_Icon>
+                    <Navigation_Icon><FontAwesomeIcon icon = {faRegular.faUser}/></Navigation_Icon>
+                    <Navigation_Icon><FontAwesomeIcon icon = {faRegular.faHeart}/></Navigation_Icon>
                     <Item_Number>1</Item_Number>
-                    <Navigation_Icon><span><FontAwesomeIcon icon = {faSolid.faCartShopping}/></span></Navigation_Icon>
+                    <Navigation_Icon><FontAwesomeIcon icon = {faSolid.faCartShopping}/></Navigation_Icon>
                     <Item_Number>0</Item_Number>
-                    <Navigation_Icon>Wishlist</Navigation_Icon>
-                    <Navigation_Icon>User</Navigation_Icon>
-                    <Navigation_Icon>Search</Navigation_Icon>
             </Navigation_Icon_Wrapper>
 
         </Navigation_Wrapper>
