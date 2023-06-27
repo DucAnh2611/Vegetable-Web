@@ -3,11 +3,14 @@
   --Secondary_Green: #c6edb3;
   --Third_Green: #93bd94;
   --Fourth_Green: #406830;
+  --Fifth_Green: #7e9e2c;
   --Primary_White: #f4fdfe;
+  --Secondary_White: #fff;
   --Primary_Black: #010101;
   --Primary_Yellow: #406830;
   --Secondary_Yellow: #93bd94;
   --Third_Yellow: #ce7329;
+  --Primary_Gray: #646464
 }
 
 .App {

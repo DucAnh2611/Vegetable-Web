@@ -9,7 +9,11 @@ const Home_Slider = () =>{
     return(
         <SliderWrapper>
 
-            Helloooo
+            <SlideTitle>Organic butter</SlideTitle>
+
+            <SlideSubTitle>Thin shell, golden rice, high flexibility</SlideSubTitle>
+
+            <ShopNowButton>Shop now</ShopNowButton>
 
         </SliderWrapper>
     )

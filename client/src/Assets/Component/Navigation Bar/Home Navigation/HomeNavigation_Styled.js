@@ -6,6 +6,8 @@ export const Navigation_Wrapper=styled.div`
     height: 100px;
     margin: 40px auto;
     display: flex;
+    min-width: 1000px;
+    position: relative;
 `;
 
 export const Navigation_Logo=styled.div`
@@ -37,6 +39,17 @@ export const Navigation_Subtitle_li=styled.li`
     cursor:pointer;
 `;
 
+export const Navigation_Subtitle_li_Home=styled.li`
+    list-style: none;
+    display: inline-block;
+    font-family: sans-serif;
+    color: var(--Fifth_Green);
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0px 20px 0 20px;
+    cursor:pointer;
+`;
+
 export const Navigation_Icon_Wrapper=styled.div`
     width:25%;
     line-height:100px;
@@ -53,7 +66,7 @@ export const Navigation_Icon=styled.div`
 `;
 
 export const Item_Number=styled.div`
-    background: #406b0f;
+    background: var(--Primary_Green);
     width: 28px;
     height: 28px;
     display: inline-block;
