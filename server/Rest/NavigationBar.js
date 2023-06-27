@@ -1,4 +1,4 @@
-const { fetchData } = require("./Setup");
+const { fetchData, InsertData } = require("./Setup");
 
 function NavigationBar(app, db) {
 
@@ -115,6 +115,68 @@ function NavigationBar(app, db) {
       responseContext.json={
         status: "accepted",
         field: ProductFiltered
+      }
+      responseContext.status= 200
+      
+    }
+
+    res.status(responseContext.status).json({ ...responseContext.json });
+  });
+
+  app.get("/navigation/wish-list/remove", async (req, res) => {
+    let responseContext = {
+      json: {
+        status: "denied",
+        field: [],
+      },
+      status: 404,
+    };
+
+    let { productid, userid } = req.query;
+
+    let ProductFiltered = await fetchData(`
+      SELECT *
+      FROM Wishlist
+      WHERE PdId == ${productid} AND UserId == ${userid}
+    `, db);
+
+    if(ProductFiltered.length !==0) {
+      let removeProductFromWishList = await InsertData(`
+        DELETE FROM WishList WHERE PdId == ${productid} AND UserId == ${userid}
+      `, db)
+      responseContext.json={
+        status: "accepted"
+      }
+      responseContext.status= 200
+      
+    }
+
+    res.status(responseContext.status).json({ ...responseContext.json });
+  });
+
+  app.get("/navigation/cart/remove", async (req, res) => {
+    let responseContext = {
+      json: {
+        status: "denied",
+        field: [],
+      },
+      status: 404,
+    };
+
+    let { productid, userid } = req.query;
+
+    let ProductFiltered = await fetchData(`
+      SELECT *
+      FROM Cart
+      WHERE PdId == ${productid} AND UserId == ${userid}
+    `, db);
+
+    if(ProductFiltered.length !==0) {
+      let removeProductFromCart = await InsertData(`
+        DELETE FROM Cart WHERE PdId == ${productid} AND UserId == ${userid}
+      `, db)
+      responseContext.json={
+        status: "accepted"
       }
       responseContext.status= 200
       
