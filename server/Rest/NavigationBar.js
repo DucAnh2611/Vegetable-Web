@@ -93,6 +93,36 @@ function NavigationBar(app, db) {
     res.status(responseContext.status).json({ ...responseContext.json });
   });
   
+  app.get("/navigation/search", async (req, res) => {
+    let responseContext = {
+      json: {
+        status: "denied",
+        field: [],
+      },
+      status: 404,
+    };
+
+    let { key, page, each } = req.query;
+    let ProductFiltered = await fetchData(`
+    SELECT p.*
+    FROM Product as p
+    WHERE PdId LIKE '%${key}%' 
+    LIMIT ${each}
+    OFFSET ${(page -1) *each}
+    `, db);
+
+    if(ProductFiltered.length !==0) {
+      responseContext.json={
+        status: "accepted",
+        field: ProductFiltered
+      }
+      responseContext.status= 200
+      
+    }
+
+    res.status(responseContext.status).json({ ...responseContext.json });
+  });
+
 }
 
 module.exports = NavigationBar;
