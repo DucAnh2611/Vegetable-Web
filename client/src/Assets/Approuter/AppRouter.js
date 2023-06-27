@@ -38,6 +38,7 @@ export default function AppRouter() {
                 <Route exact path="/shop-checkout" element={<p>Checkout</p>}/>
                 <Route exact path="/shop-order-tracking/:orderid" element={<p>Order State</p>}/>
             </Route>
+            <Route exact path="/*" element={<div>Not Found 404</div>}/>
             {
                 //export xong import page vao element
             }

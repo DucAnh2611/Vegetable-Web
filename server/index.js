@@ -12,6 +12,8 @@ const NavigationBar = require('./Rest/NavigationBar');
 const Home = require('./Rest/Home');
 const Product = require('./Rest/Product');
 const ProductDetails = require('./Rest/ProductDetails');
+const Cart = require('./Rest/Cart');
+const OrderTracking = require('./Rest/OrderTracking');
 
 const PORT = process.env.PORT || 3001;
 
@@ -30,6 +32,20 @@ Home(app, db);
 Product(app, db);
 
 ProductDetails(app, db);
+
+Cart(app, db);
+
+OrderTracking(app, db);
+
+Profile(app, db);
+
+app.get("/*", (req, res) => {
+  res.status(404).json({status: "not found"})
+})
+
+app.post("/*", (req, res) => {
+  res.status(404).json({status: "not found"})
+})
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

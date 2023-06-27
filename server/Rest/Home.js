@@ -15,7 +15,7 @@ function Home(app, db) {
     let ListType = await fetchData(`
       SELECT type
       FROM TypeProduct
-    `, db)
+    `, db);
 
     if(ListType.length !==0) {
       responseContext= {

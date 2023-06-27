@@ -55,8 +55,12 @@ GO
 CREATE TABLE [Order] (
   [id] integer PRIMARY KEY AUTOINCREMENT NOT NULL, 
   [UserId] integer NOT NULL, 
+  [OrderAdress] nvarchar(255) NOT NULL, 
   [OrderDate] datetime NOT NULL, 
-  [description] nvarchar(255), 
+  [OrderFullname] nvarchar(255) NOT NULL, 
+  [OrderEmail] nvarchar(255) NOT NULL, 
+  [OrderPhoneNum] nvarchar(255) NOT NULL, 
+  [OrderDescription] nvarchar(255), 
   [OrderStateId] integer NOT NULL, 
   [MethodId] integer NOT NULL
 )
