@@ -29,7 +29,7 @@ export default function AppRouter() {
 
         <Routes>
             <Route element={<HomeNav/>}>
-                <Route exact path="/" element={<p>Home</p>}/>
+                <Route exact path="/" element={<Home></Home>}/>
             </Route>
             <Route element={<ProductNav/>}>
                 <Route exact path="/shop" element={<p>Shop</p>}/>
