@@ -1,6 +1,9 @@
 import React from "react";
-import {Routes, Route, Outlet} from "react-router-dom";
+import {Routes, 
+        Route, 
+        Outlet} from "react-router-dom";
 import HomeNavigation from "../Component/Navigation Bar/Home Navigation/HomeNavigation";
+import Home from "../Page/Home/Home";
 import ProductNavigation from "../Component/Navigation Bar/Product Navigation/ProductNavigation";
 
 export default function AppRouter() {
