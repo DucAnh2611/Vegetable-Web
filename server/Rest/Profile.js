@@ -2,6 +2,36 @@ const { fetchData, InsertData } = require("./Setup");
 
 module.exports = function Profile(app, db) {
 
+  app.get("/profile/:userid", async (req, res) => {
+    let responseContext = {
+      json: {
+        status: "denied",
+        field: {},
+      },
+      status: 404,
+    };
+
+    let { userid } = req.params;
+
+    let UserInfo = await InsertData(`
+      SELECT fullname, birthday, email, phoneNum, address, avatar
+      FROM Users
+      WHERE id = ${userid}
+    `, db);
+
+    if(UserInfo.length !== 0) {
+      responseContext = {
+        json: {
+          status: "accepted",
+          field: {...UserInfo},
+        },
+        status: 200,
+      };
+    }
+
+    res.status(responseContext.status).json({ ...responseContext.json });
+  });
+
   app.post("/profile/:userid/update", async (req, res) => {
     let responseContext = {
       json: {
@@ -89,8 +119,21 @@ module.exports = function Profile(app, db) {
       status: 404,
     };
 
-    let {methodid, description} = req.body;
+    let {methodtypeid, description} = req.body;
     let { userid } = req.params;
+
+    let CheckExistMethod = await fetchData(`
+      SELECT *
+      FROM Method_User
+      WHERE Userid = ${userid} AND description = '${description}'
+    `,db);
+
+    if(CheckExistMethod.length ===0 ){
+      let InsertNewMethod = await InsertData(`
+        INSERT INTO Method_User (methodTypeId, description, UserId)
+        VALUES (${methodtypeid}, '${description}', ${userid});
+      `,db);
+    }
 
     res.status(responseContext.status).json({ ...responseContext.json });
   });
