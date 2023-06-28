@@ -174,7 +174,6 @@ export const Product_side_btn = styled.div`
         :hover {
             color: var(--Primary_White);
             background-color: var(--Primary_Green);
-            transition: all .1s ease;
         }
     }
 `;
