@@ -1,10 +1,10 @@
 
 import React from "react"; 
 import Product_Item from "./ProductItem/Product_Item";
-import { BestSeller_Wrap, 
+import { BestSeller_Wrap,
         AllProduct_wrap,
         Filter_category_wrap,
-        Filter_category_list } from "./HomeItemBestSeller_Styled";
+        Filter_category_list} from "./HomeItemBestSeller_Styled";
 
 function BestSellerSection (){
     return (

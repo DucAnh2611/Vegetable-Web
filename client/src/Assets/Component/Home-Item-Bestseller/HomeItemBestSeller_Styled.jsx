@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
 export const BestSeller_Wrap = styled.div`
-    background: var(--Primary_White);
-    height: 600px;
+    background: var(--Secondary_White);
+    height: auto;
     width: 100%;
     padding: 0 15px;
 `;
@@ -10,6 +10,9 @@ export const BestSeller_Wrap = styled.div`
 export const AllProduct_wrap = styled.div`
     width: 100%;
     height: auto;
+    padding-bottom: 100px;
+    max-width: 1440px;
+    margin: 0 auto;
 
     h1 {
         font-weight: 500;
