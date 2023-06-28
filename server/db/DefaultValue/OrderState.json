@@ -1,0 +1,17 @@
+[
+    {
+        "state": "Recieved order"
+    },
+    {
+        "state": "Picked up at the warehouse"
+    },
+    {
+        "state": "Being transported"
+    },
+    {
+        "state": "Go to the shipping center"
+    },
+    {
+        "state": "Received"
+    }
+]

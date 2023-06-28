@@ -1,0 +1,14 @@
+[
+    {
+        "type":  "drink"
+    },
+    {
+        "type":  "vegetable"
+    },
+    {
+        "type":  "fruit"
+    },
+    {
+        "type":  "nuts"
+    }
+]

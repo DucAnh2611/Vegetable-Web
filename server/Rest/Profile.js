@@ -44,17 +44,33 @@ module.exports = function Profile(app, db) {
     let { fullname, birthday, email, phoneNum, address, avatar } = req.body;
     let { userid } = req.params;
 
-    let UpdateUserInfo = await InsertData(`
+    let UpdateUserInfo = db.prepare(`
       UPDATE Users SET (
         fullname = '${fullname}',
         birthday = '${birthday}',
         email = '${email}',
         phoneNum = '${phoneNum}',
         address = '${address}',
-        avatar = '${avatar}'
+        avatar = (?)
       )
       WHERE id == ${userid}
-    `, db);
+    `);
+    
+    UpdateUserInfo.run(avatar, err =>{
+      if(err) {
+        throw err;
+      }
+      responseContext = {
+        json: {
+          status: "accepted",
+        },
+        status: 200,
+      };
+
+    });
+    UpdateUserInfo.finalize();
+
+    db.close();
 
     res.status(responseContext.status).json({ ...responseContext.json });
   });

@@ -7,6 +7,7 @@ function fetchData(query, db) {
         resolve(rows);
       }
     });
+    db.close();
   });
 }
 
@@ -19,7 +20,23 @@ function InsertData(query, db) {
         resolve("Inserted");
       }
     });
+    db.close();
   });
 }
 
-module.exports = {fetchData, InsertData};
+function InsertIncludeImage(query,image, db){
+  return new Promise((resolve, reject) => {
+    let query = db.prepare(query);
+    query.run(image, err => {
+      if(err) reject(err)
+      else {
+        resolve("Inserted");
+      }
+    });
+    query.finalize();
+    db.close();
+    
+  });
+}
+
+module.exports = {fetchData, InsertData, InsertIncludeImage};

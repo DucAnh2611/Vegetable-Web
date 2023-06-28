@@ -1,0 +1,14 @@
+[
+    {
+        "type": "cash"
+    },
+    {
+        "type": "visa"
+    },
+    {
+        "type": "master card"
+    },
+    {
+        "type": "paypal"
+    }
+]
