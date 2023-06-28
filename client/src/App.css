@@ -15,7 +15,7 @@
 
 .App {
   text-align: center;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 * {
   box-sizing: border-box;

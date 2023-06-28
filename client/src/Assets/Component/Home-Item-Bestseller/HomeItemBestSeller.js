@@ -2,9 +2,9 @@
 import React from "react"; 
 import Product_Item from "./ProductItem/Product_Item";
 import { BestSeller_Wrap, 
-    AllProduct_wrap,
-    Filter_category_wrap,
-    Filter_category_list } from "./HomeItemBestSeller_Styled";
+        AllProduct_wrap,
+        Filter_category_wrap,
+        Filter_category_list } from "./HomeItemBestSeller_Styled";
 
 function BestSellerSection (){
     return (
@@ -21,7 +21,7 @@ function BestSellerSection (){
                         <li>Vegetable</li>
                     </Filter_category_list>
                 </Filter_category_wrap>
-                <Product_Item/>
+                <Product_Item></Product_Item>
             </AllProduct_wrap>
         </BestSeller_Wrap>
     )
