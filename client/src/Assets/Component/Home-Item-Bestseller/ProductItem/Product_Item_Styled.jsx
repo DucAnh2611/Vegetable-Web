@@ -97,14 +97,7 @@ export const Product_price = styled.div`
         }
     }
 
-    > *:first-child {
-        color: var(--Primary_Gray);
-        p {
-            text-decoration: line-through;
-        }
-    }
-
-    > *:last-child {
+    > *{
         margin-left: 10px;
         color: var(--Primary_Black);
         font-weight: 500;

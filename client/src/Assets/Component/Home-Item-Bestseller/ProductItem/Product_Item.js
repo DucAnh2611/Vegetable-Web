@@ -66,11 +66,7 @@ function Product_Item({list}) {
                                 <Style.Product_price>
                                     <span>
                                         <FontAwesomeIcon icon={faSolid.faDollarSign} />
-                                        <p>{(item.price + 10).toFixed(2)}</p>
-                                    </span>
-                                    <span>
-                                        <FontAwesomeIcon icon={faSolid.faDollarSign} />
-                                        <p>{(item.price).toFixed(2)}</p>
+                                        <p>{(item.price).toFixed(2)} / {item.unit.toUpperCase()}</p>
                                     </span>
                                 </Style.Product_price>
                             </Style.Pic_item_des>
