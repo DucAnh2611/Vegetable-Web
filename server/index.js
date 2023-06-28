@@ -18,8 +18,8 @@ const OrderTracking = require('./Rest/OrderTracking');
 const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '20mb' }));
+app.use(bodyParser.urlencoded({ limit:'20mb', extended: false }));
 
 Login(app, db);
 

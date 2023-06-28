@@ -7,7 +7,7 @@ CREATE TABLE [Users] (
   [email] nvarchar(255) NOT NULL, 
   [phoneNum] nvarchar(255) NOT NULL, 
   [address] nvarchar(255) NOT NULL, 
-  [avatar] nvarchar(255) NOT NULL, 
+  [avatar] blob NOT NULL, 
   [typeUserId] integer NOT NULL
 )
 GO
@@ -22,9 +22,15 @@ GO
 
 CREATE TABLE [Method_User] (
   [id] integer PRIMARY KEY AUTOINCREMENT NOT NULL, 
-  [method] nvarchar(255) NOT NULL, 
+  [methodTypeId] nvarchar(255) NOT NULL, 
   [description] nvarchar(255), 
   [UserId] integer NOT NULL
+)
+GO
+
+CREATE TABLE [MethodType] (
+  [id] integer PRIMARY KEY AUTOINCREMENT NOT NULL, 
+  [type] nvarchar(255) NOT NULL
 )
 GO
 
@@ -32,7 +38,7 @@ CREATE TABLE [Product] (
   [id] integer PRIMARY KEY AUTOINCREMENT NOT NULL, 
   [PdName] nvarchar(255) NOT NULL, 
   [price] float NOT NULL, 
-  [image] nvarchar(255) NOT NULL,
+  [image] blob NOT NULL,
   [description] nvarchar(255), 
   [modifyDate] datetime NOT NULL, 
   [quantity] integer NOT NULL
@@ -110,6 +116,8 @@ GO
 
 ALTER TABLE [Method_User] ADD FOREIGN KEY ([UserId]) REFERENCES [Users] ([id])
 GO
+ALTER TABLE [Method_User] ADD FOREIGN KEY ([methodTypeId]) REFERENCES [MethodType] ([id])
+GO
 
 ALTER TABLE [Order] ADD FOREIGN KEY ([MethodId]) REFERENCES [Method_User] ([id])
 GO
@@ -170,3 +178,4 @@ CREATE INDEX idx_wishlist_pdid ON WishList (PdId)
 
 CREATE INDEX idx_cart_pdid ON Cart (PdId)
 CREATE INDEX idx_cart_userid ON Cart (UserId)
+
