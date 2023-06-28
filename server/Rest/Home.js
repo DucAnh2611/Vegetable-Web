@@ -41,12 +41,13 @@ function Home(app) {
     };
 
     let { type, amount } = req.query;
-    let conditionQuery = type !== 0  ? `WHERE tp_p.TypeId == ${type}` : `WHERE tp_p.TypeId != ${type}`
-
+    let conditionQuery = parseInt(type) !== 0  ? `WHERE tp_p.TypeId == ${type}` : `WHERE tp_p.TypeId <> ${type}`
+    
     let ListProductFilterByType = await fetchData(`
-      SELECT p.*
+      SELECT p.*, (SELECT AVG(rating) FROM Review as r WHERE r.PdId == p.id) as 'AvgRating'
       FROM TypeProduct_Product as tp_p INNER JOIN Product as p ON tp_p.PdId = p.id
       ${conditionQuery}
+      ORDER BY 'AvgRating'
       LIMIT ${amount}
     `);
 

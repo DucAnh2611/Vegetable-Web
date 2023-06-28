@@ -50,11 +50,15 @@ function Product_Item({list}) {
     
                             <Style.Pic_item_des>
                                 <Style.Star_rating>
-                                    <FontAwesomeIcon icon={faRegular.faStar} />
-                                    <FontAwesomeIcon icon={faRegular.faStar} />
-                                    <FontAwesomeIcon icon={faRegular.faStar} />
-                                    <FontAwesomeIcon icon={faRegular.faStar} />
-                                    <FontAwesomeIcon icon={faRegular.faStar} />
+                                    {
+                                        new Array(5).fill('').map((_, idx) => (
+                                            idx +1 <= item.AvgRating
+                                            ? <FontAwesomeIcon icon={faSolid.faStar}/>
+                                            : item.AvgRating - parseInt(item.AvgRating) >= 0.5 
+                                                ? <FontAwesomeIcon icon={faRegular.faStarHalfAlt}/>
+                                                : <FontAwesomeIcon icon={faRegular.faStar}/>
+                                        ))
+                                    }
                                 </Style.Star_rating>
     
                                 <h3>{item.PdName}</h3>
@@ -62,11 +66,11 @@ function Product_Item({list}) {
                                 <Style.Product_price>
                                     <span>
                                         <FontAwesomeIcon icon={faSolid.faDollarSign} />
-                                        <p>{item.price + 10}</p>
+                                        <p>{(item.price + 10).toFixed(2)}</p>
                                     </span>
                                     <span>
                                         <FontAwesomeIcon icon={faSolid.faDollarSign} />
-                                        <p>{item.price}</p>
+                                        <p>{(item.price).toFixed(2)}</p>
                                     </span>
                                 </Style.Product_price>
                             </Style.Pic_item_des>

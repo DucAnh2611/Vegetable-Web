@@ -23,7 +23,7 @@ function BestSellerSection (){
         fetch(`/home/list-item?amount=${amount}&type=${type}`)
         .then(res => res.json())
         .then(data=> {
-            SetListItem(data.field);        
+            SetListItem(data.field);    
         })
     }
     const fetchListType = () => {
@@ -31,7 +31,6 @@ function BestSellerSection (){
         .then(res => res.json())
         .then(data=> {
             SetListType(data.field); 
-            console.log(data);        
         })
     }
 
@@ -50,6 +49,7 @@ function BestSellerSection (){
                 <h1>Best Seller</h1>
                 <Filter_category_wrap>
                     <Filter_category_list>
+                        <li onClick={el => {SetType(0)}}>All</li>
                         {
                             ListType.map(e => <li onClick={el => {SetType(dictionaryType[e.type])}}>{e.type.toUpperCase()}</li>)
                         }
