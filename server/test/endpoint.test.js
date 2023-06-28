@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 const assert = chai.assert;
 const expect = chai.expect;
 
-// describe('/signup/auth', () => {
+// describe('Signup', () => {
   
 //   it('should return status 200 and accepted status when signup is successful', (done) => {
 //     chai.request(app)
@@ -58,7 +58,7 @@ const expect = chai.expect;
 // });
 
 
-describe('POST /login/auth', () => {
+describe('Login', () => {
   it('should return status 200 and "accepted" if valid credentials are provided', (done) => {
     chai.request(app)
       .post('/login/auth')
@@ -168,4 +168,79 @@ describe("Profile", () => {
   });
 
 });
+
+describe("Home", () => {
+
+  describe('GET /home/list-item', () => {
+    it('should return user info if userid exists', (done) => {
+      chai.request(app)
+        .get('/home/list-item?amount=10type=') // Replace '1' with an existing userid in your database
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          expect(res.body.status).to.equal('accepted');
+          expect(res.body.field).to.be.an('object');
+          // Assert other properties of the response body as needed
+          done();
+        });
+    });
+
+    it('should return 404 if userid does not exist', (done) => {
+      chai.request(app)
+        .get('/profile/999') // Replace '999' with a non-existing userid in your database
+        .end((err, res) => {
+          expect(res).to.have.status(404);
+          expect(res.body.status).to.equal('denied');
+          expect(res.body.field).to.be.an('object');
+          // Assert other properties of the response body as needed
+          done();
+        });
+    });
+  });  
+
+  describe('POST /profile/:userid/update', () => {
+    it('should update user profile and return status "accepted"', (done) => {
+      const requestBody = {
+        fullname: 'John Doe',
+        birthday: '1990-01-01',
+        email: 'johndoe@example.com',
+        phoneNum: '1234567890',
+        address: '123 Main St',
+        avatar: 'avatar-url'
+      };
+  
+      chai.request(app)
+        .post('/profile/1/update') // Replace '1' with an existing userid in your database
+        .send(requestBody)
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          expect(res.body.status).to.equal('accepted');
+          // Assert other properties of the response body as needed
+          done();
+        });
+    });
+  
+    it('should return status "denied" and 404 if userid does not exist', (done) => {
+      const requestBody = {
+        fullname: 'John Doe',
+        birthday: '1990-01-01',
+        email: 'johndoe@example.com',
+        phoneNum: '1234567890',
+        address: '123 Main St',
+        avatar: 'avatar-url'
+      };
+  
+      chai.request(app)
+        .post('/profile/999/update') // Replace '999' with a non-existing userid in your database
+        .send(requestBody)
+        .end((err, res) => {
+          expect(res).to.have.status(404);
+          expect(res.body.status).to.equal('denied');
+          // Assert other properties of the response body as needed
+          done();
+        });
+    });
+  });
+
+});
+
 

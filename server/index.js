@@ -16,9 +16,9 @@ const Profile = require('./Rest/Profile');
 
 const PORT = process.env.PORT || 3001;
 
-app.use(express.json());
-app.use(bodyParser.json({ limit: '20mb' }));
-app.use(bodyParser.urlencoded({ limit:'20mb', extended: false }));
+app.use(express.json({ limit: '50mb' }));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit:'50mb', extended: false }));
 
 Login(app);
 

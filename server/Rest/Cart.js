@@ -104,7 +104,7 @@ function Cart(app) {
 
     let UpdateQuantity = await InsertData(
       `
-        UPDATE Cart SET quantiry =${quantity} WHERE PdId== ${productid} AND UserId == ${userid}
+        UPDATE Cart SET quantity =${quantity} WHERE PdId== ${productid} AND UserId == ${userid}
       `);
 
     if(UpdateQuantity === "Inserted") {

@@ -40,8 +40,8 @@ function Home(app) {
       status: 404,
     };
 
-    let {type, amount } = req.query;
-    let conditionQuery = type.length !==0  ? `WHERE type == '${type}'` : type
+    let { type, amount } = req.query;
+    let conditionQuery = type !== 0  ? `WHERE tp_p.TypeId == ${type}` : `WHERE tp_p.TypeId != ${type}`
 
     let ListProductFilterByType = await fetchData(`
       SELECT p.*
