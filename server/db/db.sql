@@ -82,6 +82,7 @@ CREATE TABLE IF NOT EXISTS [Product] (
   [PdName] nvarchar(255) NOT NULL, 
   [price] float NOT NULL, 
   [image] blob NOT NULL,
+  [unit] nvarchar(255) NOT NULL, 
   [description] nvarchar(255), 
   [modifyDate] datetime NOT NULL, 
   [quantity] integer NOT NULL

@@ -1,6 +1,6 @@
-const { fetchData, InsertData } = require("./Setup");
+const { fetchData, InsertData, InsertIncludeImage } = require("./Setup");
 
-module.exports = function Profile(app, db) {
+function Profile(app) {
 
   app.get("/profile/:userid", async (req, res) => {
     let responseContext = {
@@ -13,11 +13,11 @@ module.exports = function Profile(app, db) {
 
     let { userid } = req.params;
 
-    let UserInfo = await InsertData(`
+    let UserInfo = await fetchData(`
       SELECT fullname, birthday, email, phoneNum, address, avatar
       FROM Users
       WHERE id = ${userid}
-    `, db);
+    `);
 
     if(UserInfo.length !== 0) {
       responseContext = {
@@ -44,33 +44,34 @@ module.exports = function Profile(app, db) {
     let { fullname, birthday, email, phoneNum, address, avatar } = req.body;
     let { userid } = req.params;
 
-    let UpdateUserInfo = db.prepare(`
-      UPDATE Users SET (
-        fullname = '${fullname}',
-        birthday = '${birthday}',
-        email = '${email}',
-        phoneNum = '${phoneNum}',
-        address = '${address}',
-        avatar = (?)
-      )
+    let UserGet = await fetchData(`
+      SELECT *
+      FROM Users
       WHERE id == ${userid}
     `);
-    
-    UpdateUserInfo.run(avatar, err =>{
-      if(err) {
-        throw err;
-      }
+
+    if(UserGet.length !== 0) {
+
+      let UpdateUserInfo = await InsertIncludeImage(`
+        UPDATE Users SET (
+          fullname = '${fullname}',
+          birthday = '${birthday}',
+          email = '${email}',
+          phoneNum = '${phoneNum}',
+          address = '${address}',
+          avatar = (?)
+        )
+        WHERE id == ${userid}
+      `, avatar); 
+      
       responseContext = {
         json: {
-          status: "accepted",
+          status: "accepted"
         },
         status: 200,
       };
+    }
 
-    });
-    UpdateUserInfo.finalize();
-
-    db.close();
 
     res.status(responseContext.status).json({ ...responseContext.json });
   });
@@ -91,14 +92,14 @@ module.exports = function Profile(app, db) {
       SELECT * 
       FROM Users
       WHERE id == ${userid} AND password = '${currentpass}'
-    `,db)
+    `);
 
     if(CheckCurrentPassword.length !== 0) {
       if(newpass === confirmpass) {
 
         let UpdatePassword = await InsertData(`
             UPPDATE Users SET password = '${newpass}' WHERE id == ${userid}
-        `,db);
+        `);
 
         responseContext = {
           json: {
@@ -142,16 +143,25 @@ module.exports = function Profile(app, db) {
       SELECT *
       FROM Method_User
       WHERE Userid = ${userid} AND description = '${description}'
-    `,db);
+    `);
 
     if(CheckExistMethod.length ===0 ){
       let InsertNewMethod = await InsertData(`
         INSERT INTO Method_User (methodTypeId, description, UserId)
         VALUES (${methodtypeid}, '${description}', ${userid});
-      `,db);
+      `);
+      
+      responseContext = {
+        json: {
+          status: "accepted"
+        },
+        status: 200,
+      };
     }
 
     res.status(responseContext.status).json({ ...responseContext.json });
   });
 
 };
+
+module.exports = Profile;

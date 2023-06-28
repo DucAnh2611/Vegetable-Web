@@ -3,8 +3,6 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database(process.env.DATABASE);
 
 const Login = require('./Rest/Login');
 const Signup = require('./Rest/Signup');
@@ -14,6 +12,7 @@ const Product = require('./Rest/Product');
 const ProductDetails = require('./Rest/ProductDetails');
 const Cart = require('./Rest/Cart');
 const OrderTracking = require('./Rest/OrderTracking');
+const Profile = require('./Rest/Profile');
 
 const PORT = process.env.PORT || 3001;
 
@@ -21,23 +20,23 @@ app.use(express.json());
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit:'20mb', extended: false }));
 
-Login(app, db);
+Login(app);
 
-Signup(app,db);
+Signup(app);
 
-NavigationBar(app, db);
+NavigationBar(app);
 
-Home(app, db);
+Home(app);
 
-Product(app, db);
+Product(app);
 
-ProductDetails(app, db);
+ProductDetails(app);
 
-Cart(app, db);
+Cart(app);
 
-OrderTracking(app, db);
+OrderTracking(app);
 
-Profile(app, db);
+Profile(app);
 
 app.get("/*", (req, res) => {
   res.status(404).json({status: "not found"})
@@ -50,3 +49,6 @@ app.post("/*", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+
+module.exports = app;

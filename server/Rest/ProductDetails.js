@@ -1,6 +1,6 @@
 const { fetchData, InsertData } = require("./Setup");
 
-module.exports = function ProductDetails(app, db) {
+function ProductDetails(app) {
 
   app.get("/product-detail/:productid", async (req, res) => {
     let responseContext = {
@@ -18,9 +18,7 @@ module.exports = function ProductDetails(app, db) {
         SELECT p.*
         FROM Product as p
         WHERE p.id == ${parseInt(productid)}
-      `,
-      db
-    );
+      `);
 
     let Review = await fetchData(
       `
@@ -28,9 +26,7 @@ module.exports = function ProductDetails(app, db) {
         FROM Product as p INNER JOIN Review as r ON p.id = r.PdId
                           INNER JOIN Users as u ON r.UserId = u.id
         WHERE p.id == ${parseInt(productid)}
-      `,
-      db
-    );
+      `);
 
     let relatedProduct = await fetchData(
       `
@@ -40,9 +36,7 @@ module.exports = function ProductDetails(app, db) {
                             FROM Product as p INNER JOINN TypeProduct_Product as tp_p ON p.id =tp_p.PdId
                             WHERE p == ${parseInt(productid)})
         ORDER BY p.PdName ASC
-      `,
-      db
-    );
+      `);
 
     if (ProductInfo.length !== 0) {
       responseContext = {
@@ -81,21 +75,19 @@ module.exports = function ProductDetails(app, db) {
       SELECT c.*
       FROM Cart as c
       WHERE UserId == ${parseInt(userid)} AND PdId == ${parseInt(productid)}
-    `,db)
+    `)
 
     if(GetItemInCart.length !==0 ) {
       let UpdateQuantity = await InsertData(`
         UPDATE Cart SET quantity = quantity + ${quantity} WHERE UserId == ${parseInt(userid)} AND PdId == ${parseInt(productid)}
-      `, db);
+      `);
     }
     else {
       let InsertToCart = await InsertData(
         `
           INSERT INTO Cart (UserId, PdId, quantity)
           VALUES (${userid}, ${productid}, ${quantity});
-        `,
-        db
-      );      
+        `);      
     }
 
     responseContext = {
@@ -124,9 +116,7 @@ module.exports = function ProductDetails(app, db) {
       `
         INSERT INTO Review ( PdId, UserId, title, description, rating)
         VALUES (${productid}, ${ReviewInfo.userid}, '${ReviewInfo.title}', '${ReviewInfo.description}', ${ReviewInfo.rating});
-      `,
-      db
-    );
+      `);
 
     responseContext = {
       json: {
@@ -155,24 +145,26 @@ module.exports = function ProductDetails(app, db) {
         SELECT *
         FROM WishList
         WHERE UserId == ${parseInt(userid)} AND PdId == ${parseInt(productid)}
-      `,
-      db
-    );
+      `);
 
     if (WishListCheck.length === 0) {
+
       let insertItemToWishList = await InsertData(`
         INSERT INTO WishList (UserId, PdId)
         VALUES (${parseInt(userid)}, ${parseInt(productid)});
       `);
+
+      responseContext = {
+        json: {
+          status: "accepted"
+        },
+        status: 200,
+      };
     }
-    responseContext = {
-      json: {
-        status: "accepted"
-      },
-      status: 200,
-    };
 
     res.status(responseContext.status).json({ ...responseContext.json });
   });
   
 };
+
+module.exports = ProductDetails;

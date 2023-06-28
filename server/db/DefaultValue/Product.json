@@ -1,16 +1,535 @@
 [
     {
-        "name": "abc",
-        "price": 1200,
-        "image" : "123123",
-        "description" : "",
-        "quantity": 100,
+        "name": "Almond",
+        "price": 10,
+        "image" : "./DefaultValue/ImageProduct/Almond.jpg",
+        "description" : "The almond is a species of tree native to Iran and surrounding countries, including the Levant. The almond is also the name of the edible and widely cultivated seed of this tree.",
+        "quantity": 1000,
+        "unit": "kg",
         "type": [
             {
-                "type": 0
+                "type": 4
+            }
+        ]
+    },
+    {
+        "name": "Apple",
+        "price": 5,
+        "image" : "./DefaultValue/ImageProduct/apple.jpg",
+        "description" : "An apple is a round, edible fruit produced by an apple tree. Apple trees are cultivated worldwide and are the most widely grown species in the genus Malus.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 3
+            }
+        ]
+    },
+    {
+        "name": "Avocado",
+        "price": 10,
+        "image" : "./DefaultValue/ImageProduct/avocado.jpg",
+        "description" : "The avocado is a medium-sized, evergreen tree in the laurel family. It is native to the Americas and was first domesticated by Mesoamerican tribes more than 5,000 years ago.",
+        "quantity": 250,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 3
+            }
+        ]
+    },
+    {
+        "name": "Banana",
+        "price": 5,
+        "image" : "./DefaultValue/ImageProduct/banana.jpeg",
+        "description" : "Bananas are a healthy source of fiber, potassium, vitamin B6, vitamin C, and various antioxidants and phytonutrients",
+        "quantity": 600,
+        "unit": "bunch",
+        "type": [
+            {
+                "type": 3
+            }
+        ]
+    },
+    {
+        "name": "Cabbage",
+        "price": 0.5,
+        "image" : "./DefaultValue/ImageProduct/Cabbage.jpg",
+        "description" : "Cabbage, comprising several cultivars of Brassica oleracea, is a leafy green, red, or white biennial plant grown as an annual vegetable crop for its dense-leaved heads.",
+        "quantity": 200,
+        "unit": "bunch",
+        "type": [
+            {
+                "type": 2
+            }
+        ]
+    },
+    {
+        "name": "Carrot",
+        "price": 1,
+        "image" : "./DefaultValue/ImageProduct/carrot.jpg",
+        "description" : "The carrot is a root vegetable, typically orange in color, though purple, black, red, white, and yellow cultivars exist, all of which are domesticated forms of the wild carrot, Daucus carota, native to Europe and Southwestern Asia.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 2
+            }
+        ]
+    },
+    {
+        "name": "Cashew",
+        "price": 15,
+        "image" : "./DefaultValue/ImageProduct/Cashew.jpg",
+        "description" : "The Cashew tree can grow as tall as 14 metres, but the dwarf cultivars, growing up to 6 m, prove more profitable, with earlier maturity and greater yields",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 4
+            }
+        ]
+    },
+    {
+        "name": "Cauliflower",
+        "price": 1,
+        "image" : "./DefaultValue/ImageProduct/Cauliflower.jpg",
+        "description" : "Cauliflower is one of several vegetables in the species Brassica oleracea in the genus Brassica, which is in the Brassicaceae family.",
+        "quantity": 100,
+        "unit": "bunch",
+        "type": [
+            {
+                "type": 2
+            }
+        ]
+    },
+    {
+        "name": "Cherry",
+        "price": 20,
+        "image" : "./DefaultValue/ImageProduct/cherry.jpg",
+        "description" : "A cherry is the fruit of many plants of the genus Prunus, and is a fleshy drupe.",
+        "quantity": 800,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 2
+            }
+        ]
+    },
+    {
+        "name": "Chili",
+        "price": 0.25,
+        "image" : "./DefaultValue/ImageProduct/chili.jpg",
+        "description" : "Chili peppers are widely used in many cuisines as a spice to add heat to dishes.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 2
+            }
+        ]
+    },
+    {
+        "name": "Coconut",
+        "price": 0.75,
+        "image" : "./DefaultValue/ImageProduct/coconut.jpg",
+        "description" : "The coconut fruit is a drupe (a fleshy fruit with a hard stone containing the seed), and not a true nut.",
+        "quantity": 100,
+        "unit": "fruit",
+        "type": [
+            {
+                "type": 3
+            }
+        ]
+    },
+    {
+        "name": "Corn",
+        "price": 3,
+        "image" : "./DefaultValue/ImageProduct/corn.jpg",
+        "description" : "Corn is a cereal grain first domesticated by indigenous peoples in southern Mexico about 10,000 years ago.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 2
+            }
+        ]
+    },
+    {
+        "name": "Cucumber",
+        "price": 1,
+        "image" : "./DefaultValue/ImageProduct/cucumber.jpg",
+        "description" : "The cucumber is a widely-cultivated creeping vine plant in the family Cucurbitaceae that bears cylindrical to spherical fruits, which are used as culinary vegetables.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 2 
+            }
+        ]
+    },
+    {
+        "name": "Garlic",
+        "price": 0.5,
+        "image" : "./DefaultValue/ImageProduct/garlic.jpg",
+        "description" : "Garlic is a bulbous plant belonging to the Allium family, which also includes onions, shallots, and leeks.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 2
+            }
+        ]
+    },
+    {
+        "name": "Green grape",
+        "price": 10,
+        "image" : "./DefaultValue/ImageProduct/grape.jpg",
+        "description" : "Green grapes, also known as white grapes, are a variety of grapes that have a light green or yellowish-green color when ripe.",
+        "quantity": 1000,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 3
+            }
+        ]
+    },
+    {
+        "name": "Guava",
+        "price": 5,
+        "image" : "./DefaultValue/ImageProduct/guava.jpg",
+        "description" : "Guava is a common tropical fruit cultivated in many tropical and subtropical regions.",
+        "quantity": 1000,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 3
+            }
+        ]
+    },
+    {
+        "name": "Hazelnut",
+        "price": 13,
+        "image" : "./DefaultValue/ImageProduct/hazelnut.jpg",
+        "description" : "The hazelnut is the fruit of the hazel tree and therefore includes any of the nuts deriving from species of the genus Corylus.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 4
+            }
+        ]
+    },
+    {
+        "name": "Kiwi",
+        "price": 1,
+        "image" : "./DefaultValue/ImageProduct/kiwi.jpg",
+        "description" : "Kiwis are a nutrient-dense food — they are rich in in nutrients and low in calories.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 3
+            }
+        ]
+    },
+    {
+        "name": "Lettuce",
+        "price": 0.7,
+        "image" : "./DefaultValue/ImageProduct/lettuce.jpg",
+        "description" : "Lettuce is most often grown as a leaf vegetable, but sometimes for its stem and seeds.",
+        "quantity": 100,
+        "unit": "bunch",
+        "type": [
+            {
+                "type": 2
+            }
+        ]
+    },
+    {
+        "name": "Mango",
+        "price": 1,
+        "image" : "./DefaultValue/ImageProduct/mango.jpg",
+        "description" : "Botanically, mango is a drupe, consisting of an outer skin, a fleshy edible portion, and a central stone enclosing a single seed - also called stone fruit, like a plum, cherry, or peach.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 3
+            }
+        ]
+    },
+    {
+        "name": "Mangosteen",
+        "price": 2,
+        "image" : "./DefaultValue/ImageProduct/mangosteen.jpg",
+        "description" : "Mangosteen is a tropical evergreen tree with edible fruit native to tropical lands surrounding the Indian Ocean.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 3
+            }
+        ]
+    },
+    {
+        "name": "Okra",
+        "price": 0.85,
+        "image" : "./DefaultValue/ImageProduct/okra.jpg",
+        "description" : "Okra is a flowering plant in the mallow family. It has edible green seed pods.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 2
+            }
+        ]
+    },
+    {
+        "name": "Onion",
+        "price": 1,
+        "image" : "./DefaultValue/ImageProduct/onion.jpg",
+        "description" : "An onion, also known as the bulb onion or common onion, is a vegetable that is the most widely cultivated species of the genus Allium.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 2
+            }
+        ]
+    },
+    {
+        "name": "Orange",
+        "price": 2,
+        "image" : "./DefaultValue/ImageProduct/orange.jpg",
+        "description" : "Oranges are a type of low calorie, highly nutritious citrus fruit.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 3
+            }
+        ]
+    },
+    {
+        "name": "Passion fruit",
+        "price": 2,
+        "image" : "./DefaultValue/ImageProduct/passion-fruit.jpg",
+        "description" : "It is cultivated commercially in tropical and subtropical areas for its sweet, seedy fruit.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 3
+            }
+        ]
+    },
+    {
+        "name": "Peach",
+        "price": 1.8,
+        "image" : "./DefaultValue/ImageProduct/peach.jpg",
+        "description" : "The peach is a deciduous tree first domesticated and cultivated in Zhejiang province of Eastern China.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 3
+            }
+        ]
+    },
+    {
+        "name": "Peanut",
+        "price": 1,
+        "image" : "./DefaultValue/ImageProduct/peanut.jpg",
+        "description" : "The peanut, also known as the groundnut, goober, pindar or monkey nut, is a legume crop grown mainly for its edible seeds.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 4
+            }
+        ]
+    },
+    {
+        "name": "Pear",
+        "price": 1.7,
+        "image" : "./DefaultValue/ImageProduct/pear.jpg",
+        "description" : "Pears are fruits produced and consumed around the world, growing on a tree and harvested in late summer into mid-autumn.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 3
+            }
+        ]
+    },
+    {
+        "name": "Pinapple",
+        "price": 0.3,
+        "image" : "./DefaultValue/ImageProduct/pinapple.jpg",
+        "description" : "It is the most economically significant plant in the family Bromeliaceae.",
+        "quantity": 500,
+        "unit": "fruit",
+        "type": [
+            {
+                "type": 3
+            }
+        ]
+    },
+    {
+        "name": "Pomegranate",
+        "price": 5,
+        "image" : "./DefaultValue/ImageProduct/pomegranate.jpg",
+        "description" : "The pomegranate was originally described throughout the Mediterranean region.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 3
+            }
+        ]
+    },
+    {
+        "name": "Potato",
+        "price": 1,
+        "image" : "./DefaultValue/ImageProduct/potato.jpg",
+        "description" : "The potato is a starchy food, a tuber of the plant Solanum tuberosum and is a root vegetable native to the Americas.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 2
+            }
+        ]
+    },
+    {
+        "name": "Pumpkin",
+        "price": 3,
+        "image" : "./DefaultValue/ImageProduct/pumpkin.jpg",
+        "description" : "Pumpkin is a plump, nutritious orange vegetable, and a highly nutrient dense food.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 2
+            }
+        ]
+    },
+    {
+        "name": "Purple Grape",
+        "price": 5,
+        "image" : "./DefaultValue/ImageProduct/purple-grape.jpg",
+        "description" : "Purple grapes differ from their green or white counterparts in the Resveratrol they contain in their skin along with Quercetin.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 3
+            }
+        ]
+    },
+    {
+        "name": "Purple Onion",
+        "price": 1,
+        "image" : "./DefaultValue/ImageProduct/purple-onion.jpg",
+        "description" : "Purple onions also contain high levels of vitamin C, biotin, chromium, calcium, vitamin B6, folic acid, sulfur and fiber, which are good for health.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 2
+            }
+        ]
+    },
+    {
+        "name": "Salad",
+        "price": 0.6,
+        "image" : "./DefaultValue/ImageProduct/salad.jpg",
+        "description" : "Salad greens contain Vitamin A, Vitamin C, beta-carotene, calcium, folate, fiber, and phytonutrients (see Table 1).",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 2
+            }
+        ]
+    },
+    {
+        "name": "Spoon vegatable",
+        "price": 1.15,
+        "image" : "./DefaultValue/ImageProduct/spoon-vegetables.jpg",
+        "description" : "",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 2
+            }
+        ]
+    },
+    {
+        "name": "Strawberry",
+        "price": 3.25,
+        "image" : "./DefaultValue/ImageProduct/strawberry.jpg",
+        "description" : " The fruit is widely appreciated for its characteristic aroma, bright red color, juicy texture, and sweetness.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 3
+            }
+        ]
+    },
+    {
+        "name": "Bell Pepper",
+        "price": 3,
+        "image" : "./DefaultValue/ImageProduct/sweet-pepper.jpg",
+        "description" : "Cultivars of the plant produce fruits in different colors, including red, yellow, orange, green, white, chocolate, candy cane striped, and purple.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 2
+            }
+        ]
+    },
+    {
+        "name": "Tomato",
+        "price": 0.8,
+        "image" : "./DefaultValue/ImageProduct/tomato.jpg",
+        "description" : "Labelled as a vegetable for nutritional purposes, tomatoes are a good source of vitamin C and the phytochemical lycopene.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 2
+            }
+        ]
+    },
+    {
+        "name": "Walnut",
+        "price": 7,
+        "image" : "./DefaultValue/ImageProduct/Walnut.jpg",
+        "description" : "Walnuts are rich in heart-healthy fats and high in antioxidants.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 4
+            }
+        ]
+    },
+    {
+        "name": "Watermelon",
+        "price": 0.7,
+        "image" : "./DefaultValue/ImageProduct/watermelon.jpg",
+        "description" : "Watermelon is a flowering plant species of the Cucurbitaceae family and the name of its edible fruit.",
+        "quantity": 500,
+        "unit": "kg",
+        "type": [
+            {
+                "type": 3
             }
         ]
     }
 ]
-
-//https://www.betterhealth.vic.gov.au/health/healthyliving/fruit-and-vegetables
