@@ -1,6 +1,6 @@
 const { fetchData, InsertData } = require("./Setup");
 
-module.exports = function OrderTracking(app, db) {
+function OrderTracking(app) {
 
   app.get("/order-tracking:orderid", async (req, res) => {
     let responseContext = {
@@ -18,9 +18,7 @@ module.exports = function OrderTracking(app, db) {
     SELECT os.state, o.*
     FROM Order as o INNER JOIN OrderState as os ON o.OrderStateId = os.id
     WHERE o.id == ${orderid}
-    `,
-      db
-    );
+    `);
 
     if (OrderState.length !== 0) {
 
@@ -30,9 +28,7 @@ module.exports = function OrderTracking(app, db) {
       FROM Product as p INNER JOIN Order_Product as o_d ON p.id = o_d.PdId
                         INNER JOIN Order as o ON o_d.OrderId = o.id
       WHERE o.id == ${orderid}
-      `,
-        db
-      );
+      `);
 
       responseContext = {
         json: {
@@ -64,9 +60,7 @@ module.exports = function OrderTracking(app, db) {
     `
       INSERT INTO Review (PdId, UserId, title, description, rating)
       VALUES (${ReviewInfo.productid}, ${ReviewInfo.userid}, '${ReviewInfo.title}',' ${ReviewInfo.description}', ${ReviewInfo.rating});
-    `,
-      db
-    );
+    `);
 
     if (InsertReview ==="Inserted") {
 
@@ -82,3 +76,5 @@ module.exports = function OrderTracking(app, db) {
   });
 
 };
+
+module.exports = OrderTracking

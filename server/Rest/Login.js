@@ -1,6 +1,6 @@
 const {fetchData} = require("./Setup");
 
-function Login(app, db) {
+function Login(app) {
 
   app.post("/login/auth", async (req, res) => {
     
@@ -17,7 +17,7 @@ function Login(app, db) {
     let UserFilter = await fetchData(`
     SELECT password
     FROM Users
-    WHERE username == '${UserLogin.username}'`,db);
+    WHERE username == '${UserLogin.username}'`);
 
     if(UserFilter.length !== 0) {
       if(UserFilter.filter(e => e.password === UserLogin.password).length !== 0 ) {

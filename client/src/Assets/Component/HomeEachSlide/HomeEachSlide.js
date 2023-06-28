@@ -4,16 +4,35 @@ import {SliderWrapper,
         SlideTitle,
         SlideSubTitle,
         ShopNowButton,
-        SliderChoosing } from "./HomeEachSlide_Styled"; 
+        SliderChoosingWrapper,
+        SliderChoosing,
+        SliderNotChoose } from "./HomeEachSlide_Styled"; 
 
 const Home_Slider = () =>{
     return(
         <SliderWrapper>
 
             <SlideTitle>Organic butter</SlideTitle>
+            
             <SlideSubTitle>Thin shell, golden rice, high flexibility</SlideSubTitle>
+            
             <ShopNowButton>Shop now</ShopNowButton>
-            <SliderChoosing>1 2 3</SliderChoosing>
+            
+            <SliderChoosingWrapper>
+                
+                <SliderChoosing >
+                    <SliderNotChoose></SliderNotChoose>
+                </SliderChoosing>
+                
+                <SliderChoosing style={{border: "none"}}>
+                    <SliderNotChoose></SliderNotChoose>
+                </SliderChoosing>
+                    
+                <SliderChoosing style={{border: "none"}}>
+                    <SliderNotChoose></SliderNotChoose>
+                </SliderChoosing>
+            
+            </SliderChoosingWrapper>
 
         </SliderWrapper>
     )

@@ -1,6 +1,6 @@
 const { fetchData, InsertData } = require("./Setup");
 
-function NavigationBar(app, db) {
+function NavigationBar(app) {
 
   app.get("/navigation/cart", async (req, res) => {
     let responseContext = {
@@ -17,7 +17,7 @@ function NavigationBar(app, db) {
       FROM Users as u INNER JOIN Cart as c ON u.id=c.UserId
                       INNER JOIN Product as p ON c.PdId = p.id
       WHERE username =='${username}'
-    `, db);
+    `);
 
     if(CartList.length !==0) {
       responseContext= {
@@ -47,7 +47,7 @@ function NavigationBar(app, db) {
     FROM Users as u INNER JOIN WishList as w ON u.id = w.UserId
                     INNER JOIN Product as p ON w.PdId = p.id
     WHERE username == '${username}'
-    `, db);
+    `);
 
     if(WishList.length !==0) {
       responseContext= {
@@ -76,7 +76,7 @@ function NavigationBar(app, db) {
     SELECT username, avatar, fullname
     FROM Users
     WHERE username == '${username}' 
-    `, db);
+    `);
 
     if(UserInfo.length !==0) {
       responseContext.json={
@@ -109,7 +109,7 @@ function NavigationBar(app, db) {
     WHERE PdId LIKE '%${key}%' 
     LIMIT ${each}
     OFFSET ${(page -1) *each}
-    `, db);
+    `);
 
     if(ProductFiltered.length !==0) {
       responseContext.json={
@@ -138,12 +138,12 @@ function NavigationBar(app, db) {
       SELECT *
       FROM Wishlist
       WHERE PdId == ${productid} AND UserId == ${userid}
-    `, db);
+    `);
 
     if(ProductFiltered.length !==0) {
       let removeProductFromWishList = await InsertData(`
         DELETE FROM WishList WHERE PdId == ${productid} AND UserId == ${userid}
-      `, db)
+      `)
       responseContext.json={
         status: "accepted"
       }
@@ -169,12 +169,12 @@ function NavigationBar(app, db) {
       SELECT *
       FROM Cart
       WHERE PdId == ${productid} AND UserId == ${userid}
-    `, db);
+    `);
 
     if(ProductFiltered.length !==0) {
       let removeProductFromCart = await InsertData(`
         DELETE FROM Cart WHERE PdId == ${productid} AND UserId == ${userid}
-      `, db)
+      `)
       responseContext.json={
         status: "accepted"
       }

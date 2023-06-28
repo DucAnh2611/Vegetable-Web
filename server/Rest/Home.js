@@ -1,6 +1,6 @@
 const { fetchData } = require("./Setup");
 
-function Home(app, db) {
+function Home(app) {
 
   app.get("/home/list-type", async (req, res) => {
     
@@ -15,7 +15,7 @@ function Home(app, db) {
     let ListType = await fetchData(`
       SELECT type
       FROM TypeProduct
-    `, db);
+    `);
 
     if(ListType.length !==0) {
       responseContext= {
@@ -48,7 +48,7 @@ function Home(app, db) {
       FROM TypeProduct_Product as tp_p INNER JOIN Product as p ON tp_p.PdId = p.id
       ${conditionQuery}
       LIMIT ${amount}
-    `, db);
+    `);
 
     if(ListProductFilterByType.length !==0) {
       responseContext= {
@@ -81,7 +81,7 @@ function Home(app, db) {
                         INNER JOIN Users as u ON r.UserId = u.id
       ORDER BY RANDOM()
       LIMIT ${amount}
-    `, db);
+    `);
 
     if(ListReview.length !==0) {
       responseContext= {

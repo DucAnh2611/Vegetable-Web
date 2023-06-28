@@ -4,16 +4,8 @@ const db = new sqlite3.Database('vegetable.db');
 const fs = require('fs');
 const sql = fs.readFileSync('./db.sql', 'utf8');
 
-const { fetchData, InsertData, InsertIncludeImage } = require('../Rest/Setup')
+const { InsertDataDb, InsertIncludeImageDb  } = require('../Rest/Setup')
 
-// db.exec(sql, function(err) {
-//   if (err) {
-//     console.error(err.stack);
-//   } else {
-//     console.log('SQL file executed successfully.');
-//   }
-//    db.close();
-// });
 
 function InsertUser() {
 
@@ -29,7 +21,7 @@ function InsertUser() {
         // Access the contents of the JSON file
         UsersList.forEach(async element => {
             let defImage = fs.readFileSync("./DefaultValue/Default.png")
-            let InsertUser = InsertIncludeImage(`
+            let InsertUser = InsertIncludeImageDb(`
                 INSERT INTO Users (
                     username,
                     password,
@@ -52,7 +44,7 @@ function InsertUser() {
                     (?),
                     ${element.typeUserId}
                 )
-            `, defImage, db);
+            `, defImage, './vegetable.db');
         });
 
         db.close();
@@ -72,13 +64,11 @@ function InsertMethodType() {
       
         // Access the contents of the JSON file
         list.forEach(async element => {
-            let Insert = await InsertData(`
+            let Insert = await InsertDataDb(`
                 INSERT INTO MethodType (type)
-                VALUES ('${element.type}');
-            `, db);
+                VALUES ('${element.type}')
+            `, './vegetable.db');
         });
-
-        db.close();
 
     });
 }
@@ -95,13 +85,11 @@ function InsertUserType() {
       
         // Access the contents of the JSON file
         list.forEach(async element => {
-            let Insert = await InsertData(`
+            let Insert = await InsertDataDb(`
                 INSERT INTO TypeUser (type)
-                VALUES ('${element.type}');
-            `, db);
+                VALUES ('${element.type}')
+            `, './vegetable.db');
         });
-
-        db.close();
 
     });
 }
@@ -118,13 +106,11 @@ function InsertProductType() {
       
         // Access the contents of the JSON file
         list.forEach(async element => {
-            let Insert = await InsertData(`
+            let Insert = await InsertDataDb(`
                 INSERT INTO TypeProduct (type)
-                VALUES ('${element.type}');
-            `, db);
+                VALUES ('${element.type}')
+            `, './vegetable.db');
         });
-
-        db.close();
 
     });
 }
@@ -141,19 +127,17 @@ function InsertOrderState() {
       
         // Access the contents of the JSON file
         list.forEach(async element => {
-            let Insert = await InsertData(`
+            let Insert = await InsertDataDb(`
                 INSERT INTO OrderState (state)
-                VALUES ('${element.state}');
-            `, db);
+                VALUES ('${element.state}')
+            `, './vegetable.db');
         });
-
-        db.close();
 
     });
 }
 
 function InsertProduct() {
-    fs.readFile('./DefaultValue/Product.json', 'utf8', (err, data) => {
+    fs.readFile('./DefaultValue/Product.json', 'utf8', async (err, data) => {
         if (err) {
           console.error(err);
           return;
@@ -163,17 +147,58 @@ function InsertProduct() {
         const list = JSON.parse(data);
       
         // Access the contents of the JSON file
-        list.forEach(async element => {
+        for (const element of list) {
+            let img = fs.readFileSync(element.image);
 
-        });
+            let InsertIntoProduct = await InsertIncludeImageDb(`
+            INSERT INTO Product (
+                PdName,
+                price,
+                image,
+                unit,
+                description,
+                modifyDate,
+                quantity
+              )
+            VALUES (
+                '${element.name}',
+                ${element.price},
+                (?),
+                '${element.unit}',
+                '${element.description}',
+                datetime('${new Date().toISOString()}'),
+                ${element.quantity}
+              )
+            `, img, './vegetable.db');
 
-        db.close();
+            if(InsertIntoProduct  === "Inserted") {
+                for (const eType of element.type) {
+                    let insertIntoProductType = await InsertDataDb(`
+                      INSERT INTO TypeProduct_Product (TypeId, PdId)
+                      VALUES (
+                        ${eType.type},
+                        (SELECT id FROM Product WHERE PdName == '${element.name}')
+                      )
+                    `, './vegetable.db');
+                }
+            }
+
+        };
 
     });
 }
 
-// InsertUserType();
-// InsertUser();
-// InsertMethodType();
-// InsertProductType();
-// InsertOrderState();
+db.exec(sql, function(err) {
+    if (err) {
+      console.error(err.stack);
+    } else {
+      console.log('SQL file executed successfully.');
+      
+      InsertUserType();
+      InsertUser();
+      InsertMethodType();
+      InsertProductType();
+      InsertOrderState();
+      InsertProduct();
+    }
+  });

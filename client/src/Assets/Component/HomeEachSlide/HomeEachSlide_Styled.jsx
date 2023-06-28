@@ -15,7 +15,7 @@ export const SliderWrapper=styled.div`
 export const SlideTitle=styled.div`
     align-items: center;
     display: flex;
-    font-size: 40px;
+    font-size: 300%;
     font-weight: 600;
     font-family: cursive;
     margin: 5% 0 0 16%;
@@ -41,8 +41,33 @@ export const ShopNowButton=styled.button`
     font-weight: 500;
     font-family: sans-serif;
     margin: 10px 0 0 16%;
+    cursor: pointer;
 `;
 
-export const SliderChoosing=styled.div`
+export const SliderChoosingWrapper=styled.div`
     margin-top: 20%;
+    display: flex;
+    justify-content: center;
+`;
+
+export const SliderChoosing =styled.div`
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border-color: var(--Primary_Green);
+    box-sizing: content-box;
+    margin: 0px 10px 30px 10px;
+    border: solid 1px ;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+`;
+
+export const SliderNotChoose =styled.div`
+    background: var(--Third_Green);
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    margin-top: 4px;
+    line-height: 20px;
 `;

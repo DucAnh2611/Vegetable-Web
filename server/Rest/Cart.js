@@ -1,6 +1,6 @@
 const { fetchData, InsertData } = require("./Setup");
 
-module.exports = function Cart(app, db) {
+function Cart(app) {
 
   app.post("/cart/check-out", async (req, res) => {
     let responseContext = {
@@ -18,15 +18,13 @@ module.exports = function Cart(app, db) {
           SELECT PdId, quantity
           FROM Cart
           WHERE UserId == ${userid}
-      `,
-      db
-    );
+      `);
 
     let getMethodid = await fetchData(`
       SELECT * 
       FROM Method_User
       WHERE UserId == ${userinfo.userid} AND id == ${methodid}
-    `, db)
+    `);
 
     if (getMethodid.length !== 0) {
 
@@ -53,7 +51,7 @@ module.exports = function Cart(app, db) {
           1,
           ${methodid}
           );
-      `, db)
+      `);
 
       if(InsertToOrder === "Inserted") {
 
@@ -63,14 +61,14 @@ module.exports = function Cart(app, db) {
           WHERE UserId == ${userinfo.userid}
           ORDER BY OrderDate DESC 
           LIMIT 1
-        `,db);
+        `);
 
         allCartUser.forEach(async e => {
 
           let InsertProductToOrder = await InsertData(`
             INSERT INTO Orders_Product (PdId, OrderId, quantity)
             VALUES (${e.PdId}, ${GetCurrentOrder[0].id}, ${e.quantity});
-          `,db);
+          `);
           let updateStockProduct= await InsertData(`
             UPDATE Product SET quantity = quantity - ${e.quantity} WHERE id == ${e.PdId}
           `)
@@ -80,9 +78,7 @@ module.exports = function Cart(app, db) {
         let removeAllItem = await InsertData(
         `
           DELETE FROM Cart WHERE UserId == ${userid}
-        `,
-          db
-        );
+        `);
 
         responseContext.json = {
           status: "accepted",
@@ -109,9 +105,7 @@ module.exports = function Cart(app, db) {
     let UpdateQuantity = await InsertData(
       `
         UPDATE Cart SET quantiry =${quantity} WHERE PdId== ${productid} AND UserId == ${userid}
-      `,
-      db
-    );
+      `);
 
     if(UpdateQuantity === "Inserted") {
       responseContext.json = {
@@ -124,3 +118,5 @@ module.exports = function Cart(app, db) {
   });
   
 };
+
+module.exports = Cart;

@@ -1,6 +1,6 @@
 const { fetchData } = require("./Setup");
 
-function Product(app, db) {
+function Product(app) {
 
   app.post("/product/list", async (req, res) => {
     let responseContext = {
@@ -26,9 +26,7 @@ function Product(app, db) {
       WHERE tp.type == '${type}' AND p.PdName LIKE '%${key}%' AND p.price >= ${minPrice} AND p.price <= ${maxPrice === 0 ? maxPriceFilter : maxPrice}
       LIMIT ${eachPage}
       OFFSET ${(page - 1) * eachPage}
-      `,
-      db
-    );
+      `);
 
     if (listItemFiltered.length !== 0) {
       responseContext = {
@@ -54,11 +52,9 @@ function Product(app, db) {
 
     let ListType = await fetchData(
       `
-          SELECT type
-          FROM TypeProduct
-        `,
-      db
-    );
+        SELECT type
+        FROM TypeProduct
+      `);
 
     if (ListType.length !== 0) {
       responseContext = {
