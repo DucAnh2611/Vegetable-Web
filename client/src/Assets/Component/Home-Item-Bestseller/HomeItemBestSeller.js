@@ -1,4 +1,4 @@
-/* eslint-disable react/jsx-pascal-case */
+
 import React from "react"; 
 import Product_Item from "./ProductItem/Product_Item";
 import { BestSeller_Wrap, 
