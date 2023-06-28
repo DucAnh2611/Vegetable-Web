@@ -19,6 +19,7 @@
 }
 * {
   box-sizing: border-box;
+  transition-duration: .2s;
 }
 
 html {
