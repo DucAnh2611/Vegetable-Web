@@ -21,6 +21,7 @@
 * {
   box-sizing: border-box;
   transition-duration: .2s;
+  font-family: 'Be Vietnam Pro', sans-serif;
 }
 
 html {
@@ -89,6 +90,3 @@ button {
   }
 }
 
-text {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}

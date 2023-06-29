@@ -1,6 +1,20 @@
 
 import React, { useEffect, useState } from "react";
 import ConvertToIamge from "../../AssistsFunc/ConvertBlobToImage";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import * as fa1 from "@fortawesome/free-brands-svg-icons";
+import * as fa2 from "@fortawesome/free-solid-svg-icons";
+import { 
+    AboutUsDataBase,
+    AboutUsIntroduce,
+    AboutUsOurTeam,
+    AboutUsTechnology,
+    AboutUsWrapper,
+    EachMember,
+    EachTech
+} from "./AbouUs_Styled";
+import dbImg from "../../Image/AboutUs/databse.jpg";
+
 
 export default function AboutUs() {
 
@@ -20,26 +34,28 @@ export default function AboutUs() {
 
     return (
 
-        <div>
+        <AboutUsWrapper>
 
-            <div>
+            <AboutUsIntroduce>
 
                 <div>
 
+                    <div><img src="https://media.istockphoto.com/id/1203599963/photo/food-background-with-assortment-of-fresh-organic-fruits-and-vegetables.jpg?s=612x612&w=0&k=20&c=JKjEfvVa0ZieiyDbvhbUaCRgZ0MQJcx7cf35k-vRftY="/></div>
+                    <div><img src="https://livingonthecheap.com/lotc-cms/wp-content/uploads/2016/07/How-to-keep-summer-veggies-fresh-to-avoid-food-waste.jpg"/></div>
 
                 </div>
 
                 <div>
 
                     <h1>VEGETABLE WEBSITE</h1>
-                    <p>With any fruit and vegetable on the market, consumers need to pay attention to the origin, how to identify safe food to ensure the health of their…</p>
+                    <p>With any fruit and vegetable on the market, consumers need to pay attention to the origin, how to identify safe food to ensure the health of their.</p>
                     <button>Shop Now</button>
                                     
                 </div>
 
-            </div>
+            </AboutUsIntroduce>
 
-            <div>
+            <AboutUsTechnology>
                 
                 <div>
 
@@ -49,47 +65,49 @@ export default function AboutUs() {
 
                 <div>
 
-                    <div> 
+                    <EachTech> 
 
                         <div>
-                            <img alt="Techuse"/>
+                            
+                            <FontAwesomeIcon icon={fa1.faNode}/>
+                            
                         </div>
 
                         <div>
 
                             <h3>Nodejs</h3>
 
-                            <p></p>
+                            <p>Use express to initialize data processing endpoints on the backend</p>
 
-                            <a href="#">Read more</a>
+                            <a href="https://nodejs.org/en/docs" target="_blank">Read more</a>
 
                         </div>
 
-                    </div>
+                    </EachTech>
 
-                    <div> 
+                    <EachTech> 
 
                         <div>
-                            <img alt="Techuse"/>
+                            <FontAwesomeIcon icon={fa2.faDatabase}/>
                         </div>
 
                         <div>
 
-                            <h3>Nodejs</h3>
+                            <h3>Sqlite</h3>
 
-                            <p></p>
+                            <p>Store, query data about order information, goods, customers.</p>
 
-                            <a href="#">Read more</a>
+                            <a href="https://www.sqlite.org/docs.html" target="_blank">Read more</a>
 
                         </div>
 
-                    </div>  
+                    </EachTech>  
 
                 </div>
 
-            </div>
+            </AboutUsTechnology>
 
-            <div>
+            <AboutUsDataBase>
 
                 <div>
 
@@ -99,13 +117,13 @@ export default function AboutUs() {
 
                 <div>
 
-                    <div></div>
+                    <img src={dbImg} alt="db img"/>
 
                 </div>
             
-            </div>
+            </AboutUsDataBase>
 
-            <div>
+            <AboutUsOurTeam>
 
                 <div>
 
@@ -118,25 +136,25 @@ export default function AboutUs() {
                         {
                             listMember.map(e => (
 
-                                <div>
+                                <EachMember>
                                     <div>
-                                        <img src={ConvertToIamge(e.avatar)} alt="person img"/>
+                                        <img src={ConvertToIamge(e.avatar)} alt="person img" width={"200px"}/>
                                     </div>
 
                                     <div>
                                         <p>{e.fullname}</p>
                                         <p>{e.type}</p>
                                     </div>                                     
-                                </div>
+                                </EachMember>
 
                             ))
                         }
 
                 </div>
             
-            </div>
+            </AboutUsOurTeam>
 
-        </div>
+        </AboutUsWrapper>
 
     )
 
