@@ -1,6 +1,7 @@
 
 import React from "react"; 
 import {SliderWrapper,
+        SliderContent,
         SlideTitle,
         SlideSubTitle,
         ShopNowButton,
@@ -12,11 +13,13 @@ const Home_Slider = () =>{
     return(
         <SliderWrapper>
 
-            <SlideTitle>Organic butter</SlideTitle>
-            
-            <SlideSubTitle>Thin shell, golden rice, high flexibility</SlideSubTitle>
-            
-            <ShopNowButton>Shop now</ShopNowButton>
+            <SliderContent>
+
+                <SlideTitle>Organic butter</SlideTitle>
+                <SlideSubTitle>Thin shell, golden rice, high flexibility</SlideSubTitle>
+                <ShopNowButton>Shop now</ShopNowButton>
+
+            </SliderContent>
             
             <SliderChoosingWrapper>
                 
