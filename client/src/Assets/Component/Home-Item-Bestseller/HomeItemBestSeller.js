@@ -1,6 +1,7 @@
 
 import React, { useEffect, useMemo, useState } from "react"; 
 import Product_Item from "./ProductItem/Product_Item";
+import { SectionTitle } from "../HomeEachBenefit/HomeEachBenefit_Styled";
 import { BestSeller_Wrap,
         AllProduct_wrap,
         Filter_category_wrap,
@@ -48,7 +49,7 @@ function BestSellerSection (){
 
             <AllProduct_wrap>
 
-                <h1>Best Seller</h1>
+                <SectionTitle>Best Seller</SectionTitle>
                 
                 <Filter_category_wrap>
 

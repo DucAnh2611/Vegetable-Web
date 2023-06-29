@@ -7,7 +7,7 @@ import { ReactComponent as BenefitIcon3 } from "../../../Assets/Image/SVG/Benefi
 import { ReactComponent as BenefitIcon4 } from "../../../Assets/Image/SVG/Benefit SVG/no hormones.svg";
 import {BenefitWrapper,
         BenefitTitleAndSubTitle,
-        BenefitTitle,
+        SectionTitle,
         BenefitSubTitle,
         BenefitContentWrapper,
         BenefitContent,
@@ -21,8 +21,8 @@ export default function Benefit() {
         <BenefitWrapper>
 
             <BenefitTitleAndSubTitle>
-                <BenefitTitle>Benefits of organic food</BenefitTitle>
-                <BenefitSubTitle>Let’s see the benefits of organic food</BenefitSubTitle>
+                <SectionTitle>Benefits of organic food</SectionTitle>
+                <BenefitSubTitle>Let's see the benefits of organic food</BenefitSubTitle>
             </BenefitTitleAndSubTitle>
 
             <BenefitContentWrapper>
