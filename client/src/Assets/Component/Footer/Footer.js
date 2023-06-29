@@ -1,5 +1,6 @@
 
 import React from "react";
+import { ReactComponent as Logo } from "../../Image/SVG/horizon_logo.svg";
 
 export default function Footer() {
     return (
@@ -9,7 +10,7 @@ export default function Footer() {
             <div>
 
                 <div>
-                    <span>Logo</span>
+                    <span><Logo/></span>
                 </div>
 
                 <div>
