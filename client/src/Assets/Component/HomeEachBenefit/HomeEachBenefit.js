@@ -1,46 +1,77 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { ReactComponent as BenefitIcon1 } from "../../../Assets/Image/SVG/Benefit SVG/low in pesticides.svg";
+import { ReactComponent as BenefitIcon2 } from "../../../Assets/Image/SVG/Benefit SVG/Natural enviroment.svg";
+import { ReactComponent as BenefitIcon3 } from "../../../Assets/Image/SVG/Benefit SVG/no hormones.svg";
+import { ReactComponent as BenefitIcon4 } from "../../../Assets/Image/SVG/Benefit SVG/no hormones.svg";
+import {BenefitWrapper,
+        BenefitTitleAndSubTitle,
+        BenefitTitle,
+        BenefitSubTitle,
+        BenefitContentWrapper,
+        BenefitContent,
+        BenefitContentIconWrapper,
+        BenefitContentParagraph,
+        BenefitButton } from "./HomeEachBenefit_Styled";
 
 export default function Benefit() {
     return (
 
-        <div>
+        <BenefitWrapper>
 
-            <div>
-                
-                <h1>Benefits of organic food</h1>
-                <p>Let’s see the benefits of organic food</p>
+            <BenefitTitleAndSubTitle>
+                <BenefitTitle>Benefits of organic food</BenefitTitle>
+                <BenefitSubTitle>Let’s see the benefits of organic food</BenefitSubTitle>
+            </BenefitTitleAndSubTitle>
 
-            </div>
+            <BenefitContentWrapper>
 
-            <div>
+                <BenefitContent>
 
-                <div>
+                    <BenefitContentIconWrapper>
+                        <BenefitIcon1></BenefitIcon1>
+                    </BenefitContentIconWrapper>
 
-                    <div>
+                    <BenefitContentParagraph>May be low in pesticides or other chemicals.</BenefitContentParagraph>
 
-                        <div>
-                            <span>i</span>
-                        </div>
+                </BenefitContent>
 
-                        <div>
-                            <p>Apply natural farming methods to return the soil to fertility.</p>
-                        </div>
+                <BenefitContent>
 
-                    </div>
+                    <BenefitContentIconWrapper>
+                        <BenefitIcon2></BenefitIcon2>
+                    </BenefitContentIconWrapper>
 
-                </div>
+                    <BenefitContentParagraph>Meat of animals raised in a natural environment...</BenefitContentParagraph>
 
-                <div>
+                </BenefitContent>
 
-                    <button>Read more</button>
+                <BenefitContent>
+
+                    <BenefitContentIconWrapper>
+                        <BenefitIcon3></BenefitIcon3>
+                    </BenefitContentIconWrapper>
+
+                    <BenefitContentParagraph>Meat has no antibiotics or hormones</BenefitContentParagraph>
+
+                </BenefitContent>
+
+                <BenefitContent>
+
+                    <BenefitContentIconWrapper>
+                        <BenefitIcon4></BenefitIcon4>
+                    </BenefitContentIconWrapper>
+
+                    <BenefitContentParagraph>Apply natural farming methods to return the soil to fertility.</BenefitContentParagraph>
+
+                </BenefitContent>
+
+            </BenefitContentWrapper>
+    
+            <BenefitButton>Read more</BenefitButton>
                     
-                </div>
-
-            </div>
-
-        </div>
+        </BenefitWrapper>
 
     )
 }

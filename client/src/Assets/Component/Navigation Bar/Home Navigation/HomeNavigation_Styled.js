@@ -12,9 +12,10 @@ export const Navigation_Wrapper=styled.div`
 
 export const Navigation_Logo=styled.div`
     width:25%;
-    
+    align-items: center;
+    display: flex;
     &>svg{
-        height:100px;
+        height:80px;
         float: left;
     }
 `;
