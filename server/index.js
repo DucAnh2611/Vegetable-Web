@@ -13,6 +13,7 @@ const ProductDetails = require('./Rest/ProductDetails');
 const Cart = require('./Rest/Cart');
 const OrderTracking = require('./Rest/OrderTracking');
 const Profile = require('./Rest/Profile');
+const AboutUs = require('./Rest/AboutUs');
 
 const PORT = process.env.PORT || 3001;
 
@@ -37,6 +38,8 @@ Cart(app);
 OrderTracking(app);
 
 Profile(app);
+
+AboutUs(app);
 
 app.get("/*", (req, res) => {
   res.status(404).json({status: "not found"})

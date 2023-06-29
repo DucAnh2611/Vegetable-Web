@@ -6,7 +6,52 @@
         "birthday": "26/11/2002",
         "email": "ducanhmc24@gmail.com",
         "phoneNum": "0359314079",
+        "image": "./DefaultValue/ImageUser/ducanh.jpg",
         "address": "120 Kim Giang",
-        "typeUserId": 2
+        "typeUser": 2
+    },
+    {
+        "username": "duydong",
+        "password": "1",
+        "fullname": "Nguyễn Duy Đông",
+        "birthday": "01/01/2002",
+        "email": "dong@gmail.com",
+        "phoneNum": "000000001",
+        "image": "./DefaultValue/ImageUser/duyDong.jpg",
+        "address": "Hanoi",
+        "typeUser": 4
+    },
+    {
+        "username": "manh",
+        "password": "1",
+        "fullname": "Mai Văn Mạnh",
+        "birthday": "01/01/2002",
+        "email": "manh@gmail.com",
+        "phoneNum": "000000002",
+        "image": "./DefaultValue/ImageUser/Manh.jpg",
+        "address": "Hanoi",
+        "typeUser": 3
+    },
+    {
+        "username": "nguyen",
+        "password": "1",
+        "fullname": "Phạm Trung Nguyên",
+        "birthday": "01/01/2002",
+        "email": "nguyen@gmail.com",
+        "phoneNum": "000000003",
+        "image": "./DefaultValue/ImageUser/nguyen.jpg",
+        "address": "Hanoi",
+        "typeUser": 6
+    },
+    {
+        "username": "dung",
+        "password": "1",
+        "fullname": "Vũ Tiến Dũng",
+        "birthday": "01/01/2002",
+        "email": "dung@gmail.com",
+        "phoneNum": "000000004",
+        "image": "./DefaultValue/ImageUser/TienDung.jpg",
+        "address": "Hanoi",
+        "typeUser": 5
     }
 ]

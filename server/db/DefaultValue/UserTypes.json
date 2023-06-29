@@ -1,11 +1,34 @@
 [
     {
+        "id" : 1,
         "type":  "admin"
     },
     {
+        "id" : 2,
+        "type":  "Back-end leader"
+    },
+    {
+        "id" : 3,
+        "type":  "Front-end member"
+    },
+    {
+        "id" : 4,
+        "type":  "Bussines analyst"
+    },
+    {
+        "id" : 5,
+        "type":  "Front-end leader"
+    },
+    {
+        "id" : 6,
+        "type":  "Back-end member"
+    },
+    {
+        "id" : 7,
         "type":  "client"
     },
     {
+        "id" : 8,
         "type":  "employee"
     }
 ]

@@ -19,8 +19,9 @@ function InsertUser() {
         const UsersList = JSON.parse(data);
       
         // Access the contents of the JSON file
-        UsersList.forEach(async element => {
-            let defImage = fs.readFileSync("./DefaultValue/Default.png")
+        for(const element of UsersList) {
+            let defImage = fs.readFileSync(element.image);
+
             let InsertUser = InsertIncludeImageDb(`
                 INSERT INTO Users (
                     username,
@@ -42,12 +43,12 @@ function InsertUser() {
                     '${element.phoneNum}',
                     '${element.address}',
                     (?),
-                    ${element.typeUserId}
+                    ${element.typeUser}
                 )
             `, defImage, './vegetable.db');
-        });
+        }
 
-        db.close();
+        console.log("finish InsertUser");
 
     });
 }
@@ -63,13 +64,13 @@ function InsertMethodType() {
         const list = JSON.parse(data);
       
         // Access the contents of the JSON file
-        list.forEach(async element => {
-            let Insert = await InsertDataDb(`
+        for(const element of list) {
+            let Insert = InsertDataDb(`
                 INSERT INTO MethodType (type)
                 VALUES ('${element.type}')
             `, './vegetable.db');
-        });
-
+        };
+        console.log("finish InsertMethodType");
     });
 }
 
@@ -84,13 +85,14 @@ function InsertUserType() {
         const list = JSON.parse(data);
       
         // Access the contents of the JSON file
-        list.forEach(async element => {
-            let Insert = await InsertDataDb(`
-                INSERT INTO TypeUser (type)
-                VALUES ('${element.type}')
-            `, './vegetable.db');
-        });
+        for(const element of list) {
 
+            let Insert = InsertDataDb(`
+                INSERT INTO TypeUser (id, type)
+                VALUES (${element.id}, '${element.type}')
+            `, './vegetable.db');
+        };
+        console.log("finish InsertUserType");
     });
 }
 
@@ -105,13 +107,13 @@ function InsertProductType() {
         const list = JSON.parse(data);
       
         // Access the contents of the JSON file
-        list.forEach(async element => {
-            let Insert = await InsertDataDb(`
+        for(const element of list) {
+            let Insert = InsertDataDb(`
                 INSERT INTO TypeProduct (type)
                 VALUES ('${element.type}')
             `, './vegetable.db');
-        });
-
+        };
+        console.log("finish InsertProductType");
     });
 }
 
@@ -126,13 +128,13 @@ function InsertOrderState() {
         const list = JSON.parse(data);
       
         // Access the contents of the JSON file
-        list.forEach(async element => {
-            let Insert = await InsertDataDb(`
+        for(const element of list) {
+            let Insert = InsertDataDb(`
                 INSERT INTO OrderState (state)
                 VALUES ('${element.state}')
             `, './vegetable.db');
-        });
-
+        };
+        console.log("finish InsertOrderState");
     });
 }
 
@@ -184,21 +186,21 @@ function InsertProduct() {
             }
 
         };
-
+        console.log("finish InsertProduct");
     });
 }
 
-db.exec(sql, function(err) {
-    if (err) {
-      console.error(err.stack);
-    } else {
-      console.log('SQL file executed successfully.');
-      
-      InsertUserType();
-      InsertUser();
-      InsertMethodType();
-      InsertProductType();
-      InsertOrderState();
-      InsertProduct();
-    }
-  });
+// db.exec(sql, function(err) {
+//     if (err) {
+//     console.error(err.stack);
+//     } else {
+//     console.log('SQL file executed successfully.');
+    
+//     InsertUserType();
+//     InsertMethodType();
+//     InsertProductType();
+//     InsertOrderState();
+//     }
+// });    
+InsertUser();
+InsertProduct();
