@@ -33,9 +33,9 @@ export const Navigation_Subtitle_ul=styled.ul`
 export const Navigation_Subtitle_li=styled.li`
     list-style: none;
     display: inline-block;
-    font-family: cursive;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 600;
     margin: 0px 20px 0 20px;
     cursor:pointer;
     &:hover{
@@ -46,10 +46,10 @@ export const Navigation_Subtitle_li=styled.li`
 export const Navigation_Subtitle_li_Home=styled.li`
     list-style: none;
     display: inline-block;
-    font-family: cursive;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     color: var(--Fifth_Green);
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 600;
     margin: 0px 20px 0 20px;
     cursor:pointer;
     &:hover{

@@ -9,16 +9,17 @@ export const BenefitTitleAndSubTitle=styled.div`
     padding-bottom: 20px;
 `;
 
-export const BenefitTitle=styled.div`
+export const SectionTitle=styled.div`
     font-size: 38px;
     font-weight: 500;
-    font-family: cursive;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 `;
 
 export const BenefitSubTitle=styled.div`
     font-size: 16px;
     font-weight: 400;
     color:var(--Primary_Gray);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     padding: 20px 0 0px 0;
 `;
 
@@ -29,7 +30,7 @@ export const BenefitContentWrapper=styled.div`
 
 export const BenefitContent=styled.div`
     background: var(--Sixth_Green);
-    height: 200px;
+    height: 230px;
     width: 23%;
     border-radius: 16px;
     display: inline-block;
@@ -49,9 +50,9 @@ export const BenefitContentIconWrapper=styled.div`
 
 export const BenefitContentParagraph=styled.p`
     font-weight: 400;
-    font-family: sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
-    padding: 0 10px 0 10px;
+    padding: 0 16px 0 16px;
 
 `;
 
@@ -64,8 +65,11 @@ export const BenefitButton=styled.button`
     color: var(--Secondary_White);
     font-size: 16px;
     font-weight: 500;
-    font-family: sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     cursor: pointer;
     justify-content: center;
     line-height: 46px;
+    &:hover{
+        background: var(--Hover_Color_Btn);
+    }
 `;

@@ -1,5 +1,6 @@
 
 import React from "react";
+import { SectionTitle } from "../HomeEachBenefit/HomeEachBenefit_Styled";
 
 export default function Review() {
     return (
@@ -8,7 +9,7 @@ export default function Review() {
 
             <div>
 
-                <h1>Review</h1>
+                <SectionTitle>Review</SectionTitle>
                 <p>Customer reviews about food!</p>
 
             </div>
