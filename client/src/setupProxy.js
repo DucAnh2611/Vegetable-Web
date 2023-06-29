@@ -11,7 +11,8 @@ module.exports = function(app) {
         "/home/list-item",
         "/home/list-review",
         "/product/list",
-        "/product/type"
+        "/product/type",
+        "/aboutus/all"
     ];
     
     listEndpoint.forEach(endpoint => {

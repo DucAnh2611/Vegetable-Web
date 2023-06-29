@@ -16,7 +16,6 @@ const Home = () =>{
             <ShopNow/>
             <BestSellerSection/>
             <Review/>
-            <Footer/>
 
         </div>
     )

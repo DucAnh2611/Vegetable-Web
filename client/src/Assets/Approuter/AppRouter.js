@@ -5,6 +5,8 @@ import {Routes,
 import HomeNavigation from "../Component/Navigation Bar/Home Navigation/HomeNavigation";
 import Home from "../Page/Home/Home";
 import ProductNavigation from "../Component/Navigation Bar/Product Navigation/ProductNavigation";
+import AboutUs from "../Page/AboutUs/AboutUs";
+import Footer from "../Component/Footer/Footer";
 
 export default function AppRouter() {
     const HomeNav = () => {
@@ -26,21 +28,27 @@ export default function AppRouter() {
     }
 
     return (
+        <>
+            <Routes>
+                <Route element={<HomeNav/>}>
+                    <Route exact path="/" element={<Home></Home>}/>
+                </Route> 
+                <Route element={<ProductNav/>}>
+                    <Route exact path="/about-us" element={<AboutUs/>}/>
+                    <Route exact path="/shop" element={<p>Shop</p>}/>
+                    <Route exact path="/shop/product/:productid" element={<p>Product detail</p>}/>
+                    <Route exact path="/shop-cart" element={<p>Your cart</p>}/>
+                    <Route exact path="/shop-checkout" element={<p>Checkout</p>}/>
+                    <Route exact path="/shop-order-tracking/:orderid" element={<p>Order State</p>}/>
+                </Route>
+                {
+                    //export xong import page vao element
+                }
+            </Routes>     
+             
+            <Footer/>  
+        </>
 
-        <Routes>
-            <Route element={<HomeNav/>}>
-                <Route exact path="/" element={<Home></Home>}/>
-            </Route>
-            <Route element={<ProductNav/>}>
-                <Route exact path="/shop" element={<p>Shop</p>}/>
-                <Route exact path="/shop/product/:productid" element={<p>Product detail</p>}/>
-                <Route exact path="/shop-cart" element={<p>Your cart</p>}/>
-                <Route exact path="/shop-checkout" element={<p>Checkout</p>}/>
-                <Route exact path="/shop-order-tracking/:orderid" element={<p>Order State</p>}/>
-            </Route>
-            {
-                //export xong import page vao element
-            }
-        </Routes>
+
     )
 }
