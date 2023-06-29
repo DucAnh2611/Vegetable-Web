@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as faSolid from "@fortawesome/free-solid-svg-icons";
 import * as faRegular from "@fortawesome/free-regular-svg-icons";
 import * as faBrands from "@fortawesome/free-brands-svg-icons";
-import { ReactComponent as Logo } from "../../../Image/SVG/Logo.svg"
+import { ReactComponent as Logo } from "../../../Image/SVG/Logo.svg";
 import {Navigation_Wrapper,
         Navigation_Logo,
         Navigation_Subtitle_Wrapper,

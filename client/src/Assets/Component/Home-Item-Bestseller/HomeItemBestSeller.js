@@ -45,18 +45,30 @@ function BestSellerSection (){
 
     return (
         <BestSeller_Wrap>
+
             <AllProduct_wrap>
+
                 <h1>Best Seller</h1>
+                
                 <Filter_category_wrap>
+
                     <Filter_category_list>
+
                         <li onClick={el => {SetType(0)}}>All</li>
                         {
                             ListType.map(e => <li onClick={el => {SetType(dictionaryType[e.type])}}>{e.type.toUpperCase()}</li>)
                         }
+
                     </Filter_category_list>
+
                 </Filter_category_wrap>
-                <Product_Item list={ListItem}></Product_Item>
+
+                <Product_Item list={ListItem}>
+
+                </Product_Item>
+
             </AllProduct_wrap>
+
         </BestSeller_Wrap>
     )
 }

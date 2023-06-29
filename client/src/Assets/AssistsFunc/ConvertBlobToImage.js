@@ -1,4 +1,4 @@
-export default function Convert(image) {
+export default function ConvertToIamge(image) {
 
     const base64String = btoa(new Uint8Array(image.data).reduce(function (data, byte) {
         return data + String.fromCharCode(byte);

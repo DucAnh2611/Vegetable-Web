@@ -53,6 +53,7 @@ export const VerifyFieldDiv = styled.div`
         font-size: 2.6vh;
         width: 100%;
         height: fit-content;
+        width: fit-content;
         text-align: center;
         font-weight: bold;
 

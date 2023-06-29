@@ -55,6 +55,11 @@ export const Pic_item_wrap = styled.div`
         height: auto;
         object-fit: cover;
     }
+    &:hover {
+        div {
+            display: flex;
+        }
+    }
 `;
 
 // Des ảnh product
@@ -140,9 +145,9 @@ export const Product_side_btn = styled.div`
     padding: 0;
     -webkit-transition: all .2s ease;
     transition: all .2s ease;
-    display: flex;
+    display: none;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     /* opacity: 0; */
 
     button {

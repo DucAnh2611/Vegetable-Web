@@ -7,6 +7,7 @@ import {
     VerifyInputDiv,
   } from "../Template_Layout_Verify/TemplateLayoutVerify";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { ReactComponent as Logo } from "../../Image/SVG/horizon_logo.svg";
 import * as fa from "@fortawesome/free-solid-svg-icons";
 
 export default function Login() {
@@ -41,8 +42,10 @@ export default function Login() {
     <VerifyDiv>
       <VerifySection>
 
-        <VerifyFieldDiv> 
-            <p>Vegetable</p>
+        <VerifyFieldDiv style={{alignItems: "center", flexDirection:"row", gap: "10px", padding:"20px 0"}}> 
+          <span style={{width: "300px"}}>
+            <Logo/>
+          </span>
         </VerifyFieldDiv>
 
         <VerifyFieldDiv style={{

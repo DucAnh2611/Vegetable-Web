@@ -4,7 +4,7 @@ import * as faSolid from "@fortawesome/free-solid-svg-icons";
 import * as faRegular from "@fortawesome/free-regular-svg-icons";
 import * as faBrands from "@fortawesome/free-brands-svg-icons";
 import * as Style from "./Product_Item_Styled"
-import Convert from "../../../AssistsFunc/ConvertBlobToImage";
+import ConvertToIamge from "../../../AssistsFunc/ConvertBlobToImage";
 
 function Product_Item({list}) {
     return (
@@ -13,11 +13,11 @@ function Product_Item({list}) {
 
                 {
                     list.map(item => (
-                    <Style.Product_Item_Wrap>
+                    <Style.Product_Item_Wrap key = {item.id}>
                         <Style.Product_content>
                             <Style.Pic_item_wrap>
-                                <a href="#">
-                                    <img src={Convert(item.image)} alt={item.PdName}></img>
+                                <a href={`/shop/product/${item.id}`}>
+                                    <img src={ConvertToIamge(item.image)} alt={item.PdName}></img>
                                 </a>
     
                                 <Style.Product_side_btn>
