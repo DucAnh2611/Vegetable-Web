@@ -1,41 +1,42 @@
 
 import React from "react";
+import {ShopNowWrapper,
+        ShopNowProductWrapper,
+        ShopNowProductContent,
+        ShopNowProductTitle,
+        ShopNowProductSubTitle } from "./HomeEachShopeNow_Styled";
+import {SectionButton,
+        SectionWrapper,
+        SectionTitle} from "../HomeEachBenefit/HomeEachBenefit_Styled"
 
 export default function ShopNow() {
 
     return(
 
-        <div>
+        <SectionWrapper style={{flexDirection: "row",
+                                justifyContent: "space-between"}}>
 
-            <div>
+            <ShopNowProductWrapper>
 
-                <div>
-                    <img></img>
-                </div>
+                <ShopNowProductContent>
+                    <SectionTitle>Organic Pork</SectionTitle>
+                    <ShopNowProductSubTitle>No Preservatives</ShopNowProductSubTitle>
+                    <SectionButton style={{marginLeft: "0"}}>Shop now</SectionButton>
+                </ShopNowProductContent>
 
-                <div>
-                    <p>Organic food</p>
-                    <p>No Preservatives</p>
-                    <button>Shop now</button>
-                </div>
+            </ShopNowProductWrapper>
 
-            </div>
+            <ShopNowProductWrapper>
 
-            <div>
+                <ShopNowProductContent>
+                    <SectionTitle>Scallion</SectionTitle>
+                    <ShopNowProductSubTitle>10% off today only</ShopNowProductSubTitle>
+                    <SectionButton style={{marginLeft: "0"}}>Shop now</SectionButton>
+                </ShopNowProductContent>
 
-                <div>
-                    <img></img>
-                </div>
+            </ShopNowProductWrapper>
 
-                <div>
-                    <p>Organic food</p>
-                    <p>No Preservatives</p>
-                    <button>Shop now</button>
-                </div>
-
-            </div>
-
-        </div>
+        </SectionWrapper>
 
     )
 }

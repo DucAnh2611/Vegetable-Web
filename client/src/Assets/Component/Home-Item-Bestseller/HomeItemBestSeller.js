@@ -6,6 +6,7 @@ import { BestSeller_Wrap,
         AllProduct_wrap,
         Filter_category_wrap,
         Filter_category_list} from "./HomeItemBestSeller_Styled";
+import {SectionWrapper} from "../HomeEachBenefit/HomeEachBenefit_Styled"
 
 function BestSellerSection (){
 
@@ -45,7 +46,7 @@ function BestSellerSection (){
     }, []);
 
     return (
-        <BestSeller_Wrap>
+        <SectionWrapper>
 
             <AllProduct_wrap>
 
@@ -70,7 +71,7 @@ function BestSellerSection (){
 
             </AllProduct_wrap>
 
-        </BestSeller_Wrap>
+        </SectionWrapper>
     )
 }
 

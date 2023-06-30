@@ -1,8 +1,10 @@
 
 import styled from "styled-components"
 
-export const BenefitWrapper=styled.div`
-    padding: 8% 5% 0px 5%;
+export const SectionWrapper=styled.div`
+    padding: 0 5% 0px 5%;
+    display: flex;
+    flex-direction: column;
 `;
 
 export const BenefitTitleAndSubTitle=styled.div`
@@ -13,6 +15,7 @@ export const SectionTitle=styled.div`
     font-size: 38px;
     font-weight: 500;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 8%;
 `;
 
 export const BenefitSubTitle=styled.div`
@@ -56,7 +59,7 @@ export const BenefitContentParagraph=styled.p`
 
 `;
 
-export const BenefitButton=styled.button`
+export const SectionButton=styled.button`
     height:46px;
     width: 140px;
     border-radius: 10px;
@@ -69,6 +72,7 @@ export const BenefitButton=styled.button`
     cursor: pointer;
     justify-content: center;
     line-height: 46px;
+    margin: auto;
     &:hover{
         background: var(--Hover_Color_Btn);
     }

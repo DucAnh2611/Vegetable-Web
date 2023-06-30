@@ -5,7 +5,7 @@ import { ReactComponent as BenefitIcon1 } from "../../../Assets/Image/SVG/Benefi
 import { ReactComponent as BenefitIcon2 } from "../../../Assets/Image/SVG/Benefit SVG/Natural enviroment.svg";
 import { ReactComponent as BenefitIcon3 } from "../../../Assets/Image/SVG/Benefit SVG/no hormones.svg";
 import { ReactComponent as BenefitIcon4 } from "../../../Assets/Image/SVG/Benefit SVG/no hormones.svg";
-import {BenefitWrapper,
+import {SectionWrapper,
         BenefitTitleAndSubTitle,
         SectionTitle,
         BenefitSubTitle,
@@ -13,12 +13,12 @@ import {BenefitWrapper,
         BenefitContent,
         BenefitContentIconWrapper,
         BenefitContentParagraph,
-        BenefitButton } from "./HomeEachBenefit_Styled";
+        SectionButton } from "./HomeEachBenefit_Styled";
 
 export default function Benefit() {
     return (
 
-        <BenefitWrapper>
+        <SectionWrapper>
 
             <BenefitTitleAndSubTitle>
                 <SectionTitle>Benefits of organic food</SectionTitle>
@@ -69,9 +69,9 @@ export default function Benefit() {
 
             </BenefitContentWrapper>
     
-            <BenefitButton>Read more</BenefitButton>
+            <SectionButton>Read more</SectionButton>
                     
-        </BenefitWrapper>
+        </SectionWrapper>
 
     )
 }
