@@ -3,8 +3,6 @@ import styled from "styled-components"
 
 export const SectionWrapper=styled.div`
     padding: 0 5% 0px 5%;
-    display: flex;
-    flex-direction: column;
 `;
 
 export const BenefitTitleAndSubTitle=styled.div`
@@ -70,9 +68,7 @@ export const SectionButton=styled.button`
     font-weight: 500;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     cursor: pointer;
-    justify-content: center;
     line-height: 46px;
-    margin: auto;
     &:hover{
         background: var(--Hover_Color_Btn);
     }
