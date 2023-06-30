@@ -29,10 +29,9 @@ export default function HomeNavigation() {
             <Navigation_Subtitle_Wrapper>
                 
                 <Navigation_Subtitle_ul>
-                    <Navigation_Subtitle_li_Home>Home</Navigation_Subtitle_li_Home>
-                    <Navigation_Subtitle_li>Shop</Navigation_Subtitle_li>
-                    <Navigation_Subtitle_li>Products</Navigation_Subtitle_li>
-                    <Navigation_Subtitle_li>Page</Navigation_Subtitle_li>
+                    <Navigation_Subtitle_li href="/">Home</Navigation_Subtitle_li>
+                    <Navigation_Subtitle_li href="/shop">Shop</Navigation_Subtitle_li>
+                    <Navigation_Subtitle_li href="/about-us">About us</Navigation_Subtitle_li>
                 </Navigation_Subtitle_ul>
 
             </Navigation_Subtitle_Wrapper>

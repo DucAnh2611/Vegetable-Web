@@ -1,86 +1,101 @@
 
 import React from "react";
 import { ReactComponent as Logo } from "../../Image/SVG/horizon_logo.svg";
+import { 
+    DetailContent,
+    DetailContentColumn,
+    DetailHeader,
+    FooterDetailWrap,
+    FooterEndWrap,
+    FooterWrap
+} from "./Footer_Styled";
 
 export default function Footer() {
     return (
 
-        <div>
+        <FooterWrap>
 
-            <div>
+            <FooterDetailWrap>
 
-                <div>
-                    <span><Logo/></span>
-                </div>
-
-                <div>
+                <DetailHeader>
 
                     <div>
-
-                        <div>
-                            <h1>New Letter</h1>
-                        </div>
-
-                        <div>
-                            <input type="text"></input>
-                        </div>
-
+                        <span><Logo/></span>
                     </div>
+                    
+                </DetailHeader>
 
-                    <div>
+                <DetailContent>
+
+                    <DetailContentColumn>
 
                         <div>
                             <h1>About us</h1>
                         </div>
 
                         <div>
-                            <a href="#">a</a>
+                            <a href="https://github.com/DucAnh2611/Vegetable-Web">Vege Source</a>
                             <a href="#">b</a>
                             <a href="#">c</a>
                             <a href="#">d</a>
                         </div>
 
-                    </div>
+                    </DetailContentColumn>
 
-                    <div>
+                    <DetailContentColumn>
 
                         <div>
-                            <h1>Hot catetory</h1>
+                            <h1>About us</h1>
                         </div>
 
                         <div>
-                            <a href="#">a</a>
+                            <a href="https://github.com/DucAnh2611/Vegetable-Web">Vege Source</a>
                             <a href="#">b</a>
                             <a href="#">c</a>
                             <a href="#">d</a>
                         </div>
 
-                    </div>
+                    </DetailContentColumn>
 
-                    <div>
+                    <DetailContentColumn>
 
                         <div>
-                            <h1>My account</h1>
+                            <h1>About us</h1>
                         </div>
 
                         <div>
-                            <a href="#">a</a>
+                            <a href="https://github.com/DucAnh2611/Vegetable-Web">Vege Source</a>
                             <a href="#">b</a>
                             <a href="#">c</a>
                             <a href="#">d</a>
                         </div>
 
-                    </div>
+                    </DetailContentColumn>
 
-                </div>
+                    <DetailContentColumn>
 
-            </div>
+                        <div>
+                            <h1>About us</h1>
+                        </div>
 
-            <div>
+                        <div>
+                            <a href="https://github.com/DucAnh2611/Vegetable-Web">Vege Source</a>
+                            <a href="#">b</a>
+                            <a href="#">c</a>
+                            <a href="#">d</a>
+                        </div>
+
+                    </DetailContentColumn>
+
+                </DetailContent>
+
+            </FooterDetailWrap>
+
+            <FooterEndWrap>
                 <p>Copyright@ 2023 Vegetable. All Rights Reserved</p>
-            </div>
+            </FooterEndWrap>
 
-        </div>
+        </FooterWrap>
 
     )
 }

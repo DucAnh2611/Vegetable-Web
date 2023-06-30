@@ -27,12 +27,13 @@ export const BenefitSubTitle=styled.div`
 export const BenefitContentWrapper=styled.div`
     display: flex;
     margin: 20px 0 50px 0;
+    justify-content: center;
 `;
 
 export const BenefitContent=styled.div`
     background: var(--Sixth_Green);
     height: 230px;
-    width: 23%;
+    width: 320px;
     border-radius: 16px;
     display: inline-block;
     margin: 0 1% 0 1%;

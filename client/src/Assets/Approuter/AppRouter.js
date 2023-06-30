@@ -7,6 +7,7 @@ import Home from "../Page/Home/Home";
 import ProductNavigation from "../Component/Navigation Bar/Product Navigation/ProductNavigation";
 import AboutUs from "../Page/AboutUs/AboutUs";
 import Footer from "../Component/Footer/Footer";
+import Product from "../Page/Product/Product";
 
 export default function AppRouter() {
     const HomeNav = () => {
@@ -35,7 +36,7 @@ export default function AppRouter() {
                 </Route> 
                 <Route element={<ProductNav/>}>
                     <Route exact path="/about-us" element={<AboutUs/>}/>
-                    <Route exact path="/shop" element={<p>Shop</p>}/>
+                    <Route exact path="/shop" element={<Product/>}/>
                     <Route exact path="/shop/product/:productid" element={<p>Product detail</p>}/>
                     <Route exact path="/shop-cart" element={<p>Your cart</p>}/>
                     <Route exact path="/shop-checkout" element={<p>Checkout</p>}/>

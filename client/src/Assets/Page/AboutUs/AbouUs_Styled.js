@@ -9,7 +9,7 @@ export const AboutUsWrapper = styled.div`
     flex-direction: column;
     align-items: center;
 
-    background-color: var(--Primary_White);
+    background-color: transparent;
 `;
 
 export const AboutUsIntroduce = styled.section`

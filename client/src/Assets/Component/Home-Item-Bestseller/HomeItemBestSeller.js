@@ -6,7 +6,8 @@ import { BestSeller_Wrap,
         AllProduct_wrap,
         Filter_category_wrap,
         Filter_category_list} from "./HomeItemBestSeller_Styled";
-import {SectionWrapper} from "../HomeEachBenefit/HomeEachBenefit_Styled"
+import {SectionWrapper} from "../HomeEachBenefit/HomeEachBenefit_Styled";
+import * as Style from "./ProductItem/Product_Item_Styled"
 
 function BestSellerSection (){
 
@@ -65,9 +66,17 @@ function BestSellerSection (){
 
                 </Filter_category_wrap>
 
-                <Product_Item list={ListItem}>
+                <Style.flex_row_product>
+                    {
+                        ListItem.length!==0
+                        ? ListItem.map(e => (<Product_Item item={e}/>))
+                        : <div><p>Nothing too see</p></div>
+                    }
 
-                </Product_Item>
+                    <Style.ShopNow_Btn> 
+                        <button>Shop now</button>
+                    </Style.ShopNow_Btn>
+                </Style.flex_row_product>
 
             </AllProduct_wrap>
 

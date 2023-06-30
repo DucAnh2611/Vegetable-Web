@@ -6,80 +6,69 @@ import * as faBrands from "@fortawesome/free-brands-svg-icons";
 import * as Style from "./Product_Item_Styled"
 import ConvertToIamge from "../../../AssistsFunc/ConvertBlobToImage";
 
-function Product_Item({list}) {
+function Product_Item({item}) {
     return (
-        <>
-            <Style.flex_row_product>
+    
+            <Style.Product_Item_Wrap key = {item.id}>
+                <Style.Product_content>
+                    <Style.Pic_item_wrap>
+                        <a href={`/shop/product/${item.id}`}>
+                            <img src={ConvertToIamge(item.image)} alt={item.PdName}></img>
+                        </a>
 
-                {
-                    list.map(item => (
-                    <Style.Product_Item_Wrap key = {item.id}>
-                        <Style.Product_content>
-                            <Style.Pic_item_wrap>
-                                <a href={`/shop/product/${item.id}`}>
-                                    <img src={ConvertToIamge(item.image)} alt={item.PdName}></img>
-                                </a>
-    
-                                <Style.Product_side_btn>
-                                    <Style.Side_btn_wishlist>
-                                        <button>
-                                            <FontAwesomeIcon icon={faRegular.faHeart} />
-                                        </button>
-                                    </Style.Side_btn_wishlist>
-    
-                                    {/* <Style.Side_btn_quickView>
-                                        <button>
-                                            <FontAwesomeIcon icon={faRegular.faEye} />
-                                        </button>
-                                    </Style.Side_btn_quickView>
-    
-                                    <Style.Side_btn_compare>
-                                        <button>
-                                            <FontAwesomeIcon icon={faSolid.faArrowRightArrowLeft} />
-                                        </button>
-                                    </Style.Side_btn_compare> */}
-    
-                                    <Style.Side_btn_addToCart>
-                                        <button>
-                                            <FontAwesomeIcon icon={faSolid.faCartShopping} />
-                                        </button>
-                                    </Style.Side_btn_addToCart>
-                                </Style.Product_side_btn>
-    
-                            </Style.Pic_item_wrap>
-    
-                            <Style.Pic_item_des>
-                                <Style.Star_rating>
-                                    {
-                                        new Array(5).fill('').map((_, idx) => (
-                                            idx +1 <= item.AvgRating
-                                            ? <FontAwesomeIcon icon={faSolid.faStar}/>
-                                            : item.AvgRating - parseInt(item.AvgRating) >= 0.5 
-                                                ? <FontAwesomeIcon icon={faRegular.faStarHalfAlt}/>
-                                                : <FontAwesomeIcon icon={faRegular.faStar}/>
-                                        ))
-                                    }
-                                </Style.Star_rating>
-    
-                                <h3>{item.PdName}</h3>
-    
-                                <Style.Product_price>
-                                    <span>
-                                        <FontAwesomeIcon icon={faSolid.faDollarSign} />
-                                        <p>{(item.price).toFixed(2)} / {item.unit.toUpperCase()}</p>
-                                    </span>
-                                </Style.Product_price>
-                            </Style.Pic_item_des>
-                        </Style.Product_content>
-                    </Style.Product_Item_Wrap>   
-                    ))
-                }      
-            </Style.flex_row_product>
+                        <Style.Product_side_btn>
+                            <Style.Side_btn_wishlist>
+                                <button>
+                                    <FontAwesomeIcon icon={faRegular.faHeart} />
+                                </button>
+                            </Style.Side_btn_wishlist>
 
-            <Style.ShopNow_Btn> 
-                <button>Shop now</button>
-            </Style.ShopNow_Btn>
-        </>
+                            {/* <Style.Side_btn_quickView>
+                                <button>
+                                    <FontAwesomeIcon icon={faRegular.faEye} />
+                                </button>
+                            </Style.Side_btn_quickView>
+
+                            <Style.Side_btn_compare>
+                                <button>
+                                    <FontAwesomeIcon icon={faSolid.faArrowRightArrowLeft} />
+                                </button>
+                            </Style.Side_btn_compare> */}
+
+                            <Style.Side_btn_addToCart>
+                                <button>
+                                    <FontAwesomeIcon icon={faSolid.faCartShopping} />
+                                </button>
+                            </Style.Side_btn_addToCart>
+                        </Style.Product_side_btn>
+
+                    </Style.Pic_item_wrap>
+
+                    <Style.Pic_item_des>
+                        <Style.Star_rating>
+                            {
+                                new Array(5).fill('').map((_, idx) => (
+                                    idx +1 <= item.AvgRating
+                                    ? <FontAwesomeIcon icon={faSolid.faStar}/>
+                                    : item.AvgRating - parseInt(item.AvgRating) >= 0.5 
+                                        ? <FontAwesomeIcon icon={faRegular.faStarHalfAlt}/>
+                                        : <FontAwesomeIcon icon={faRegular.faStar}/>
+                                ))
+                            }
+                        </Style.Star_rating>
+
+                        <h3>{item.PdName}</h3>
+
+                        <Style.Product_price>
+                            <span>
+                                <FontAwesomeIcon icon={faSolid.faDollarSign} />
+                                <p>{(item.price).toFixed(2)} / {item.unit.toUpperCase()}</p>
+                            </span>
+                        </Style.Product_price>
+                    </Style.Pic_item_des>
+                </Style.Product_content>
+            </Style.Product_Item_Wrap>   
+
     )
 }
 

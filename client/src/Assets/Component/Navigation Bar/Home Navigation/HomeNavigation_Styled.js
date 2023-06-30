@@ -30,9 +30,11 @@ export const Navigation_Subtitle_ul=styled.ul`
     line-height:100px;
 `;
 
-export const Navigation_Subtitle_li=styled.li`
+export const Navigation_Subtitle_li=styled.a`
     list-style: none;
     display: inline-block;
+    text-decoration: none;
+    color: var(--Primary_Black);
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
     font-weight: 600;
