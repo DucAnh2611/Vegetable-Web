@@ -10,10 +10,10 @@ export const ShopNowWrapper=styled.div`
 export const ShopNowProductWrapper =styled.div`
     width: 40%;
     height: auto;
-    max-width: 660px;
+    max-width: 640px;
     display: flex;
     justify-content: center;
-    margin-top: 7%;
+    margin: 7% 1% 0;
     flex: 1 1;
     text-align: left;
 `;
