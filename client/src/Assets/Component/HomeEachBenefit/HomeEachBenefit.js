@@ -4,7 +4,7 @@ import React from "react";
 import { ReactComponent as BenefitIcon1 } from "../../../Assets/Image/SVG/Benefit SVG/low in pesticides.svg";
 import { ReactComponent as BenefitIcon2 } from "../../../Assets/Image/SVG/Benefit SVG/Natural enviroment.svg";
 import { ReactComponent as BenefitIcon3 } from "../../../Assets/Image/SVG/Benefit SVG/no hormones.svg";
-import { ReactComponent as BenefitIcon4 } from "../../../Assets/Image/SVG/Benefit SVG/no hormones.svg";
+import { ReactComponent as BenefitIcon4 } from "../../../Assets/Image/SVG/Benefit SVG/natural farming method.svg";
 import {SectionWrapper,
         BenefitTitleAndSubTitle,
         SectionTitle,
