@@ -1,26 +1,27 @@
 
 import React from "react";
-import {ShopNowProductWrapper,
+import {ShopNowWrapper,
+        ShopNowProductWrapper,
+        Space,
         ShopNowProductImg,
         ShopNowProductContent,
         ShopNowProductSubTitle} from "./HomeEachShopeNow_Styled";
 import {SectionButton,
-        SectionWrapper,
-        SectionTitle} from "../HomeEachBenefit/HomeEachBenefit_Styled"
+        SectionTitle, } from "../HomeEachBenefit/HomeEachBenefit_Styled"
 
 export default function ShopNow() {
 
     return(
 
-        <SectionWrapper>
+        <ShopNowWrapper>
 
             <ShopNowProductWrapper>
                 
-                <ShopNowProductImg style={{marginRight: "1%"}}>
+                <ShopNowProductImg style={{backgroundImage: "var(--Beef)"}}>
 
                     <ShopNowProductContent>
-                        <SectionTitle>Organic Pork</SectionTitle>
-                        <ShopNowProductSubTitle>No Preservatives</ShopNowProductSubTitle>
+                        <SectionTitle style={{color:"var(--Secondary_White)"}}>Organic Pork</SectionTitle>
+                        <ShopNowProductSubTitle style={{color:"var(--Primary_White)"}}>No Preservatives</ShopNowProductSubTitle>
                         <SectionButton>Shop now</SectionButton>
                     </ShopNowProductContent>
 
@@ -28,9 +29,11 @@ export default function ShopNow() {
 
             </ShopNowProductWrapper>
 
-            <ShopNowProductWrapper>
+            <Space></Space>
 
-                <ShopNowProductImg style={{marginLeft: "1%"}}>
+            <ShopNowProductWrapper style={{float:"left"}}>
+
+                <ShopNowProductImg style={{backgroundImage: "var(--Onion)"}}>
                         
                     <ShopNowProductContent>
                         <SectionTitle>Scallion</SectionTitle>
@@ -42,7 +45,7 @@ export default function ShopNow() {
 
             </ShopNowProductWrapper>
 
-        </SectionWrapper>
+        </ShopNowWrapper>
 
     )
 }

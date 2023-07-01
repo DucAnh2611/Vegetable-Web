@@ -1,19 +1,39 @@
 
 import styled from "styled-components"
 
+export const ShopNowWrapper=styled.div`
+    padding: 0 5% 0px 5%;
+    display: flex;
+    justify-content: center;
+`;
+
 export const ShopNowProductWrapper =styled.div`
-    width: 50%;
-    height: 325px;
-    max-width: 600px;
-    display: inline-block;
+    width: 40%;
+    height: auto;
+    max-width: 660px;
+    display: flex;
+    justify-content: center;
+    margin-top: 7%;
+    flex: 1 1;
+    text-align: left;
+`;
+
+export const Space =styled.div`
+    width: 4%;
 `;
 
 export const ShopNowProductImg =styled.div`
-    background: url(https://wallpapercave.com/wp/wp1922634.jpg);
     background-size: cover;
-    height: 100%;
+    background-repeat: no-repeat;
+    height: auto;
+    width: 100%;
     max-width: 100%;
     border-radius: 16px;
+    flex: 1 1;
+    transition: 0.2s;
+    &:Hover{
+        transform: scale(1.2,1.2);
+    }
 `;
 
 export const ShopNowProductContent =styled.div`

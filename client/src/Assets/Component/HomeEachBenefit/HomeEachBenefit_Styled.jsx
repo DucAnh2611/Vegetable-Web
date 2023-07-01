@@ -25,8 +25,8 @@ export const BenefitSubTitle=styled.div`
 `;
 
 export const BenefitContentWrapper=styled.div`
-    display: flex;
     margin: 20px 0 50px 0;
+    display: flex;
     justify-content: center;
 `;
 
