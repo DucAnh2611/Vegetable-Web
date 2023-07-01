@@ -12,6 +12,7 @@ function ProductDetails(app) {
     };
 
     let {productid} = req.params;
+    let {maxrelated} = req.query;
 
     let ProductInfo = await fetchData(
       `
@@ -22,7 +23,7 @@ function ProductDetails(app) {
 
     let Review = await fetchData(
       `
-        SELECT u.username, u.fullname, r.title, r.desciption, r.rating
+        SELECT u.avatar, u.username, u.fullname, r.title, r.description, r.rating, r.id
         FROM Product as p INNER JOIN Review as r ON p.id = r.PdId
                           INNER JOIN Users as u ON r.UserId = u.id
         WHERE p.id == ${parseInt(productid)}
@@ -31,11 +32,11 @@ function ProductDetails(app) {
     let relatedProduct = await fetchData(
       `
         SELECT p.*
-        FROM Product as p INNER JOINN TypeProduct_Product as tp_p ON p.id =tp_p.PdId
-        WHERE tp_p.type IN (SELECT TypeId
-                            FROM Product as p INNER JOINN TypeProduct_Product as tp_p ON p.id =tp_p.PdId
-                            WHERE p == ${parseInt(productid)})
-        ORDER BY p.PdName ASC
+        FROM Product as p INNER JOIN TypeProduct_Product as tp_p ON p.id = tp_p.PdId
+        WHERE tp_p.TypeId IN (SELECT TypeId
+                            FROM Product as p INNER JOIN TypeProduct_Product as tp_p ON p.id = tp_p.PdId
+                            WHERE p.id == ${parseInt(productid)})
+        LIMIT ${maxrelated}
       `);
 
     if (ProductInfo.length !== 0) {

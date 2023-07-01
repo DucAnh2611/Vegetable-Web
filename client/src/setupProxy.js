@@ -12,6 +12,10 @@ module.exports = function(app) {
         "/home/list-review",
         "/product/list",
         "/product/type",
+        "/product-detail/:productid",
+        "/product-detail/:productid/addtocart",
+        "/product-detail/:productid/submit-review",
+        "/product-detail/:productid/addwishlist",
         "/aboutus/all"
     ];
     

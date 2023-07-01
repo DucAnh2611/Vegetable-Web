@@ -109,8 +109,8 @@ function InsertProductType() {
         // Access the contents of the JSON file
         for(const element of list) {
             let Insert = InsertDataDb(`
-                INSERT INTO TypeProduct (type)
-                VALUES ('${element.type}')
+                INSERT INTO TypeProduct (id, type)
+                VALUES (${element.id},'${element.type}')
             `, './vegetable.db');
         };
         console.log("finish InsertProductType");

@@ -1,14 +1,18 @@
 [
     {
+        "id": 1,
         "type":  "drink"
     },
     {
+        "id": 2,
         "type":  "vegetable"
     },
     {
+        "id": 3,
         "type":  "fruit"
     },
     {
+        "id": 4,
         "type":  "nuts"
     }
 ]
