@@ -1,6 +1,6 @@
 
 import React, { useState, useCallback, useEffect } from "react";
-import {Outlet} from "react-router-dom";
+import {Outlet, useNavigate} from "react-router-dom";
 import { 
     VerifyDiv,
     VerifySection,
@@ -12,13 +12,14 @@ import { ReactComponent as Logo } from "../../Image/SVG/horizon_logo.svg";
 import * as fa from "@fortawesome/free-solid-svg-icons";
 
 function Signup() {
+  const navigate = useNavigate();
   const [ValidData, SetValidData] = useState(true);
   const [field, SetField] = useState([]);
   const [userInfo, SetUserInfo] = useState({
     username: "",
-    pass: "",
+    password: "",
     email: "",
-    phone: "",
+    phoneNum: "",
     fullname: "",
     birthday: `${new Date().getFullYear()}-${parseInt((new Date().getMonth()+1) /10)}${(new Date().getMonth()+1) % 10}-${parseInt(new Date().getDate()/10)}${new Date().getDate() % 10}`
   });
@@ -44,7 +45,7 @@ function Signup() {
             msg: "Sai định dạng email"
           }]);
         } 
-        else if(e === "phone" & !Boolean(userInfo[e].match(phoneFormat)) ) {
+        else if(e === "phoneNum" & !Boolean(userInfo[e].match(phoneFormat)) ) {
           SetValidData(false);
           SetField(field => [...field, {
             field: e,
@@ -99,25 +100,45 @@ function Signup() {
     [userInfo]
   );
 
-  const SignupAuth = async () => {
-    // await fetch("/sign/auth", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     ...userInfo,
-    //   }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //         console.log(data);
-    //   });
+  const SignupAuth = () => {
+    if(ValidData) {
+
+      fetch("/signup/auth", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...userInfo,
+        }),
+      })
+      .then((res) => res.json())
+      .then((data) => {
+
+        if(data.status === "accepted") {
+          navigate("/");
+          localStorage.setItem("auth", JSON.stringify({id: data.field.value, authen: true}));
+        }
+        else {
+          SetField(Object.keys(data.field).map(e => ({
+            field: e,
+            msg: `${e} is existed`
+          })));
+        }
+
+      });
+
+    }
+
   };
 
   const ClickToLogin = () => {
+    navigate("/login");
+  }
 
-}
+  useEffect(() => {
+    document.title = "Vegetable - Signup";
+  }, [])
 
   return (
     <VerifyDiv>
@@ -156,14 +177,14 @@ function Signup() {
             <input
               type="password"
               required={true}
-              onChange={InputChange("pass")}
-              value={userInfo.pass}
+              onChange={InputChange("password")}
+              value={userInfo.password}
               maxLength={30}
               minLength={1}
             ></input>
             <span><FontAwesomeIcon icon={fa.faPen}/> Mật khẩu</span>
             {field.map((element) => {
-              if (element.field === "pass") {
+              if (element.field === "password") {
                 return <p>* {element.msg}</p>;
               }
               return <Outlet />;
@@ -210,14 +231,14 @@ function Signup() {
             <input
               type="text"
               required={true}
-              onChange={InputChange("phone")}
-              value={userInfo.phone}
+              onChange={InputChange("phoneNum")}
+              value={userInfo.phoneNum}
               maxLength={10}
               minLength={10}
             ></input>
             <span><FontAwesomeIcon icon={fa.faPhone}/> Số điện thoại</span>
             {field.map((element) => {
-              if (element.field === "phone") {
+              if (element.field === "phoneNum") {
                 return <p>* {element.msg}</p>;
               }
               return <Outlet />;

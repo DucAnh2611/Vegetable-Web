@@ -11,6 +11,7 @@ export default function ProductDetail() {
     const [productInfo, SetproductInfo] = useState({});
     const [listReview, SetListReview] = useState([]);
     const [maxRelated, SetMaxRelated] = useState(4);
+    const [loaded, SetLoaded] = useState(false);
 
     const fetchListRelated = () => {
         fetch(`/product-detail/${productid}?maxrelated=${maxRelated}`)
@@ -20,6 +21,7 @@ export default function ProductDetail() {
                 SetListRelated(data.field.relatedProduct);
                 SetListReview(data.field.review);
                 SetproductInfo(data.field.productInfo[0]);
+                SetLoaded(true);
             }
         })
     }
@@ -29,104 +31,112 @@ export default function ProductDetail() {
     }, [] );
 
     return (
-        <div>
+        <>
 
-            <div>
+        {
+            loaded
+            ? (<div>
 
-                <div>
-                    <img src={ConvertToIamge(productInfo.image)} alt="img proc"/>
-                </div>
+                    <div>
 
-                <div>
+                        <div>
+                            <img src={ConvertToIamge(productInfo.image)} alt="img proc"/>
+                        </div>
+
+                        <div>
+
+                            <div>
+
+                                <div>
+
+                                <h3>{productInfo.PdName}</h3> 
+                                <h3>${productInfo.price}</h3> 
+
+                                </div>
+
+                                <div>
+                                    
+                                    <p>{productInfo.description}</p> 
+                                    <p>{productInfo.quantity} on stock</p> 
+        
+                                </div>
+                                
+                            </div>
+
+                            <div>
+                                add funcs
+                            </div>
+
+                        </div>
+
+
+                    </div>
 
                     <div>
 
                         <div>
 
-                           <h3>{productInfo.PdName}</h3> 
-                           <h3>${productInfo.price}</h3> 
+                            <h1>Review</h1>
 
                         </div>
 
                         <div>
-                            
-                            <p>{productInfo.description}</p> 
-                            <p>{productInfo.quantity} on stock</p> 
- 
-                         </div>
-                        
+                            {listReview.map(e => {
+                                return (
+                                    <div key={e.id}>
+
+                                        <div>
+
+                                            <img src={ConvertToIamge(e.avatar)} alt="review user"/>
+
+                                        </div>
+
+                                        <div>
+
+                                            <div>
+                                                <p><b>{e.username}</b></p>
+                                                <p>{e.fullname}</p>
+                                            </div>
+
+                                            <div>
+
+                                                <div>
+                                                    <p>{e.title}</p>
+                                                    <p>{e.rating}</p>
+                                                </div>
+
+                                                <div>
+                                                    <p>{e.description}</p>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+
                     </div>
 
                     <div>
-                        add funcs
+
+                        <div>
+                            <h1>Related</h1>
+                        </div>
+
+                        <div>
+                            {listRelated.map(e => <Product_Item item={e}/>)}
+                        </div>
+
+
                     </div>
 
-                </div>
 
-
-            </div>
-
-            <div>
-
-                <div>
-
-                    <h1>review</h1>
-
-                </div>
-
-                <div>
-                    {listReview.map(e => {
-                        return (
-                            <div key={e.id}>
-
-                                <div>
-
-                                    <img src={ConvertToIamge(e.avatar)} alt="review user"/>
-
-                                </div>
-
-                                <div>
-
-                                    <div>
-                                        <p><b>{e.username}</b></p>
-                                        <p>{e.fullname}</p>
-                                    </div>
-
-                                    <div>
-
-                                        <div>
-                                            <p>{e.title}</p>
-                                            <p>{e.rating}</p>
-                                        </div>
-
-                                        <div>
-                                            <p>{e.description}</p>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        )
-                    })}
-                </div>
-
-            </div>
-
-            <div>
-
-                <div>
-                    {listRelated.map(e => <Product_Item item={e}/>)}
-                </div>
-
-                <div>
-
-                </div>
-
-
-            </div>
-
-
-        </div>
+                </div>)
+            : <p>Loading</p>
+        }        
+        
+        </>
     )
 }

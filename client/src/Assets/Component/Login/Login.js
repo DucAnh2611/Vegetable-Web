@@ -9,33 +9,43 @@ import {
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { ReactComponent as Logo } from "../../Image/SVG/horizon_logo.svg";
 import * as fa from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [username, SetUsername] = useState("");
   const [password, SetPassword] = useState("");
   const [field, SetField] = useState("");
   const [Loading, SetLoading] = useState(false);
 
   const ClickSign = () => {
-    // navigate("/signup");
+    localStorage.removeItem("auth");
+    navigate("/signup");
   };
   
   const LoginAuth = async () => {
-    // await fetch("/login/auth", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     username: username,
-    //     password: password,
-    //   }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //         console.log(data)
-    //   });
+    await fetch("/login/auth", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if(data.status === "accepted") {
+          localStorage.setItem("auth", JSON.stringify({id: data.field.value, authen: true}));
+          window.location.reload();
+        }
+      });
   };
+
+  useEffect(() => {
+    document.title = "Vegetable - Login";
+  }, [])
 
   return (
 

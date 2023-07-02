@@ -7,7 +7,7 @@ export const VerifyDiv = styled.div`
     height: 100vh;
     width: 100vw;
     overflow: hidden auto;
-    background-color: rgb(0, 0, 0, 0.2);
+    background-color: var(--Primary_Green);
 
     display: grid;
     place-items: center;
