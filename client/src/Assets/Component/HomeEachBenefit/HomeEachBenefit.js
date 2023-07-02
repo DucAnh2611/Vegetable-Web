@@ -6,6 +6,7 @@ import { ReactComponent as BenefitIcon2 } from "../../../Assets/Image/SVG/Benefi
 import { ReactComponent as BenefitIcon3 } from "../../../Assets/Image/SVG/Benefit SVG/no hormones.svg";
 import { ReactComponent as BenefitIcon4 } from "../../../Assets/Image/SVG/Benefit SVG/natural farming method.svg";
 import {SectionWrapper,
+        BenefitWrapper,
         BenefitTitleAndSubTitle,
         SectionTitle,
         BenefitSubTitle,
@@ -20,56 +21,60 @@ export default function Benefit() {
 
         <SectionWrapper>
 
-            <BenefitTitleAndSubTitle>
-                <SectionTitle>Benefits of organic food</SectionTitle>
-                <BenefitSubTitle>Let's see the benefits of organic food</BenefitSubTitle>
-            </BenefitTitleAndSubTitle>
+            <BenefitWrapper>
 
-            <BenefitContentWrapper>
+                <BenefitTitleAndSubTitle>
+                    <SectionTitle>Benefits of organic food</SectionTitle>
+                    <BenefitSubTitle>Let's see the benefits of organic food</BenefitSubTitle>
+                </BenefitTitleAndSubTitle>
 
-                <BenefitContent>
+                <BenefitContentWrapper>
 
-                    <BenefitContentIconWrapper>
-                        <BenefitIcon1></BenefitIcon1>
-                    </BenefitContentIconWrapper>
+                    <BenefitContent>
 
-                    <BenefitContentParagraph>May be low in pesticides or other chemicals.</BenefitContentParagraph>
+                        <BenefitContentIconWrapper>
+                            <BenefitIcon1></BenefitIcon1>
+                        </BenefitContentIconWrapper>
 
-                </BenefitContent>
+                        <BenefitContentParagraph>May be low in pesticides or other chemicals.</BenefitContentParagraph>
 
-                <BenefitContent>
+                    </BenefitContent>
 
-                    <BenefitContentIconWrapper>
-                        <BenefitIcon2></BenefitIcon2>
-                    </BenefitContentIconWrapper>
+                    <BenefitContent>
 
-                    <BenefitContentParagraph>Meat of animals raised in a natural environment...</BenefitContentParagraph>
+                        <BenefitContentIconWrapper>
+                            <BenefitIcon2></BenefitIcon2>
+                        </BenefitContentIconWrapper>
 
-                </BenefitContent>
+                        <BenefitContentParagraph>Meat of animals raised in a natural environment...</BenefitContentParagraph>
 
-                <BenefitContent>
+                    </BenefitContent>
 
-                    <BenefitContentIconWrapper>
-                        <BenefitIcon3></BenefitIcon3>
-                    </BenefitContentIconWrapper>
+                    <BenefitContent>
 
-                    <BenefitContentParagraph>Meat has no antibiotics or hormones</BenefitContentParagraph>
+                        <BenefitContentIconWrapper>
+                            <BenefitIcon3></BenefitIcon3>
+                        </BenefitContentIconWrapper>
 
-                </BenefitContent>
+                        <BenefitContentParagraph>Meat has no antibiotics or hormones</BenefitContentParagraph>
 
-                <BenefitContent>
+                    </BenefitContent>
 
-                    <BenefitContentIconWrapper>
-                        <BenefitIcon4></BenefitIcon4>
-                    </BenefitContentIconWrapper>
+                    <BenefitContent>
 
-                    <BenefitContentParagraph>Apply natural farming methods to return the soil to fertility.</BenefitContentParagraph>
+                        <BenefitContentIconWrapper>
+                            <BenefitIcon4></BenefitIcon4>
+                        </BenefitContentIconWrapper>
 
-                </BenefitContent>
+                        <BenefitContentParagraph>Apply natural farming methods to return the soil to fertility.</BenefitContentParagraph>
 
-            </BenefitContentWrapper>
-    
-            <SectionButton>Read more</SectionButton>
+                    </BenefitContent>
+
+                </BenefitContentWrapper>
+        
+                <SectionButton>Read more</SectionButton>
+
+            </BenefitWrapper>
                     
         </SectionWrapper>
 

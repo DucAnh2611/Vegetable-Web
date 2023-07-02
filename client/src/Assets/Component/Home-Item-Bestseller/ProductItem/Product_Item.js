@@ -7,6 +7,24 @@ import * as Style from "./Product_Item_Styled"
 import ConvertToIamge from "../../../AssistsFunc/ConvertBlobToImage";
 
 function Product_Item({item}) {
+
+    const AddToCart = () => {
+        fetch(`/product-detail/${item.id}/addtocart`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                userid: JSON.parse(localStorage.getItem("auth")).id, 
+                quantity: 1
+            }),
+        })
+        .then(res => res.json())
+        .then(data=> {
+            console.log(data);
+        })
+        
+    }
     return (
     
             <Style.Product_Item_Wrap key = {item.id}>
@@ -36,7 +54,7 @@ function Product_Item({item}) {
                             </Style.Side_btn_compare> */}
 
                             <Style.Side_btn_addToCart>
-                                <button>
+                                <button onClick={AddToCart}>
                                     <FontAwesomeIcon icon={faSolid.faCartShopping} />
                                 </button>
                             </Style.Side_btn_addToCart>

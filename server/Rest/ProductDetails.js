@@ -81,7 +81,7 @@ function ProductDetails(app) {
 
     if(GetItemInCart.length !==0 ) {
       let UpdateQuantity = await InsertData(`
-        UPDATE Cart SET quantity = quantity + ${quantity} WHERE UserId == ${parseInt(userid)} AND PdId == ${parseInt(productid)}
+        UPDATE Cart SET quantity = ${quantity} WHERE UserId == ${parseInt(userid)} AND PdId == ${parseInt(productid)}
       `);
     }
     else {

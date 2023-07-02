@@ -63,7 +63,7 @@ export default function Product() {
     useEffect(()=> {
         fetchListType();
         fetchListItem();
-        document.title = 'Vegetable-Shop';
+        document.title = 'Vegetable - Shop';
 
     },[]);
 

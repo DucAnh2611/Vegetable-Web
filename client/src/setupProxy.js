@@ -16,6 +16,8 @@ module.exports = function(app) {
         "/product-detail/:productid/addtocart",
         "/product-detail/:productid/submit-review",
         "/product-detail/:productid/addwishlist",
+        "/cart/check-out",
+        "/cart/set-quantity",
         "/aboutus/all"
     ];
     

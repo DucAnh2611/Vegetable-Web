@@ -11,12 +11,12 @@ function NavigationBar(app) {
       status: 404,
     };
 
-    let { username } = req.query;
+    let { userid } = req.query;
     let CartList = await fetchData(`
       SELECT p.*, c.quantity
       FROM Users as u INNER JOIN Cart as c ON u.id=c.UserId
                       INNER JOIN Product as p ON c.PdId = p.id
-      WHERE username =='${username}'
+      WHERE u.id == '${userid}'
     `);
 
     if(CartList.length !==0) {

@@ -28,15 +28,17 @@ export const BenefitContentWrapper=styled.div`
     margin: 20px 0 50px 0;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 `;
 
 export const BenefitContent=styled.div`
     background: var(--Sixth_Green);
     height: 230px;
     width: 320px;
+    min-width: 250px;
     border-radius: 16px;
     display: inline-block;
-    margin: 0 1% 0 1%;
+    margin: 0 1% 10px 1%;
 `;
 
 export const BenefitContentIconWrapper=styled.div`
