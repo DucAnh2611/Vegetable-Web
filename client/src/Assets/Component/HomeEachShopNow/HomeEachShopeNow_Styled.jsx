@@ -1,7 +1,8 @@
 import styled from "styled-components"
 
 export const ShopNowWrapper = styled.div`
-    padding: 0 15px;
+    max-width: 1440px;
+    margin: 0 auto;
 `;
 
 export const ShopNowWrap2Ele = styled.div`
@@ -15,7 +16,7 @@ export const ShopNowWrap2Ele = styled.div`
 export const ShopNowProductWrapper = styled.div`
     width: 50%;
     height: auto;
-    padding: 0 20px;
+    margin: 0 15px;
     border-radius: 16px;
     display: flex;
     justify-content: center;
@@ -23,7 +24,7 @@ export const ShopNowProductWrapper = styled.div`
 
     :hover {
         img {
-            transform: scale(1.1);
+            transform: scale(1.13);
         }
     }
 `;
@@ -35,7 +36,7 @@ export const ShopNowImgWrap = styled.div`
     border-radius: 16px;
 
     img {
-        transform: scale(1);
+        transform: scale(1.02);
         transition: 1s;
     }
 `;

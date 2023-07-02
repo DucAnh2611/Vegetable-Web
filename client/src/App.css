@@ -92,3 +92,14 @@ button {
   }
 }
 
+/* hover product bestSeller side bar chạy vào */
+@keyframes Side-bar-BS-fadeIn {
+  from {
+    right: -30px;
+    opacity: 0;
+  } 
+  to {
+    right: 20px;
+    opacity: 1;
+  }
+}

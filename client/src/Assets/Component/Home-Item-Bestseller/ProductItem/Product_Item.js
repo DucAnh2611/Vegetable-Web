@@ -4,9 +4,13 @@ import * as faSolid from "@fortawesome/free-solid-svg-icons";
 import * as faRegular from "@fortawesome/free-regular-svg-icons";
 import * as faBrands from "@fortawesome/free-brands-svg-icons";
 import * as Style from "./Product_Item_Styled"
-import ConvertToIamge from "../../../AssistsFunc/ConvertBlobToImage";
+import ConvertToImage from "../../../AssistsFunc/ConvertBlobToImage";
 
 function Product_Item({item}) {
+
+    const toCapitalize = (str) => {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      };
 
     const AddToCart = () => {
         fetch(`/product-detail/${item.id}/addtocart`, {
@@ -31,7 +35,7 @@ function Product_Item({item}) {
                 <Style.Product_content>
                     <Style.Pic_item_wrap>
                         <a href={`/shop/product/${item.id}`}>
-                            <img src={ConvertToIamge(item.image)} alt={item.PdName}></img>
+                            <img src={ConvertToImage(item.image)} alt={item.PdName}></img>
                         </a>
 
                         <Style.Product_side_btn>
@@ -41,7 +45,8 @@ function Product_Item({item}) {
                                 </button>
                             </Style.Side_btn_wishlist>
 
-                            {/* <Style.Side_btn_quickView>
+                            {/* Cứ để full side bar nhìn nó đỡ cụt*/}
+                            <Style.Side_btn_quickView>
                                 <button>
                                     <FontAwesomeIcon icon={faRegular.faEye} />
                                 </button>
@@ -51,7 +56,7 @@ function Product_Item({item}) {
                                 <button>
                                     <FontAwesomeIcon icon={faSolid.faArrowRightArrowLeft} />
                                 </button>
-                            </Style.Side_btn_compare> */}
+                            </Style.Side_btn_compare>
 
                             <Style.Side_btn_addToCart>
                                 <button onClick={AddToCart}>
@@ -80,7 +85,7 @@ function Product_Item({item}) {
                         <Style.Product_price>
                             <span>
                                 <FontAwesomeIcon icon={faSolid.faDollarSign} />
-                                <p>{(item.price).toFixed(2)} / {item.unit.toUpperCase()}</p>
+                                <p>{(item.price).toFixed(2)} / {toCapitalize(item.unit)}</p>
                             </span>
                         </Style.Product_price>
                     </Style.Pic_item_des>

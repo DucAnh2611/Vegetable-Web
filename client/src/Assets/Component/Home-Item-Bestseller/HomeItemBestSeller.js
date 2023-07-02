@@ -22,6 +22,10 @@ function BestSellerSection (){
         "nuts" : 4
     })
 
+    const toCapitalize = (str) => {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    };
+
     const fetchListBestSeller= (amount, type) => {
         fetch(`/home/list-item?amount=${amount}&type=${type}`)
         .then(res => res.json())
@@ -59,7 +63,7 @@ function BestSellerSection (){
 
                         <li onClick={el => {SetType(0)}}>All</li>
                         {
-                            ListType.map(e => <li onClick={el => {SetType(dictionaryType[e.type])}}>{e.type.toUpperCase()}</li>)
+                            ListType.map(e => <li onClick={el => {SetType(dictionaryType[e.type])}}>{toCapitalize(e.type)}</li>)
                         }
 
                     </Filter_category_list>
