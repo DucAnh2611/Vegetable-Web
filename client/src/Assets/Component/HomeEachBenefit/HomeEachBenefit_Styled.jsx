@@ -5,6 +5,10 @@ export const SectionWrapper=styled.div`
     padding: 0 15px;
 `;
 
+export const BenefitWrapper=styled.div`
+    
+`;
+
 export const BenefitTitleAndSubTitle=styled.div`
     padding-bottom: 20px;
 `;
