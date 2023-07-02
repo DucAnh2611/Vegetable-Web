@@ -11,6 +11,7 @@ import Product from "../Page/Product/Product";
 import ProductDetail from "../Page/Product_Details/ProductDetails";
 import Login from "../Component/Login/Login";
 import Signup from "../Component/Signup/Signup";
+import Cart from "../Page/Cart/Cart";
 
 export default function AppRouter() {
     const PrivateRoute = () => {
@@ -45,6 +46,15 @@ export default function AppRouter() {
             </>
         )
     }
+    
+    const HaveFooter = () => {
+        return (
+            <>  
+                <Outlet/>
+                <Footer/>
+            </>
+        )
+    }
 
     return (
         <>
@@ -52,29 +62,29 @@ export default function AppRouter() {
 
                 <Route element={<PrivateRoute/>}>
 
-                    <Route element={<HomeNav/>}>
-                        <Route exact path="/" element={<Home></Home>}/>
-                    </Route> 
-                    <Route element={<ProductNav/>}>
-                        <Route exact path="/about-us" element={<AboutUs/>}/>
-                        <Route exact path="/shop" element={<Product/>}/>
-                        <Route exact path="/shop/product/:productid" element={<ProductDetail/>}/>
-                        <Route exact path="/shop-cart" element={<p>Your cart</p>}/>
-                        <Route exact path="/shop-checkout" element={<p>Checkout</p>}/>
-                        <Route exact path="/shop-order-tracking/:orderid" element={<p>Order State</p>}/>
+                    <Route element={<HaveFooter/>}>
+
+                        <Route element={<HomeNav/>}>
+                            <Route exact path="/" element={<Home></Home>}/>
+                        </Route> 
+                        
+                        <Route element={<ProductNav/>}>
+                            <Route exact path="/about-us" element={<AboutUs/>}/>
+                            <Route exact path="/shop" element={<Product/>}/>
+                            <Route exact path="/shop/product/:productid" element={<ProductDetail/>}/>
+                            <Route exact path="/shop-cart" element={<Cart/>}/>
+                            <Route exact path="/shop-checkout" element={<p>Checkout</p>}/>
+                            <Route exact path="/shop-order-tracking/:orderid" element={<p>Order State</p>}/>
+                        </Route>
+
                     </Route>
 
                 </Route>
 
                 <Route exact path="/login" element={<Login/>}></Route>
                 <Route exact path="/signup" element={<Signup/>}></Route>
-
-                {
-                    //export xong import page vao element
-                }
+                
             </Routes>     
-             
-            <Footer/>  
         </>
 
 

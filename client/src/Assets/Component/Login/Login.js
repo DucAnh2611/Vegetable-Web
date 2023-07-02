@@ -38,7 +38,7 @@ export default function Login() {
       .then((data) => {
         if(data.status === "accepted") {
           localStorage.setItem("auth", JSON.stringify({id: data.field.value, authen: true}));
-          window.location.reload();
+          window.location = "/";
         }
       });
   };
