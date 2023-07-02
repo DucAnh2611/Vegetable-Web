@@ -1,7 +1,7 @@
 
 import styled from "styled-components"
 
-export const Navigation_Wrapper=styled.div`
+export const NavigationWrapper=styled.div`
     width:80%;
     height: 100px;
     margin: 40px auto;
@@ -10,63 +10,50 @@ export const Navigation_Wrapper=styled.div`
     position: relative;
 `;
 
-export const Navigation_Logo=styled.div`
+export const NavigationLogo=styled.div`
     width:25%;
     align-items: center;
     display: flex;
     &>svg{
         height:80px;
         float: left;
+        cursor: pointer;
     }
 `;
 
-export const Navigation_Subtitle_Wrapper=styled.div`
+export const NavigationSubtitleWrapper=styled.div`
     width:50%;
 `;
 
-export const Navigation_Subtitle_ul=styled.ul`
+export const NavigationSubtitleul=styled.ul`
     padding:0;
     margin: 0;
     line-height:100px;
 `;
 
-export const Navigation_Subtitle_li=styled.a`
+export const NavigationSubtitleli=styled.a`
     list-style: none;
     display: inline-block;
     text-decoration: none;
-    color: var(--Primary_Black);
+    color: var(--PrimaryBlack);
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
     font-weight: 600;
     margin: 0px 20px 0 20px;
     cursor:pointer;
     &:hover{
-        color: var(--Fifth_Green);
+        color: var(--FifthGreen);
     }
 `;
 
-export const Navigation_Subtitle_li_Home=styled.li`
-    list-style: none;
-    display: inline-block;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--Fifth_Green);
-    font-size: 20px;
-    font-weight: 600;
-    margin: 0px 20px 0 20px;
-    cursor:pointer;
-    &:hover{
-        color: var(--Fourth_Green);
-    }
-`;
-
-export const Navigation_Icon_Wrapper=styled.div`
+export const NavigationIconWrapper=styled.div`
     width:25%;
     line-height:100px;
     display: flex;
     justify-content: flex-end;
 `;
 
-export const Navigation_Icon=styled.div`
+export const NavigationIcon=styled.div`
     width: 22px;
     height: 22px;
     line-height: 22px;
@@ -77,14 +64,14 @@ export const Navigation_Icon=styled.div`
     cursor:pointer;
 `;
 
-export const Item_Number=styled.div`
-    background: var(--Primary_Green);
+export const ItemNumber=styled.div`
+    background: var(--PrimaryGreen);
     width: 28px;
     height: 28px;
     margin: 28px 0px 0px;
     border-radius: 50%;
     line-height: 28px;
-    color: var(--Secondary_White);
+    color: var(--SecondaryWhite);
     font-size: 16px;
     font-weight: 600;
     display: flex;

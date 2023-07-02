@@ -2,7 +2,11 @@
 import styled from "styled-components"
 
 export const SectionWrapper=styled.div`
-    padding: 0 5% 0px 5%;
+    padding: 5% 5% 0px 5%;
+`;
+
+export const BenefitWrapper=styled.div`
+    
 `;
 
 export const BenefitTitleAndSubTitle=styled.div`
@@ -13,7 +17,6 @@ export const SectionTitle=styled.div`
     font-size: 38px;
     font-weight: 500;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    margin-top: 8%;
 `;
 
 export const BenefitSubTitle=styled.div`
@@ -28,15 +31,17 @@ export const BenefitContentWrapper=styled.div`
     margin: 20px 0 50px 0;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 `;
 
 export const BenefitContent=styled.div`
     background: var(--Sixth_Green);
     height: 230px;
     width: 320px;
+    min-width: 250px;
     border-radius: 16px;
     display: inline-block;
-    margin: 0 1% 0 1%;
+    margin: 0 1% 10px 1%;
 `;
 
 export const BenefitContentIconWrapper=styled.div`

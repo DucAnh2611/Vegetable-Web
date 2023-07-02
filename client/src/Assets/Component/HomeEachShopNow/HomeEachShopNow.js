@@ -1,8 +1,9 @@
 
 import React from "react";
+import Beef from "../../Image/HomeShopNow/beef.jpg"
+import SpringOnion from "../../Image/HomeShopNow/hanh.jpg"
 import {ShopNowWrapper,
         ShopNowProductWrapper,
-        Space,
         ShopNowProductImg,
         ShopNowProductContent,
         ShopNowProductSubTitle} from "./HomeEachShopeNow_Styled";
@@ -17,23 +18,19 @@ export default function ShopNow() {
 
             <ShopNowProductWrapper>
                 
-                <ShopNowProductImg style={{backgroundImage: "var(--Beef)"}}>
+                <ShopNowProductImg src={Beef}/>
 
                     <ShopNowProductContent>
-                        <SectionTitle style={{color:"var(--Secondary_White)"}}>Organic Pork</SectionTitle>
-                        <ShopNowProductSubTitle style={{color:"var(--Primary_White)"}}>No Preservatives</ShopNowProductSubTitle>
+                        <SectionTitle >Organic Pork</SectionTitle>
+                        <ShopNowProductSubTitle >No Preservatives</ShopNowProductSubTitle>
                         <SectionButton>Shop now</SectionButton>
                     </ShopNowProductContent>
 
-                </ShopNowProductImg>
-
             </ShopNowProductWrapper>
 
-            <Space></Space>
+            <ShopNowProductWrapper>
 
-            <ShopNowProductWrapper style={{float:"left"}}>
-
-                <ShopNowProductImg style={{backgroundImage: "var(--Onion)"}}>
+                <ShopNowProductImg src={SpringOnion}/>
                         
                     <ShopNowProductContent>
                         <SectionTitle>Scallion</SectionTitle>
@@ -41,8 +38,6 @@ export default function ShopNow() {
                         <SectionButton>Shop now</SectionButton>
                     </ShopNowProductContent>
                     
-                </ShopNowProductImg>
-
             </ShopNowProductWrapper>
 
         </ShopNowWrapper>
