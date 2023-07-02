@@ -41,12 +41,12 @@ function NavigationBar(app) {
       status: 404,
     };
 
-    let { username } = req.query;
+    let { userid } = req.query;
     let WishList = await fetchData(`
     SELECT p.*
     FROM Users as u INNER JOIN WishList as w ON u.id = w.UserId
                     INNER JOIN Product as p ON w.PdId = p.id
-    WHERE username == '${username}'
+    WHERE u.id == ${userid}
     `);
 
     if(WishList.length !==0) {

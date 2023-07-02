@@ -66,7 +66,8 @@ export const Navigation_Icon_Wrapper=styled.div`
     justify-content: flex-end;
 `;
 
-export const Navigation_Icon=styled.div`
+export const Navigation_Icon=styled.button`
+    background: transparent;
     width: 22px;
     height: 22px;
     line-height: 22px;

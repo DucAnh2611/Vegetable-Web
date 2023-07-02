@@ -8,6 +8,23 @@ import ConvertToIamge from "../../../AssistsFunc/ConvertBlobToImage";
 
 function Product_Item({item}) {
 
+    const AddToWishList = () => {
+        fetch(`/product-detail/${item.id}/addwishlist`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                userid: JSON.parse(localStorage.getItem("auth")).id
+            }),
+        })
+        .then(res => res.json())
+        .then(data=> {
+            console.log(data);
+        })
+        
+    };
+
     const AddToCart = () => {
         fetch(`/product-detail/${item.id}/addtocart`, {
             method: "POST",
@@ -19,12 +36,13 @@ function Product_Item({item}) {
                 quantity: 1
             }),
         })
-        .then(res => res.json())
-        .then(data=> {
-            console.log(data);
-        })
+        // .then(res => res.json())
+        // .then(data=> {
+        //     console.log(data);
+        // })
         
-    }
+    };
+
     return (
     
             <Style.Product_Item_Wrap key = {item.id}>
@@ -36,7 +54,7 @@ function Product_Item({item}) {
 
                         <Style.Product_side_btn>
                             <Style.Side_btn_wishlist>
-                                <button>
+                                <button onClick={AddToWishList}>
                                     <FontAwesomeIcon icon={faRegular.faHeart} />
                                 </button>
                             </Style.Side_btn_wishlist>

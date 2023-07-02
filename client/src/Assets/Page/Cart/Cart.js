@@ -27,6 +27,7 @@ export default function Cart() {
     }
 
     const addItem = (quantity, id) => {
+
         fetch(`/product-detail/${id}/addtocart`, {
             method: "POST",
             headers: {
@@ -40,10 +41,12 @@ export default function Cart() {
         .then(res => res.json())
         .then(data=> {
             fetchCartItems()
-        })
+        });
+        
     }
 
     const changeItemQuantity = (quantity, id) => {
+
         let req = /^\d+$/;
         if(req.test(quantity)) {
             if(quantity <= 0) {
@@ -99,7 +102,7 @@ export default function Cart() {
 
                                     <div>
                                         <button onClick={ev => changeItemQuantity(e.quantity - 1, e.id)}><FontAwesomeIcon icon={fa.faMinus}/></button>
-                                        <p>{e.quantity}</p>
+                                        <input type="number" onChange={ev => changeItemQuantity(ev.target.value, e.id)} defaultValue={e.quantity}/>
                                         <button onClick={ev => changeItemQuantity(e.quantity + 1, e.id)}><FontAwesomeIcon icon={fa.faPlus}/></button>
                                     </div>
 

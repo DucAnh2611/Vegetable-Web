@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ConvertToIamge from "../../AssistsFunc/ConvertBlobToImage";
 import Product_Item from "../../Component/Home-Item-Bestseller/ProductItem/Product_Item";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import * as fa from "@fortawesome/free-solid-svg-icons";
+import * as faReg from "@fortawesome/free-regular-svg-icons";
 
 export default function ProductDetail() {
 
@@ -11,6 +14,7 @@ export default function ProductDetail() {
     const [productInfo, SetproductInfo] = useState({});
     const [listReview, SetListReview] = useState([]);
     const [maxRelated, SetMaxRelated] = useState(4);
+    const [quantity, SetQuantity] = useState(1);
     const [loaded, SetLoaded] = useState(false);
 
     const fetchListRelated = () => {
@@ -24,7 +28,44 @@ export default function ProductDetail() {
                 SetLoaded(true);
             }
         })
-    }
+    };
+
+    const AddToWishList = (id) => {
+        fetch(`/product-detail/${id}/addwishlist`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                userid: JSON.parse(localStorage.getItem("auth")).id
+            }),
+        })
+        .then(res => res.json())
+        .then(data=> {
+            console.log(data);
+        })
+    };
+
+    const AddToCart = (id) => {
+        fetch(`/product-detail/${id}/addtocart`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                userid: JSON.parse(localStorage.getItem("auth")).id, 
+                quantity: quantity
+            }),
+        })
+        .then(res => res.json())
+        .then(data=> {
+            if(data.status === "accepted") {
+                SetQuantity(1);
+            }
+        })
+        
+    };
+
     useEffect(() => {
         fetchListRelated();
         document.title = 'Product Detail';
@@ -64,7 +105,26 @@ export default function ProductDetail() {
                             </div>
 
                             <div>
-                                add funcs
+
+                                <div>
+
+                                    <div>
+                                        <button onClick={e => SetQuantity(quantity - 1)}><FontAwesomeIcon icon={fa.faMinus}/></button>
+                                        <input type="number" value={quantity}/>
+                                        <button onClick={e => SetQuantity(quantity + 1)}><FontAwesomeIcon icon={fa.faPlus}/></button>
+                                    </div>
+
+                                    <div>
+                                        <button onClick={e => AddToCart(productInfo.id)}>Add to card</button>
+                                    </div>
+                                    
+                                </div>
+
+                                <div>
+
+                                    <button onClick={e => AddToWishList(productInfo.id)}><span><FontAwesomeIcon icon={faReg.faHeart}/></span>Add to Wishlist</button>
+
+                                </div>
                             </div>
 
                         </div>
