@@ -25,24 +25,24 @@ export const NavigationSubtitleWrapper=styled.div`
     width:50%;
 `;
 
-export const NavigationSubtitleul=styled.ul`
+export const NavigationSubtitleUl=styled.ul`
     padding:0;
     margin: 0;
     line-height:100px;
 `;
 
-export const NavigationSubtitleli=styled.a`
+export const NavigationSubtitleLi=styled.a`
     list-style: none;
     display: inline-block;
     text-decoration: none;
-    color: var(--PrimaryBlack);
+    color: var(--Primary_Black);
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
     font-weight: 600;
     margin: 0px 20px 0 20px;
     cursor:pointer;
     &:hover{
-        color: var(--FifthGreen);
+        color: var(--Fifth_Green);
     }
 `;
 
@@ -65,13 +65,13 @@ export const NavigationIcon=styled.div`
 `;
 
 export const ItemNumber=styled.div`
-    background: var(--PrimaryGreen);
+    background: var(--Primary_Green);
     width: 28px;
     height: 28px;
     margin: 28px 0px 0px;
     border-radius: 50%;
     line-height: 28px;
-    color: var(--SecondaryWhite);
+    color: var(--Secondary_White);
     font-size: 16px;
     font-weight: 600;
     display: flex;

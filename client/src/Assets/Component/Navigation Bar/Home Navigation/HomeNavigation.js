@@ -8,8 +8,8 @@ import { ReactComponent as Logo } from "../../../Image/SVG/horizon_logo.svg";
 import {NavigationWrapper,
         NavigationLogo,
         NavigationSubtitleWrapper,
-        NavigationSubtitleul,
-        NavigationSubtitleli,
+        NavigationSubtitleUl,
+        NavigationSubtitleLi,
         NavigationIconWrapper,
         NavigationIcon,
         ItemNumber} from "./HomeNavigation_Styled";
@@ -27,11 +27,11 @@ export default function HomeNavigation() {
 
             <NavigationSubtitleWrapper>
                 
-                <NavigationSubtitleul>
-                    <NavigationSubtitleli href="/">Home</NavigationSubtitleli>
-                    <NavigationSubtitleli href="/shop">Shop</NavigationSubtitleli>
-                    <NavigationSubtitleli href="/about-us">About us</NavigationSubtitleli>
-                </NavigationSubtitleul>
+                <NavigationSubtitleUl>
+                    <NavigationSubtitleLi href="/">Home</NavigationSubtitleLi>
+                    <NavigationSubtitleLi href="/shop">Shop</NavigationSubtitleLi>
+                    <NavigationSubtitleLi href="/about-us">About us</NavigationSubtitleLi>
+                </NavigationSubtitleUl>
 
             </NavigationSubtitleWrapper>
 
