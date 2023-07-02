@@ -58,6 +58,7 @@ export const Pic_item_wrap = styled.div`
     &:hover {
         div {
             display: flex;
+            animation: Side-bar-BS-fadeIn 0.5s 0.2s forwards;
         }
     }
 `;
@@ -110,7 +111,7 @@ export const Product_price = styled.div`
 `;
 
 
-// Button
+// Button shop now của bestseller
 export const ShopNow_Btn = styled.div`
     width: 100%;
     height: auto;
@@ -132,23 +133,22 @@ export const ShopNow_Btn = styled.div`
     }
 `;
 
-// Product button
+// Side bar của product
 export const Product_side_btn = styled.div`
     position: absolute;
     top: auto;
     bottom: 25px;
-    right: 20px;
+    right: -30px;
     left: auto;
     z-index: 9;
     width: 30px;
     height: 182px;
     padding: 0;
-    -webkit-transition: all .2s ease;
-    transition: all .2s ease;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
     display: none;
     flex-direction: column;
     justify-content: space-evenly;
-    /* opacity: 0; */
 
     button {
         font-size: 16px;
@@ -176,12 +176,11 @@ export const Product_side_btn = styled.div`
     }
 `;
 
+
 export const Side_btn_wishlist = styled.div`
     button:hover::before {
         content: 'Wishlist';
         position: absolute;
-        /* right: 20px; */
-        /* bottom: 0; */
         -webkit-transform: translate(-86%,0%);
         transform: translate(-86%,0%);
         width: auto;

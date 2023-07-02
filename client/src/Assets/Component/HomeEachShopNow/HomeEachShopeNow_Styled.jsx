@@ -1,51 +1,63 @@
-
 import styled from "styled-components"
 
-export const ShopNowWrapper=styled.div`
-    padding: 0 5% 0px 5%;
-    display: flex;
-    justify-content: center;
+export const ShopNowWrapper = styled.div`
+    max-width: 1440px;
+    margin: 0 auto;
 `;
 
-export const ShopNowProductWrapper =styled.div`
-    width: 40%;
-    height: auto;
-    max-width: 640px;
-    display: flex;
-    justify-content: center;
-    margin: 7% 1% 0;
-    flex: 1 1;
-    text-align: left;
-`;
-
-export const Space =styled.div`
-    width: 4%;
-`;
-
-export const ShopNowProductImg =styled.div`
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: auto;
+export const ShopNowWrap2Ele = styled.div`
     width: 100%;
-    max-width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+`;
+
+export const ShopNowProductWrapper = styled.div`
+    width: 50%;
+    height: auto;
+    margin: 0 15px;
     border-radius: 16px;
-    flex: 1 1;
-    transition: 0.2s;
-    &:Hover{
-        transform: scale(1.2,1.2);
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    :hover {
+        img {
+            transform: scale(1.13);
+        }
     }
 `;
 
-export const ShopNowProductContent =styled.div`
-    display: flex;
-    flex-direction: column;
-    float: left;
-    margin: 12% 0px 10% 7%;
+export const ShopNowImgWrap = styled.div`
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 16px;
+
+    img {
+        transform: scale(1.02);
+        transition: 1s;
+    }
 `;
 
-export const ShopNowProductSubTitle =styled.div`
-    float: left;
+export const ShopNowProductImg = styled.div`
+    height: 350px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+`;
+
+export const ShopNowProductContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 13%;
+    left: 8%;
+`;
+
+export const ShopNowProductSubTitle = styled.div`
     display: flex;
     font-size: 16px;
-    margin: 3vh 0px;
+    margin: 15px 0;
 `;

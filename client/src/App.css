@@ -7,14 +7,13 @@
   --Sixth_Green: #f4feef;
   --Primary_White: #f4fdfe;
   --Secondary_White: #fff;
+  --Third_White:#f6f6ec ;
   --Primary_Black: #010101;
   --Primary_Yellow: #406830;
   --Secondary_Yellow: #93bd94;
   --Third_Yellow: #ce7329;
   --Primary_Gray: #646464;
   --Hover_Color_Btn: #4b0d12;
-  --Beef: url(./Assets/Image/HomeShopNow/beef.jpg);
-  --Onion: url(./Assets/Image/HomeShopNow/hanh.jpg);
 }
 
 .App {
@@ -94,3 +93,14 @@ button {
   }
 }
 
+/* hover product bestSeller side bar chạy vào */
+@keyframes Side-bar-BS-fadeIn {
+  from {
+    right: -30px;
+    opacity: 0;
+  } 
+  to {
+    right: 20px;
+    opacity: 1;
+  }
+}

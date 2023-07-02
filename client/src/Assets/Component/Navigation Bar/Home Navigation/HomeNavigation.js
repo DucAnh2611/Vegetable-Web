@@ -4,16 +4,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as faSolid from "@fortawesome/free-solid-svg-icons";
 import * as faRegular from "@fortawesome/free-regular-svg-icons";
 import * as faBrands from "@fortawesome/free-brands-svg-icons";
-import { ReactComponent as Logo } from "../../../Image/SVG/horizon_logo.svg";
-import {Navigation_Wrapper,
-        Navigation_Logo,
-        Navigation_Subtitle_Wrapper,
-        Navigation_Subtitle_ul,
-        Navigation_Subtitle_li,
-        Navigation_Icon_Wrapper,
-        Navigation_Icon,
-        Item_Number,
-        Navigation_Subtitle_li_Home } from "./HomeNavigation_Styled";
+import { ReactComponent as Logo } from "../../../Image/SVG/horizonlogo.svg";
+import {NavigationWrapper,
+        NavigationLogo,
+        NavigationSubtitleWrapper,
+        NavigationSubtitleUl,
+        NavigationSubtitleLi,
+        NavigationIconWrapper,
+        NavigationIcon,
+        ItemNumber,
+        NavigationSubtitleliHome } from "./HomeNavigationStyled";
 import WishList from "../../WishlistPane/WishlistPane";
 import { useNavigate } from "react-router-dom";
 
@@ -27,33 +27,33 @@ export default function HomeNavigation() {
     }
     
     return (
-        <Navigation_Wrapper>
+        <NavigationWrapper>
             {
                 openWishListPane && <WishList setOpenPane={SetOpenWishListPane}/>
             }
-            <Navigation_Logo>
+            <NavigationLogo>
                 <Logo style={{cursor:"pointer"}}></Logo>
-            </Navigation_Logo>
+            </NavigationLogo>
 
-            <Navigation_Subtitle_Wrapper>
+            <NavigationSubtitleWrapper>
                 
-                <Navigation_Subtitle_ul>
-                    <Navigation_Subtitle_li href="/">Home</Navigation_Subtitle_li>
-                    <Navigation_Subtitle_li href="/shop">Shop</Navigation_Subtitle_li>
-                    <Navigation_Subtitle_li href="/about-us">About us</Navigation_Subtitle_li>
-                </Navigation_Subtitle_ul>
+                <NavigationSubtitleUl>
+                    <NavigationSubtitleLi href="/">Home</NavigationSubtitleLi>
+                    <NavigationSubtitleLi href="/shop">Shop</NavigationSubtitleLi>
+                    <NavigationSubtitleLi href="/about-us">About us</NavigationSubtitleLi>
+                </NavigationSubtitleUl>
 
-            </Navigation_Subtitle_Wrapper>
+            </NavigationSubtitleWrapper>
 
-            <Navigation_Icon_Wrapper>
-                    <Navigation_Icon><FontAwesomeIcon icon = {faSolid.faMagnifyingGlass}/></Navigation_Icon>
-                    <Navigation_Icon><FontAwesomeIcon icon = {faRegular.faUser}/></Navigation_Icon>
-                    <Navigation_Icon onClick={handleOpenWishListPane}><FontAwesomeIcon icon = {faRegular.faHeart}/></Navigation_Icon>
-                    <Item_Number>1</Item_Number>
-                    <Navigation_Icon onClick={e => navigation("/shop-cart")}><FontAwesomeIcon icon = {faSolid.faCartShopping}/></Navigation_Icon>
-                    <Item_Number>0</Item_Number>
-            </Navigation_Icon_Wrapper>
+            <NavigationIconWrapper>
+                    <NavigationIcon><FontAwesomeIcon icon = {faSolid.faMagnifyingGlass}/></NavigationIcon>
+                    <NavigationIcon><FontAwesomeIcon icon = {faRegular.faUser}/></NavigationIcon>
+                    <NavigationIcon onClick={handleOpenWishListPane}><FontAwesomeIcon icon = {faRegular.faHeart}/></NavigationIcon>
+                    <ItemNumber>1</ItemNumber>
+                    <NavigationIcon onClick={e => navigation("/shop-cart")}><FontAwesomeIcon icon = {faSolid.faCartShopping}/></NavigationIcon>
+                    <ItemNumber>0</ItemNumber>
+            </NavigationIconWrapper>
 
-        </Navigation_Wrapper>
+        </NavigationWrapper>
     )
 }
