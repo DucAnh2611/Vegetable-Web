@@ -53,7 +53,7 @@ export const NavigationIconWrapper=styled.div`
     justify-content: flex-end;
 `;
 
-export const Navigation_Icon=styled.button`
+export const NavigationIcon=styled.button`
     background: transparent;
     width: 22px;
     height: 22px;

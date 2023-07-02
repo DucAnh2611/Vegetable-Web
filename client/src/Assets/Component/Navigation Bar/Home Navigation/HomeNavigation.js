@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as faSolid from "@fortawesome/free-solid-svg-icons";
 import * as faRegular from "@fortawesome/free-regular-svg-icons";
-import * as faBrands from "@fortawesome/free-brands-svg-icons";
-import { ReactComponent as Logo } from "../../../Image/SVG/horizonlogo.svg";
+import { ReactComponent as Logo } from "../../../Image/SVG/horizon_logo.svg";
 import {NavigationWrapper,
         NavigationLogo,
         NavigationSubtitleWrapper,
@@ -12,8 +11,7 @@ import {NavigationWrapper,
         NavigationSubtitleLi,
         NavigationIconWrapper,
         NavigationIcon,
-        ItemNumber,
-        NavigationSubtitleliHome } from "./HomeNavigationStyled";
+        ItemNumber} from "./HomeNavigation_Styled";
 import WishList from "../../WishlistPane/WishlistPane";
 import { useNavigate } from "react-router-dom";
 
