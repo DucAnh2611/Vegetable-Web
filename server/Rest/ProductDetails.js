@@ -34,8 +34,9 @@ function ProductDetails(app) {
         SELECT p.*
         FROM Product as p INNER JOIN TypeProduct_Product as tp_p ON p.id = tp_p.PdId
         WHERE tp_p.TypeId IN (SELECT TypeId
-                            FROM Product as p INNER JOIN TypeProduct_Product as tp_p ON p.id = tp_p.PdId
-                            WHERE p.id == ${parseInt(productid)})
+                            FROM TypeProduct_Product as tp_p
+                            WHERE tp_p.PdId == ${parseInt(productid)}) AND p.id <> ${parseInt(productid)}
+        ORDER BY RANDOM()
         LIMIT ${maxrelated}
       `);
 

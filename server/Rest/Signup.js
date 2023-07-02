@@ -48,12 +48,12 @@ function Signup(app) {
               '${UserSignup.username}',
               '${UserSignup.password}',
               '${UserSignup.fullname}',
-              '${UserSignup.birthday}',
+              (SELECT DATE('${UserSignup.birthday}')),
               '${UserSignup.email}',
               '${UserSignup.phoneNum}',
               'Not update',
               (?),
-              3
+              (SELECT id FROM TypeUser WHERE type = "client")
             )
           `,
         defImage);

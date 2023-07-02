@@ -15,7 +15,7 @@ function Login(app) {
     let UserLogin = req.body;
 
     let UserFilter = await fetchData(`
-    SELECT password
+    SELECT password, id
     FROM Users
     WHERE username == '${UserLogin.username}'`);
 
@@ -23,6 +23,7 @@ function Login(app) {
       if(UserFilter.filter(e => e.password === UserLogin.password).length !== 0 ) {
 
         responseContext.json.status = "accepted";
+        responseContext.json.field = {name: "id", value: UserFilter[0].id}
         responseContext.status= 200
 
       }
