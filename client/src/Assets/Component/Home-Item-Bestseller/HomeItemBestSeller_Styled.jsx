@@ -24,6 +24,7 @@ export const Filter_category_wrap = styled.div`
     margin: 0 auto;
     height: auto;
     width: 500px;
+    margin-top: 15px;
 `;
 
 export const Filter_category_list = styled.ul`

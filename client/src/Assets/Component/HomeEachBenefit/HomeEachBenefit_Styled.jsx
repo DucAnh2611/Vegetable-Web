@@ -2,7 +2,7 @@
 import styled from "styled-components"
 
 export const SectionWrapper=styled.div`
-    padding: 0 5% 0px 5%;
+    padding: 0 15px;
 `;
 
 export const BenefitTitleAndSubTitle=styled.div`
@@ -12,7 +12,7 @@ export const BenefitTitleAndSubTitle=styled.div`
 export const SectionTitle=styled.div`
     font-size: 38px;
     font-weight: 500;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    /* font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; */
     margin-top: 8%;
 `;
 

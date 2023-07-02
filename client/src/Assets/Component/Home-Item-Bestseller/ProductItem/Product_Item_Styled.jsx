@@ -148,7 +148,6 @@ export const Product_side_btn = styled.div`
     display: none;
     flex-direction: column;
     justify-content: space-evenly;
-    /* opacity: 0; */
 
     button {
         font-size: 16px;
@@ -180,8 +179,6 @@ export const Side_btn_wishlist = styled.div`
     button:hover::before {
         content: 'Wishlist';
         position: absolute;
-        /* right: 20px; */
-        /* bottom: 0; */
         -webkit-transform: translate(-86%,0%);
         transform: translate(-86%,0%);
         width: auto;
