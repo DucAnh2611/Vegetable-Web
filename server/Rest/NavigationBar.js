@@ -62,7 +62,7 @@ function NavigationBar(app) {
     res.status(responseContext.status).json({ ...responseContext.json });
   });
 
-  app.get("/navigation/profile/:username", async (req, res) => {
+  app.get("/navigation/profile/:userid", async (req, res) => {
     let responseContext = {
       json: {
         status: "denied",
@@ -71,17 +71,34 @@ function NavigationBar(app) {
       status: 404,
     };
 
-    let { username } = req.params;
+    let { userid } = req.params;
     let UserInfo = await fetchData(`
     SELECT username, avatar, fullname
     FROM Users
-    WHERE username == '${username}' 
+    WHERE id == ${userid}
     `);
+
+    let QuantityCart = await fetchData(`
+    SELECT COUNT(*) as 'quantitycart'
+    FROM Cart
+    WHERE UserId == ${userid }
+    `);
+
+    let QuantityWishlist = await fetchData(`
+    SELECT COUNT(*) as 'quantitywishlist'
+    FROM Wishlist
+    WHERE UserId == ${userid }
+    `);
+
 
     if(UserInfo.length !==0) {
       responseContext.json={
         status: "accepted",
-        field: {...UserInfo[0]}
+        field: {
+          quantitycart: QuantityCart[0].quantitycart,
+          quantitywishlist: QuantityWishlist[0].quantitywishlist,
+          userinfo: UserInfo[0]
+        }
       }
       responseContext.status= 200
       

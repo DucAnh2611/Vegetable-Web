@@ -64,6 +64,7 @@ export default function HomeNavigation() {
         })
     }, 300);
 
+
     useMemo(()=> {
         searchSomeThing();
     }, [searchPage, searchKey]);

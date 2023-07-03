@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {Routes, 
         Route, 
         Outlet} from "react-router-dom";
@@ -14,6 +14,7 @@ import Signup from "../Component/Signup/Signup";
 import Cart from "../Page/Cart/Cart";
 
 export default function AppRouter() {
+
     const PrivateRoute = () => {
 
         if(localStorage.getItem("auth")) {
@@ -32,7 +33,7 @@ export default function AppRouter() {
     const HomeNav = () => {
         return (
             <>
-                <HomeNavigation/>
+                <HomeNavigation />
                 <Outlet/>
             </>
         )

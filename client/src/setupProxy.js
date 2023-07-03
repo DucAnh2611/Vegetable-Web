@@ -7,7 +7,7 @@ module.exports = function(app) {
         "/navigation/cart",
         "/navigation/wish-list",
         "/navigation/search",
-        "/navigation/profile/:username",
+        "/navigation/profile/:userid",
         "/home/list-type",
         "/home/list-item",
         "/home/list-review",

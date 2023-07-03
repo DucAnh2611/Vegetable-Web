@@ -189,7 +189,7 @@ export const SearchPart = styled.div`
             min-height: 100px;
             height: 100px;
             width: 100%;
-            background: radial-gradient(circle, var(--Fifth_Green) 0%, var(--Primary_Green) 100%);
+            background: radial-gradient(circle, var(--Primary_Green) 0%, var(--Fifth_Green) 100%);
             border-radius: 20px;
             display: flex;
             flex-direction: row;
@@ -204,10 +204,11 @@ export const SearchPart = styled.div`
                 :first-child {
                     width: 40%;
                     position: relative;
+                    background-color: var(--Secondary_White);
                     &>img{
-                        height: 100%;
-                        width: 100%;
-                        object-fit: cover;
+                        height: 90%;
+                        width: 90%;
+                        object-fit: contain;
                     }
                 }
                 :last-child{
