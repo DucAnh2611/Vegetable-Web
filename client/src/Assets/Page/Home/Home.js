@@ -13,7 +13,7 @@ const Home = () =>{
     }, []);
 
     return(
-        <div>
+        <div style={{display: "flex", flexDirection: "column", gap: "100px"}}>
 
             <Home_Slider/>
             <Benefit/>

@@ -1,12 +1,14 @@
 
 import styled from "styled-components"
 
-export const SectionWrapper=styled.div`
-    padding: 0 15px;
-`;
-
 export const BenefitWrapper=styled.div`
-    
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
 `;
 
 export const BenefitTitleAndSubTitle=styled.div`
@@ -28,20 +30,20 @@ export const BenefitSubTitle=styled.div`
 `;
 
 export const BenefitContentWrapper=styled.div`
-    margin: 20px 0 50px 0;
+    margin: 0 auto;
+    width: 70%;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
 `;
 
 export const BenefitContent=styled.div`
     background: var(--Sixth_Green);
     height: 230px;
-    width: 320px;
+    width: 23%;
     min-width: 250px;
     border-radius: 16px;
     display: inline-block;
-    margin: 0 1% 10px 1%;
 `;
 
 export const BenefitContentIconWrapper=styled.div`

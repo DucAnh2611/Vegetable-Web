@@ -1,30 +1,25 @@
 import styled from "styled-components"
 
 export const ShopNowWrapper = styled.div`
-    max-width: 1440px;
+    width: 70%;
     margin: 0 auto;
-`;
-
-export const ShopNowWrap2Ele = styled.div`
-    width: 100%;
-    height: auto;
+    height: 400px;
     display: flex;
     justify-content: space-between;
-    margin-top: 80px;
+    
 `;
 
 export const ShopNowProductWrapper = styled.div`
-    width: 50%;
-    height: auto;
-    margin: 0 15px;
-    border-radius: 16px;
+    width: 49%;
+    height: 100%;
+    border-radius: 20px;
     display: flex;
     justify-content: center;
     position: relative;
 
     :hover {
         img {
-            transform: scale(1.13);
+            transform: scale(1.05);
         }
     }
 `;
@@ -34,20 +29,16 @@ export const ShopNowImgWrap = styled.div`
     height: 100%;
     overflow: hidden;
     border-radius: 16px;
+    position: relative;
+    display: grid;
+    place-items: center;
 
     img {
-        transform: scale(1.02);
-        transition: 1s;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
     }
 `;
-
-export const ShopNowProductImg = styled.div`
-    height: 350px;
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-`;
-
 export const ShopNowProductContent = styled.div`
     display: flex;
     flex-direction: column;

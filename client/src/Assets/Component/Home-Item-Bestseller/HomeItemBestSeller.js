@@ -51,40 +51,38 @@ function BestSellerSection (){
     }, []);
 
     return (
-        <SectionWrapper>
 
-            <AllProduct_wrap>
+        <AllProduct_wrap>
 
-                <SectionTitle>Best Seller</SectionTitle>
-                
-                <Filter_category_wrap>
+            <SectionTitle>Best Seller</SectionTitle>
+            
+            <Filter_category_wrap>
 
-                    <Filter_category_list>
+                <Filter_category_list>
 
-                        <li onClick={el => {SetType(0)}}>All</li>
-                        {
-                            ListType.map(e => <li onClick={el => {SetType(dictionaryType[e.type])}}>{toCapitalize(e.type)}</li>)
-                        }
-
-                    </Filter_category_list>
-
-                </Filter_category_wrap>
-
-                <Style.flex_row_product>
+                    <li onClick={el => {SetType(0)}}>All</li>
                     {
-                        ListItem.length!==0
-                        ? ListItem.map(e => (<Product_Item item={e}/>))
-                        : <div><p>Nothing too see</p></div>
+                        ListType.map(e => <li onClick={el => {SetType(dictionaryType[e.type])}}>{toCapitalize(e.type)}</li>)
                     }
 
-                    <Style.ShopNow_Btn> 
-                        <button>Shop now</button>
-                    </Style.ShopNow_Btn>
-                </Style.flex_row_product>
+                </Filter_category_list>
 
-            </AllProduct_wrap>
+            </Filter_category_wrap>
 
-        </SectionWrapper>
+            <Style.flex_row_product>
+                {
+                    ListItem.length!==0
+                    ? ListItem.map(e => (<Product_Item item={e}/>))
+                    : <div><p>Nothing too see</p></div>
+                }
+
+                <Style.ShopNow_Btn> 
+                    <button>Shop now</button>
+                </Style.ShopNow_Btn>
+            </Style.flex_row_product>
+
+        </AllProduct_wrap>
+
     )
 }
 
