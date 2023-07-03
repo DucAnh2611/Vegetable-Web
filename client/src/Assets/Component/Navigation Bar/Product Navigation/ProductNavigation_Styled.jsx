@@ -12,7 +12,7 @@ export const ProductNavigationWrapper=styled.div`
 
 export const ProductNavigationLogoWrapper=styled.div`
     height: 80px;
-    width: 20%;
+    width: 25%;
     &>span>svg{
         height: 80px;
         width: 80px;
@@ -21,7 +21,7 @@ export const ProductNavigationLogoWrapper=styled.div`
 `;
 
 export const ProductNavigationSearchWrapper=styled.div`
-    width: 60%;
+    width: 50%;
     height: 80px;
     display: flex;
     justify-content: center;
@@ -74,6 +74,48 @@ export const PNSearchByCategoryOption=styled.option`
 
 export const ProductNavigationUserAndCartWrapper=styled.div`
     height: 80px;
-    width: 20%;
-    background-color: lightpink;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+`;
+
+export const PNUserAndCartWrapper=styled.div`
+    height: 50px;
+    width: auto;
+    display: flex;
+    padding-right: 10px;
+`;
+
+export const PNUserAndCartLogoWrapper=styled.div`
+    height: 50px;
+    width: 50px;
+    background-color: var(--Secondary_Green);
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    &>svg{
+        height: 20px;
+        width: 20px;
+    }
+`;
+
+export const PNUserAndCartTitle=styled.div`
+    font-size: 14px;
+    line-height: 50px;
+    padding-left: 10px;
+    color: var(--Secondary_White);
+`;
+
+export const PNCartItemNumber =styled.div`
+    background-color: var(--Third_Yellow);
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+    line-height: 24px;
+    font-size: 14px;
+    color: var(--Secondary_White);
+    margin-left: -16px;
+    margin-top: -6px;
 `;

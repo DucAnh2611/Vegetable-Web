@@ -140,10 +140,6 @@ export default function HomeNavigation() {
                     <ItemNumber>0</ItemNumber>
                 </EachIconPart>
 
-
-
-
-
             </NavigationIconWrapper>
 
         </NavigationWrapper>

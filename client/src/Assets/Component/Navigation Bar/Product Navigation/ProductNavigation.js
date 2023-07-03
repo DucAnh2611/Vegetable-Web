@@ -13,7 +13,11 @@ import {ProductNavigationWrapper,
         PNSearchByCategoryWrapper,
         PNSearchByCategorySelect,
         PNSearchByCategoryOption,
-        ProductNavigationUserAndCartWrapper } from "./ProductNavigation_Styled";
+        ProductNavigationUserAndCartWrapper,
+        PNUserAndCartWrapper,
+        PNUserAndCartLogoWrapper,
+        PNUserAndCartTitle,
+        PNCartItemNumber } from "./ProductNavigation_Styled";
 
 export default function ProductNavigation() {
     return (
@@ -52,6 +56,28 @@ export default function ProductNavigation() {
             </ProductNavigationSearchWrapper>
             
             <ProductNavigationUserAndCartWrapper>
+
+                <PNUserAndCartWrapper>
+
+                    <PNUserAndCartLogoWrapper>
+                        <FontAwesomeIcon icon={faRegular.faUser}/>
+                    </PNUserAndCartLogoWrapper>
+
+                    <PNUserAndCartTitle>My Account</PNUserAndCartTitle>
+
+                </PNUserAndCartWrapper>
+
+                <PNUserAndCartWrapper>
+
+                    <PNUserAndCartLogoWrapper style={{backgroundColor:"var(--Primary_Pink)"}}>
+                        <FontAwesomeIcon icon={faSolid.faBasketShopping}/>
+                    </PNUserAndCartLogoWrapper>
+
+                    <PNCartItemNumber>1</PNCartItemNumber>
+
+                    <PNUserAndCartTitle>My Cart</PNUserAndCartTitle>
+
+                </PNUserAndCartWrapper>
 
             </ProductNavigationUserAndCartWrapper>
 
