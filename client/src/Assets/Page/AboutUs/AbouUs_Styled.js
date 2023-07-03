@@ -8,6 +8,7 @@ export const AboutUsWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 100px;
 
     background-color: transparent;
 `;
@@ -15,7 +16,7 @@ export const AboutUsWrapper = styled.div`
 export const AboutUsIntroduce = styled.section`
     height: 600px;
     width: 70%;
-    margin: 0 auto;
+    margin: 50px auto;
 
     display: flex;
     flex-direction: row;
@@ -98,7 +99,6 @@ export const AboutUsIntroduce = styled.section`
 `;
 
 export const AboutUsTechnology = styled.section`
-    margin-top: 50px;
     display: inline-block;
     width: 100%;
     height: 600px;
@@ -204,7 +204,6 @@ export const EachTech = styled.div`
 
 export const AboutUsDataBase= styled.section`
 
-    margin-top: 100px;
     display: inline-block;
     width: 100%;
     height: fit-content;  

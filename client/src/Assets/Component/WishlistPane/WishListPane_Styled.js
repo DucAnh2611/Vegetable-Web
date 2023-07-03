@@ -115,7 +115,7 @@ export const EachItemInWishList = styled.div`
     display: flex;
     color: var(--Primary_Black);
     box-sizing: border-box;
-    padding: 20px;
+    padding: 15px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;

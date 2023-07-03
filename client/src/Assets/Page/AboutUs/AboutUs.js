@@ -103,6 +103,24 @@ export default function AboutUs() {
 
                     </EachTech>  
 
+                    <EachTech> 
+
+                        <div>
+                            <FontAwesomeIcon icon={fa1.faGithub}/>
+                        </div>
+
+                        <div>
+
+                            <h3>Github</h3>
+
+                            <p>Service for oftware development and version control using Git.</p>
+
+                            <a href="https://github.com/about" target="_blank">Read more</a>
+
+                        </div>
+
+                    </EachTech> 
+
                 </div>
 
             </AboutUsTechnology>

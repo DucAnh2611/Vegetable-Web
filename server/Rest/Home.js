@@ -77,10 +77,10 @@ function Home(app) {
     let { amount } = req.query;
 
     let ListReview = await fetchData(`
-      SELECT r.title, r.description, r.rating, u.avatar as user_avatar, u.username, p.image as product_image
+      SELECT DISTINCT u.fullname, u.username, r.title, r.description, r.rating, u.avatar as user_avatar, p.image as product_image, p.PdName
       FROM Product as p INNER JOIN Review as r ON p.id = r.PdId
                         INNER JOIN Users as u ON r.UserId = u.id
-      ORDER BY RANDOM()
+      ORDER BY r.rating DESC
       LIMIT ${amount}
     `);
 
