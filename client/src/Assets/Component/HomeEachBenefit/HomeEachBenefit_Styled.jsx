@@ -14,10 +14,9 @@ export const BenefitTitleAndSubTitle=styled.div`
 `;
 
 export const SectionTitle=styled.div`
-    font-size: 38px;
-    font-weight: 500;
-    /* font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; */
-    margin-top: 8%;
+    font-size: 4vh;
+    font-weight: bold;
+    color: var(--Primary_Green);
 `;
 
 export const BenefitSubTitle=styled.div`

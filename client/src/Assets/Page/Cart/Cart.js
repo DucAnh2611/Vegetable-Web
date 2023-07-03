@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import ConvertToIamge from "../../AssistsFunc/ConvertBlobToImage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {debounce} from 'lodash';
 import * as fa from "@fortawesome/free-solid-svg-icons";
 
 export default function Cart() {
@@ -15,6 +16,9 @@ export default function Cart() {
             if(data.status === "accepted") {
                 SetListitem(data.field);
             }
+            else {
+                SetListitem([]);
+            }
         })
     }
 
@@ -26,7 +30,7 @@ export default function Cart() {
         );        
     }
 
-    const addItem = (quantity, id) => {
+    const addItem = debounce((quantity, id) => {
 
         fetch(`/product-detail/${id}/addtocart`, {
             method: "POST",
@@ -38,26 +42,31 @@ export default function Cart() {
                 quantity: quantity
             }),
         })
-        .then(res => res.json())
-        .then(data=> {
-            fetchCartItems()
-        });
+        // .then(res => res.json())
+        // .then(data=> {
+        // });
         
-    }
+    }, 300);
 
-    const changeItemQuantity = (quantity, id) => {
-
-        let req = /^\d+$/;
-        if(req.test(quantity)) {
-            if(quantity <= 0) {
-                removeItem(id);
-            }
-            else {
-                addItem(quantity, id);
-            }            
+    const changeItemQuantity = (quantitychange, id, quantitydef) => {
+        if(quantitydef + quantitychange <= 0) {
+            removeItem(id);
         }
+        else {
+            SetListitem(listItem.map((e) => {
+                if(e.id === id) {
+                    return {
+                        ...e, 
+                        quantity : e.quantity += parseInt(quantitychange)
+                    }
+                    
+                }
+                return e;
+            }))
+            addItem(quantitychange, id);
+        }            
 
-    }
+    };
 
     useEffect(() => {
         fetchCartItems();
@@ -101,9 +110,9 @@ export default function Cart() {
                                     </div>
 
                                     <div>
-                                        <button onClick={ev => changeItemQuantity(e.quantity - 1, e.id)}><FontAwesomeIcon icon={fa.faMinus}/></button>
-                                        <input type="number" onChange={ev => changeItemQuantity(ev.target.value, e.id)} defaultValue={e.quantity}/>
-                                        <button onClick={ev => changeItemQuantity(e.quantity + 1, e.id)}><FontAwesomeIcon icon={fa.faPlus}/></button>
+                                        <button onClick={ev => changeItemQuantity(- 1, e.id, e.quantity)}><FontAwesomeIcon icon={fa.faMinus}/></button>
+                                        <input type="number" onChange={ev => changeItemQuantity(ev.target.value - e.quantity, e.id, e.quantity)} value={e.quantity}/>
+                                        <button onClick={ev => changeItemQuantity(1, e.id, e.quantity)}><FontAwesomeIcon icon={fa.faPlus}/></button>
                                     </div>
 
                                     <div>

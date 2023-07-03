@@ -90,7 +90,7 @@ function Product_Item({item}) {
                                 new Array(5).fill('').map((_, idx) => (
                                     idx +1 <= item.AvgRating
                                     ? <FontAwesomeIcon icon={faSolid.faStar}/>
-                                    : item.AvgRating - parseInt(item.AvgRating) >= 0.5 
+                                    : item.AvgRating - idx >= 0.5 
                                         ? <FontAwesomeIcon icon={faRegular.faStarHalfAlt}/>
                                         : <FontAwesomeIcon icon={faRegular.faStar}/>
                                 ))
