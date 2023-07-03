@@ -66,7 +66,6 @@ export const EachReview = styled.div`
             overflow: hidden;
             border-radius: 20px;
             box-sizing: border-box;
-            border: 5px solid var(--Primary_Green);
             img{
                 height: 100%;
                 width: 100%;

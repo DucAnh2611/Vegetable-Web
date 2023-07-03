@@ -106,7 +106,7 @@ function NavigationBar(app) {
     let ProductFiltered = await fetchData(`
     SELECT p.*
     FROM Product as p
-    WHERE PdId LIKE '%${key}%' 
+    WHERE PdName LIKE '%${key}%' 
     LIMIT ${each}
     OFFSET ${(page -1) *each}
     `);

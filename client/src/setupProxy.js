@@ -6,6 +6,7 @@ module.exports = function(app) {
         "/signup/auth",
         "/navigation/cart",
         "/navigation/wish-list",
+        "/navigation/search",
         "/navigation/profile/:username",
         "/home/list-type",
         "/home/list-item",
