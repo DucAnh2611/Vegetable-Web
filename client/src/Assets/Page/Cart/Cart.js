@@ -77,7 +77,9 @@ export default function Cart() {
         <div>
 
             <div>
-                Navigate pane
+                <a href="/shop-cart">Cart</a>
+                <a href="/shop-checkout">Checkout</a>
+                <a href="/shop-order-tracking">Order tracking</a>
             </div>
 
             <div>

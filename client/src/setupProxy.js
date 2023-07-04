@@ -19,6 +19,13 @@ module.exports = function(app) {
         "/product-detail/:productid/addwishlist",
         "/cart/check-out",
         "/cart/set-quantity",
+        "/cart/remove-all",
+        "/profile/:userid",
+        "/profile/method/:userid",
+        "/profile/:userid/update",
+        "/profile/:userid/password-change",
+        "/profile/:userid/add-method",
+        "/method/view",
         "/aboutus/all"
     ];
     

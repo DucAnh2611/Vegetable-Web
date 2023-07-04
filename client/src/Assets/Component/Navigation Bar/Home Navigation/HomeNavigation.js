@@ -26,6 +26,7 @@ export default function HomeNavigation() {
     const [openSearchPane, SetOpenSearchPane] = useState(false);
     const [searchPage, SetSearchPage] = useState(1);
     const [searchKey, SetSearchKey] = useState("");
+    const [changeSearchKey, SetChangeSearchKey]= useState(false);
     const [listSearch, SetListSearch] = useState([]);
 
     const handleOpenWishListPane = () => {
@@ -50,16 +51,17 @@ export default function HomeNavigation() {
         .then(res => res.json())
         .then(data => {
             if(data.status === "accepted") {
-                if(searchPage!== 1) {
+                if(!changeSearchKey) {
                     SetListSearch(list => [...list, ...data.field]);                    
                 }
                 else{
                     SetListSearch(data.field);
+                    SetChangeSearchKey(false);
                 }
 
             }
             else {
-                SetListSearch(list => [...list]);
+                SetListSearch([]);
             }
         })
     }, 300);
@@ -94,7 +96,11 @@ export default function HomeNavigation() {
                     openSearchPane 
                     ? (
                         <SearchPart >
-                            <input type="text" className={!openSearchPane&& "closed"} placeholder="Search Product" maxLength={30} onChange={e=> SetSearchKey(e.target.value)}/>
+                            <input type="text" className={!openSearchPane&& "closed"} placeholder="Search Product" maxLength={30} onChange={e=> {
+                                SetSearchKey(e.target.value);
+                                SetChangeSearchKey(true);
+                                SetSearchPage(1);
+                            }}/>
                             <button onClick={e => SetOpenSearchPane(false)}><FontAwesomeIcon icon={faSolid.faClose}/></button>   
                             <div onScroll={e => scrollToFetchMore(e)}>
                                 {

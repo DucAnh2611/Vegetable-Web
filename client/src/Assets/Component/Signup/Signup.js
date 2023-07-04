@@ -117,7 +117,7 @@ function Signup() {
 
         if(data.status === "accepted") {
           navigate("/");
-          localStorage.setItem("auth", JSON.stringify({id: data.field.value, authen: true}));
+          localStorage.setItem("auth", JSON.stringify({id: data.field.userid, authen: true}));
         }
         else {
           SetField(Object.keys(data.field).map(e => ({

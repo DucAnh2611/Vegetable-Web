@@ -13,7 +13,7 @@ export const FooterWrap = styled.section`
 `;
 
 export const FooterDetailAll = styled.div`
-    padding: 50px 15px 0 15px;
+    padding: 0 15px 0 10px;
 `;
 
 export const FooterDetailWrap = styled.div`
@@ -23,7 +23,6 @@ export const FooterDetailWrap = styled.div`
     justify-content: center;
     align-items: center;
     padding: 0 15px;
-    margin-bottom: 30px;
     &>div{
         height: 100%;
     }
@@ -44,7 +43,6 @@ export const DetailHeader = styled.div`
     width: 40%;
     display: flex;
     flex-direction: row;
-    border-right: 1px solid var(--Fifth_Green);
     box-sizing: border-box;
     padding:  0px 20px 0 0;
 
@@ -74,7 +72,7 @@ export const DetailHeader = styled.div`
             margin-bottom: 6px;
         }
         & > span{
-            background: var(--Secondary_Yellow);
+            background: var(--Primary_White);
             margin-top: 20px;
             border-radius: 20px;
             padding: 20px 15px;

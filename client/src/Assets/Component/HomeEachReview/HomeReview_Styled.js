@@ -3,10 +3,9 @@ import styled from "styled-components";
 
 export const ReviewPartWrapper = styled.section`
     width: 100%;
-    height: 545px;
+    height: 550px;
     display: block;
-    margin-bottom: 20px;
-    background: url(https://wpbingosite.com/wordpress/vegety/wp-content/uploads/2022/11/background-2.jpg)
+    background: url(https://wpbingosite.com/wordpress/vegety/wp-content/uploads/2022/11/background-2.jpg) center repeat-x;
 `;
 
 export const ReviewHeader = styled.div`
@@ -26,26 +25,39 @@ export const ReviewHeader = styled.div`
 `;
 
 export const ReviewContent = styled.div`
-    height: auto;
+    height: 80%;
     width: 100%;
-    margin: 0 auto;
-    padding: 0 30px;
-    margin-top: 20px;
+    box-sizing: border-box;
+    padding: 30px 15%;
     position: relative; 
 `;
 
 export const ReviewSlider = styled.div`
-    height: auto;
+    height: 100%;
     width: 100%;
-    padding: 0 15px 30px 15px;
+    padding: 30px 0 15px;
     display: flex;
     align-items: center;
     overflow: auto hidden;
     gap: 2%;
+        
+    &::-webkit-scrollbar {
+        height: 10px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--Primary_Green);
+        border-radius: 50px;
+    }
 `;
 
 export const EachReview = styled.div`
     min-width: 49%;
+    width: 49%;
     height: 100%;
     position: relative;
     display: flex;
@@ -57,7 +69,7 @@ export const EachReview = styled.div`
         :first-child{
             height: 200px;
             width: 150px;
-            left: 7%;
+            left: 5%;
             position: absolute;
             display: flex;
             justify-content: center;

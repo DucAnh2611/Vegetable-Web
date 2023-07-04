@@ -233,5 +233,19 @@ export const SearchPart = styled.div`
                 }
             }
         }
+
+        &::-webkit-scrollbar {
+            width: 20px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--Fifth_Green);
+            border-radius: 50px;
+            border: 5px solid var(--Primary_Green);
+        }
     }
 `;

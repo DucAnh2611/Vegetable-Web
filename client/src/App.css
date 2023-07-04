@@ -21,6 +21,7 @@
   text-align: center;
   height: fit-content;
   position: relative;
+  /* Target the scrollbar track */
 }
 
 * {
