@@ -17,7 +17,7 @@ function Cart(app) {
       `
           SELECT PdId, quantity
           FROM Cart
-          WHERE UserId == ${userid}
+          WHERE UserId == ${userinfo.userid}
       `);
 
     let getMethodid = await fetchData(`
@@ -28,36 +28,36 @@ function Cart(app) {
 
     if (getMethodid.length !== 0) {
 
-      let InsertToOrder = await InsertData(`
-        INSERT INTO Order (
-            UserId,
-            OrderAdress,
-            OrderDate,
-            OrderFullname,
-            OrderEmail,
-            OrderPhoneNum,
-            OrderDescription,
-            OrderStateId,
-            MethodId
-          )
+      let InsertToOrder = await InsertData(`  
+        INSERT INTO [Order] (
+          UserId,
+          OrderAdress,
+          OrderDate,
+          OrderFullname,
+          OrderEmail,
+          OrderPhoneNum,
+          OrderDescription,
+          OrderStateId,
+          MethodId
+        )
         VALUES (
           ${userinfo.userid}, 
-          '${userinfo.orderadress}', 
-          '${userinfo.orerdate}',
+          '${userinfo.orderaddress}', 
+          datetime('${userinfo.orderdate}'),
           '${userinfo.fullname}',
           '${userinfo.email}',
           '${userinfo.phonenum}',
           '${userinfo.description}',
           1,
           ${methodid}
-          );
+          )
       `);
 
       if(InsertToOrder === "Inserted") {
 
         let GetCurrentOrder = await fetchData(`
           SELECT id
-          FROM Order
+          FROM [Order]
           WHERE UserId == ${userinfo.userid}
           ORDER BY OrderDate DESC 
           LIMIT 1
@@ -69,16 +69,12 @@ function Cart(app) {
             INSERT INTO Orders_Product (PdId, OrderId, quantity)
             VALUES (${e.PdId}, ${GetCurrentOrder[0].id}, ${e.quantity});
           `);
+
           let updateStockProduct= await InsertData(`
             UPDATE Product SET quantity = quantity - ${e.quantity} WHERE id == ${e.PdId}
-          `)
+          `);
 
         });
-
-        let removeAllItem = await InsertData(
-        `
-          DELETE FROM Cart WHERE UserId == ${userid}
-        `);
 
         responseContext.json = {
           status: "accepted",
@@ -105,6 +101,31 @@ function Cart(app) {
     let UpdateQuantity = await InsertData(
       `
         UPDATE Cart SET quantity =${quantity} WHERE PdId== ${productid} AND UserId == ${userid}
+      `);
+
+    if(UpdateQuantity === "Inserted") {
+      responseContext.json = {
+        status: "accepted",
+      };
+      responseContext.status = 200;      
+    }
+
+    res.status(responseContext.status).json({ ...responseContext.json });
+  });
+
+  app.get("/cart/remove-all", async (req, res) => {
+    let responseContext = {
+      json: {
+        status: "denied",
+        field: [],
+      },
+      status: 404,
+    };
+    let { userid } = req.query;
+
+    let UpdateQuantity = await InsertData(
+      `
+        DELETE FROM Cart WHERE UserId = ${userid}
       `);
 
     if(UpdateQuantity === "Inserted") {

@@ -57,8 +57,22 @@ function Signup(app) {
             )
           `,
         defImage);
-      responseContext.json.status = "accepted";
-      responseContext.status = 200;
+      if(InsertUser === "Inserted") {
+        let userid = await fetchData(`SELECT id FROM Users WHERE username == '${UserSignup.username}'`);
+
+        let DefaultMethod = await InsertData(`
+          INSERT INTO Method_user (methodTypeId, description, UserId) VALUES (
+            (SELECT id FROM MethodType WHERE type == 'cash'),
+            '',
+            ${userid[0].id}
+            )
+        `);
+
+        responseContext.json.status = "accepted";
+        responseContext.json.field = {userid: userid[0].id}
+        responseContext.status = 200;
+      }
+        
     }
 
     res.status(responseContext.status).json({ ...responseContext.json });

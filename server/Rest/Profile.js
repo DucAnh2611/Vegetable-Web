@@ -32,6 +32,36 @@ function Profile(app) {
     res.status(responseContext.status).json({ ...responseContext.json });
   });
 
+  app.get("/profile/method/:userid", async (req, res) => {
+    let responseContext = {
+      json: {
+        status: "denied",
+        field: [],
+      },
+      status: 404,
+    };
+
+    let { userid } = req.params;
+
+    let UserMethods = await fetchData(`
+      SELECT mt.type, mu.id, mu.description
+      FROM Method_User as mu INNER JOIN MethodType as mt on mu.methodTypeId = mt.id
+      WHERE UserId = ${userid}
+    `);
+
+    if(UserMethods.length !== 0) {
+      responseContext = {
+        json: {
+          status: "accepted",
+          field: UserMethods,
+        },
+        status: 200,
+      };
+    }
+
+    res.status(responseContext.status).json({ ...responseContext.json });
+  });
+
   app.post("/profile/:userid/update", async (req, res) => {
     let responseContext = {
       json: {
@@ -136,13 +166,13 @@ function Profile(app) {
       status: 404,
     };
 
-    let {methodtypeid, description} = req.body;
+    let { methodtypeid, description} = req.body;
     let { userid } = req.params;
 
     let CheckExistMethod = await fetchData(`
       SELECT *
       FROM Method_User
-      WHERE Userid = ${userid} AND description = '${description}'
+      WHERE Userid = ${userid} AND description = '${description}' AND methodTypeId == ${methodtypeid}
     `);
 
     if(CheckExistMethod.length ===0 ){
@@ -158,10 +188,41 @@ function Profile(app) {
         status: 200,
       };
     }
+    else {
+      responseContext.json.field = {msg: "same"}
+    }
 
     res.status(responseContext.status).json({ ...responseContext.json });
   });
+  
+  app.get("/method/view", async (req, res) => {
+    let responseContext = {
+      json: {
+        status: "denied",
+        field: {},
+      },
+      status: 404,
+    };
 
+
+    let UserMethods = await fetchData(`
+      SELECT *
+      FROM MethodType
+      WHERE type <> 'cash'
+    `);
+
+    if(UserMethods.length !== 0) {
+      responseContext = {
+        json: {
+          status: "accepted",
+          field: UserMethods,
+        },
+        status: 200,
+      };
+    }
+
+    res.status(responseContext.status).json({ ...responseContext.json });
+  });
 };
 
 module.exports = Profile;
