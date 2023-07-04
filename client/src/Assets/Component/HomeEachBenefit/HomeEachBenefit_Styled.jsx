@@ -44,7 +44,6 @@ export const BenefitContentWrapper=styled.div`
 export const BenefitContent=styled.div`
     background: var(--Sixth_Green);
     height: 234px;
-    margin: 0 15px;
     width: 330px;
     border-radius: 16px;
     display: inline-block;
