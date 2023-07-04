@@ -25,7 +25,7 @@ export default function ProductNavigation() {
             
             <ProductNavigationLogoWrapper>
 
-                <span><Logo/></span>
+                <a href="/"><Logo/></a>
 
             </ProductNavigationLogoWrapper>
 

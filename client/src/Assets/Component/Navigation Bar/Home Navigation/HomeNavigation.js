@@ -75,7 +75,7 @@ export default function HomeNavigation() {
                 openWishListPane && <WishList setOpenPane={SetOpenWishListPane}/>
             }
             <NavigationLogo>
-                <Logo style={{cursor:"pointer"}}></Logo>
+                <Logo></Logo>
             </NavigationLogo>
 
             <NavigationSubtitleWrapper>

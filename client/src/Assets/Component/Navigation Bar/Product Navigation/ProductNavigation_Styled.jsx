@@ -13,7 +13,7 @@ export const ProductNavigationWrapper=styled.div`
 export const ProductNavigationLogoWrapper=styled.div`
     height: 80px;
     width: 25%;
-    &>span>svg{
+    &>a>svg{
         height: 80px;
         width: 80px;
         float: left;
