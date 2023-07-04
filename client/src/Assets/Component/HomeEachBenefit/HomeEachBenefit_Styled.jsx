@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 export const BenefitWrapper=styled.div`
     width: 100%;
-    height: 500px;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,10 +13,11 @@ export const BenefitWrapper=styled.div`
 
 export const BenefitTitleAndSubTitle=styled.div`
     padding-bottom: 20px;
+    margin-bottom: 25px;
 `;
 
 export const SectionTitle=styled.div`
-    font-size: 4vh;
+    font-size: 36px;
     font-weight: bold;
     color: var(--Primary_Green);
 `;
@@ -26,22 +27,24 @@ export const BenefitSubTitle=styled.div`
     font-weight: 400;
     color:var(--Primary_Gray);
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    padding: 20px 0 0px 0;
+    padding: 10px 0 0 0;
 `;
 
 export const BenefitContentWrapper=styled.div`
     margin: 0 auto;
-    width: 70%;
+    padding: 0 15px;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 50px;
 `;
 
 export const BenefitContent=styled.div`
     background: var(--Sixth_Green);
-    height: 230px;
-    width: 23%;
-    min-width: 250px;
+    height: 234px;
+    margin: 0 15px;
+    width: 330px;
     border-radius: 16px;
     display: inline-block;
 `;
@@ -53,7 +56,9 @@ export const BenefitContentIconWrapper=styled.div`
     border-radius: 50%;
     margin: 10% auto 5% auto;
     display: flex;
+    -webkit-box-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
     align-items: center;
 `;
 

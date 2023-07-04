@@ -1,17 +1,18 @@
 import styled from "styled-components"
 
 export const ShopNowWrapper = styled.div`
-    width: 70%;
+    width: auto;
     margin: 0 auto;
-    height: 400px;
+    height: auto;
     display: flex;
     justify-content: space-between;
     
 `;
 
 export const ShopNowProductWrapper = styled.div`
-    width: 49%;
+    width: 50%;
     height: 100%;
+    margin: 0 15px;
     border-radius: 20px;
     display: flex;
     justify-content: center;
@@ -34,7 +35,7 @@ export const ShopNowImgWrap = styled.div`
     place-items: center;
 
     img {
-        height: 100%;
+        height: 352px;
         width: 100%;
         object-fit: cover;
     }

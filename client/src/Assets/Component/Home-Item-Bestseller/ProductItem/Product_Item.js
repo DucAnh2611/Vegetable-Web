@@ -26,7 +26,7 @@ function Product_Item({item}) {
     };
     const toCapitalize = (str) => {
         return str.charAt(0).toUpperCase() + str.slice(1);
-      };
+    };
 
     const AddToCart = () => {
         fetch(`/product-detail/${item.id}/addtocart`, {

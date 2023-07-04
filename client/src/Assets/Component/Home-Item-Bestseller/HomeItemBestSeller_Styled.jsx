@@ -10,7 +10,6 @@ export const BestSeller_Wrap = styled.div`
 export const AllProduct_wrap = styled.div`
     width: 100%;
     height: auto;
-    padding-bottom: 100px;
     max-width: 1440px;
     margin: 0 auto;
 
