@@ -19,7 +19,7 @@ export const BenefitTitleAndSubTitle=styled.div`
 export const SectionTitle=styled.div`
     font-size: 36px;
     font-weight: bold;
-    color: var(--Primary_Green);
+    color: var(--Primary_Black);
 `;
 
 export const BenefitSubTitle=styled.div`

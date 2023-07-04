@@ -2,9 +2,8 @@
 import styled from "styled-components";
 
 export const FooterWrap = styled.section`
-    margin-top: 200px;
-    display: inline-block;
-    height: 500px; 
+    margin-top: 100px;
+    height: auto; 
     width: 100%;
     background-color: var(--Primary_Green);
     overflow: hidden;
@@ -13,14 +12,18 @@ export const FooterWrap = styled.section`
     }
 `;
 
+export const FooterDetailAll = styled.div`
+    padding: 50px 15px 0 15px;
+`;
+
 export const FooterDetailWrap = styled.div`
-    height: 450px;
+    height: auto;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    box-sizing: border-box;
-    padding: 100px 15% 50px 15%;
+    padding: 0 15px;
+    margin-bottom: 30px;
     &>div{
         height: 100%;
     }
@@ -32,8 +35,8 @@ export const FooterEndWrap = styled.div`
     place-items: center;
     &>p{
         text-align: center;
-        font-size: 1.6vh;
-        color: var(--Primary_Black);
+        font-size: 14px;
+        color: var(--Primary_White);
     }
 `;
 
@@ -43,17 +46,42 @@ export const DetailHeader = styled.div`
     flex-direction: row;
     border-right: 1px solid var(--Fifth_Green);
     box-sizing: border-box;
-    padding: 0 50px;
+    padding:  0px 20px 0 0;
+
     &>div{
         width: 100%;
-        height: 100%;
-        display: grid;
-        place-items: center;
-        background: var(--Primary_White);
+        height: 350px;
+        margin: 20px;
         border-radius: 20px;
-        &>span{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        & > div {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        & > div > h1, p {
+            color: var(--Primary_White);
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 18px;
+        }
+        & > div > h1 {
+            font-weight: 500;
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+        & > span{
+            background: var(--Secondary_Yellow);
+            margin-top: 20px;
+            border-radius: 20px;
+            padding: 20px 15px;
             svg{
-                height: 100px;
+                height: 150px;
+                width: 100%;
+                padding: 10px;
             }
         }
     }
@@ -66,26 +94,26 @@ export const DetailContent = styled.div`
 export const DetailContentColumn = styled.div`
     height: 100%;
     width: 250px;
-    display: inline-block;
-    box-sizing: border-box;
+    display: block;
     padding: 0 20px;
+    border-right: 1px solid var(--Fifth_Green);
     &>div{
         width: 100%;
         &:first-child {
-            height: 50px;
+            padding: 10px 10px 5px 10px;
             border-bottom: 1px solid var(--Fifth_Green);
             & > h1{
                 text-align: right;
-                font-size: 3vh;
+                font-size: 17px;
                 color: var(--Primary_White);
             }
         }
         &:last-child {
-            margin-top: 20px;
+            margin-top: 15px;
             display: flex;
             flex-direction: column;
             &>a{
-                height: 40px;
+                padding: 8px 10px;
                 display: flex;
                 justify-content: flex-end;
                 align-items: center;

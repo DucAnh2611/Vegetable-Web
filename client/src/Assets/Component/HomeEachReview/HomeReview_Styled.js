@@ -3,10 +3,10 @@ import styled from "styled-components";
 
 export const ReviewPartWrapper = styled.section`
     width: 100%;
-    height: 600px;
-    display: inline-block;
-    background-color: var(--Secondary_Green);   
-
+    height: 545px;
+    display: block;
+    margin-bottom: 20px;
+    background: url(https://wpbingosite.com/wordpress/vegety/wp-content/uploads/2022/11/background-2.jpg)
 `;
 
 export const ReviewHeader = styled.div`
@@ -19,25 +19,25 @@ export const ReviewHeader = styled.div`
     gap: 10px;
 
     &>p{
-        font-size: 1.2vh;
+        font-size: 16px;
         color: var(--Primary_Gray);
     }
 
 `;
 
 export const ReviewContent = styled.div`
-    height: 80%;
-    width: 70%;
-    box-sizing: border-box;
-    padding: 50px 0;
+    height: auto;
+    width: 100%;
     margin: 0 auto;
+    padding: 0 30px;
+    margin-top: 20px;
     position: relative; 
-
 `;
 
 export const ReviewSlider = styled.div`
-    height: 100%;
+    height: auto;
     width: 100%;
+    padding: 0 15px 30px 15px;
     display: flex;
     align-items: center;
     overflow: auto hidden;
@@ -47,7 +47,6 @@ export const ReviewSlider = styled.div`
 export const EachReview = styled.div`
     min-width: 49%;
     height: 100%;
-    width: 49%;
     position: relative;
     display: flex;
     align-items: center;
@@ -58,7 +57,7 @@ export const EachReview = styled.div`
         :first-child{
             height: 200px;
             width: 150px;
-            left: 0;
+            left: 7%;
             position: absolute;
             display: flex;
             justify-content: center;
@@ -66,6 +65,8 @@ export const EachReview = styled.div`
             overflow: hidden;
             border-radius: 20px;
             box-sizing: border-box;
+            border: 2.5px solid rgba(126, 158, 44, 0.8);
+
             img{
                 height: 100%;
                 width: 100%;
@@ -73,7 +74,7 @@ export const EachReview = styled.div`
             }
         }
         :last-child {
-            height: 90%;
+            height: auto;
             width: 85%;
             border-radius: 20px;
             overflow: hidden;
@@ -81,9 +82,11 @@ export const EachReview = styled.div`
             flex-direction: row;
             align-items: center;
             background-color: var(--Primary_White);
+            border: 2.5px solid rgba(126, 158, 44, 0.8);
+
             &>div{
                 :first-child {
-                    height:100%;
+                    height: 220px;
                     width: 35%;
                     position: relative;
                     display: flex;
@@ -102,12 +105,13 @@ export const EachReview = styled.div`
                     height: 100%;
                     width: 65%;
                     box-sizing: border-box;
-                    padding: 30px; 
+                    padding: 36px 20px 36px 15px;
                     &>div{
                         width: 100%;
                         height: fit-content;
                         &>p{
                             text-align: left;
+                            padding: 5px 0;
                         }
                         &:first-child{
                             border-bottom: 1px solid var(--Primary_Green);
@@ -120,7 +124,7 @@ export const EachReview = styled.div`
                         }
                         &:last-child{
                             box-sizing: border-box;
-                            padding: 10px;
+                            padding: 15px;
                             border-radius: 10px;
                             border: 1px solid var(--Primary_Green);
                             &>p{
@@ -128,12 +132,10 @@ export const EachReview = styled.div`
                                 word-break: break-all;
                                 width: 100%;
                                 :first-child{
-                                    height: 20%;
-                                    font-size: 1.5vh;
+                                    font-size: 13px;
                                 }
                                 :last-child{
-                                    height: 80%;
-                                    font-size: 1.3vh;
+                                    font-size: 13px;
                                 }
                             }
                         }
