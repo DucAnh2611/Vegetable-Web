@@ -32,6 +32,7 @@ export const BenefitSubTitle=styled.div`
 
 export const BenefitContentWrapper=styled.div`
     margin: 0 auto;
+    max-width: 1440px;
     padding: 0 15px;
     width: 100%;
     display: flex;
