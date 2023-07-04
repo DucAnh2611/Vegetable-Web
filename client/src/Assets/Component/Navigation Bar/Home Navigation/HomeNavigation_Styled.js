@@ -18,7 +18,7 @@ export const NavigationLogo=styled.div`
     &>svg{
         height:80px;
         float: left;
-        cursor: pointer;
+        cursor: default;
     }
 `;
 
