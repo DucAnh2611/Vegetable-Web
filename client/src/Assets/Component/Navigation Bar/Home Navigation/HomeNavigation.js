@@ -94,7 +94,7 @@ export default function HomeNavigation() {
                     openSearchPane 
                     ? (
                         <SearchPart >
-                            <input type="text" className={!openSearchPane&& "closed"} placeholder="Search Prroduct" maxLength={30} onChange={e=> SetSearchKey(e.target.value)}/>
+                            <input type="text" className={!openSearchPane&& "closed"} placeholder="Search Product" maxLength={30} onChange={e=> SetSearchKey(e.target.value)}/>
                             <button onClick={e => SetOpenSearchPane(false)}><FontAwesomeIcon icon={faSolid.faClose}/></button>   
                             <div onScroll={e => scrollToFetchMore(e)}>
                                 {
