@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {Routes, 
         Route, 
-        Outlet} from "react-router-dom";
+        Outlet,
+        useNavigate,
+} from "react-router-dom";
 import HomeNavigation from "../Component/Navigation Bar/Home Navigation/HomeNavigation";
 import Home from "../Page/Home/Home";
 import ProductNavigation from "../Component/Navigation Bar/Product Navigation/ProductNavigation";
@@ -15,8 +17,12 @@ import Cart from "../Page/Cart/Cart";
 import Checkout from "../Page/CheckOut/CheckOut";
 import OrderTrackingDefault from "../Page/OrderTracking/OrderTrackingDefault/OrderTracking_Default";
 import OrderTrackingInfo from "../Page/OrderTracking/OrderTrackingInfo/OrderTracking";
+import Account from "../Page/Profile/Account/Account";
+import Orders from "../Page/Profile/Orders/Orders";
+import CheckoutMethod from "../Page/Profile/CheckoutMethod/CheckoutMethod";
 
 export default function AppRouter() {
+    const navigate = useNavigate();
 
     const PrivateRoute = () => {
 
@@ -60,6 +66,41 @@ export default function AppRouter() {
         )
     }
 
+    const CartGroup = () => {
+        return (
+            <>
+                <div>
+                    <a href="/shop-cart">Cart</a>
+                    <a href="/shop-checkout">Checkout</a>
+                    <a href="/shop-order-tracking">Order tracking</a>
+                </div>
+                <Outlet/>
+            </>
+        )
+    }
+
+    const ProfileGroup = () => {
+
+        const logout = () =>{
+            localStorage.removeItem("auth");
+            navigate("/");
+        }
+
+        return (
+            <>
+
+                <div>
+                    <button onClick={e=> navigate("/my-account")}>Account details</button>
+                    <button onClick={ e=> navigate("/my-account/orders")}>Order</button>
+                    <button onClick={ e=> navigate("/my-account/method")} >Checkout Method</button>
+                    <button onClick={logout}>Logout</button>
+                </div>
+                <Outlet/>
+
+            </>
+        )
+    }
+
     return (
         <>
             <Routes>
@@ -76,10 +117,21 @@ export default function AppRouter() {
                             <Route exact path="/about-us" element={<AboutUs/>}/>
                             <Route exact path="/shop" element={<Product/>}/>
                             <Route exact path="/shop/product/:productid" element={<ProductDetail/>}/>
-                            <Route exact path="/shop-cart" element={<Cart/>}/>
-                            <Route exact path="/shop-checkout" element={<Checkout/>}/>
-                            <Route exact path="/shop-order-tracking" element={<OrderTrackingDefault/>}/>
-                            <Route exact path="/shop-order-tracking/:orderid" element={<OrderTrackingInfo/>}/>
+
+                            <Route element={<CartGroup/>}>
+                                <Route exact path="/shop-cart" element={<Cart/>}/>
+                                <Route exact path="/shop-checkout" element={<Checkout/>}/>
+                                <Route exact path="/shop-order-tracking" element={<OrderTrackingDefault/>}/>
+                                <Route exact path="/shop-order-tracking/:orderid" element={<OrderTrackingInfo/>}/>
+                            </Route>
+
+                            <Route element={<ProfileGroup/>}>
+                                <Route exact path="/my-account" element={<Account/>}/>
+                                <Route exact path="/my-account/orders" element={<Orders/>}/>
+                                <Route exact path="/my-account/method" element={<CheckoutMethod/>}/>
+                            </Route>
+                            
+
                         </Route>
 
                     </Route>

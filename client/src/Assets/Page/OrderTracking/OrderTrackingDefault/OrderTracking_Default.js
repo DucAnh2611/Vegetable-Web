@@ -13,7 +13,7 @@ export default function OrderTrackingDefault() {
         .then(res => res.json())
         .then(data => {
             if(data.status === "accepted"){
-                navigate(`/shop-order-tracking/${data.field}`);
+                navigate(`/shop-order-tracking/${orderid}`);
             }
         })
     }
@@ -24,47 +24,39 @@ export default function OrderTrackingDefault() {
     }
 
     return (
+
         <div>
 
             <div>
-                <a href="/shop-cart">Cart</a>
-                <a href="/shop-checkout">Checkout</a>
-                <a href="/shop-order-tracking">Order tracking</a>
+                <h1>Order Tracking</h1>
             </div>
 
             <div>
 
                 <div>
-                    <h1>Order Tracking</h1>
+                    <label for="orderid">Order Id</label>
+                    <input 
+                    type="text" 
+                    id="orderid" 
+                    placeholder="Show in your profile"
+                    onChange={ e => SetOrderId(e.target.value)}/>
                 </div>
 
                 <div>
-
-                    <div>
-                        <label for="orderid">Order Id</label>
-                        <input 
-                        type="text" 
-                        id="orderid" 
-                        placeholder="Show in your profile"
-                        onChange={ e => SetOrderId(e.target.value)}/>
-                    </div>
-
-                    <div>
-                        <label for="email">Billing email</label>
-                        <input 
-                        type="text"         
-                        id="email" 
-                        placeholder="Email you use when checkout"
-                        onChange={ e => SetEmail(e.target.value)}/>
-                    </div>
-
-                    <div>
-                        <button onClick={confirmtrack}>Track</button>
-                    </div>
+                    <label for="email">Billing email</label>
+                    <input 
+                    type="text"         
+                    id="email" 
+                    placeholder="Email you use when checkout"
+                    onChange={ e => SetEmail(e.target.value)}/>
                 </div>
 
+                <div>
+                    <button onClick={confirmtrack}>Track</button>
+                </div>
             </div>
 
         </div>
+
     )
 }

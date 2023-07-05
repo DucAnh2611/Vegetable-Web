@@ -25,6 +25,7 @@ module.exports = function(app) {
         "/order-tracking/review/add",
         "/order-tracking",
         "/profile/method/:userid",
+        "/profile/orders/:userid",
         "/profile/:userid/update",
         "/profile/:userid/password-change",
         "/profile/:userid/add-method",

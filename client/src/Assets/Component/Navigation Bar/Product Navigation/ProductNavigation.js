@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as faSolid from "@fortawesome/free-solid-svg-icons";
 import * as faRegular from "@fortawesome/free-regular-svg-icons";
@@ -10,16 +10,61 @@ import {ProductNavigationWrapper,
         PNSearchButtonWrapper,
         PNSearchInputWrapper,
         PNSearchInput,
-        PNSearchByCategoryWrapper,
-        PNSearchByCategorySelect,
-        PNSearchByCategoryOption,
         ProductNavigationUserAndCartWrapper,
         PNUserAndCartWrapper,
         PNUserAndCartLogoWrapper,
         PNUserAndCartTitle,
-        PNCartItemNumber } from "./ProductNavigation_Styled";
+        PNCartItemNumber, 
+        SearchResPane} from "./ProductNavigation_Styled";
+import { debounce } from "lodash";
+import ConvertToImage from "../../../AssistsFunc/ConvertBlobToImage";
 
 export default function ProductNavigation() {
+
+    const [openSearchPane, SetOpenSearchPane] = useState(false);
+    const [searchPage, SetSearchPage] = useState(1);
+    const [searchKey, SetSearchKey] = useState("");
+    const [changeSearchKey, SetChangeSearchKey]= useState(false);
+    const [listSearch, SetListSearch] = useState([]);
+
+    const handleOpenSearchPane = () => {
+        SetOpenSearchPane(true);
+        SetSearchPage(1);
+    };
+
+    const scrollToFetchMore = (e) => {
+        if(e.target.scrollHeight- e.target.scrollTop === e.target.clientHeight) {
+            SetSearchPage(searchPage+1);
+        }
+    }
+
+    const searchSomeThing = debounce(() => {
+
+        fetch(`/navigation/search?key=${searchKey}&each=${5}&page=${searchPage}`,{method: 'GET'})
+        .then(res => res.json())
+        .then(data => {
+            if(data.status === "accepted") {
+                if(!changeSearchKey) {
+                    SetListSearch(list => [...list, ...data.field]);                    
+                }
+                else{
+                    SetListSearch(data.field);
+                    SetChangeSearchKey(false);
+                }
+
+            }
+            else {
+                SetListSearch([]);
+            }
+        })
+    }, 500);
+
+
+    useMemo(()=> {
+        searchSomeThing();
+        
+    }, [searchPage, searchKey]);
+
     return (
         <ProductNavigationWrapper>
             
@@ -36,28 +81,45 @@ export default function ProductNavigation() {
                 </PNSearchButtonWrapper>
 
                 <PNSearchInputWrapper>
-                    <PNSearchInput placeholder="Search now..."/>
+                    <PNSearchInput type="text" placeholder="Search now..."  maxLength={30} onChange={e=> {
+                        SetSearchKey(e.target.value);
+                        SetChangeSearchKey(true);
+                    }}
+                    onFocus={handleOpenSearchPane}
+                    />
                 </PNSearchInputWrapper>
-           
-                <PNSearchByCategoryWrapper>
 
-                    <PNSearchByCategorySelect>
-                        <PNSearchByCategoryOption value={0}>All catergory</PNSearchByCategoryOption>
-                        <PNSearchByCategoryOption value={1}>Drink</PNSearchByCategoryOption>
-                        <PNSearchByCategoryOption value={2}>Fruit</PNSearchByCategoryOption>
-                        <PNSearchByCategoryOption value={3}>Fruits & Vegetables</PNSearchByCategoryOption>
-                        <PNSearchByCategoryOption value={4}>Strawberry</PNSearchByCategoryOption>
-                        <PNSearchByCategoryOption value={5}>Blueberry</PNSearchByCategoryOption>
-                        <PNSearchByCategoryOption value={6}>Meat</PNSearchByCategoryOption>
-                    </PNSearchByCategorySelect>
-                
-                </PNSearchByCategoryWrapper>
+                {
+                    openSearchPane 
+                    && (
+                        <SearchResPane onScroll={e => scrollToFetchMore(e)}> 
+                            {
+                                listSearch.length !==0
+                                ?listSearch.map(e=> (
+                                <a href={`/shop/product/${e.id}`}>
+
+                                    <div>
+                                        <img src={ConvertToImage(e.image)} alt="search item"/>
+                                    </div>
+
+                                    <div>
+                                        <p>{e.PdName}</p>
+                                        <p><FontAwesomeIcon icon={faSolid.faDollar}/>{e.price} / {e.unit}</p>
+                                    </div>
+
+                                </a>) )
+                                :<p>Nothing in list</p>
+                            }
+                        </SearchResPane>
+                    )
+                }
+
 
             </ProductNavigationSearchWrapper>
             
             <ProductNavigationUserAndCartWrapper>
 
-                <PNUserAndCartWrapper>
+                <PNUserAndCartWrapper href="/my-account">
 
                     <PNUserAndCartLogoWrapper>
                         <FontAwesomeIcon icon={faRegular.faUser}/>
@@ -67,7 +129,7 @@ export default function ProductNavigation() {
 
                 </PNUserAndCartWrapper>
 
-                <PNUserAndCartWrapper>
+                <PNUserAndCartWrapper href="/shop-cart">
 
                     <PNUserAndCartLogoWrapper style={{backgroundColor:"var(--Primary_Pink)"}}>
                         <FontAwesomeIcon icon={faSolid.faBasketShopping}/>
