@@ -171,7 +171,7 @@ export default function Checkout() {
         document.title = "Vegetable - Checkout";
     }, []);
 
-    if(listItem.length !==0) {
+    if(listItem.length ===0) {
         return (
             <div>
                 <p>There's no item in your cart</p>
