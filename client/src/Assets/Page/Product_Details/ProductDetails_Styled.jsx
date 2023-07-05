@@ -14,7 +14,7 @@ export const PDProductWrapper=styled.div`
 export const PDImgWrapper=styled.div`
     width: 55%;
     height: 550px;
-    border: 1px solid var(--Primary_Gray);
+    border: 1px solid var(--Secondary_Gray);
     display: flex;
     margin-right: 5%;
     border-radius: 20px;
@@ -75,7 +75,7 @@ export const PDProductSetQuantityAndAdd2CartButtonWrapper=styled.div`
 
 export const PDProductSetQuantityWrapper=styled.div`
     width: 30%;
-    border: 1px solid var(--Primary_Gray);
+    border: 1px solid var(--Secondary_Gray);
     border-radius: 20px;
 `;
 
@@ -130,6 +130,9 @@ export const PDProductAdd2WishlistButton=styled.button`
         width: 40px;
         border-radius: 50%;
         margin-right: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border: .5px solid var(--Primary_Black);
         &>svg{
             height: 20px;
@@ -164,7 +167,7 @@ export const PDDeliveryDetailIcon=styled.div`
 `;
 
 export const PDHr =styled.hr`
-    color: var(--Primary_Gray);
+    color: var(--Secondary_Gray);
     margin: 10px 0;
     opacity: .6;
 `;
