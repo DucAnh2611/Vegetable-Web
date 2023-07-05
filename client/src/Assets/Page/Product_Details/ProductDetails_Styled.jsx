@@ -7,7 +7,7 @@ export const ProductDetailWrapper=styled.div`
 
 export const PDProductWrapper=styled.div`
     display: flex;
-    margin: 0 auto;
+    margin: 0% auto 5%;
     max-width: 1000px;
 `;
 
@@ -53,6 +53,7 @@ export const PDProductDescriptionDAndQuantityWrapper=styled.div`
 export const PDProductDescription=styled.p`
     font-size: 15px;
     padding: 5px 0 10px;
+    text-align: justify;
 `;
 
 export const PDProductQuantity=styled.p`
