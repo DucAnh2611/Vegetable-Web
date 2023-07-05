@@ -16,7 +16,8 @@ import {
     ProductShowWrap,
     ProductShow,
     ProductShowSearch,
-    PagenationPage} from "./Product_Styled";
+    PagenationPage
+} from "./Product_Styled";
 
 export default function Product() {
 
@@ -152,14 +153,27 @@ export default function Product() {
                     {
                         listProduct.length !== 0
                             ? listProduct.map(e => <Product_Item item={e} />)
-                            : <div><p>Nothing too see</p></div>
+                            : <div style={{
+                                margin: "0 auto",
+                                marginBottom: 30
+                            }}>
+                                <img
+                                    src="https://citroen.navigation.com/static/WFS/Shop-CitroenEMEA-Site/-/Shop-CitroenEMEA/en_GB/Product%20Not%20Found.png"
+                                    alt="Not found"
+                                    style={{
+                                        height: 400,
+                                        width: "auto",
+                                    }}
+                                ></img>
+                                <p>Data not found</p>
+                            </div>
                     }
                 </ProductListWrap>
 
                 <PagenationPage>
                     <Pagenation current={page} max={maxPage} setPage={SetPage} />
                 </PagenationPage>
-                
+
             </ProRangeListPro>
 
         </ProductWrapper>
