@@ -33,6 +33,25 @@ import {ProductDetailWrapper,
 import { SectionTitle } from "../../Component/HomeEachBenefit/HomeEachBenefit_Styled";
 import { ReactComponent as DeliveryTruck } from "../../Image/SVG/Product_Detail_SVG/FreeShipTruck.svg";
 import { ReactComponent as DeliveryBox } from "../../Image/SVG/Product_Detail_SVG/DeliverBox.svg";
+import {PDReviewWrapper,
+        PDReviewTitleWrapper,
+        PDReviewerWrapper,
+        PDReviewerAndReviewWrapper,
+        PDReviewerImgWrapper,
+        PDReviewerImg,
+        ReviewWrapper,
+        PDReviewerNameWrapper,
+        PDReviewerUserName,
+        PDReviewerFullName,
+        PDReviewerReviewWrapper,
+        PDReviewerTitleAndRatingWrapper,
+        PDReviewerTitle,
+        PDReviewerRating,
+        ReviewDescriptionWrapper,
+        ReviewDescription, } from "./PDReview_Styled";
+import {PDRelatedWrapper,
+        PDRelatedTitleWrapper,
+        PDRelatedProductWrapper, } from "./PDRelated_Styled";
 
 export default function ProductDetail() {
 
@@ -190,66 +209,80 @@ export default function ProductDetail() {
 
                     </PDProductWrapper>
 
-                    <div>
+                    <PDHr></PDHr>
 
-                        <div>
+                    <PDReviewWrapper>
 
-                            <h1>Review</h1>
+                        <PDReviewTitleWrapper>
 
-                        </div>
+                            <SectionTitle>Review</SectionTitle>
 
-                        <div>
+                        </PDReviewTitleWrapper>
+
+                        <PDReviewerWrapper>
                             {listReview.map(e => {
                                 return (
-                                    <div key={e.id}>
+                                    <PDReviewerAndReviewWrapper key={e.id}>
 
-                                        <div>
+                                        <PDReviewerImgWrapper>
 
-                                            <img src={ConvertToIamge(e.avatar)} alt="review user"/>
+                                            <PDReviewerImg src={ConvertToIamge(e.avatar)} alt="review user"/>
 
-                                        </div>
+                                        </PDReviewerImgWrapper>
 
-                                        <div>
+                                        <ReviewWrapper>
 
-                                            <div>
-                                                <p><b>{e.username}</b></p>
-                                                <p>{e.fullname}</p>
-                                            </div>
+                                            <PDReviewerNameWrapper>
+                                                <PDReviewerUserName>{e.username}</PDReviewerUserName>
+                                                <PDReviewerFullName>{e.fullname}</PDReviewerFullName>
+                                            </PDReviewerNameWrapper>
 
-                                            <div>
+                                            <PDReviewerReviewWrapper>
 
-                                                <div>
-                                                    <p>{e.title}</p>
-                                                    <p>{e.rating}</p>
-                                                </div>
+                                                <PDReviewerTitleAndRatingWrapper>
+                                                
+                                                    <PDReviewerRating>
+                                                            {
+                                                                new Array(5).fill('').map((_, idx) => (
+                                                                    idx + 1 <= e.rating
+                                                                        ? <FontAwesomeIcon icon={fa.faStar} />
+                                                                        : e.rating - idx >= 0.5
+                                                                            ? <FontAwesomeIcon icon={faReg.faStarHalfAlt} />
+                                                                            : <FontAwesomeIcon icon={faReg.faStar} />
+                                                                ))
+                                                            }
+                                                        </PDReviewerRating>
+                                                    <PDReviewerTitle>{e.title}</PDReviewerTitle>
+                                                    
+                                                </PDReviewerTitleAndRatingWrapper>
 
-                                                <div>
-                                                    <p>{e.description}</p>
-                                                </div>
+                                                <ReviewDescriptionWrapper>
+                                                    <ReviewDescription>{e.description}</ReviewDescription>
+                                                </ReviewDescriptionWrapper>
 
-                                            </div>
+                                            </PDReviewerReviewWrapper>
 
-                                        </div>
-                                    </div>
+                                        </ReviewWrapper>
+                                    </PDReviewerAndReviewWrapper>
                                 )
                             })}
-                        </div>
+                        </PDReviewerWrapper>
 
-                    </div>
+                    </PDReviewWrapper>
 
-                    <div>
+                    <PDHr></PDHr>
 
-                        <div>
-                            <h1>Related</h1>
-                        </div>
+                    <PDRelatedWrapper>
 
-                        <div>
+                        <PDRelatedTitleWrapper>
+                            <SectionTitle>Related</SectionTitle>
+                        </PDRelatedTitleWrapper>
+
+                        <PDRelatedProductWrapper>
                             {listRelated.map(e => <Product_Item item={e}/>)}
-                        </div>
+                        </PDRelatedProductWrapper>
 
-
-                    </div>
-
+                    </PDRelatedWrapper>
 
                 </ProductDetailWrapper>)
             : <p>Loading</p>
