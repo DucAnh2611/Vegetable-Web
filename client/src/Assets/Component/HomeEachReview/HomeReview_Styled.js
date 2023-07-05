@@ -28,14 +28,14 @@ export const ReviewContent = styled.div`
     height: 80%;
     width: 100%;
     box-sizing: border-box;
-    padding: 30px 15%;
+    padding: 0 15% 30px;
     position: relative; 
 `;
 
 export const ReviewSlider = styled.div`
     height: 100%;
     width: 100%;
-    padding: 30px 0 15px;
+    padding: 0 0 15px;
     display: flex;
     align-items: center;
     overflow: auto hidden;

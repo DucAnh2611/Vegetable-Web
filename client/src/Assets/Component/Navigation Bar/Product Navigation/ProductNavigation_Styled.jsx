@@ -183,6 +183,7 @@ export const PNUserAndCartWrapper=styled.a`
     color: var(--Primary_Black);
     display: flex;
     padding-right: 10px;
+    cursor: pointer;
 `;
 
 export const PNUserAndCartLogoWrapper=styled.div`
