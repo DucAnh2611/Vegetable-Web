@@ -13,6 +13,8 @@ import Login from "../Component/Login/Login";
 import Signup from "../Component/Signup/Signup";
 import Cart from "../Page/Cart/Cart";
 import Checkout from "../Page/CheckOut/CheckOut";
+import OrderTrackingDefault from "../Page/OrderTracking/OrderTrackingDefault/OrderTracking_Default";
+import OrderTrackingInfo from "../Page/OrderTracking/OrderTrackingInfo/OrderTracking";
 
 export default function AppRouter() {
 
@@ -76,7 +78,8 @@ export default function AppRouter() {
                             <Route exact path="/shop/product/:productid" element={<ProductDetail/>}/>
                             <Route exact path="/shop-cart" element={<Cart/>}/>
                             <Route exact path="/shop-checkout" element={<Checkout/>}/>
-                            <Route exact path="/shop-order-tracking" element={<p>Order State</p>}/>
+                            <Route exact path="/shop-order-tracking" element={<OrderTrackingDefault/>}/>
+                            <Route exact path="/shop-order-tracking/:orderid" element={<OrderTrackingInfo/>}/>
                         </Route>
 
                     </Route>

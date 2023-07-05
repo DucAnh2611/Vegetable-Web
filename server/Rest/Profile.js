@@ -14,7 +14,7 @@ function Profile(app) {
     let { userid } = req.params;
 
     let UserInfo = await fetchData(`
-      SELECT fullname, birthday, email, phoneNum, address, avatar
+      SELECT fullname, email, phoneNum as 'phone', address, avatar
       FROM Users
       WHERE id = ${userid}
     `);
@@ -23,7 +23,7 @@ function Profile(app) {
       responseContext = {
         json: {
           status: "accepted",
-          field: {...UserInfo},
+          field: {...UserInfo[0]},
         },
         status: 200,
       };
@@ -62,6 +62,43 @@ function Profile(app) {
     res.status(responseContext.status).json({ ...responseContext.json });
   });
 
+  app.get("/profile/orders/:userid", async (req, res) => {
+    let responseContext = {
+      json: {
+        status: "denied",
+        field: [],
+      },
+      status: 404,
+    };
+
+    let { userid } = req.params;
+    let { each, page } = req.query;
+
+    let Orders = await fetchData(`
+      SELECT o.id, o.OrderDate, o.OrderFullname, o.OrderEmail, os.state, o.OrderDescription, sum(op.quantity * p.price) as 'total'
+      FROM OrderState as os INNER JOIN [Order] as o ON os.id = o.OrderStateId
+                            INNER JOIN Orders_Product as op ON o.id = op.OrderId
+                            INNER JOIN Product as p ON op.PdId = p.id
+      WHERE o.UserId = ${userid}
+      GROUP BY o.id
+      LIMIT ${each}
+      OFFSET ${each * (page-1)}
+    `);
+
+    if(Orders.length !== 0) {
+      responseContext = {
+        json: {
+          status: "accepted",
+          field: Orders,
+        },
+        status: 200,
+      };
+    }
+
+    res.status(responseContext.status).json({ ...responseContext.json });
+  });
+
+
   app.post("/profile/:userid/update", async (req, res) => {
     let responseContext = {
       json: {
@@ -71,28 +108,27 @@ function Profile(app) {
       status: 404,
     };
 
-    let { fullname, birthday, email, phoneNum, address, avatar } = req.body;
+    let { fullname, email, phone, address, avatar } = req.body;
     let { userid } = req.params;
 
     let UserGet = await fetchData(`
       SELECT *
       FROM Users
-      WHERE id == ${userid}
+      WHERE id = ${userid}
     `);
 
     if(UserGet.length !== 0) {
-
       let UpdateUserInfo = await InsertIncludeImage(`
-        UPDATE Users SET (
+        UPDATE Users 
+        SET 
           fullname = '${fullname}',
-          birthday = '${birthday}',
           email = '${email}',
-          phoneNum = '${phoneNum}',
+          phoneNum = '${phone}',
           address = '${address}',
           avatar = (?)
-        )
-        WHERE id == ${userid}
-      `, avatar); 
+        
+        WHERE id = ${userid}
+      `, Buffer.from(avatar)); 
       
       responseContext = {
         json: {
@@ -128,7 +164,7 @@ function Profile(app) {
       if(newpass === confirmpass) {
 
         let UpdatePassword = await InsertData(`
-            UPPDATE Users SET password = '${newpass}' WHERE id == ${userid}
+            UPDATE Users SET password = '${newpass}' WHERE id == ${userid}
         `);
 
         responseContext = {
@@ -141,16 +177,16 @@ function Profile(app) {
       else {
         responseContext.json.field = 
         {
-          name: "new confirm",
-          msg: "diff"
+          name: "Confirm password",
+          msg: "Confirm password and New password is different"
         }
       }      
     }
     else {
       responseContext.json.field = 
       {
-        name: "current",
-        msg: "wrong"
+        name: "Current password",
+        msg: "Wrong"
       }
     }
 
