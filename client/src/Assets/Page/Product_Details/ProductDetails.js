@@ -240,18 +240,20 @@ export default function ProductDetail() {
                                             <PDReviewerReviewWrapper>
 
                                                 <PDReviewerTitleAndRatingWrapper>
-                                                    <PDReviewerTitle>{e.title}</PDReviewerTitle>
+                                                
                                                     <PDReviewerRating>
-                                                        {
-                                                            new Array(5).fill('').map((_, idx) => (
-                                                                idx + 1 <= e.rating
-                                                                    ? <FontAwesomeIcon icon={fa.faStar} />
-                                                                    : e.rating - idx >= 0.5
-                                                                        ? <FontAwesomeIcon icon={faReg.faStarHalfAlt} />
-                                                                        : <FontAwesomeIcon icon={faReg.faStar} />
-                                                            ))
-                                                        }
-                                                    </PDReviewerRating>
+                                                            {
+                                                                new Array(5).fill('').map((_, idx) => (
+                                                                    idx + 1 <= e.rating
+                                                                        ? <FontAwesomeIcon icon={fa.faStar} />
+                                                                        : e.rating - idx >= 0.5
+                                                                            ? <FontAwesomeIcon icon={faReg.faStarHalfAlt} />
+                                                                            : <FontAwesomeIcon icon={faReg.faStar} />
+                                                                ))
+                                                            }
+                                                        </PDReviewerRating>
+                                                    <PDReviewerTitle>{e.title}</PDReviewerTitle>
+                                                    
                                                 </PDReviewerTitleAndRatingWrapper>
 
                                                 <ReviewDescriptionWrapper>

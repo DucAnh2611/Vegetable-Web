@@ -122,9 +122,8 @@ export default function HomeNavigation() {
                                 }
                             </div>                         
                         </SearchPart>
-
-                        
                     )
+
                     :(
                         <EachIconPart>
                             <NavigationIcon onClick={handleOpenSearchPane}><FontAwesomeIcon icon = {faSolid.faMagnifyingGlass}/></NavigationIcon>      

@@ -46,13 +46,10 @@ export default function Cart() {
         // .then(data=> {
         // });
         
-    }, 300);
+    }, 1000);
 
     const changeItemQuantity = (quantitychange, id, quantitydef) => {
-        if(quantitydef + quantitychange <= 0) {
-            removeItem(id);
-        }
-        else {
+        if(quantitydef + quantitychange > 0) {
             SetListitem(listItem.map((e) => {
                 if(e.id === id) {
                     return {
@@ -74,99 +71,91 @@ export default function Cart() {
     }, []);
 
     return (
+
         <div>
 
             <div>
-                <a href="/shop-cart">Cart</a>
-                <a href="/shop-checkout">Checkout</a>
-                <a href="/shop-order-tracking">Order tracking</a>
+
+                <div>
+
+                    header
+
+                </div>
+
+                <div>
+
+                    {
+                        listItem.length !==0 
+                        ? listItem.map(e => (
+                            <div key={e.id}>
+
+                                <div>
+                                    <img src={ConvertToIamge(e.image)} alt="item cart"/>
+                                </div>
+
+                                <div>
+                                    <p>{e.PdName}</p>
+                                </div>
+
+                                <div>
+                                    <p>${e.price} / {e.unit}</p>
+                                </div>
+
+                                <div>
+                                    <button onClick={ev => changeItemQuantity(- 1, e.id, e.quantity)}><FontAwesomeIcon icon={fa.faMinus}/></button>
+                                    <input type="number" onChange={ev => changeItemQuantity(ev.target.value < 0 ? 1 :ev.target.value - e.quantity, e.id, e.quantity)} value={e.quantity}/>
+                                    <button onClick={ev => changeItemQuantity(1, e.id, e.quantity)}><FontAwesomeIcon icon={fa.faPlus}/></button>
+                                </div>
+
+                                <div>
+                                    <p>${parseFloat(e.quantity)*parseFloat(e.price)}</p>
+                                </div>
+
+                                <div>
+                                    <button onClick={ev => removeItem(e.id)}><FontAwesomeIcon icon={fa.faClose}/></button>
+                                    
+                                </div>
+
+                            </div>
+                        ))
+                        : <p>Nothing in cart</p>
+                    }
+
+                </div>
+
+                <div>
+
+                    <a href="/shop">Continute Shopping</a>
+                    
+                </div>
+
             </div>
 
             <div>
 
                 <div>
 
-                    <div>
-
-                        header
-
-                    </div>
-
-                    <div>
-
-                        {
-                            listItem.length !==0 
-                            ? listItem.map(e => (
-                                <div key={e.id}>
-
-                                    <div>
-                                        <img src={ConvertToIamge(e.image)} alt="item cart"/>
-                                    </div>
-
-                                    <div>
-                                        <p>{e.PdName}</p>
-                                    </div>
-
-                                    <div>
-                                        <p>${e.price} / {e.unit}</p>
-                                    </div>
-
-                                    <div>
-                                        <button onClick={ev => changeItemQuantity(- 1, e.id, e.quantity)}><FontAwesomeIcon icon={fa.faMinus}/></button>
-                                        <input type="number" onChange={ev => changeItemQuantity(ev.target.value - e.quantity, e.id, e.quantity)} value={e.quantity}/>
-                                        <button onClick={ev => changeItemQuantity(1, e.id, e.quantity)}><FontAwesomeIcon icon={fa.faPlus}/></button>
-                                    </div>
-
-                                    <div>
-                                        <p>${parseFloat(e.quantity)*parseFloat(e.price)}</p>
-                                    </div>
-
-                                    <div>
-                                        <button onClick={ev => removeItem(e.id)}><FontAwesomeIcon icon={fa.faClose}/></button>
-                                        
-                                    </div>
-
-                                </div>
-                            ))
-                            : <p>Nothing in cart</p>
-                        }
-
-                    </div>
-
-                    <div>
-
-                        <a href="/shop">Continute Shopping</a>
-                        
-                    </div>
+                    <h1>Total</h1>
 
                 </div>
 
                 <div>
 
                     <div>
-
-                        <h1>Total</h1>
-
+                        <p>Total: {listItem.reduce((acc, cur) => {
+                            return acc += cur.price * cur.quantity
+                        }, 0)}</p>
                     </div>
-
                     <div>
-
-                        <div>
-                            <p>Total: {listItem.reduce((acc, cur) => {
-                                return acc += cur.price * cur.quantity
-                            }, 0)}</p>
-                        </div>
-                        <div>
-                            <a href="/shop-checkout ">Proceed to Checkout</a>
-                        </div>
-
+                        <a href="/shop-checkout ">Proceed to Checkout</a>
                     </div>
-
 
                 </div>
+
 
             </div>
 
         </div>
+
     )
 }
