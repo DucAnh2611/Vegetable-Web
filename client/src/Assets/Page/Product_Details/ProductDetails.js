@@ -6,6 +6,33 @@ import Product_Item from "../../Component/Home-Item-Bestseller/ProductItem/Produ
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as fa from "@fortawesome/free-solid-svg-icons";
 import * as faReg from "@fortawesome/free-regular-svg-icons";
+import {ProductDetailWrapper,
+        PDProductWrapper,
+        PDImgWrapper,
+        PDImg,
+        PDProductDescriptionAndBuyWrapper,
+        PDProductDescriptionWrapper,
+        PDProductDescriptionNameAndPriceWrapper,
+        PDProductDescriptionPrice,
+        PDProductDescriptionDAndQuantityWrapper,
+        PDProductDescription,
+        PDProductQuantity,
+        PDProductBuyWrapper,
+        PDProductSetQuantityAndAdd2CartButtonWrapper,
+        PDProductSetQuantityWrapper,
+        PDProductSetQuantityButt,
+        PDProductSetQuantityInput,
+        PDProductAdd2CartButtonWrapper,
+        PDProductAdd2CartButton,
+        PDProductAdd2WishlistButtonWrapper,
+        PDProductAdd2WishlistButton,
+        PDDeliveryDetailWrapper,
+        PDDeliveryDetailDescription,
+        PDDeliveryDetailIcon,
+        PDHr, } from "./ProductDetails_Styled";
+import { SectionTitle } from "../../Component/HomeEachBenefit/HomeEachBenefit_Styled";
+import { ReactComponent as DeliveryTruck } from "../../Image/SVG/Product_Detail_SVG/FreeShipTruck.svg";
+import { ReactComponent as DeliveryBox } from "../../Image/SVG/Product_Detail_SVG/DeliverBox.svg";
 
 export default function ProductDetail() {
 
@@ -76,61 +103,92 @@ export default function ProductDetail() {
 
         {
             loaded
-            ? (<div>
+            ? (<ProductDetailWrapper>
 
-                    <div>
+                    <PDProductWrapper>
 
-                        <div>
-                            <img src={ConvertToIamge(productInfo.image)} alt="img proc"/>
-                        </div>
+                        <PDImgWrapper>
+                            <PDImg src={ConvertToIamge(productInfo.image)} alt="img proc"/>
+                        </PDImgWrapper>
 
-                        <div>
+                        <PDProductDescriptionAndBuyWrapper>
 
-                            <div>
+                            <PDProductDescriptionWrapper>
 
-                                <div>
+                                <PDProductDescriptionNameAndPriceWrapper>
 
-                                <h3>{productInfo.PdName}</h3> 
-                                <h3>${productInfo.price}</h3> 
+                                    <SectionTitle>{productInfo.PdName}</SectionTitle> 
+                                    <PDProductDescriptionPrice>${productInfo.price}</PDProductDescriptionPrice> 
 
-                                </div>
+                                </PDProductDescriptionNameAndPriceWrapper>
 
-                                <div>
+                                <PDHr></PDHr>
+
+                                <PDProductDescriptionDAndQuantityWrapper>
                                     
-                                    <p>{productInfo.description}</p> 
-                                    <p>{productInfo.quantity} on stock</p> 
+                                    <PDProductDescription>{productInfo.description}</PDProductDescription> 
+                                    <PDProductQuantity>{productInfo.quantity} on stock</PDProductQuantity> 
         
-                                </div>
+                                </PDProductDescriptionDAndQuantityWrapper>
                                 
-                            </div>
+                            </PDProductDescriptionWrapper>
 
-                            <div>
+                            <PDHr></PDHr>
 
-                                <div>
+                            <PDProductBuyWrapper>
 
-                                    <div>
-                                        <button onClick={e => SetQuantity(quantity - 1)}><FontAwesomeIcon icon={fa.faMinus}/></button>
-                                        <input type="number" value={quantity}/>
-                                        <button onClick={e => SetQuantity(quantity + 1)}><FontAwesomeIcon icon={fa.faPlus}/></button>
-                                    </div>
+                                <PDProductSetQuantityAndAdd2CartButtonWrapper>
 
-                                    <div>
-                                        <button onClick={e => AddToCart(productInfo.id)}>Add to card</button>
-                                    </div>
+                                    <PDProductSetQuantityWrapper>
+                                        <PDProductSetQuantityButt onClick={e => SetQuantity(quantity - 1)}><FontAwesomeIcon icon={fa.faMinus}/></PDProductSetQuantityButt>
+                                        <PDProductSetQuantityInput type="number" value={quantity}/>
+                                        <PDProductSetQuantityButt onClick={e => SetQuantity(quantity + 1)}><FontAwesomeIcon icon={fa.faPlus}/></PDProductSetQuantityButt>
+                                    </PDProductSetQuantityWrapper>
+
+                                    <PDProductAdd2CartButtonWrapper>
+                                        <PDProductAdd2CartButton onClick={e => AddToCart(productInfo.id)}>Add to card</PDProductAdd2CartButton>
+                                    </PDProductAdd2CartButtonWrapper>
                                     
-                                </div>
+                                </PDProductSetQuantityAndAdd2CartButtonWrapper>
 
-                                <div>
+                                <PDProductAdd2WishlistButtonWrapper>
 
-                                    <button onClick={e => AddToWishList(productInfo.id)}><span><FontAwesomeIcon icon={faReg.faHeart}/></span>Add to Wishlist</button>
+                                    <PDProductAdd2WishlistButton onClick={e => AddToWishList(productInfo.id)}><span><FontAwesomeIcon icon={faReg.faHeart}/></span>Add to Wishlist</PDProductAdd2WishlistButton>
 
-                                </div>
-                            </div>
+                                </PDProductAdd2WishlistButtonWrapper>
+                            </PDProductBuyWrapper>
 
-                        </div>
+                            <PDDeliveryDetailWrapper>
 
+                                <PDDeliveryDetailIcon>
+                                    <span>
+                                        <DeliveryTruck></DeliveryTruck>
+                                    </span>
+                                </PDDeliveryDetailIcon>
 
-                    </div>
+                                <PDDeliveryDetailDescription>
+                                    Free worldwide shipping on all orders over $100
+                                </PDDeliveryDetailDescription>
+
+                            </PDDeliveryDetailWrapper>
+
+                            <PDDeliveryDetailWrapper>
+
+                                <PDDeliveryDetailIcon>
+                                    <span>
+                                        <DeliveryBox></DeliveryBox>
+                                    </span>
+                                </PDDeliveryDetailIcon>
+
+                                <PDDeliveryDetailDescription>
+                                    Delivers in: 3-7 Working Days
+                                </PDDeliveryDetailDescription>
+
+                            </PDDeliveryDetailWrapper>
+
+                        </PDProductDescriptionAndBuyWrapper>
+
+                    </PDProductWrapper>
 
                     <div>
 
@@ -193,7 +251,7 @@ export default function ProductDetail() {
                     </div>
 
 
-                </div>)
+                </ProductDetailWrapper>)
             : <p>Loading</p>
         }        
         
