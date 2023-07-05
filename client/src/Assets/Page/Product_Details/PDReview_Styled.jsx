@@ -67,12 +67,13 @@ export const PDReviewerTitleAndRatingWrapper=styled.div`
 export const PDReviewerTitle=styled.p`
     font-weight: 600;
     font-size: 18px;
+    margin-bottom: 15px;
 `;
 
 export const PDReviewerRating=styled.p`
     height: auto;
     font-size: 14px;
-    margin-bottom: 15px;
+    padding-bottom: 5px;
 `;
 
 export const ReviewDescriptionWrapper=styled.div`
