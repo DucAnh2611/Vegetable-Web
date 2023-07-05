@@ -22,6 +22,8 @@ export const FooterDetailWrap = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
     padding: 0 15px;
     &>div{
         height: 100%;

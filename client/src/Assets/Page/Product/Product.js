@@ -4,13 +4,26 @@ import Product_Item from "../../Component/Home-Item-Bestseller/ProductItem/Produ
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as fa from "@fortawesome/free-solid-svg-icons";
 import Pagenation from "../../Component/Pagenation/Pagenation";
+import {
+    ProductWrapper,
+    ProductListWrap,
+    ProductHeadingWrap,
+    ProductTitle,
+    ProductMenuFilter,
+    DoubleRangeSection,
+    DoubleRangeWrap,
+    ProRangeListPro,
+    ProductShowWrap,
+    ProductShow,
+    ProductShowSearch,
+    PagenationPage} from "./Product_Styled";
 
 export default function Product() {
 
     const [listProduct, SetListProduct] = useState([]);
     const [listType, SetListType] = useState([]);
     const [keySearch, SetKeySearch] = useState("");
-    const [page, SetPage]= useState(1);
+    const [page, SetPage] = useState(1);
     const [eachPage, SetEachPage] = useState(10);
     const [type, SetType] = useState(0);
     const [minPrice, SetMinPrice] = useState(0);
@@ -19,143 +32,136 @@ export default function Product() {
     const [maxPage, SetMaxPage] = useState(0);
 
     let fetchListItem = () => {
-        fetch('/product/list',{
+        fetch('/product/list', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ 
-                key: keySearch, 
-                page: page, 
-                eachPage: eachPage, 
-                type: type, 
-                minPrice: minPrice, 
+            body: JSON.stringify({
+                key: keySearch,
+                page: page,
+                eachPage: eachPage,
+                type: type,
+                minPrice: minPrice,
                 maxPrice: maxPrice
-             })
+            })
         }).then(res => res.json())
-        .then(data => {
-            if(data.status=== "accepted") {
-                SetListProduct(data.field.list);
-                SetMaxPage(data.field.maxPage);
-                SetMaxPriceFixed(data.field.maxPrice);                
-            }
-            else {
-                SetListProduct([]);
-                SetMaxPage(1);
-                SetMaxPriceFixed(0);   
-            }
+            .then(data => {
+                if (data.status === "accepted") {
+                    SetListProduct(data.field.list);
+                    SetMaxPage(data.field.maxPage);
+                    SetMaxPriceFixed(data.field.maxPrice);
+                }
+                else {
+                    SetListProduct([]);
+                    SetMaxPage(1);
+                    SetMaxPriceFixed(0);
+                }
 
-        })
+            })
     };
 
     let fetchListType = () => {
-        fetch('product/type',  {method: "GET"})
-        .then(res => res.json())
-        .then(data => {
-            SetListType(data.field);
-        })
+        fetch('product/type', { method: "GET" })
+            .then(res => res.json())
+            .then(data => {
+                SetListType(data.field);
+            })
     };
 
     useMemo(() => {
         fetchListItem();
     }, [keySearch, page, eachPage, type, minPrice, maxPrice]);
 
-    useEffect(()=> {
+    useEffect(() => {
         fetchListType();
         fetchListItem();
         document.title = 'Vegetable - Shop';
+    }, []);
 
-    },[]);
+    const toCapitalize = (str) => {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    };
 
     return (
-        <div>
+        <ProductWrapper>
 
-            <div>
+            <ProductHeadingWrap>
 
-                <div>
-                    
-                    <div>
-                        <h1>Catetory</h1>
-                    </div>
+                <ProductTitle>
+                    <h1>Catetory</h1>
+                </ProductTitle>
 
-                    <div>
-                        <button onClick={ ev => SetType(0)}>All</button>
-                        {
-                            listType.map(e => (
-                                <button onClick={ ev => SetType(e.id)}>{e.type}</button>
-                            ))
-                        }
-                    </div>
+                {/* Menu lọc product */}
+                <ProductMenuFilter>
+                    <button onClick={ev => SetType(0)}>All</button>
+                    {
+                        listType.map(e => (
+                            <button onClick={ev => SetType(e.id)}>{toCapitalize(e.type)}</button>
+                        ))
+                    }
+                </ProductMenuFilter>
 
-                </div>
-
-                <div>
-                    
-                    <div>
+                {/* Khoảng giá - Double range */}
+                <DoubleRangeSection>
+                    <ProductTitle>
                         <h1>Price</h1>
-                    </div>
+                    </ProductTitle>
 
-                    <div>
-
+                    <DoubleRangeWrap>
                         <div>
-
-                            <input 
-                                type="range" 
-                                min={0} 
-                                max={maxPriceFixed} 
-                                defaultValue={minPrice} 
-                                step={0.05} 
+                            <input
+                                type="range"
+                                min={0}
+                                max={maxPriceFixed}
+                                defaultValue={minPrice}
+                                step={0.05}
                                 value={minPrice}
-                                onChange={e => SetMinPrice(parseFloat(e.target.value))}/>
-                            <input 
-                                type="range" 
-                                min={0} 
-                                max={maxPriceFixed} 
-                                defaultValue={maxPriceFixed} 
-                                step={0.05} 
+                                onChange={e => SetMinPrice(parseFloat(e.target.value))} />
+                            <input
+                                type="range"
+                                min={0}
+                                max={maxPriceFixed}
+                                defaultValue={maxPriceFixed}
+                                step={0.05}
                                 value={maxPrice === 0 ? maxPriceFixed : maxPrice}
-                                onChange={e => SetMaxPrice(parseFloat(e.target.value))}/>
+                                onChange={e => SetMaxPrice(parseFloat(e.target.value))} />
                             <p>Range: {minPrice} - {maxPrice === 0 ? maxPriceFixed : maxPrice}</p>
-
                         </div>
+                    </DoubleRangeWrap>
+                </DoubleRangeSection>
 
-                    </div>
+            </ProductHeadingWrap>
 
-                </div>
 
-            </div>
-
-            <div>
-
-                <div>
-
-                    <div>
+            <ProRangeListPro>
+                <ProductShowWrap>
+                    <ProductShow>
                         <p>Show: </p>
                         <button onClick={e => SetEachPage(5)}>5</button>
                         <button onClick={e => SetEachPage(7)}>7</button>
                         <button onClick={e => SetEachPage(10)}>10</button>
-                    </div>
+                    </ProductShow>
 
-                    <div>
+                    <ProductShowSearch>
+                        <input placeholder="Tìm kiếm sản phẩm" type="text" onChange={e => SetKeySearch(e.target.value)} />
+                    </ProductShowSearch>
+                </ProductShowWrap>
 
-                        <input type="text" onChange={e => SetKeySearch(e.target.value)}/>
-
-                    </div>
-
-                </div>
-
-                <div>
+                <ProductListWrap>
                     {
-                        listProduct.length !==0
-                        ? listProduct.map(e => <Product_Item item={e}/>)
-                        : <div><p>Nothing too see</p></div>
+                        listProduct.length !== 0
+                            ? listProduct.map(e => <Product_Item item={e} />)
+                            : <div><p>Nothing too see</p></div>
                     }
-                </div>
+                </ProductListWrap>
 
-                <Pagenation current={page} max={maxPage} setPage={SetPage}/>
+                <PagenationPage>
+                    <Pagenation current={page} max={maxPage} setPage={SetPage} />
+                </PagenationPage>
+                
+            </ProRangeListPro>
 
-            </div>
-
-        </div>
+        </ProductWrapper>
     )
 }

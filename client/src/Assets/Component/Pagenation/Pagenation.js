@@ -25,11 +25,11 @@ export default function Pagenation({current, max, setPage}) {
 
             <button onClick={e => changePage(1)}>1</button>
 
-            <p>...</p>
+            <p style={{marginRight: 15}}>...</p>
 
             <input type="number" value={current} onInput={e => changePage(parseInt(e.target.value))} onFocus={e => e.target.value = ""}/>
 
-            <p>...</p>
+            <p style={{marginLeft: 15}}>...</p>
 
             <button onClick={e => changePage(max)}>{max}</button>
 
