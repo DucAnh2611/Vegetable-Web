@@ -17,7 +17,7 @@ export const PDReviewerAndReviewWrapper=styled.div`
     display: flex;
     align-items: center;
     height: 200px;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0px auto 40px;
     border: 1px solid var(--Primary_Gray);
     border-radius: 20px;

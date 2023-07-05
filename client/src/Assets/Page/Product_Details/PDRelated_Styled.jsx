@@ -10,7 +10,7 @@ export const PDRelatedTitleWrapper =styled.div`
 `;
 
 export const PDRelatedProductWrapper =styled.div`
-    max-width: 1030px;
+    max-width: 1200px;
     justify-content: space-between;
     margin: 0 auto;
     display: flex;

@@ -8,7 +8,7 @@ export const ProductDetailWrapper=styled.div`
 export const PDProductWrapper=styled.div`
     display: flex;
     margin: 0% auto 5%;
-    max-width: 1000px;
+    max-width: 1200px;
 `;
 
 export const PDImgWrapper=styled.div`
