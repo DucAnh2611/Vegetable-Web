@@ -17,12 +17,14 @@ export const PDImgWrapper=styled.div`
     border: 1px solid var(--Primary_Gray);
     display: flex;
     margin-right: 5%;
+    border-radius: 20px;
 `;
 
 export const PDImg=styled.img`
     object-fit: contain;
     max-width: 100%;
     max-height: 100%;
+    border-radius: 20px;
     margin: auto;
 `;
 
