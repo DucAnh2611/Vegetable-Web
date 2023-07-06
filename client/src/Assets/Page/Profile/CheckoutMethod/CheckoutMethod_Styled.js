@@ -7,6 +7,7 @@ export const AddNewMethodWrap = styled.div`
     display: flex;
     align-items: center;
     position: relative;
+    z-index: 1;
     &>button{
         background-color: var(--Primary_Green);
         border-radius: 20px; 
@@ -86,7 +87,6 @@ export const MainNewMethod = styled.div`
     box-shadow: 0 0 30px var(--Primary_Green);
     box-sizing: border-box;
     padding: 20px;
-    z-index: 1;
     &>div{
         width: 100%;
         &:first-child{

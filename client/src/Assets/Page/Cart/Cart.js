@@ -201,7 +201,6 @@ export default function Cart() {
 
                 </TotalAndCheckOutWrapper>
 
-
             </TotalWrapper>
 
         </CartWrapper>

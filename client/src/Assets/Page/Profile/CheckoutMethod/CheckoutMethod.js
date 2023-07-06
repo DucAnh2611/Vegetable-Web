@@ -105,7 +105,7 @@ export default function CheckoutMethod() {
         document.addEventListener('mousedown', handleClickOutside);
         document.title = "Vegetable - Account Methods";
         return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('mousedown', handleClickOutside);
         };
     }, [])
 

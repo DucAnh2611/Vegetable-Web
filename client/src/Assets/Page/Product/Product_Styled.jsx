@@ -44,22 +44,34 @@ export const DoubleRangeSection = styled.div`
     margin: 0 auto;
     display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 10px;
 
     h1 {
+        padding: 0 10px;
         font-size: 17px;
-        border-right: 1px solid rgba(0,0,0, .5);
         font-weight: 400;
-        margin: 0 20px 38px 0;
+        margin: 0;
+
     }
 `;
 
 export const DoubleRangeWrap = styled.div`
-    div > input {
-        min-width: 365px;
-        flex: 3;
+
+    display: flex;
+    gap: 10px;
+    &>div{
+        width: fit-content;
+        height: 40px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        &> input {
+            width: 200px;
+        }
     }
     
-    div > p{
+    &>p{
         margin-top: 10px;
     }
 `;

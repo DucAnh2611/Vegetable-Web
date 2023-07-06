@@ -1,15 +1,40 @@
 
-import React, { useEffect, useState} from "react";
-
+import React, { useEffect, useState, useRef} from "react";
 import {useNavigate} from "react-router-dom"
 import ConvertToIamge from "../../AssistsFunc/ConvertBlobToImage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as fa from "@fortawesome/free-solid-svg-icons";
 import * as faBrand from "@fortawesome/free-brands-svg-icons";
+import { 
+    AddMethod,
+    AddMethodBtn,
+    AddMethodContent,
+    AddMethodHeader,
+    AddMethodMain,
+    BillContent,
+    BillHeader,
+    BillingDetailsWrap,
+    CheckOutButton,
+    CheckoutWrap, 
+    EachProduct, 
+    InputTextArea,
+    ListMethod,
+    ListProduct,
+    ProductContent,
+    ProductWrap,
+    SelectMethod,
+    SelectMethodWrap,
+    TotalCart
+} from "./CheckOut_Styled";
+import {
+    InputText
+} from "../Profile/Account/Account_Styled"
+
 
 export default function Checkout() {
 
     const navigate = useNavigate();
+    const listSelectRef = useRef();
     const [listItem, SetListitem] = useState([]);
     const [listMethod, SetListMethod] = useState([]);
     const [listSelectMethod, SetListSelectMethod] = useState([]);
@@ -28,21 +53,20 @@ export default function Checkout() {
         description: ""
     });
     const [failToAddMethod, SetFailToAddMethod] = useState({state: false, msg: ""});
-
     const iconDict = {
         "visa": faBrand.faCcVisa,
         "master card": faBrand.faCcMastercard,
         "paypal" : faBrand.faPaypal,
         "cash": fa.faMoneyBill
     };
-    
     const RegExpInput = {
-        fullname: /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]{10,30}$/,
-        address: /^[a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]{10,150}$/,
+        fullname: /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]{10,30}$/,
+        address: /^[a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\,/-]{10,150}$/,
         phone: /^[0-9]{10,11}$/,
         email: new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"),
         methodid: /^[1-9]{1,}$/
     };
+    const regExpAllNum = /^[0-9]{10}$/;
 
     const handleChangeData = (type, data) => {
         SetUserInfo(info => ({...info, [type]: data}))
@@ -92,45 +116,48 @@ export default function Checkout() {
         })
     };
 
-    const removeCart = () => {
+    const removeCart = (id) => {
         fetch(`/cart/remove-all?userid=${JSON.parse(localStorage.getItem("auth")).id}`)
         .then(res=> res.json())
         .then(data => {
             if(data.status === " accepted") {
-                navigate("/shop-order-tracking");
+                navigate(`/shop-order-tracking/${id}`);
             }
         })
     }
 
     const addNewMethod = () => {
+        if(userMethodForm.methodtypeid!== 0 && regExpAllNum.test(userMethodForm.description)){
+            fetch(`/profile/${JSON.parse(localStorage.getItem("auth")).id}/add-method`, {
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json",
+                },
+                body: JSON.stringify(userMethodForm),
+            })
+            .then((res) => res.json())
+            .then((data) => {
+                if(data.status === "accepted") {
+                    SetOpenAddMethod(false);
+                    fetchMethod();
+                }
+                else {
+                    SetFailToAddMethod({state: false, msg:"This account have this card!"});
+                }
 
-        fetch(`/profile/${JSON.parse(localStorage.getItem("auth")).id}/add-method`, {
-            method: "POST",
-            headers: {
-            "Content-Type": "application/json",
-            },
-            body: JSON.stringify(userMethodForm),
-        })
-        .then((res) => res.json())
-        .then((data) => {
-            if(data.status === "accepted") {
-                SetOpenAddMethod(false);
-                fetchMethod();
-            }
-            else {
-                SetFailToAddMethod({state: false, msg:"This account have this card!"});
-            }
+            }) ;            
+        }
 
-        }) ;
 
     };
 
     const filterConditionToSubmit = () => {
+        console.log(Object.keys(RegExpInput).map(e => RegExpInput[e].test(userInfo[e])).findIndex(e => e !== true))
         return Object.keys(RegExpInput).map(e => RegExpInput[e].test(userInfo[e])).findIndex(e => e !== true)
     };
 
     const checkout = () => {
-        if( filterConditionToSubmit() !== -1){
+        if( !(filterConditionToSubmit() !== -1)){
             fetch(`/cart/check-out`, {
                 method: "POST",
                 headers: {
@@ -153,7 +180,7 @@ export default function Checkout() {
             .then((res) => res.json())
             .then((data) => {
                 if(data.status === "accepted") {
-                    removeCart();
+                    removeCart(data.field.id);
                 }
                 else {
                     alert(JSON.stringify(data));
@@ -169,6 +196,17 @@ export default function Checkout() {
         fetchMethod();    
         fetchListSelectMethod();    
         document.title = "Vegetable - Checkout";
+
+        const handleClickOutside = (event) => {
+            if(listSelectRef.current && !listSelectRef.current.contains(event.target)) {
+                SetOpenSelectMethod(false);
+            }
+        };
+      
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
     }, []);
 
     if(listItem.length ===0) {
@@ -181,110 +219,115 @@ export default function Checkout() {
     else {
         return (
 
-            <div>
+            <CheckoutWrap>
 
-                <div>
+                <BillingDetailsWrap>
 
-                    <div>
+                    <BillHeader>
                         <h1>Billing Details</h1>
-                    </div>
+                    </BillHeader>
 
-                    <div>
+                    <BillContent>
 
-                        <div>
+                        <InputText>
                             <label for="fullname">Fullname</label>
                             <input 
                             id="fullname" 
+                            placeholder="Fullname"
                             type="text" 
                             min={10} 
                             value={userInfo.fullname}
                             onChange= {e => handleChangeData("fullname", e.target.value)}
                             />
                             <ul>
-                                {userInfo.fullname.length >= 10 ?<li>ok</li> : <li>At least 10 characters</li>}
-                                {userInfo.fullname.length <=30 ? <li>ok</li> : <li>Maximum 30 characters</li>}
-                                {!new RegExp("[0-9!@#\$%\^\&*\)\(+=._-]", "g").test(userInfo.fullname) ? <p>ok</p> : <li>Do not contain special characters or number</li>}
+                                {<li className={userInfo.fullname.length >= 10 ?"ok": "not"}>At least 10 characters</li>}
+                                {<li className={userInfo.fullname.length <=30 ?"ok": "not"}>Maximum 30 characters</li>}
+                                {<li className={!new RegExp("[0-9!@#\$%\^\&*\)\(+=._-]", "g").test(userInfo.fullname) ?"ok": "not"}>Do not contain special characters or number</li>}
                             </ul>
-                        </div>
+                        </InputText>
                         
-                        <div>
+                        <InputText>
                             <label for="order-address">Order Address</label>
                             <input 
                             id="order-address" 
+                            placeholder="Order address"
                             type="text" 
                             min={10} 
                             value={userInfo.address}
                             onChange= {e => handleChangeData("address", e.target.value)}
                             />
                             <ul>
-                                {userInfo.address.length >=10 ?<li>ok</li> : <li>At least 10 characters</li>}
-                                {userInfo.address.length <=150 ?<li>ok</li> : <li>Maximum 150 characters</li>}
+                                {<li className={userInfo.address.length >=10 ?"ok": "not"}>At least 10 characters</li>}
+                                {<li className={userInfo.address.length <=150 ?"ok": "not"}>Maximum 150 characters</li>}
+                                {<li className={!new RegExp("[!@#\$%\^\&*\)\(=_+.]", "g").test(userInfo.address) ? "ok" : 'not'}>Do not contain special characters except: "-"</li>}
                             </ul>
-                        </div>
+                        </InputText>
 
-                        <div>
+                        <InputText>
                             <label for="phone-num">Phone number</label>
                             <input 
                             id="phone-num" 
+                            placeholder="0000000000"
                             type="text" 
                             min={10} 
                             value={userInfo.phone}
                             onChange= {e => handleChangeData("phone", e.target.value)}
                             />
                             <ul>
-                                { userInfo.phone.length>=10 ?<li>ok</li> : <li>At least 10 characters</li>}
-                                { userInfo.phone.length<=11 ?<li>ok</li> : <li>Maximum 11 characters</li>}
-                                {new RegExp("^[0-9]+$").test(userInfo.phone) ? <li>ok</li> : <li>Contain numbers only</li>}
+                                {<li className={userInfo.phone.length>=10 ?"ok": "not"}>At least 10 characters</li>}
+                                {<li className={userInfo.phone.length<=11 ?"ok": "not"}>Maximum 11 characters</li>}
+                                {<li className={new RegExp("^[0-9]+$").test(userInfo.phone) ?"ok": "not"}>Contain numbers only</li>}
                             </ul>
-                        </div>
+                        </InputText>
 
-                        <div>
+                        <InputText>
                             <label for="order-address">Email</label>
                             <input 
                             id="order-address" 
                             type="text" 
+                            placeholder="abc@gmail.com"
                             min={10} 
                             value={userInfo.email}
                             onChange= {e => handleChangeData("email", e.target.value)}
                             />
                             <ul>
-                                {userInfo.email.length >=10 ?<li>ok</li> : <li>At least 10 characters</li>}
-                                {userInfo.email.length <=50 ?<li>ok</li> : <li>Maximum 50 characters</li>}
-                                {new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$").test(userInfo.email) ? <li>ok</li> : <li>Match format: abc@example.com</li>}
+                                {<li className={userInfo.email.length >=10 ?"ok": "not"}>At least 10 characters</li>}
+                                {<li className={userInfo.email.length <=50 ?"ok": "not"}>Maximum 50 characters</li>}
+                                {<li className={new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$").test(userInfo.email) ?"ok": "not"}>Match format: abc@example.com</li>}
                             </ul>
-                        </div>
+                        </InputText>
 
-                        <div>
+                        <InputTextArea>
                             <label for="description">Notes</label>
                             <textarea 
                             id="description"
+                            placeholder="Note something about your order"
                             min={0} 
                             value={userInfo.note}
                             onChange= {e => handleChangeData("note", e.target.value)}
                             />
                             <ul>
-                                {userInfo.note.length >=10 ?<li>ok</li> : <li>At least 10 characters</li>}
-                                {userInfo.note.length <=150 ?<li>ok</li> : <li>Maximum 150 characters</li>}
+                                {<li className={userInfo.note.length <=150 ?"ok": "not"}>Maximum 150 characters</li>}
                             </ul>
-                        </div>
+                        </InputTextArea>
 
-                    </div>
+                    </BillContent>
 
-                </div>
+                </BillingDetailsWrap>
 
-                <div>
+                <ProductWrap>
 
-                    <div>
+                    <BillHeader>
                         <h1>Product</h1>
-                    </div>
+                    </BillHeader>
                     
-                    <div>
+                    <ProductContent>
 
-                        <div>
+                        <ListProduct>
                             {
                                 listItem.map(e => (
 
-                                    <div>
+                                    <EachProduct>
 
                                         <div>
 
@@ -300,42 +343,45 @@ export default function Checkout() {
                                             </div>
                                             
                                             <div>
-                                                <p><b>QTY: {e.quantity}</b></p>
+                                                <p>QTY: {e.quantity}</p>
                                             </div>
 
                                         </div>
 
-                                    </div>
+                                    </EachProduct>
 
                                 ))
                             }
 
-                        </div>
+                        </ListProduct>
 
-                        <div>
+                        <TotalCart>
                             <p>Total</p>
                             <p>{listItem.reduce((acc, curr) =>{
                                 return acc += curr.price * curr.quantity
                             }, 0)}$</p>
-                        </div>
+                        </TotalCart>
 
-                        <div>
+                        <SelectMethodWrap>
 
-                            <div>
-                                <button onClick={handleSelectMethod}> {listMethod.findIndex(e=> e.id === userInfo.methodid) === -1 
-                                ?<p>Click to select</p>
-                            :  (
-                                <>
-                                    <p><FontAwesomeIcon icon={iconDict[listMethod[listMethod.findIndex(e=> e.id === userInfo.methodid)].type]}/>{listMethod[listMethod.findIndex(e=> e.id === userInfo.methodid)].type}</p>
-                                    <p>{listMethod[listMethod.findIndex(e=> e.id === userInfo.methodid)].description}</p>
-                                </>
-                            )}</button>
-                            </div>
+                            <SelectMethod>
+                                <button onClick={handleSelectMethod}> 
+                                {
+                                listMethod.findIndex(e=> e.id === userInfo.methodid) === -1 
+                                ?   <p>Click to select</p>
+                                :  (
+                                    <>
+                                        <p>
+                                            <FontAwesomeIcon icon={iconDict[listMethod[listMethod.findIndex(e=> e.id === userInfo.methodid)].type]}/>{listMethod[listMethod.findIndex(e=> e.id === userInfo.methodid)].type} {listMethod[listMethod.findIndex(e=> e.id === userInfo.methodid)].description}
+                                        </p>
+                                    </>
+                                )}</button>
+                            </SelectMethod>
 
                             {
                                 openSelectMethod 
                                 && (
-                                <div>
+                                <ListMethod ref={listSelectRef}>
 
                                     {
                                         listMethod.map(e => (
@@ -349,87 +395,92 @@ export default function Checkout() {
                                         ))
                                     }     
 
-                                    <button onClick={handleAddNewMethod}>Add new method</button>
+                                    <button onClick={handleAddNewMethod}><p><FontAwesomeIcon icon={fa.faAdd}/>Add new method</p></button>
                         
-                                </div>                                    
+                                </ListMethod>                                    
                                 )
                             }
 
                             {
                                 openAddMethod 
                                 && (
-                                <div>
+                                <AddMethod>
 
-                                    <div>
+                                    <AddMethodMain>
 
-                                        <p>Add new method</p>
-                                        <button onClick={e => {
-                                            SetOpenAddMethod(false)
-                                            SetUserMethodForm({
-                                                methodtypeid: 0, 
-                                                description: ""
-                                            })
+                                        <AddMethodHeader>
+
+                                            <p>Add new method</p>
+                                            <button onClick={e => {
+                                                SetOpenAddMethod(false)
+                                                SetUserMethodForm({
+                                                    methodtypeid: 0, 
+                                                    description: ""
+                                                })
                                             }}><FontAwesomeIcon icon={fa.faClose}/></button>
-
-                                    </div>
-
-
-                                    <div>
-
-                                        {
-                                            listSelectMethod.length !==0 
-                                            ? listSelectMethod.map(e => (
-                                                <button 
-                                                key={e.id} 
-                                                onClick={ev => SetUserMethodForm(form => ({...form, methodtypeid: e.id}))}>
-                                                    <FontAwesomeIcon icon={iconDict[e.type]}/>{e.type}
-                                                </button>
-                                            ))
-                                            : <p>Nothing to select</p>
-                                        }
-
-                                    </div>  
-
-                                    {
-                                        userMethodForm.methodtypeid !==0 
-                                        && (
-                                        <div>
-
-                                            <label for="cardnumber">Card number</label>
-                                            <input 
-                                            id="cardnumber" 
-                                            type="text" 
-                                            placeholder="Card number"
-                                            onChange={e => SetUserMethodForm(form => ({...form, description: e.target.value}))}/>
-                                            {failToAddMethod.state && <p>{failToAddMethod.msg}</p>}
-                                        </div>                                              
-                                        )
-                                    }
                                             
 
+                                        </AddMethodHeader>
 
-                                    <div>
-                                        <button 
-                                        onClick={addNewMethod}><FontAwesomeIcon icon={fa.faAdd} /> Add</button>
-                                    </div>                                   
+                                        <AddMethodContent>
 
+                                            <div>
 
-                                </div>                                    
+                                                {
+                                                    listSelectMethod.length !==0 
+                                                    ? listSelectMethod.map(e => (
+                                                        <button 
+                                                        key={e.id} 
+                                                        className={e.id === userMethodForm.methodtypeid ? "ok" : "not"}
+                                                        onClick={ev => SetUserMethodForm({methodtypeid: e.id, description: ""})}>
+                                                            <FontAwesomeIcon icon={iconDict[e.type]}/> {e.type}
+                                                        </button>
+                                                    ))
+                                                    : <p>Nothing to select</p>
+                                                }
+
+                                            </div> 
+
+                                            <div>
+
+                                                <label for="cardnumber">Card number</label>
+                                                <input 
+                                                id="cardnumber" 
+                                                type="text" 
+                                                placeholder="0000000000"
+                                                value={userMethodForm.description}
+                                                onChange={e => {
+                                                    SetUserMethodForm(form => ({...form, description: e.target.value}));
+                                                    }}/>
+                                                {!failToAddMethod.state && <p>{failToAddMethod.msg}</p>}
+                                            </div>                                              
+                                
+                                        </AddMethodContent>
+
+                                        <AddMethodBtn>
+                                            <button 
+                                            onClick={addNewMethod}
+                                            disabled={!(userMethodForm.methodtypeid !== 0 && regExpAllNum.test(userMethodForm.description))}
+                                            ><FontAwesomeIcon icon={fa.faAdd} /> Add new method</button>
+                                        </AddMethodBtn>
+                                    </AddMethodMain>
+
+                                </AddMethod>                                    
                                 )
 
                             }
 
-                        </div>  
+                        </SelectMethodWrap>  
 
-                        <div>
+                        <CheckOutButton>
                             <button onClick={checkout} disabled={filterConditionToSubmit() !== -1}>Place order</button>
-                        </div>
+                        </CheckOutButton>
 
-                    </div>
+                    </ProductContent>
 
-                </div>
+                </ProductWrap>
 
-            </div>      
+            </CheckoutWrap>      
                           
         )
     }

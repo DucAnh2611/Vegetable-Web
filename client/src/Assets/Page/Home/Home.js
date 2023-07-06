@@ -1,5 +1,5 @@
 
-import React, { useEffect } from "react";  
+import React, { useEffect } from "react"; 
 import Home_Slider from "../../Component/HomeEachSlide/HomeEachSlide";
 import BestSellerSection from "../../Component/Home-Item-Bestseller/HomeItemBestSeller";
 import Benefit from "../../Component/HomeEachBenefit/HomeEachBenefit";

@@ -1,12 +1,17 @@
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { 
+    OrderTrackingContent,
+    OrderTrackingDefaultWrap, OrderTrackingHeader
+} from "./OrderTracking_Df_Styled";
 
 export default function OrderTrackingDefault() {
 
     const navigate = useNavigate();
     const [orderid, SetOrderId] = useState("");
     const [email, SetEmail] = useState("");
+    const [fail, SetFail] = useState(false);
 
     const fetchOrder = () => {
         fetch(`/order-tracking?email=${email}&orderid=${orderid}&userid=${JSON.parse(localStorage.getItem("auth")).id}`)
@@ -14,6 +19,10 @@ export default function OrderTrackingDefault() {
         .then(data => {
             if(data.status === "accepted"){
                 navigate(`/shop-order-tracking/${orderid}`);
+                SetFail(false);
+            }
+            else {
+                SetFail(true);
             }
         })
     }
@@ -21,17 +30,20 @@ export default function OrderTrackingDefault() {
         if(orderid!== "" && email !== "") {
             fetchOrder();
         }
+        else {
+            SetFail(true);
+        }
     }
 
     return (
 
-        <div>
+        <OrderTrackingDefaultWrap>
 
-            <div>
+            <OrderTrackingHeader>
                 <h1>Order Tracking</h1>
-            </div>
+            </OrderTrackingHeader>
 
-            <div>
+            <OrderTrackingContent>
 
                 <div>
                     <label for="orderid">Order Id</label>
@@ -40,6 +52,7 @@ export default function OrderTrackingDefault() {
                     id="orderid" 
                     placeholder="Show in your profile"
                     onChange={ e => SetOrderId(e.target.value)}/>
+                    <p>ID of your order. You can find in your Account</p>
                 </div>
 
                 <div>
@@ -49,14 +62,22 @@ export default function OrderTrackingDefault() {
                     id="email" 
                     placeholder="Email you use when checkout"
                     onChange={ e => SetEmail(e.target.value)}/>
+                    <p>Your email you have userd for checkout. You can find in your Account</p>
                 </div>
-
+            
                 <div>
                     <button onClick={confirmtrack}>Track</button>
                 </div>
-            </div>
 
-        </div>
+                {fail && (
+                <div>
+                    <p>There are no results found</p>
+                </div>
+                )}
+                
+            </OrderTrackingContent>
+
+        </OrderTrackingDefaultWrap>
 
     )
 }

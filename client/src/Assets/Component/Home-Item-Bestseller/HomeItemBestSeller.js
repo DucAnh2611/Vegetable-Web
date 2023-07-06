@@ -7,10 +7,13 @@ import { BestSeller_Wrap,
         Filter_category_wrap,
         Filter_category_list} from "./HomeItemBestSeller_Styled";
 import {SectionWrapper} from "../HomeEachBenefit/HomeEachBenefit_Styled";
-import * as Style from "./ProductItem/Product_Item_Styled"
+import * as Style from "./ProductItem/Product_Item_Styled";
+import { useNavigate } from "react-router-dom";
+
 
 function BestSellerSection (){
 
+    const navigate = useNavigate();
     const [ListItem, SetListItem] = useState([]);
     const [ListType, SetListType] = useState([]);
     const [amount, SetAmount] = useState(10);
@@ -77,7 +80,7 @@ function BestSellerSection (){
                 }
 
                 <Style.ShopNow_Btn> 
-                    <button>Shop now</button>
+                    <button onClick={e => navigate("/shop")}>Shop now</button>
                 </Style.ShopNow_Btn>
             </Style.flex_row_product>
 

@@ -18,6 +18,7 @@ import {
     ProductShowSearch,
     PagenationPage
 } from "./Product_Styled";
+import {debounce} from 'lodash';
 
 export default function Product() {
 
@@ -32,7 +33,7 @@ export default function Product() {
     const [maxPriceFixed, SetMaxPriceFixed] = useState(0);
     const [maxPage, SetMaxPage] = useState(0);
 
-    let fetchListItem = () => {
+    let fetchListItem = debounce(() => {
         fetch('/product/list', {
             method: "POST",
             headers: {
@@ -52,15 +53,11 @@ export default function Product() {
                     SetListProduct(data.field.list);
                     SetMaxPage(data.field.maxPage);
                     SetMaxPriceFixed(data.field.maxPrice);
-                }
-                else {
-                    SetListProduct([]);
-                    SetMaxPage(1);
-                    SetMaxPriceFixed(0);
+                    maxPrice === 0 && SetMaxPrice(data.field.maxPrice);
                 }
 
             })
-    };
+    }, 500);
 
     let fetchListType = () => {
         fetch('product/type', { method: "GET" })
@@ -105,30 +102,48 @@ export default function Product() {
 
                 {/* Khoảng giá - Double range */}
                 <DoubleRangeSection>
-                    <ProductTitle>
+                    <ProductTitle style={{
+                        width: "fit-content",
+                        height: "50px", 
+                        borderRight: "1px solid rgba(0,0,0, .5)",
+                        display: "flex",
+                        alignItems: "center"}}>
                         <h1>Price</h1>
                     </ProductTitle>
 
                     <DoubleRangeWrap>
+                            
                         <div>
                             <input
                                 type="range"
                                 min={0}
                                 max={maxPriceFixed}
                                 defaultValue={minPrice}
-                                step={0.05}
+                                step={0.5}
                                 value={minPrice}
-                                onChange={e => SetMinPrice(parseFloat(e.target.value))} />
+                                onChange={e => {
+                                    if(e.target.value >= maxPrice) {
+                                        SetMaxPrice(parseFloat(e.target.value));
+                                    }
+                                    SetMinPrice(parseFloat(e.target.value));
+                                    
+                                }} />
                             <input
                                 type="range"
                                 min={0}
                                 max={maxPriceFixed}
-                                defaultValue={maxPriceFixed}
-                                step={0.05}
-                                value={maxPrice === 0 ? maxPriceFixed : maxPrice}
-                                onChange={e => SetMaxPrice(parseFloat(e.target.value))} />
-                            <p>Range: {minPrice} - {maxPrice === 0 ? maxPriceFixed : maxPrice}</p>
+                                defaultValue={maxPrice}
+                                step={0.5}
+                                value={maxPrice}
+                                onChange={e => {
+                                    if(e.target.value <= minPrice) {
+                                        SetMinPrice(parseFloat(e.target.value));
+                                    }
+                                    SetMaxPrice(parseFloat(e.target.value));
+                                    }} />                            
                         </div>
+
+                        <p>Range: {minPrice} - {maxPrice}</p>
                     </DoubleRangeWrap>
                 </DoubleRangeSection>
 

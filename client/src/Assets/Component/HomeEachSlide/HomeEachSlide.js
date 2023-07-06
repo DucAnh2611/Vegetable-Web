@@ -8,8 +8,10 @@ import {SliderWrapper,
         SliderChoosingWrapper,
         SliderChoosing,
         SliderNotChoose } from "./HomeEachSlide_Styled"; 
+import { useNavigate } from "react-router-dom";
 
 const Home_Slider = () =>{
+    const navigate = useNavigate();
     return(
         <SliderWrapper>
 
@@ -17,7 +19,7 @@ const Home_Slider = () =>{
 
                 <SlideTitle>Organic butter</SlideTitle>
                 <SlideSubTitle>Thin shell, golden rice, high flexibility</SlideSubTitle>
-                <ShopNowButton>Shop now</ShopNowButton>
+                <ShopNowButton onClick={e => navigate("/shop")}>Shop now</ShopNowButton>
 
             </SliderContent>
             

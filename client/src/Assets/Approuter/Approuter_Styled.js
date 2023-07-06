@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const CartGroupWrap = styled.div`
     width: 100%;
-    height: 200px;
+    height: 150px;
     display: flex;
     flex-direction: row;
     align-items: center;
