@@ -27,7 +27,16 @@ import {CartWrapper,
         ContinueShoppingWrapper,
         ContinueShoppingDiv,
         ContinueShopping,
-        TotalWrapper, } from "./Cart_Styled";
+        TotalWrapper,
+        TotalTitleWrapper,
+        TotalTitle,
+        TotalAndCheckOutWrapper,
+        TotalDivWrapper,
+        Total,
+        TotalPrice,
+        CheckOutWrapper,
+        CheckOutDiv,
+        CheckOut } from "./Cart_Styled";
 
 export default function Cart() {
 
@@ -161,29 +170,39 @@ export default function Cart() {
 
             </CartDetailWrapper>
 
-            <div>
+            <TotalWrapper>
 
-                <div>
+                <TotalTitleWrapper>
 
-                    <SectionTitle>Total</SectionTitle>
+                    <TotalTitle>Cart Total</TotalTitle>
 
-                </div>
+                </TotalTitleWrapper>
 
-                <div>
+                <TotalAndCheckOutWrapper>
 
-                    <div>
-                        <p>Total: {listItem.reduce((acc, cur) => {
-                            return acc += cur.price * cur.quantity
-                        }, 0)}</p>
-                    </div>
-                    <div>
-                        <a href="/shop-checkout ">Proceed to Checkout</a>
-                    </div>
+                    <TotalDivWrapper>
 
-                </div>
+                        <Total>Total </Total>
+
+                        <TotalPrice>
+                            ${listItem.reduce((acc, cur) => {
+                                return acc += cur.price * cur.quantity
+                            }, 0)}
+                        </TotalPrice>
+
+                    </TotalDivWrapper>
+                    <CheckOutWrapper>
+                        
+                        <CheckOutDiv>
+                            <CheckOut href="/shop-checkout ">Proceed to Checkout</CheckOut>
+                        </CheckOutDiv>
+
+                    </CheckOutWrapper>
+
+                </TotalAndCheckOutWrapper>
 
 
-            </div>
+            </TotalWrapper>
 
         </CartWrapper>
 

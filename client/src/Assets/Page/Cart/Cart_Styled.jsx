@@ -6,6 +6,7 @@ export const CartWrapper=styled.div`
     padding: 5% 10% 0;
     display: flex;
     flex-direction: row;
+    justify-content:center;
 `;
 
 export const CartDetailWrapper=styled.div`
@@ -17,7 +18,7 @@ export const CartTitleWrapper=styled.div`
     display: flex;
     height: 60px;
     padding-left: 10px;
-    border-radius: 20px 20px 0px 0px ;
+    border-radius:20px 20px 0px 0px ;
     border: 1px solid var(--Secondary_Gray);
     border-bottom: none;
 `;
@@ -148,6 +149,9 @@ export const ContinueShoppingDiv=styled.div`
     background-color: var(--Fourth_Green);
     margin-right: 20px;
     cursor: pointer;
+    &:hover{
+        background: var(--Hover_Color_Btn);
+    }
 `;
 
 export const ContinueShopping=styled.a`
@@ -158,5 +162,69 @@ export const ContinueShopping=styled.a`
 
 // Total
 export const TotalWrapper=styled.div`
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+`;
 
+export const TotalTitleWrapper=styled.div`
+    padding: 10px;
+    text-align: left;
+    height: 60px;
+    border-bottom: 1px solid var(--Secondary_Gray);
+    background-color: var(--Third_Gray);
+    border-radius: 20px 20px 0 0;
+`;
+
+export const TotalTitle=styled.p`
+    line-height: 40px;
+`;
+
+export const TotalAndCheckOutWrapper=styled.div`
+    padding: 10px;
+    background-color: var(--Fourth_Gray);
+    border-radius:0 0 20px 20px;
+`;
+
+export const TotalDivWrapper=styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 20px;
+`;
+
+export const Total=styled.p`
+    
+`;
+
+export const TotalPrice=styled.p`
+    font-size: 18px;
+    color: var(--Primary_Green);
+    font-weight: 600;
+`;
+
+export const CheckOutWrapper=styled.div`
+    border-radius: 0 0 20px 20px ;
+    height: 60px;
+    margin-bottom: 10px;
+    display:flex;
+`;
+
+export const CheckOutDiv=styled.a`
+    height: 40px;
+    width: 100%;
+    border-radius: 20px;
+    background-color: var(--Fourth_Green);
+    cursor: pointer;
+    &:hover{
+        background: var(--Hover_Color_Btn);
+    }
+`;
+
+export const CheckOut=styled.a`
+    line-height: 40px;
+    color: var(--Secondary_White);
+    font-size: 14px;
 `;
