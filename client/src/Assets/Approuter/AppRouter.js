@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {Routes, 
         Route, 
         Outlet,
@@ -23,13 +23,16 @@ import CheckoutMethod from "../Page/Profile/CheckoutMethod/CheckoutMethod";
 import { 
     CartGroupWrap, ProfileGroupWrap, ProfileNav
 } from "./Approuter_Styled";
+import ChangeStateOrder from "../Page/Admin/ChangeStateOrder/ChangeStateOrder";
 
 export default function AppRouter() {
+
     const navigate = useNavigate();
+    const [userType, SetUserType] = useState(0);
 
     const PrivateRoute = () => {
 
-        if(localStorage.getItem("auth")) {
+        if(localStorage.getItem("auth")  && JSON.parse(localStorage.getItem("auth")).id ) {
             return (
                 <Outlet/>
             )
@@ -40,7 +43,7 @@ export default function AppRouter() {
             )
         }
 
-    }
+    };
 
     const HomeNav = () => {
         return (
@@ -49,7 +52,7 @@ export default function AppRouter() {
                 <Outlet/>
             </>
         )
-    }
+    };
 
     const ProductNav = () => {
         return (
@@ -58,7 +61,7 @@ export default function AppRouter() {
                 <Outlet/>
             </>
         )
-    }
+    };
     
     const HaveFooter = () => {
         return (
@@ -67,7 +70,7 @@ export default function AppRouter() {
                 <Footer/>
             </>
         )
-    }
+    };
 
     const CartGroup = () => {
         return (
@@ -80,7 +83,7 @@ export default function AppRouter() {
                 <Outlet/>
             </>
         )
-    }
+    };
 
     const ProfileGroup = () => {
 
@@ -96,13 +99,44 @@ export default function AppRouter() {
                     <button onClick={e=> navigate("/my-account")}>Account details</button>
                     <button onClick={ e=> navigate("/my-account/orders")}>Order</button>
                     <button onClick={ e=> navigate("/my-account/method")} >Checkout Method</button>
+                    {userType === 1 && (<>
+                        <button onClick={e=> navigate("/admin/order/state-change")}>Orders Management</button>
+                        <button onClick={ e=> navigate("/my-account/orders")}>Add Product</button>
+                    </>)
+                    }
                     <button onClick={logout}>Logout</button>
                 </ProfileNav>
                 <Outlet/>
 
             </ProfileGroupWrap>
         )
+    };
+
+    const AdminRoute = () => {
+        if(userType === 1) {
+            return(
+                <>
+                    <Outlet/>
+                </>
+            )            
+        }
+        return(
+            <></>
+        )
+
     }
+
+    const getUserType = () => {
+        fetch(`/show/user/type?userid=${JSON.parse(localStorage.getItem("auth")).id}`)
+        .then(res => res.json())
+        .then(data => {
+            SetUserType(data.field)
+        })
+    };
+
+    useEffect(() =>{
+        getUserType();
+    }, [])
 
     return (
         <>
@@ -117,6 +151,7 @@ export default function AppRouter() {
                         </Route> 
                         
                         <Route element={<ProductNav/>}>
+
                             <Route exact path="/about-us" element={<AboutUs/>}/>
                             <Route exact path="/shop" element={<Product/>}/>
                             <Route exact path="/shop/product/:productid" element={<ProductDetail/>}/>
@@ -129,11 +164,15 @@ export default function AppRouter() {
                             </Route>
 
                             <Route element={<ProfileGroup/>}>
+                                <Route element={<AdminRoute/>}>
+                                        
+                                    <Route exact path="/admin/order/state-change" element={<ChangeStateOrder/>}/>
+
+                                </Route>
                                 <Route exact path="/my-account" element={<Account/>}/>
                                 <Route exact path="/my-account/orders" element={<Orders/>}/>
                                 <Route exact path="/my-account/method" element={<CheckoutMethod/>}/>
                             </Route>
-                            
 
                         </Route>
 

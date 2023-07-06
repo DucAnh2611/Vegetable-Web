@@ -98,7 +98,6 @@ function Profile(app) {
     res.status(responseContext.status).json({ ...responseContext.json });
   });
 
-
   app.post("/profile/:userid/update", async (req, res) => {
     let responseContext = {
       json: {

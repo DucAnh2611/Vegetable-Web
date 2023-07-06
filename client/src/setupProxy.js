@@ -31,7 +31,11 @@ module.exports = function(app) {
         "/profile/:userid/password-change",
         "/profile/:userid/add-method",
         "/method/view",
-        "/aboutus/all"
+        "/aboutus/all",
+        "/show/user/type",
+        "/create/product",
+        "/change/orderstate",
+        "/show/order"
     ];
     
     listEndpoint.forEach(endpoint => {

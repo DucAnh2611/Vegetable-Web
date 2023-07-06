@@ -40,6 +40,9 @@ export default function Login() {
           localStorage.setItem("auth", JSON.stringify({id: data.field.value, authen: true}));
           window.location = "/";
         }
+        else {
+          SetField(data.field[0].name);
+        }
       });
   };
 
@@ -71,11 +74,11 @@ export default function Login() {
               maxLength={20}
               minLength={1}
             ></input>
-            <span><FontAwesomeIcon icon={fa.faUser}/> Tên đăng nhập</span>
+            <span><FontAwesomeIcon icon={fa.faUser}/> Username</span>
             {
             (() => {
               if (field === "username") {
-                return <p>* Tài khoản không tồn tại</p>;
+                return <p>* Username is not exist</p>;
               }
             })()
             }
@@ -90,11 +93,11 @@ export default function Login() {
               maxLength={30}
               minLength={1}
             ></input>
-            <span><FontAwesomeIcon icon={fa.faPen}/> Mật khẩu</span>
+            <span><FontAwesomeIcon icon={fa.faPen}/> Password</span>
             {
             (() => {
               if (field === "password") {
-                return <p>* Mật khẩu không chính xác</p>;
+                return <p>* Incorrect password</p>;
               }
             })()
             }
@@ -105,8 +108,8 @@ export default function Login() {
         <VerifyFieldDiv style={{
             justifyContent: "space-between"
         }}>
-          <button onClick={LoginAuth}>Đăng nhập</button>
-          <button onClick={ClickSign}>Đăng ký</button>
+          <button onClick={LoginAuth}>Login</button>
+          <button onClick={ClickSign}>Signup</button>
         </VerifyFieldDiv>
 
       </VerifySection>

@@ -42,21 +42,21 @@ function Signup() {
           SetValidData(false);
           SetField(field => [...field, {
             field: e,
-            msg: "Sai định dạng email"
+            msg: "Incorrect  Email format"
           }]);
         } 
         else if(e === "phoneNum" & !Boolean(userInfo[e].match(phoneFormat)) ) {
           SetValidData(false);
           SetField(field => [...field, {
             field: e,
-            msg: "Sai định dạng số điện thoại"
+            msg: "Incorrect Phone number format"
           }]);
         }
         else if((e==="username" || e==="pass") && userInfo[e].includes(' ')) {
           SetValidData(false);
           SetField(field => [...field, {
             field: e,
-            msg: "Không thể chứa dấu cách (space)"
+            msg: "Can not contain space ' '"
           }]);
         }
         else if(e === "birthday") {
@@ -71,14 +71,14 @@ function Signup() {
             SetValidData(false);
             SetField(field => [...field, {
               field: e,
-              msg: "không thể chọn ngày sinh quá thời điểm hiện tại"
+              msg: "Can not choose date in the future"
             }]);
           }else {
             if(diff_year < 18) {
               SetValidData(false);
               SetField(field => [...field, {
                 field: e,
-                msg: "Chưa đủ 18 tuổi"
+                msg: "18 year old required"
               }]);
             }
           }
@@ -164,7 +164,7 @@ function Signup() {
               maxLength={20}
               minLength={1}
             ></input>
-            <span><FontAwesomeIcon icon={fa.faUser}/> Tên đăng nhập</span>
+            <span><FontAwesomeIcon icon={fa.faUser}/> Username</span>
             {field.map((element) => {
               if (element.field === "username") {
                 return <p>* {element.msg}</p>;
@@ -182,7 +182,7 @@ function Signup() {
               maxLength={30}
               minLength={1}
             ></input>
-            <span><FontAwesomeIcon icon={fa.faPen}/> Mật khẩu</span>
+            <span><FontAwesomeIcon icon={fa.faPen}/> Password</span>
             {field.map((element) => {
               if (element.field === "password") {
                 return <p>* {element.msg}</p>;
@@ -200,7 +200,7 @@ function Signup() {
               maxLength={100}
               minLength={1}
             ></input>
-            <span><FontAwesomeIcon icon={fa.faInbox}/> Họ và tên</span>
+            <span><FontAwesomeIcon icon={fa.faInbox}/> Fullname</span>
             {field.map((element) => {
               if (element.field === "fullname") {
                 return <p>* {element.msg}</p>;
@@ -236,7 +236,7 @@ function Signup() {
               maxLength={10}
               minLength={10}
             ></input>
-            <span><FontAwesomeIcon icon={fa.faPhone}/> Số điện thoại</span>
+            <span><FontAwesomeIcon icon={fa.faPhone}/> Phone Number</span>
             {field.map((element) => {
               if (element.field === "phoneNum") {
                 return <p>* {element.msg}</p>;
@@ -256,7 +256,7 @@ function Signup() {
               zIndex: "1",
               top: "0",
               backgroundColor: "var(--Primary_White)"}}
-          ><FontAwesomeIcon icon={fa.faBirthdayCake}/> Ngay sinh</span>
+          ><FontAwesomeIcon icon={fa.faBirthdayCake}/> Birthday</span>
             {field.map((element) => {
               if (element.field === "birthday") {
                 return <p>* {element.msg}</p>;
@@ -270,8 +270,8 @@ function Signup() {
         <VerifyFieldDiv style={{
             justifyContent: "space-between"
         }}>
-          <button onClick={SignupAuth} disabled={!ValidData}>Dang ky</button>
-          <button onClick={ClickToLogin}>Dang nhap</button>
+          <button onClick={SignupAuth} disabled={!ValidData}>Sign up</button>
+          <button onClick={ClickToLogin}>Login</button>
         </VerifyFieldDiv>
 
       </VerifySection>

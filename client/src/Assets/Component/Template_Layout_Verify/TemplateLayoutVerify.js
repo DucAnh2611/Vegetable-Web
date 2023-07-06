@@ -88,7 +88,7 @@ export const VerifyFieldDiv = styled.div`
         color: var(--Primary_Black);
        }
        &:hover {
-        background-color: var(--Third_Yellow);
+        background-color: var(--Fifth_Green);
         color: var(--Primary_White);
        }
        &:active{
@@ -114,7 +114,7 @@ export const VerifyInputDiv = styled.div`
     margin: 10px 0;
     &>p{
         margin:0;
-        color: var(--Third_Yellow);
+        color: var(--Primary_Red);
         font-size: 1.2vh;
         text-align: left;
     }

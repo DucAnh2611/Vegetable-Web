@@ -121,6 +121,24 @@ export default function AboutUs() {
 
                     </EachTech> 
 
+                    <EachTech> 
+
+                        <div>
+                            <FontAwesomeIcon icon={fa1.faFigma}/>
+                        </div>
+
+                        <div>
+
+                            <h3>Figma</h3>
+
+                            <p>UX/UI Design, mockup application using dev mode.</p>
+
+                            <a href="https://github.com/about" target="_blank">Read more</a>
+
+                        </div>
+
+                    </EachTech>
+
                 </div>
 
             </AboutUsTechnology>

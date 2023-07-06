@@ -25,8 +25,8 @@ export default function Footer() {
                             <div>
                                 <h1>Vegetable | Thực phẩm sạch</h1>
                                 <p>CTY TNHH Nhóm 2</p>
-                                <p>MST: 0123456789</p>
-                                <p>DHTL-Nghiêm Xuân Yêm-Hà Nội</p>
+                                <p>Thang Long Universtity</p>
+                                <p>Nghiêm Xuân Yêm-Hà Nội</p>
                             </div>
                         </div>
                     </DetailHeader>
@@ -39,23 +39,21 @@ export default function Footer() {
                             </div>
 
                             <div>
-                                <a href="#">Order</a>
-                                <a href="#">Shipment</a>
-                                <a href="#">Feedback</a>
-                                <a href="#">Privacy Policy</a>
+                                <a href="/my-accoount/orders">Order</a>
+                                <a href="/about-us">Our Infomation</a>
                             </div>
                         </DetailContentColumn>
 
                         <DetailContentColumn>
                             <div>
-                                <h1>HOT CATEGORY</h1>
+                                <h1>OUR SOURCE</h1>
                             </div>
 
                             <div>
-                                <a href="#">Fruit</a>
-                                <a href="#">Meat</a>
-                                <a href="#">Milk Eggs</a>
-                                <a href="#">Vegetable</a>
+                                <a href="#">Github</a>
+                                <a href="#">Figma</a>
+                                <a href="#">Word</a>
+                                <a href="#">Endpoints</a>
                             </div>
                         </DetailContentColumn>
 
@@ -65,23 +63,8 @@ export default function Footer() {
                             </div>
 
                             <div>
-                                <a href="#">Cart</a>
-                                <a href="#">Favourite</a>
-                                <a href="#">List Bought</a>
-                                <a href="#">Product Infomation</a>
-                            </div>
-                        </DetailContentColumn>
-
-                        <DetailContentColumn>
-                            <div>
-                                <h1>PAYMENT</h1>
-                            </div>
-
-                            <div>
-                                <a href="#">Visa</a>
-                                <a href="#">Momo</a>
-                                <a href="#">Paypal</a>
-                                <a href="#">Viettel pay</a>
+                                <a href="/shop-cart">Cart</a>
+                                <a href="/my-account/orders">Favourite</a>
                             </div>
                         </DetailContentColumn>
 

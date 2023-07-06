@@ -1,5 +1,16 @@
 [
     {
+        "username": "admin1",
+        "password": "1",
+        "fullname": "admin1",
+        "birthday": "26/11/2002",
+        "email": "admin@gmail.com",
+        "phoneNum": "0000000012",
+        "image": "./DefaultValue/ImageUser/ducanh.jpg",
+        "address": "Hanoi",
+        "typeUser": 1
+    },
+    {
         "username": "ducanh",
         "password": "1",
         "fullname": "Nguyễn Hoàng Đức Anh",
