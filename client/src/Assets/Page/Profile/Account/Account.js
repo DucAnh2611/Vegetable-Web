@@ -5,6 +5,17 @@ import React, { useEffect, useState } from "react";
 import { Buffer } from "buffer";
 import ConvertImageToBuffer from "../../../AssistsFunc/ConvertImageToBuffer";
 import ConvertToImage from "../../../AssistsFunc/ConvertBlobToImage";
+import { 
+    PartWrap,
+    InputButton,
+    InputImage,
+    InputPass,
+    InputText,
+    Notification,
+    SectionContent,
+    SectionHeader,
+    SectionPart
+} from "./Account_Styled";
 
 export default function Account() {
     const [userInfo, SetUserInfo] = useState({
@@ -28,8 +39,8 @@ export default function Account() {
     });
 
     const RegExpInput = {
-        fullname: /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]{10,30}$/,
-        address: /^[a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]{10,150}$/,
+        fullname: /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]{10,30}$/,
+        address: /^[a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s,/-]{10,150}$/,
         phone: /^[0-9]{10,11}$/,
         email: new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
     };
@@ -124,30 +135,33 @@ export default function Account() {
 
     useEffect(() => {
         fetchUserInfo();
+        document.title = "Vegetable - Account Details";
     }, []);
 
     return(
-        <div>
+        <PartWrap>
 
-            <div>
+            <SectionPart>
 
-                <div>   
+                <SectionHeader>   
                     <h1>Account detail</h1>
-                </div>
+                </SectionHeader>
 
                 {
                     userInfo.avatar !== "" && 
                     (
-                        <div>
+                        <SectionContent>
 
-                            <div>
+                            <InputImage>
 
                                 <div>
                                     <img src={ConvertToImage(userInfo.avatar)} alt="user preview"/>
                                 </div>
 
                                 <div>
+                                    <label for="selectimg">Change picture</label>
                                     <input 
+                                    id="selectimg"
                                     type="file" 
                                     accept=".jpg, .jpeg, .png" 
                                     onInput={e => ConvertImageToBuffer(e.target.files[0]).then(buf => {
@@ -159,9 +173,9 @@ export default function Account() {
                                     } )}/>
                                 </div>
 
-                            </div>
+                            </InputImage>
 
-                            <div>
+                            <InputText>
                                 <label for="fullname">Fullname</label>
                                 <input 
                                 id="fullname" 
@@ -171,13 +185,13 @@ export default function Account() {
                                 onChange= {e => handleChangeData("fullname", e.target.value)}
                                 />
                                 <ul>
-                                    {userInfo.fullname.length >= 10 ?<li>ok</li> : <li>At least 10 characters</li>}
-                                    {userInfo.fullname.length <=30 ? <li>ok</li> : <li>Maximum 30 characters</li>}
-                                    {!new RegExp("[0-9!@#\$%\^\&*\)\(+=._-]", "g").test(userInfo.fullname) ? <p>ok</p> : <li>Do not contain special characters or number</li>}
+                                    {<li className={userInfo.fullname.length >= 10 ? "ok" : "not"}>At least 10 characters</li>}
+                                    {<li className={userInfo.fullname.length <=30 ? "ok" : 'not'}>Maximum 30 characters</li>}
+                                    {<li className={!new RegExp("[0-9!@#\$%\^\&*\)\(+=._-]", "g").test(userInfo.fullname) ? "ok" : 'not'}>Do not contain special characters or number</li>}
                                 </ul>
-                            </div>
+                            </InputText>
                             
-                            <div>
+                            <InputText>
                                 <label for="order-address">Address</label>
                                 <input 
                                 id="order-address" 
@@ -187,12 +201,13 @@ export default function Account() {
                                 onChange= {e => handleChangeData("address", e.target.value)}
                                 />
                                 <ul>
-                                    {userInfo.address.length >=10 ?<li>ok</li> : <li>At least 10 characters</li>}
-                                    {userInfo.address.length <=150 ?<li>ok</li> : <li>Maximum 150 characters</li>}
+                                    {<li className={userInfo.address.length >= 10 ? "ok" : "not"}>At least 10 characters</li>}
+                                    {<li li className={userInfo.address.length <=150  ? "ok" : "not"}>Maximum 150 characters</li>}
+                                    {<li className={!new RegExp("[!@#\$%\^\&*\)\(=_+.]", "g").test(userInfo.address) ? "ok" : 'not'}>Do not contain special characters except: "-"</li>}
                                 </ul>
-                            </div>
+                            </InputText>
 
-                            <div>
+                            <InputText>
                                 <label for="phone-num">Phone number</label>
                                 <input 
                                 id="phone-num" 
@@ -202,13 +217,13 @@ export default function Account() {
                                 onChange= {e => handleChangeData("phone", e.target.value)}
                                 />
                                 <ul>
-                                    { userInfo.phone.length>=10 ?<li>ok</li> : <li>At least 10 characters</li>}
-                                    { userInfo.phone.length<=11 ?<li>ok</li> : <li>Maximum 11 characters</li>}
-                                    {new RegExp("^[0-9]+$").test(userInfo.phone) ? <li>ok</li> : <li>Contain numbers only</li>}
+                                    {<li className={userInfo.phone.length >= 10 ? "ok" : "not"}>At least 10 characters</li>}
+                                    {<li className={userInfo.phone.length <= 11  ? "ok" : "not"}>Maximum 11 characters</li>}
+                                    {<li className={new RegExp("^[0-9]+$").test(userInfo.phone) ? "ok" : "not"}>Contain numbers only</li>}
                                 </ul>
-                            </div>
+                            </InputText>
 
-                            <div>
+                            <InputText>
                                 <label for="email">Email</label>
                                 <input 
                                 id="email" 
@@ -218,43 +233,42 @@ export default function Account() {
                                 onChange= {e => handleChangeData("email", e.target.value)}
                                 />
                                 <ul>
-                                    {userInfo.email.length >=10 ?<li>ok</li> : <li>At least 10 characters</li>}
-                                    {userInfo.email.length <=50 ?<li>ok</li> : <li>Maximum 50 characters</li>}
-                                    {new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$").test(userInfo.email) ? <li>ok</li> : <li>Match format: abc@example.com</li>}
+                                    {<li className={userInfo.email.length >= 10 ? "ok" : "not"}>At least 10 characters</li>}
+                                    {<li className={userInfo.email.length <= 150  ? "ok" : "not"}>Maximum 11 characters</li>}
+                                    {<li className={ new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$").test(userInfo.email) ? "ok" : "not"}>Match format: abc@example.com</li>}
                                 </ul>
-                            </div>
+                            </InputText>
 
-                            <div>
+                            <InputButton>
                                 <button onClick={changeInfo} disabled={filterConditionToSubmit() !== -1}>Confirm change</button>
-                            </div>
+                            </InputButton>
 
-                        </div>                        
+                        </SectionContent>                        
                     )
                 }
 
 
 
-            </div>
-
+            </SectionPart>
             
-            <div>
+            <SectionPart>
 
-                <div>
+                <SectionHeader>
                     <h1>Change password</h1>
-                </div>
+                </SectionHeader>
 
-                <div>
+                <SectionContent>
                     {
                         Object.keys(changePassFail).length !==0 
                         && (
-                            <div>
-                                <p>{changePassFail.name}</p>
+                            <Notification className={changePassFail.name === "Successfully" ? "ok" : "not"}>
+                                <p><b>{changePassFail.name}</b></p>
                                 <p>Message: {changePassFail.msg}</p>
-                            </div>
+                            </Notification>
                         )
                     }
 
-                    <div>
+                    <InputPass>
                         <label for="current">Current password</label>
                         <div>
                             <input 
@@ -264,19 +278,21 @@ export default function Account() {
                             value={passwordChangeInfo.currentpass}
                             onChange= {e => handleChangePasswordData("currentpass", e.target.value)}
                             />  
+
                              <button onClick={e => SetShowInput(show => ({...show, currentpass : !showInput.currentpass}) )}>
                                 <FontAwesomeIcon icon={showInput.currentpass ? fa.faEyeSlash : fa.faEye}/>
-                            </button>                          
+                            </button> 
+
+                            <ul>
+                                {<li className={passwordChangeInfo.currentpass.length > 0 ? "ok": "not"}>At least 1 characters</li>}
+                                {<li className={passwordChangeInfo.currentpass.length <=30? "ok" :"not"}>Maximum 30 characters</li>}
+                                {<li className={!passwordChangeInfo.currentpass.includes(" ") ? "ok" : "not"}>Do not contain space</li>}
+                            </ul>                         
                         </div>
 
-                        <ul>
-                            {passwordChangeInfo.currentpass.length > 0 ?<li>ok</li> : <li>At least 1 characters</li>}
-                            {passwordChangeInfo.currentpass.length <=30 ?<li>ok</li> : <li>Maximum 30 characters</li>}
-                            {!passwordChangeInfo.currentpass.includes(" ") ? <li>ok</li> : <li>Do not contain space</li>}
-                        </ul>
-                    </div>
+                    </InputPass>
 
-                    <div>
+                    <InputPass>
                         <label for="new">New password</label>
 
                         <div>
@@ -287,21 +303,25 @@ export default function Account() {
                             value={passwordChangeInfo.newpass}
                             onChange= {e => handleChangePasswordData("newpass", e.target.value)}
                             />
+
                             <button onClick={e => SetShowInput(show => ({...show, newpass : !showInput.newpass}) )}>
                                 <FontAwesomeIcon icon={showInput.newpass ? fa.faEyeSlash : fa.faEye}/>
                             </button>
+
+                            <ul>
+                                {<li className={passwordChangeInfo.newpass.length > 0? "ok" : "not"}>At least 1 characters</li>}
+                                {<li className={passwordChangeInfo.newpass.length <=30? "ok" : "not"}>Maximum 30 characters</li>}
+                                {<li className={passwordChangeInfo.newpass !== passwordChangeInfo.currentpass ? "ok" : "not"}>New password must different with current password</li>}
+                                {<li className={!passwordChangeInfo.newpass.includes(" ") ? "ok" : "not"}>Do not contain space</li>}
+                            </ul>                            
                         </div>
 
-                        <ul>
-                            {passwordChangeInfo.newpass.length > 0 ?<li>ok</li> : <li>At least 1 characters</li>}
-                            {passwordChangeInfo.newpass.length <=30 ?<li>ok</li> : <li>Maximum 30 characters</li>}
-                            {passwordChangeInfo.newpass !== passwordChangeInfo.currentpass ? <li>ok</li> : <li>New password must different with current password</li>}
-                            {!passwordChangeInfo.newpass.includes(" ") ? <li>ok</li> : <li>Do not contain space</li>}
-                        </ul>
-                    </div>
 
-                    <div>
+                    </InputPass>
+
+                    <InputPass>
                         <label for="confirm">Confirm password</label>
+
                         <div>
                             <input 
                             id="confirm" 
@@ -309,28 +329,31 @@ export default function Account() {
                             min={1} 
                             value={passwordChangeInfo.confirmpass}
                             onChange= {e => handleChangePasswordData("confirmpass", e.target.value)}
-                            />                            
+                            />     
+
                             <button onClick={e => SetShowInput(show => ({...show, confirmpass : !showInput.confirmpass}) )}>
                                 <FontAwesomeIcon icon={showInput.confirmpass ? fa.faEyeSlash : fa.faEye}/>
                             </button>
+
+                            <ul>
+                                {<li className={passwordChangeInfo.confirmpass.length > 0 ? "ok" : "not"}>At least 1 characters</li>}
+                                {<li className={passwordChangeInfo.confirmpass.length <=30 ? "ok" : "not"}>Maximum 50 characters</li>}
+                                {<li className={passwordChangeInfo.confirmpass === passwordChangeInfo.newpass ? "ok" : "not"}>Confirm password must match with New password</li>}
+                                {<li className={!passwordChangeInfo.confirmpass.includes(" ") ? "ok" : "not"}>Do not contain space</li>}
+                            </ul>                            
                         </div>
 
-                        <ul>
-                            {passwordChangeInfo.confirmpass.length > 0 ?<li>ok</li> : <li>At least 1 characters</li>}
-                            {passwordChangeInfo.confirmpass.length <=30 ?<li>ok</li> : <li>Maximum 50 characters</li>}
-                            {passwordChangeInfo.confirmpass === passwordChangeInfo.newpass ? <li>ok</li> : <li>Confirm password must match with New password</li>}
-                            {!passwordChangeInfo.confirmpass.includes(" ") ? <li>ok</li> : <li>Do not contain space</li>}
-                        </ul>
-                    </div>
 
-                    <div>
+                    </InputPass>
+
+                    <InputButton>
                         <button onClick={changePassword} disabled={enableButtonChangePassword()}>Confirm change</button>
-                    </div>
+                    </InputButton>
 
-                </div>
+                </SectionContent>
                 
-            </div>
+            </SectionPart>
 
-        </div>
+        </PartWrap>
     )
 }

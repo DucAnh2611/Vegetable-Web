@@ -1,5 +1,5 @@
 
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as faSolid from "@fortawesome/free-solid-svg-icons";
 import * as faRegular from "@fortawesome/free-regular-svg-icons";
@@ -21,6 +21,7 @@ import ConvertToImage from "../../../AssistsFunc/ConvertBlobToImage";
 
 export default function ProductNavigation() {
 
+    const searchRef = useRef(null);
     const [openSearchPane, SetOpenSearchPane] = useState(false);
     const [searchPage, SetSearchPage] = useState(1);
     const [searchKey, SetSearchKey] = useState("");
@@ -62,7 +63,19 @@ export default function ProductNavigation() {
 
     useMemo(()=> {
         searchSomeThing();
-        
+
+        const handleClickOutside = (event) => {
+            if (searchRef.current && !searchRef.current.contains(event.target)) {
+                SetOpenSearchPane(false);
+            }
+        };
+      
+        document.addEventListener('mousedown', handleClickOutside);
+    
+        return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+        };
+
     }, [searchPage, searchKey]);
 
     return (
@@ -92,7 +105,7 @@ export default function ProductNavigation() {
                 {
                     openSearchPane 
                     && (
-                        <SearchResPane onScroll={e => scrollToFetchMore(e)}> 
+                        <SearchResPane onScroll={e => scrollToFetchMore(e)} ref={searchRef}> 
                             {
                                 listSearch.length !==0
                                 ?listSearch.map(e=> (

@@ -1,5 +1,15 @@
 
 import React, { useEffect, useMemo, useState } from "react";
+import { 
+    PartWrap,
+    SectionContent,
+    SectionHeader, 
+    SectionPart 
+} from "../Account/Account_Styled";
+import { 
+    TableHeader,
+    TableRow 
+} from "./Orders_Styled";
 
 export default function Orders() {
 
@@ -30,80 +40,89 @@ export default function Orders() {
 
     useEffect(()=>{
         fetchListOrder();
+        document.title = "Vegetable - Account Orders";
     }, []); 
 
     if(listOrder.length === 0) {
         return (
-            <div>
-                <p>Nothing in your list order</p>
-            </div>
+            <PartWrap>
+
+                <SectionHeader>
+                    <h1>Nothing in your list order</h1>
+                </SectionHeader>
+                
+            </PartWrap>
         )
     }
 
     return (
-        <div>
+        <PartWrap>
 
-            <div>
+            <SectionPart>
 
-                <div>
-                    <p>OrderID</p>
-                </div>
+                <SectionHeader>
+                    <h1>List orders</h1>
+                </SectionHeader>
 
-                <div>
-                    <p>Order Fullname</p>
-                </div>
+                <SectionContent>
 
-                <div>
-                    <p>Order Email</p>
-                </div>
+                    <TableHeader className="header">
 
-                <div>
-                    <p>Order Total</p>
-                </div>
+                        <div>
+                            <p>ID</p>
+                        </div>
 
-                <div>
-                    <p>Order Note</p>
-                </div>
+                        <div>
+                            <p>Order Fullname</p>
+                        </div>
 
-                <div>
-                    <p>State</p>
-                </div>
+                        <div>
+                            <p>Order Email</p>
+                        </div>
 
-            </div>
+                        <div>
+                            <p>Total</p>
+                        </div>
 
-            <div onScroll={e => scrollToFetchMore(e)}>
-                {
-                    listOrder.map(e => (
-                        <a href={`/shop-order-tracking/${e.id}`}>
-                            <div>
-                                <p>{e.id}</p>
-                            </div>
+                        <div>
+                            <p>State</p>
+                        </div>
 
-                            <div>
-                                <p>{e.OrderFullname}</p>
-                            </div>
+                    </TableHeader>
 
-                            <div>
-                                <p>{e.OrderEmail}</p>
-                            </div>
+                    <div onScroll={e => scrollToFetchMore(e)}>
+                        {
+                            listOrder.map(e => (
+                                <TableRow href={`/shop-order-tracking/${e.id}`}>
+                                    <div>
+                                        <p>{e.id}</p>
+                                    </div>
 
-                            <div>
-                                <p>{e.total}$</p>
-                            </div>
+                                    <div>
+                                        <p>{e.OrderFullname}</p>
+                                    </div>
 
-                            <div>
-                                <p>{e.OrderDescription}</p>
-                            </div>
+                                    <div>
+                                        <p>{e.OrderEmail}</p>
+                                    </div>
 
-                            <div>
-                                <p>{e.state}</p>
-                            </div>
-                        </a>
-                    ))
-                }
+                                    <div>
+                                        <p>{e.total}$</p>
+                                    </div>
 
-            </div>
+                                    <div>
+                                        <p>{e.state}</p>
+                                    </div>
+                                </TableRow>
+                            ))
+                        }
 
-        </div>
+                    </div>   
+
+                </SectionContent>
+
+            </SectionPart>
+
+        </PartWrap>
     )
 }

@@ -20,6 +20,9 @@ import OrderTrackingInfo from "../Page/OrderTracking/OrderTrackingInfo/OrderTrac
 import Account from "../Page/Profile/Account/Account";
 import Orders from "../Page/Profile/Orders/Orders";
 import CheckoutMethod from "../Page/Profile/CheckoutMethod/CheckoutMethod";
+import { 
+    CartGroupWrap, ProfileGroupWrap, ProfileNav
+} from "./Approuter_Styled";
 
 export default function AppRouter() {
     const navigate = useNavigate();
@@ -69,11 +72,11 @@ export default function AppRouter() {
     const CartGroup = () => {
         return (
             <>
-                <div>
+                <CartGroupWrap>
                     <a href="/shop-cart">Cart</a>
                     <a href="/shop-checkout">Checkout</a>
                     <a href="/shop-order-tracking">Order tracking</a>
-                </div>
+                </CartGroupWrap>
                 <Outlet/>
             </>
         )
@@ -87,17 +90,17 @@ export default function AppRouter() {
         }
 
         return (
-            <>
+            <ProfileGroupWrap>
 
-                <div>
+                <ProfileNav>
                     <button onClick={e=> navigate("/my-account")}>Account details</button>
                     <button onClick={ e=> navigate("/my-account/orders")}>Order</button>
                     <button onClick={ e=> navigate("/my-account/method")} >Checkout Method</button>
                     <button onClick={logout}>Logout</button>
-                </div>
+                </ProfileNav>
                 <Outlet/>
 
-            </>
+            </ProfileGroupWrap>
         )
     }
 

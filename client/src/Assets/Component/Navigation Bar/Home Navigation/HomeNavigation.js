@@ -1,5 +1,5 @@
 
-import React, { useMemo, useState } from "react";  
+import React, { useMemo, useRef, useState } from "react";  
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as faSolid from "@fortawesome/free-solid-svg-icons";
 import * as faRegular from "@fortawesome/free-regular-svg-icons";
@@ -133,7 +133,7 @@ export default function HomeNavigation() {
                 
 
                 <EachIconPart>
-                    <NavigationIcon><FontAwesomeIcon icon = {faRegular.faUser}/></NavigationIcon>
+                    <NavigationIcon onClick={e => navigation("/my-account")}><FontAwesomeIcon icon = {faRegular.faUser}/></NavigationIcon>
                 </EachIconPart>
 
                 <EachIconPart>
