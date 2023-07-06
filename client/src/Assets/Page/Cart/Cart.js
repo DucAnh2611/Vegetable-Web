@@ -4,6 +4,39 @@ import ConvertToIamge from "../../AssistsFunc/ConvertBlobToImage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {debounce} from 'lodash';
 import * as fa from "@fortawesome/free-solid-svg-icons";
+import {SectionTitle} from "../../Component/HomeEachBenefit/HomeEachBenefit_Styled"
+import {CartWrapper,
+        CartDetailWrapper,
+        CartTitleWrapper,
+        ProductThumbnail,
+        ProductInCartWrapper,
+        ProductWrapper,
+        ProductImgWrapper,
+        ProductImg,
+        ProductNameWrapper,
+        ProductName,
+        ProductPriceWrapper,
+        ProductPrice,
+        ProductPlusMinusButtonWrapper,
+        ProductPlusMinusButton,
+        ProductPlusMinusInput,
+        ProductCostWrapper,
+        ProductCost,
+        ProductRemoveWrapper,
+        ProductRemoveButton,
+        ContinueShoppingWrapper,
+        ContinueShoppingDiv,
+        ContinueShopping,
+        TotalWrapper,
+        TotalTitleWrapper,
+        TotalTitle,
+        TotalAndCheckOutWrapper,
+        TotalDivWrapper,
+        Total,
+        TotalPrice,
+        CheckOutWrapper,
+        CheckOutDiv,
+        CheckOut } from "./Cart_Styled";
 
 export default function Cart() {
 
@@ -72,90 +105,106 @@ export default function Cart() {
 
     return (
 
-        <div>
+        <CartWrapper>
 
-            <div>
+            <CartDetailWrapper>
 
-                <div>
+                <CartTitleWrapper>
 
-                    header
+                    <ProductThumbnail style={{width:"340px"}}>Product</ProductThumbnail>
+                    <ProductThumbnail style={{width: "120px"}}>Price</ProductThumbnail>
+                    <ProductThumbnail style={{width: "150px"}}>Quantity</ProductThumbnail>
+                    <ProductThumbnail style={{width: "100px"}}>Subtotal</ProductThumbnail>
 
-                </div>
+                </CartTitleWrapper>
 
-                <div>
+                <ProductInCartWrapper>
 
                     {
                         listItem.length !==0 
                         ? listItem.map(e => (
-                            <div key={e.id}>
+                            <ProductWrapper key={e.id}>
 
-                                <div>
-                                    <img src={ConvertToIamge(e.image)} alt="item cart"/>
-                                </div>
+                                <ProductImgWrapper>
+                                    <ProductImg src={ConvertToIamge(e.image)} alt="item cart"/>
+                                </ProductImgWrapper>
 
-                                <div>
-                                    <p>{e.PdName}</p>
-                                </div>
+                                <ProductNameWrapper>
+                                    <ProductName>{e.PdName}</ProductName>
+                                </ProductNameWrapper>
 
-                                <div>
-                                    <p>${e.price} / {e.unit}</p>
-                                </div>
+                                <ProductPriceWrapper>
+                                    <ProductPrice>${e.price} / {e.unit}</ProductPrice>
+                                </ProductPriceWrapper>
 
-                                <div>
-                                    <button onClick={ev => changeItemQuantity(- 1, e.id, e.quantity)}><FontAwesomeIcon icon={fa.faMinus}/></button>
-                                    <input type="number" onChange={ev => changeItemQuantity(ev.target.value < 0 ? 1 :ev.target.value - e.quantity, e.id, e.quantity)} value={e.quantity}/>
-                                    <button onClick={ev => changeItemQuantity(1, e.id, e.quantity)}><FontAwesomeIcon icon={fa.faPlus}/></button>
-                                </div>
+                                <ProductPlusMinusButtonWrapper>
+                                    <ProductPlusMinusButton onClick={ev => changeItemQuantity(- 1, e.id, e.quantity)}><FontAwesomeIcon icon={fa.faMinus}/></ProductPlusMinusButton>
+                                    <ProductPlusMinusInput type="number" onChange={ev => changeItemQuantity(ev.target.value < 0 ? 1 :ev.target.value - e.quantity, e.id, e.quantity)} value={e.quantity}/>
+                                    <ProductPlusMinusButton onClick={ev => changeItemQuantity(1, e.id, e.quantity)}><FontAwesomeIcon icon={fa.faPlus}/></ProductPlusMinusButton>
+                                </ProductPlusMinusButtonWrapper>
 
-                                <div>
-                                    <p>${parseFloat(e.quantity)*parseFloat(e.price)}</p>
-                                </div>
+                                <ProductCostWrapper>
+                                    <ProductCost>${parseFloat(e.quantity)*parseFloat(e.price)}</ProductCost>
+                                </ProductCostWrapper>
 
-                                <div>
-                                    <button onClick={ev => removeItem(e.id)}><FontAwesomeIcon icon={fa.faClose}/></button>
+                                <ProductRemoveWrapper>
+                                    <ProductRemoveButton onClick={ev => removeItem(e.id)}><FontAwesomeIcon icon={fa.faClose}/></ProductRemoveButton>
                                     
-                                </div>
+                                </ProductRemoveWrapper>
 
-                            </div>
+                            </ProductWrapper>
+
                         ))
                         : <p>Nothing in cart</p>
                     }
 
-                </div>
+                </ProductInCartWrapper>
 
-                <div>
+                <ContinueShoppingWrapper>
 
-                    <a href="/shop">Continute Shopping</a>
+                    <ContinueShoppingDiv>
+                        <ContinueShopping href="/shop">Continute Shopping</ContinueShopping>
+                    </ContinueShoppingDiv>
                     
-                </div>
+                </ContinueShoppingWrapper>
 
-            </div>
+            </CartDetailWrapper>
 
-            <div>
+            <TotalWrapper>
 
-                <div>
+                <TotalTitleWrapper>
 
-                    <h1>Total</h1>
+                    <TotalTitle>Cart Total</TotalTitle>
 
-                </div>
+                </TotalTitleWrapper>
 
-                <div>
+                <TotalAndCheckOutWrapper>
 
-                    <div>
-                        <p>Total: {listItem.reduce((acc, cur) => {
-                            return acc += cur.price * cur.quantity
-                        }, 0)}</p>
-                    </div>
-                    <div>
-                        <a href="/shop-checkout ">Proceed to Checkout</a>
-                    </div>
+                    <TotalDivWrapper>
 
-                </div>
+                        <Total>Total </Total>
+
+                        <TotalPrice>
+                            ${listItem.reduce((acc, cur) => {
+                                return acc += cur.price * cur.quantity
+                            }, 0)}
+                        </TotalPrice>
+
+                    </TotalDivWrapper>
+                    <CheckOutWrapper>
+                        
+                        <CheckOutDiv>
+                            <CheckOut href="/shop-checkout ">Proceed to Checkout</CheckOut>
+                        </CheckOutDiv>
+
+                    </CheckOutWrapper>
+
+                </TotalAndCheckOutWrapper>
 
 
-            </div>
+            </TotalWrapper>
 
-        </div>
+        </CartWrapper>
 
     )
 }

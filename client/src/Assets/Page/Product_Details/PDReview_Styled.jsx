@@ -19,7 +19,7 @@ export const PDReviewerAndReviewWrapper=styled.div`
     height: 200px;
     max-width: 1200px;
     margin: 0px auto 40px;
-    border: 1px solid var(--Primary_Gray);
+    border: 1px solid var(--Secondary_Gray);
     border-radius: 20px;
 `;
 
