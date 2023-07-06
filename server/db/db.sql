@@ -92,12 +92,14 @@ CREATE TABLE IF NOT EXISTS [Product] (
 DROP TABLE IF EXISTS Review;
 CREATE TABLE IF NOT EXISTS [Review] (
   [id] integer PRIMARY KEY AUTOINCREMENT NOT NULL, 
+  [OrderId] integer NOT NULL, 
   [PdId] integer NOT NULL, 
   [UserId] integer NOT NULL, 
   [title] nvarchar(255) NOT NULL, 
   [description] nvarchar(255), 
   [rating] integer NOT NULL,
 
+  FOREIGN KEY ([OrderId]) REFERENCES [Order] ([id]),
   FOREIGN KEY ([PdId]) REFERENCES [Product] ([id]),
   FOREIGN KEY ([UserId]) REFERENCES [Users] ([id])
 );

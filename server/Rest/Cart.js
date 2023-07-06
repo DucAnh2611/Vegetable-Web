@@ -78,6 +78,7 @@ function Cart(app) {
 
         responseContext.json = {
           status: "accepted",
+          field: {id: GetCurrentOrder[0].id}
         };
         responseContext.status = 200;
 

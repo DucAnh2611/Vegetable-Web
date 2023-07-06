@@ -46,18 +46,17 @@ function Product(app) {
       WHERE ${conditionType} AND p.PdName LIKE '%${key}%' AND p.price >= ${minPrice} AND p.price <= ${maxPrice}
     `);
 
-    if (listItemFiltered.length !== 0) {
-      responseContext = {
-        json: {
-          status: "accepted",
-          field: { maxPage : Math.ceil(parseInt(maxPage[0].rows)/eachPage),
-                  maxPrice: maxPriceFilter[0].max,
-                  list: listItemFiltered
-          }
-        },
-        status: 200,
-      };
-    }
+
+    responseContext = {
+      json: {
+        status: "accepted",
+        field: { maxPage : Math.ceil(parseInt(maxPage[0].rows)/eachPage),
+                maxPrice: maxPriceFilter[0].max,
+                list: listItemFiltered
+        }
+      },
+      status: 200,
+    };
 
     res.status(responseContext.status).json({ ...responseContext.json });
   });
