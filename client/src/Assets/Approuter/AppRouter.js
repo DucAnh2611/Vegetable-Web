@@ -162,12 +162,15 @@ export default function AppRouter() {
     }
 
     const getUserType = () => {
+
+        if(localStorage.getItem("auth")) {
         fetch(`/show/user/type?userid=${JSON.parse(localStorage.getItem("auth")).id}`)
         .then(res => res.json())
         .then(data => {
             SetUserType(data.field)
         })
     };
+        }
 
     useEffect(() =>{
         getQuantityInCart();
