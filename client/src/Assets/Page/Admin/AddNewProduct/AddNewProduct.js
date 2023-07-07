@@ -57,19 +57,20 @@ export default function AddNewProduct() {
     };
 
     const verifyInput = () => {
-        console.log(newProduct,Object.keys(regEx).map(e => (
-            regEx[e].test(newProduct[e])
-        )) )
-        if( newProduct.typeid !==0 &&
-            (newProduct.description.length >=0 && newProduct.description.length <= 150) && 
-            newProduct.image !== "" &&
-            newProduct.price > 0 &&
-            newProduct.quantity > 0
-            ) {
-            return Object.keys(regEx).map(e => (
-                regEx[e].test(newProduct[e])
-            )).filter(e => e === false).length !==0            
+        if(Object.keys(regEx).map(e => (regEx[e].test(newProduct[e]))).filter(e => e === false).length ===0 ){
+            if( newProduct.typeid !==0 &&
+                (newProduct.description.length >=0 && newProduct.description.length <= 150) && 
+                newProduct.image !== "" &&
+                newProduct.price > 0 &&
+                newProduct.quantity > 0
+                ) {
+                    return true
+            }    
+            else {
+                return false
+            }        
         }
+
         else {
             return false;
         }
@@ -77,7 +78,7 @@ export default function AddNewProduct() {
     }
 
     const addNewProd = () => {
-        if(!verifyInput()) {
+        if(verifyInput()) {
             fetch(`/create/product?userid=${JSON.parse(localStorage.getItem("auth")).id}`, {
                 method: "POST",
                 headers: {
@@ -254,7 +255,7 @@ export default function AddNewProduct() {
                     </InputTextArea>
 
                     <InputButton>
-                        <button onClick={addNewProd} disabled={verifyInput()}>Add new poduct</button>
+                        <button onClick={addNewProd} disabled={!verifyInput()}>Add new poduct</button>
                     </InputButton>
 
                 </SectionContent>     
