@@ -69,7 +69,7 @@ export const SliderChoosing =styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
+    cursor: pointer;    
 `;
 
 export const SliderNotChoose =styled.div`
