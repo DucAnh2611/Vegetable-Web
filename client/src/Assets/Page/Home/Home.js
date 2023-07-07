@@ -6,7 +6,7 @@ import Benefit from "../../Component/HomeEachBenefit/HomeEachBenefit";
 import ShopNow from "../../Component/HomeEachShopNow/HomeEachShopNow";
 import Review from "../../Component/HomeEachReview/HomeEachReview";
 
-const Home = () =>{
+const Home = ({setUpdate}) =>{
 
     useEffect(() => {
         document.title = "Vegetable - Home";
@@ -18,7 +18,7 @@ const Home = () =>{
             <Home_Slider/>
             <Benefit/>
             <ShopNow/>
-            <BestSellerSection/>
+            <BestSellerSection setUpdate={setUpdate}/>
             <Review/>
 
         </div>

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import ConvertToIamge from "../../AssistsFunc/ConvertBlobToImage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {debounce} from 'lodash';
+import {debounce, update} from 'lodash';
 import * as fa from "@fortawesome/free-solid-svg-icons";
 import {SectionTitle} from "../../Component/HomeEachBenefit/HomeEachBenefit_Styled"
 import {CartWrapper,
@@ -38,7 +38,7 @@ import {CartWrapper,
         CheckOutDiv,
         CheckOut } from "./Cart_Styled";
 
-export default function Cart() {
+export default function Cart({setUpdate}) {
 
     const [listItem, SetListitem] = useState([]);
 
@@ -58,9 +58,12 @@ export default function Cart() {
     const removeItem = (id) => {
         fetch(`/navigation/cart/remove?userid=${JSON.parse(localStorage.getItem("auth")).id}&productid=${id}`)
         .then(res => res.json())
-        .then(data => 
-            fetchCartItems()
-        );        
+        .then(data => {
+            if(data.status === "accepted" ){
+                setUpdate(update => !update); 
+                fetchCartItems();
+            }
+        });        
     }
 
     const addItem = debounce((quantity, id) => {
@@ -75,9 +78,12 @@ export default function Cart() {
                 quantity: quantity
             }),
         })
-        // .then(res => res.json())
-        // .then(data=> {
-        // });
+        .then(res => res.json())
+        .then(data=> {
+            if(data.status === "accepted" ){
+                setUpdate(update => !update); 
+            }
+        });
         
     }, 1000);
 

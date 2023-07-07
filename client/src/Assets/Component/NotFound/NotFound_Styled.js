@@ -13,7 +13,7 @@ const upAndDown = keyframes`
     }
 `;
 
-export const LoadingPageWrap= styled.div`
+export const NotFoundWrap= styled.div`
     position: fixed;
     height: 100vh;
     width: 100vw;
@@ -26,18 +26,17 @@ export const LoadingPageWrap= styled.div`
         height: fit-content;
         width: fit-content;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
         align-items: center;  
-        gap: 15px;
+        &>svg {
+            height: 200px;
+        }
         &>p{
-            font-size: 10vh;
+            font-size: 150px;
             font-weight: 900;
             text-transform: uppercase;
             color: var(--Primary_Green);
-            &.ok {
-                animation: ${upAndDown} 0.2s infinite ease-in-out;                
-            }
 
             
         }

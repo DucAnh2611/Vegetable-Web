@@ -11,7 +11,7 @@ import {
     WishListWrapper
  } from "./WishListPane_Styled";
 
-export default function WishList({setOpenPane}) {
+export default function WishList({setOpenPane, setUpdate}) {
 
     const [WishList, SetWishList] = useState([]);
 
@@ -35,6 +35,7 @@ export default function WishList({setOpenPane}) {
         .then(data => {
             if(data.status === "accepted") {
                 SetWishList(WishList.filter(e => e.id !== id));
+                setUpdate(update => !update)
             }
         })
     };
@@ -56,6 +57,7 @@ export default function WishList({setOpenPane}) {
             if(data.status === "accepted") {
                 SetWishList(WishList.filter(e => e.id !== id));
                 removeProductWishList(id);
+                setUpdate(update => !update)
             }
 
         })

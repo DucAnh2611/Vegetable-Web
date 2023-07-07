@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 import {debounce} from "lodash";
 import ConvertToImage from "../../../AssistsFunc/ConvertBlobToImage";
 
-export default function HomeNavigation() {
+export default function HomeNavigation({cartQuan, wishlistQuan, setUpdate}) {
 
     const navigation = useNavigate();
     const [openWishListPane, SetOpenWishListPane] = useState(false);
@@ -74,7 +74,7 @@ export default function HomeNavigation() {
     return (
         <NavigationWrapper>
             {
-                openWishListPane && <WishList setOpenPane={SetOpenWishListPane}/>
+                openWishListPane && <WishList setOpenPane={SetOpenWishListPane} setUpdate={setUpdate}/>
             }
             <NavigationLogo>
                 <Logo></Logo>
@@ -138,10 +138,12 @@ export default function HomeNavigation() {
 
                 <EachIconPart>
                     <NavigationIcon onClick={handleOpenWishListPane}><FontAwesomeIcon icon = {faRegular.faHeart}/></NavigationIcon>
+                    <ItemNumber>{wishlistQuan}</ItemNumber>
                 </EachIconPart>
 
                 <EachIconPart>
                     <NavigationIcon onClick={e => navigation("/shop-cart")}><FontAwesomeIcon icon = {faSolid.faCartShopping}/></NavigationIcon>
+                    <ItemNumber>{cartQuan}</ItemNumber>
                 </EachIconPart>
 
             </NavigationIconWrapper>

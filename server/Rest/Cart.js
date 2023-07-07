@@ -15,8 +15,8 @@ function Cart(app) {
 
     let allCartUser = await fetchData(
       `
-          SELECT PdId, quantity
-          FROM Cart
+          SELECT c.PdId, c.quantity, p.quantity as 'onstock'
+          FROM Cart as c INNER JOIN Product as p ON c.PdId = p.id
           WHERE UserId == ${userinfo.userid}
       `);
 
@@ -28,61 +28,78 @@ function Cart(app) {
 
     if (getMethodid.length !== 0) {
 
-      let InsertToOrder = await InsertData(`  
-        INSERT INTO [Order] (
-          UserId,
-          OrderAdress,
-          OrderDate,
-          OrderFullname,
-          OrderEmail,
-          OrderPhoneNum,
-          OrderDescription,
-          OrderStateId,
-          MethodId
-        )
-        VALUES (
-          ${userinfo.userid}, 
-          '${userinfo.orderaddress}', 
-          datetime('${userinfo.orderdate}'),
-          '${userinfo.fullname}',
-          '${userinfo.email}',
-          '${userinfo.phonenum}',
-          '${userinfo.description}',
-          1,
-          ${methodid}
+      if(allCartUser.filter(e => e.quantity > e.onstock).length === 0) {
+        let InsertToOrder = await InsertData(`  
+          INSERT INTO [Order] (
+            UserId,
+            OrderAdress,
+            OrderDate,
+            OrderFullname,
+            OrderEmail,
+            OrderPhoneNum,
+            OrderDescription,
+            OrderStateId,
+            MethodId
           )
-      `);
-
-      if(InsertToOrder === "Inserted") {
-
-        let GetCurrentOrder = await fetchData(`
-          SELECT id
-          FROM [Order]
-          WHERE UserId == ${userinfo.userid}
-          ORDER BY OrderDate DESC 
-          LIMIT 1
+          VALUES (
+            ${userinfo.userid}, 
+            '${userinfo.orderaddress}', 
+            datetime('${userinfo.orderdate}'),
+            '${userinfo.fullname}',
+            '${userinfo.email}',
+            '${userinfo.phonenum}',
+            '${userinfo.description}',
+            1,
+            ${methodid}
+            )
         `);
 
-        allCartUser.forEach(async e => {
+        if(InsertToOrder === "Inserted") {
 
-          let InsertProductToOrder = await InsertData(`
-            INSERT INTO Orders_Product (PdId, OrderId, quantity)
-            VALUES (${e.PdId}, ${GetCurrentOrder[0].id}, ${e.quantity});
+          let GetCurrentOrder = await fetchData(`
+            SELECT id
+            FROM [Order]
+            WHERE UserId == ${userinfo.userid}
+            ORDER BY OrderDate DESC 
+            LIMIT 1
           `);
 
-          let updateStockProduct= await InsertData(`
-            UPDATE Product SET quantity = quantity - ${e.quantity} WHERE id == ${e.PdId}
-          `);
+          allCartUser.forEach(async e => {
 
-        });
+            let InsertProductToOrder = await InsertData(`
+              INSERT INTO Orders_Product (PdId, OrderId, quantity)
+              VALUES (${e.PdId}, ${GetCurrentOrder[0].id}, ${e.quantity});
+            `);
 
-        responseContext.json = {
-          status: "accepted",
-          field: {id: GetCurrentOrder[0].id}
-        };
-        responseContext.status = 200;
+            let updateStockProduct= await InsertData(`
+              UPDATE Product SET quantity = quantity - ${e.quantity} WHERE id == ${e.PdId}
+            `);
+
+          });
+
+          responseContext.json = {
+            status: "accepted",
+            field: {id: GetCurrentOrder[0].id}
+          };
+          responseContext.status = 200;
+
+        }  
 
       }
+      else {
+        let listOutStock = allCartUser.filter(e => e.quantity > e.onstock).map(e => ({
+          productid: e.PdId
+        }));
+
+        responseContext = {
+          json: {
+            status: "denied",
+            field: listOutStock,
+          },
+          status: 404,
+        };
+      }
+
     }
 
     res.status(responseContext.status).json({ ...responseContext.json });

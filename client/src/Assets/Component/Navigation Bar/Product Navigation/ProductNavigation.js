@@ -18,8 +18,9 @@ import {ProductNavigationWrapper,
         SearchResPane} from "./ProductNavigation_Styled";
 import { debounce } from "lodash";
 import ConvertToImage from "../../../AssistsFunc/ConvertBlobToImage";
+import { ItemNumber } from "../Home Navigation/HomeNavigation_Styled";
 
-export default function ProductNavigation() {
+export default function ProductNavigation({cartQuan}) {
 
     const searchRef = useRef(null);
     const [openSearchPane, SetOpenSearchPane] = useState(false);
@@ -147,6 +148,8 @@ export default function ProductNavigation() {
                     <PNUserAndCartLogoWrapper style={{backgroundColor:"var(--Primary_Pink)"}}>
                         <FontAwesomeIcon icon={faSolid.faBasketShopping}/>
                     </PNUserAndCartLogoWrapper>
+                    
+                    <PNCartItemNumber>{cartQuan}</PNCartItemNumber>
 
                     <PNUserAndCartTitle>My Cart</PNUserAndCartTitle>
 

@@ -53,6 +53,7 @@ export default function Checkout() {
         description: ""
     });
     const [failToAddMethod, SetFailToAddMethod] = useState({state: false, msg: ""});
+    const [failToCheckOut, SetFailToCheckOut] = useState([]);
     const iconDict = {
         "visa": faBrand.faCcVisa,
         "master card": faBrand.faCcMastercard,
@@ -183,7 +184,7 @@ export default function Checkout() {
                     removeCart(data.field.id);
                 }
                 else {
-                    alert(JSON.stringify(data));
+                    SetFailToCheckOut(data.field);
                 }
 
             }) ;            
@@ -327,7 +328,7 @@ export default function Checkout() {
                             {
                                 listItem.map(e => (
 
-                                    <EachProduct>
+                                    <EachProduct key={e.id} className={failToCheckOut.filter(ev => ev.productid === e.id).length !== 0 ? "not" : "ok"}>
 
                                         <div>
 
@@ -344,6 +345,9 @@ export default function Checkout() {
                                             
                                             <div>
                                                 <p>QTY: {e.quantity}</p>
+                                                {failToCheckOut.filter(ev => ev.productid === e.id).length !== 0 && (
+                                                    <p style={{color: "var(--Primary_Red)", fontWeight: "bold", fontSize: "15px"}}>Out of stock</p>
+                                                )}
                                             </div>
 
                                         </div>

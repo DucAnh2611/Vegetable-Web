@@ -10,13 +10,11 @@ import {SectionWrapper} from "../HomeEachBenefit/HomeEachBenefit_Styled";
 import * as Style from "./ProductItem/Product_Item_Styled";
 import { useNavigate } from "react-router-dom";
 
-
-function BestSellerSection (){
+function BestSellerSection ({setUpdate}){
 
     const navigate = useNavigate();
     const [ListItem, SetListItem] = useState([]);
     const [ListType, SetListType] = useState([]);
-    const [amount, SetAmount] = useState(10);
     const [type, SetType] = useState(0);
     const [dictionaryType, SetDictionaryType] = useState({
         "drink" : 1,
@@ -75,7 +73,7 @@ function BestSellerSection (){
             <Style.flex_row_product>
                 {
                     ListItem.length!==0
-                    ? ListItem.map(e => (<Product_Item item={e}/>))
+                    ? ListItem.map(e => (<Product_Item key={e.id} item={e} setUpdate={setUpdate}/>))
                     : <div><p>Nothing too see</p></div>
                 }
 

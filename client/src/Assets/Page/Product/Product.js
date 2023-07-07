@@ -20,7 +20,7 @@ import {
 } from "./Product_Styled";
 import {debounce} from 'lodash';
 
-export default function Product() {
+export default function Product({setUpdate}) {
 
     const [listProduct, SetListProduct] = useState([]);
     const [listType, SetListType] = useState([]);
@@ -167,7 +167,7 @@ export default function Product() {
                 <ProductListWrap>
                     {
                         listProduct.length !== 0
-                            ? listProduct.map(e => <Product_Item item={e} />)
+                            ? listProduct.map(e => <Product_Item key={e.id} item={e} setUpdate={setUpdate}/>)
                             : <div style={{
                                 margin: "0 auto",
                                 marginBottom: 30

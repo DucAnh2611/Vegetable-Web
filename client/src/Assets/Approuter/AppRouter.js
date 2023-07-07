@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {Routes, 
         Route, 
         Outlet,
         useNavigate,
+        json,
 } from "react-router-dom";
 import HomeNavigation from "../Component/Navigation Bar/Home Navigation/HomeNavigation";
 import Home from "../Page/Home/Home";
@@ -25,11 +26,44 @@ import {
 } from "./Approuter_Styled";
 import ChangeStateOrder from "../Page/Admin/ChangeStateOrder/ChangeStateOrder";
 import AddNewProduct from "../Page/Admin/AddNewProduct/AddNewProduct";
+import LoadingPage from "../Component/Loading/PageLoading_Dom";
+import NotFound from "../Component/NotFound/NotFound";
 
 export default function AppRouter() {
 
     const navigate = useNavigate();
     const [userType, SetUserType] = useState(0);
+    const [wishlistQuan, SetWislistQuan] = useState(0);
+    const [cartQuan, SetCartQuan] = useState(0);
+    const [update, SetUpdate] = useState(false);
+
+    const getQuantityInCart = () =>{
+        if(localStorage.getItem("auth")) {
+            fetch(`/navigation/cart?userid=${JSON.parse(localStorage.getItem("auth")).id}`)
+            .then(res => res.json())
+            .then(data => {
+                if(data.status === "accepted") {
+                    SetCartQuan(data.field.length);
+                }
+                else SetCartQuan(0);
+            })            
+        }
+
+    };
+
+    const getQuantityInWishlist = () =>{
+        if(localStorage.getItem("auth")) {
+            fetch(`/navigation/wish-list?userid=${JSON.parse(localStorage.getItem("auth")).id}`)
+            .then(res => res.json())
+            .then(data => {
+                if(data.status === "accepted") {
+                    SetWislistQuan(data.field.length);
+                }
+                else SetWislistQuan(0);
+            })            
+        }
+
+    };
 
     const PrivateRoute = () => {
 
@@ -49,7 +83,7 @@ export default function AppRouter() {
     const HomeNav = () => {
         return (
             <>
-                <HomeNavigation />
+                <HomeNavigation cartQuan={cartQuan} wishlistQuan={wishlistQuan} setUpdate={SetUpdate}/>
                 <Outlet/>
             </>
         )
@@ -58,7 +92,7 @@ export default function AppRouter() {
     const ProductNav = () => {
         return (
             <>  
-                <ProductNavigation/>
+                <ProductNavigation cartQuan={cartQuan}/>
                 <Outlet/>
             </>
         )
@@ -136,7 +170,14 @@ export default function AppRouter() {
     };
 
     useEffect(() =>{
+        getQuantityInCart();
+        getQuantityInWishlist();
+    }, [update])
+
+    useEffect(() =>{
         getUserType();
+        getQuantityInCart();
+        getQuantityInWishlist();
     }, [])
 
     return (
@@ -148,17 +189,17 @@ export default function AppRouter() {
                     <Route element={<HaveFooter/>}>
 
                         <Route element={<HomeNav/>}>
-                            <Route exact path="/" element={<Home></Home>}/>
+                            <Route exact path="/" element={<Home setUpdate={SetUpdate}/>}/>
                         </Route> 
                         
                         <Route element={<ProductNav/>}>
 
                             <Route exact path="/about-us" element={<AboutUs/>}/>
-                            <Route exact path="/shop" element={<Product/>}/>
-                            <Route exact path="/shop/product/:productid" element={<ProductDetail/>}/>
+                            <Route exact path="/shop" element={<Product setUpdate={SetUpdate}/>}/>
+                            <Route exact path="/shop/product/:productid" element={<ProductDetail setUpdate={SetUpdate}/>}/>
 
                             <Route element={<CartGroup/>}>
-                                <Route exact path="/shop-cart" element={<Cart/>}/>
+                                <Route exact path="/shop-cart" element={<Cart setUpdate={SetUpdate}/>}/>
                                 <Route exact path="/shop-checkout" element={<Checkout/>}/>
                                 <Route exact path="/shop-order-tracking" element={<OrderTrackingDefault/>}/>
                                 <Route exact path="/shop-order-tracking/:orderid" element={<OrderTrackingInfo/>}/>
@@ -184,6 +225,10 @@ export default function AppRouter() {
 
                 <Route exact path="/login" element={<Login/>}></Route>
                 <Route exact path="/signup" element={<Signup/>}></Route>
+
+                <Route exact path="/loading" element={<LoadingPage/>}/>
+
+                <Route exact path="/*" element={<NotFound/>}/>
                 
             </Routes>     
         </>

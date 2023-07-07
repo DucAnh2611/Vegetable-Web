@@ -53,7 +53,7 @@ import {PDRelatedWrapper,
         PDRelatedTitleWrapper,
         PDRelatedProductWrapper, } from "./PDRelated_Styled";
 
-export default function ProductDetail() {
+export default function ProductDetail({setUpdate}) {
 
     const { productid } = useParams();
     const [listRelated, SetListRelated] = useState([]);
@@ -88,7 +88,9 @@ export default function ProductDetail() {
         })
         .then(res => res.json())
         .then(data=> {
-            console.log(data);
+            if(data.status === "accepted") {
+                setUpdate(update => !update);
+            }
         })
     };
 
@@ -107,6 +109,7 @@ export default function ProductDetail() {
         .then(data=> {
             if(data.status === "accepted") {
                 SetQuantity(1);
+                setUpdate(update => !update);
             }
         })
         
@@ -159,9 +162,11 @@ export default function ProductDetail() {
                                 <PDProductSetQuantityAndAdd2CartButtonWrapper>
 
                                     <PDProductSetQuantityWrapper>
-                                        <PDProductSetQuantityButt onClick={e => SetQuantity(quantity - 1)}><FontAwesomeIcon icon={fa.faMinus}/></PDProductSetQuantityButt>
-                                        <PDProductSetQuantityInput type="number" value={quantity}/>
+
+                                        <PDProductSetQuantityButt onClick={e => {SetQuantity(quantity - 1 <=0 ? 1 : quantity - 1)}}><FontAwesomeIcon icon={fa.faMinus}/></PDProductSetQuantityButt>
+                                        <PDProductSetQuantityInput type="number" value={quantity} onChange={e => { SetQuantity(parseInt(e.target.value) <=0 ? 1 : parseInt(e.target.value)) }}/>
                                         <PDProductSetQuantityButt onClick={e => SetQuantity(quantity + 1)}><FontAwesomeIcon icon={fa.faPlus}/></PDProductSetQuantityButt>
+
                                     </PDProductSetQuantityWrapper>
 
                                     <PDProductAdd2CartButtonWrapper>

@@ -147,6 +147,9 @@ export const EachProduct = styled.div`
     align-items: center;
     justify-content: flex-start;
     border-bottom: 1px solid var(--Primary_Black);
+    &.not {
+        background-color: var(--Secondary_Pink);
+    }
     &>div{
         height: 100%;
 

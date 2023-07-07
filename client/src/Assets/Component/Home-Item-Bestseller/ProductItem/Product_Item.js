@@ -6,7 +6,7 @@ import * as faBrands from "@fortawesome/free-brands-svg-icons";
 import * as Style from "./Product_Item_Styled"
 import ConvertToImage from "../../../AssistsFunc/ConvertBlobToImage";
 
-function Product_Item({item}) {
+function Product_Item({item, setUpdate}) {
 
     const AddToWishList = () => {
         fetch(`/product-detail/${item.id}/addwishlist`, {
@@ -20,7 +20,9 @@ function Product_Item({item}) {
         })
         .then(res => res.json())
         .then(data=> {
-            console.log(data);
+            if(data.status === "accepted") {
+                setUpdate(update => !update);
+            }
         })
         
     };
@@ -39,10 +41,12 @@ function Product_Item({item}) {
                 quantity: 1
             }),
         })
-        // .then(res => res.json())
-        // .then(data=> {
-        //     console.log(data);
-        // })
+        .then(res => res.json())
+        .then(data=> {
+            if(data.status === "accepted") {
+                setUpdate(update => !update);
+            }
+        })
         
     };
 
