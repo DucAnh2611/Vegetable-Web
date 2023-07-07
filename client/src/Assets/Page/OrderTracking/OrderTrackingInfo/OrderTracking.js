@@ -188,7 +188,7 @@ export default function OrderTrackingInfo() {
 							<div>
 								<p>QTY: {e.quantity}</p>
 							</div>
-							{e.reviews === 0 && orderInfo.StateId  === listState.length -1  &&(
+							{e.reviews === 0 && orderInfo.StateId  === listState.length  &&(
 								<div>
 
 									<button onClick={ev => handleOpenReview(e.id)}>Review</button>
