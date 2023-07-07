@@ -170,7 +170,7 @@ export const PNSearchByCategoryOption=styled.option`
 
 export const ProductNavigationUserAndCartWrapper=styled.div`
     height: 80px;
-    width: 25%;
+    width: 30%;
     display: flex;
     align-items: center;
     justify-content: end;
