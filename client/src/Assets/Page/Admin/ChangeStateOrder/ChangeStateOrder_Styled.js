@@ -1,6 +1,13 @@
 
 import styled from "styled-components";
 
+
+export const TableContent = styled.div`
+    height: fit-content;
+    max-height: 600px;
+    width: 100%;
+    overflow-y: auto;
+`;
 export const TableHeader = styled.div`
     height: fit-content;
     min-height: 40px;
@@ -67,7 +74,6 @@ export const TableRow = styled.a`
     }
     &:hover{
         background-color: var(--Fifth_Green);
-        transform: translateX(3px);
     }
 
 `;

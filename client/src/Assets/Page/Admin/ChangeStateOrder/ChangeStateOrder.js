@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import { PartWrap, SectionContent, SectionHeader, SectionPart } from "../../Profile/Account/Account_Styled";
-import { TableHeader, TableRow } from "./ChangeStateOrder_Styled";
+import { TableContent, TableHeader, TableRow } from "./ChangeStateOrder_Styled";
 
 export default function ChangeStateOrder () {
 
@@ -22,7 +22,10 @@ export default function ChangeStateOrder () {
         .then(res => res.json())
         .then(data => {
             if(data.status === "accepted") {
-                SetListOrder(data.field);                
+                SetListOrder(list => [...list, ...data.field]);                
+            }
+            else {
+                SetPage(page-1);
             }
 
         })
@@ -44,6 +47,12 @@ export default function ChangeStateOrder () {
 
         }) ; 
     };
+
+    const scrollToFetchMore = (e) => {
+        if(e.target.scrollHeight- e.target.scrollTop === e.target.clientHeight) {
+            SetPage(page+1);
+        }
+    }
 
     useEffect(()=> {
         fetchListType();
@@ -85,7 +94,7 @@ export default function ChangeStateOrder () {
 
                     </TableHeader>
 
-                    <div>
+                    <TableContent onScroll={e => scrollToFetchMore(e)}>
                         {
                             listOrder.map(e => (
                                 <TableRow>
@@ -128,7 +137,7 @@ export default function ChangeStateOrder () {
                             ))
                         }
 
-                    </div>   
+                    </TableContent>   
 
                 </SectionContent>
 
