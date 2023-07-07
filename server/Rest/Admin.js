@@ -161,6 +161,7 @@ function Admin(app) {
                 FROM OrderState as os INNER JOIN [Order] as o on os.id = o.OrderStateId
                                       INNER JOIN Orders_Product as op ON o.id = op.OrderId
                                       INNER JOIN Product as p ON op.PdId = p.id
+                GROUP BY o.id
                 ORDER BY OrderDate DESC
                 LIMIT ${each}
                 OFFSET ${each *(page-1)}
