@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+iimport React, { useEffect, useMemo, useState } from "react";
 import {Routes, 
         Route, 
         Outlet,
@@ -168,9 +168,9 @@ export default function AppRouter() {
         .then(res => res.json())
         .then(data => {
             SetUserType(data.field)
-        })
-    };
+        });
         }
+    };
 
     useEffect(() =>{
         getQuantityInCart();
