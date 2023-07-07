@@ -135,7 +135,7 @@ export default function OrderTrackingInfo() {
 
 	if(Object.keys(orderInfo).length===0) {
 		return (
-			<div>
+			<div style={{height: "280px", display: "grid", placeItems: "center"}}>
 				<p>This order might not belong to you or is not exist</p>
 			</div>
 		)

@@ -212,7 +212,7 @@ export default function Checkout() {
 
     if(listItem.length ===0) {
         return (
-            <div>
+            <div style={{height: "280px", display: "grid", placeItems: "center"}}>
                 <p>There's no item in your cart</p>
             </div>
         )

@@ -161,7 +161,7 @@ export default function Cart({setUpdate}) {
                             </ProductWrapper>
 
                         ))
-                        : <p>Nothing in cart</p>
+                        : <p style={{height: "80px", display: "grid", placeItems: "center"}}>Nothing in cart</p>
                     }
 
                 </ProductInCartWrapper>
