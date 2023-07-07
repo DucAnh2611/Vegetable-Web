@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 // Cart
 export const CartWrapper=styled.div`
-    padding: 5% 10% 0;
+    padding: 0% 10% 0;
     display: flex;
     flex-direction: row;
     justify-content:center;
