@@ -1,5 +1,5 @@
 
-import React from "react"; 
+import React, { useState } from "react"; 
 import {SliderWrapper,
         SliderContent,
         SlideTitle,
@@ -12,30 +12,56 @@ import { useNavigate } from "react-router-dom";
 
 const Home_Slider = () =>{
     const navigate = useNavigate();
+
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const goToSlide = (slideIndex) => {
+        setCurrentIndex(slideIndex);
+    };
+
+    const choosingSlide = (slideNum) =>{
+
+        if (slideNum === currentIndex){
+            return "solid 1px"
+        }
+        else return "none"
+
+    };
+
+    const slides = [
+
+        {url: 'https://wpbingosite.com/wordpress/vegety/wp-content/uploads/2022/12/slider-1-1.jpg', 
+        title: 'Organic butter', 
+        subtitle: 'Thin shell, golden rice, high flexibility'},
+        {url: 'https://wpbingosite.com/wordpress/vegety/wp-content/uploads/2022/12/slider-1-2.jpg', 
+        title: 'Gold Kiwi', 
+        subtitle: 'New Zealand golden kiwi is a delecious fruit'},
+        {url: 'https://wpbingosite.com/wordpress/vegety/wp-content/uploads/2022/12/slider-1-3.jpg', 
+        title: 'Dragon fruit', 
+        subtitle: 'Yellow dragon fruit is an oval-shaped fruit'}
+
+    ];
+
     return(
-        <SliderWrapper>
+        <SliderWrapper style={{background: `url(${slides[currentIndex].url})`}}>
 
             <SliderContent>
 
-                <SlideTitle>Organic butter</SlideTitle>
-                <SlideSubTitle>Thin shell, golden rice, high flexibility</SlideSubTitle>
+                <SlideTitle>{slides[currentIndex].title}</SlideTitle>
+                <SlideSubTitle>{slides[currentIndex].subtitle}</SlideSubTitle>
                 <ShopNowButton onClick={e => navigate("/shop")}>Shop now</ShopNowButton>
 
             </SliderContent>
             
             <SliderChoosingWrapper>
-                
-                <SliderChoosing >
-                    <SliderNotChoose></SliderNotChoose>
-                </SliderChoosing>
-                
-                <SliderChoosing style={{border: "none"}}>
-                    <SliderNotChoose></SliderNotChoose>
-                </SliderChoosing>
-                    
-                <SliderChoosing style={{border: "none"}}>
-                    <SliderNotChoose></SliderNotChoose>
-                </SliderChoosing>
+
+                {slides.map((slide, slideIndex) => (
+
+                    <SliderChoosing key={slideIndex} onClick={() => goToSlide(slideIndex)}  style={{border:`${choosingSlide(slideIndex)}` }}>
+                        <SliderNotChoose ></SliderNotChoose>
+                    </SliderChoosing>
+
+                ))}
             
             </SliderChoosingWrapper>
 

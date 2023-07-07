@@ -66,7 +66,6 @@ export const SliderChoosing =styled.div`
     border-color: var(--Primary_Green);
     box-sizing: content-box;
     margin: 0px 10px 30px 10px;
-    border: solid 1px ;
     display: flex;
     justify-content: center;
     align-items: center;
