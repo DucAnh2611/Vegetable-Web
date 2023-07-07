@@ -148,8 +148,6 @@ export default function ProductNavigation() {
                         <FontAwesomeIcon icon={faSolid.faBasketShopping}/>
                     </PNUserAndCartLogoWrapper>
 
-                    <PNCartItemNumber>1</PNCartItemNumber>
-
                     <PNUserAndCartTitle>My Cart</PNUserAndCartTitle>
 
                 </PNUserAndCartWrapper>

@@ -36,12 +36,13 @@ function Admin(app) {
         let responseContext = {
         json: {
             status: "denied",
-            field: [],
+            field: {},
         },
         status: 404,
         };
 
         let { typeid, productname, price, image, unit, description, quantity } = req.body;
+        let {userid} = req.query;
 
         let userValid = await fetchData(
         `
@@ -70,14 +71,15 @@ function Admin(app) {
             )
             VALUES (
                 '${productname}',
-                ${price},
+                ${parseFloat(price)},
                 (?),
                 '${unit}',
                 '${description}',
                 datetime('${new Date().toISOString()}'),
-                '${quantity}'
+                '${parseInt(quantity)}'
             );
-            `, image);
+            `, Buffer.from(image));
+
             if(InsertNewProduct === "Inserted") {
                 let InsertToType = await fetchData(`
                     SELECT id FROM Product WHERE PdName == '${productname}'
@@ -91,10 +93,12 @@ function Admin(app) {
                         status: "accepted"
                     };
                     responseContext.status = 200;
-                    }
                 }
+            }
         }
-        
+
+        responseContext.json.field = {name: "productname", msg: "same"};
+
         res.status(responseContext.status).json({ ...responseContext.json });
     });
 

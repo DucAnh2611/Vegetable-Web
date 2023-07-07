@@ -24,6 +24,7 @@ import {
     CartGroupWrap, ProfileGroupWrap, ProfileNav
 } from "./Approuter_Styled";
 import ChangeStateOrder from "../Page/Admin/ChangeStateOrder/ChangeStateOrder";
+import AddNewProduct from "../Page/Admin/AddNewProduct/AddNewProduct";
 
 export default function AppRouter() {
 
@@ -101,7 +102,7 @@ export default function AppRouter() {
                     <button onClick={ e=> navigate("/my-account/method")} >Checkout Method</button>
                     {userType === 1 && (<>
                         <button onClick={e=> navigate("/admin/order/state-change")}>Orders Management</button>
-                        <button onClick={ e=> navigate("/my-account/orders")}>Add Product</button>
+                        <button onClick={ e=> navigate("/admin/product/new")}>Add Product</button>
                     </>)
                     }
                     <button onClick={logout}>Logout</button>
@@ -167,6 +168,7 @@ export default function AppRouter() {
                                 <Route element={<AdminRoute/>}>
                                         
                                     <Route exact path="/admin/order/state-change" element={<ChangeStateOrder/>}/>
+                                    <Route exact path="/admin/product/new" element={<AddNewProduct/>}/>
 
                                 </Route>
                                 <Route exact path="/my-account" element={<Account/>}/>

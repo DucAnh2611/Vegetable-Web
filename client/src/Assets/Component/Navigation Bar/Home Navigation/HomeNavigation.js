@@ -138,12 +138,10 @@ export default function HomeNavigation() {
 
                 <EachIconPart>
                     <NavigationIcon onClick={handleOpenWishListPane}><FontAwesomeIcon icon = {faRegular.faHeart}/></NavigationIcon>
-                    <ItemNumber>1</ItemNumber>
                 </EachIconPart>
 
                 <EachIconPart>
                     <NavigationIcon onClick={e => navigation("/shop-cart")}><FontAwesomeIcon icon = {faSolid.faCartShopping}/></NavigationIcon>
-                    <ItemNumber>0</ItemNumber>
                 </EachIconPart>
 
             </NavigationIconWrapper>
