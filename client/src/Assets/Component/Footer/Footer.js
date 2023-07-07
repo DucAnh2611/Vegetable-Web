@@ -50,9 +50,9 @@ export default function Footer() {
                             </div>
 
                             <div>
-                                <a href="#">Github</a>
-                                <a href="#">Figma</a>
-                                <a href="#">Word</a>
+                                <a href="https://github.com/DucAnh2611/Vegetable-Web">Github</a>
+                                <a href="https://www.figma.com/file/M3IcmYGMJN61Tn4fcVINhI/DaCNTT?type=design&node-id=205%3A238&mode=design&t=wSQl7MiPoCSnG4Ve-1">Figma</a>
+                                <a href="https://thanglongedu-my.sharepoint.com/:w:/g/personal/a38520_thanglong_edu_vn/EWK-tpPID-xFiCa0o1JkbnABlVMLHoD6EbAQCxd2M6G62w?e=72JAOk">Word</a>
                                 <a href="#">Endpoints</a>
                             </div>
                         </DetailContentColumn>

@@ -59,7 +59,9 @@ export default function Benefit() {
 
             </BenefitContentWrapper>
     
-            <SectionButton>Read more</SectionButton>
+            <SectionButton> 
+                <a href="/about-us">Read more</a> 
+            </SectionButton>
 
         </BenefitWrapper>
                     

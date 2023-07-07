@@ -85,4 +85,7 @@ export const SectionButton=styled.button`
     &:hover{
         background: var(--Hover_Color_Btn);
     }
+    &>a{
+        color: var(--Secondary_White);
+    }
 `;
