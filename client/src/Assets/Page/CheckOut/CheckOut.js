@@ -31,7 +31,7 @@ import {
 } from "../Profile/Account/Account_Styled"
 
 
-export default function Checkout() {
+export default function Checkout({setUpdate}) {
 
     const navigate = useNavigate();
     const listSelectRef = useRef();
@@ -122,6 +122,7 @@ export default function Checkout() {
         .then(res=> res.json())
         .then(data => {
             if(data.status === "accepted") {
+                setUpdate(update => !update);
                 navigate(`/shop-order-tracking/${id}`);
             }
         })

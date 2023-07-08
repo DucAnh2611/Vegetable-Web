@@ -30,6 +30,7 @@ export default function AboutUs() {
 
     useEffect(()=> {
         fetchListMember();
+        document.title = "Vegetable - About us"
     }, []);
 
     return (

@@ -205,7 +205,7 @@ export default function AppRouter() {
 
                             <Route element={<CartGroup/>}>
                                 <Route exact path="/shop-cart" element={<Cart setUpdate={SetUpdate}/>}/>
-                                <Route exact path="/shop-checkout" element={<Checkout/>}/>
+                                <Route exact path="/shop-checkout" element={<Checkout setUpdate={SetUpdate}/>}/>
                                 <Route exact path="/shop-order-tracking" element={<OrderTrackingDefault/>}/>
                                 <Route exact path="/shop-order-tracking/:orderid" element={<OrderTrackingInfo/>}/>
                             </Route>

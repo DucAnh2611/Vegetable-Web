@@ -66,8 +66,27 @@ export const DoubleRangeWrap = styled.div`
         position: relative;
         display: flex;
         flex-direction: column;
-        &> input {
+        &> input[type="range" i] {
             width: 200px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+            ::-webkit-slider-runnable-track {
+                background: var(--Primary_Green);
+                height: fit-content;
+                border-radius: 10px;
+                padding: 3px;
+            }
+            ::-webkit-slider-thumb{
+                -webkit-appearance: none;
+                appearance: none;
+                background-color: var(--Fifth_Green);
+                border-radius: 100%;
+                border: 2px solid var(--Secondary_White);
+                height: 15px;
+                width: 15px;  
+            }
         }
     }
     
