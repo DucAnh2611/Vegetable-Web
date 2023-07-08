@@ -136,6 +136,64 @@ function Admin(app) {
         res.status(responseContext.status).json({ ...responseContext.json });
     });
 
+    app.post("/change/product", async (req, res) => {
+        let responseContext = {
+        json: {
+            status: "denied",
+            field: [],
+        },
+        status: 404,
+        };
+
+        let { id, userid, PdName, price, unit, description , quantity, image, typeid} = req.body;
+        console.log(req.body)
+
+        let userValid = await fetchData(
+        `
+            SELECT tu.id
+            FROM Users as u INNER JOIN TypeUser as tu on u.typeUserid = tu.id
+            WHERE u.id = ${userid}
+        `);
+
+        if (userValid[0].id === 1) {
+
+            let getProduct  = await fetchData(`
+                SELECT *
+                FROM Product 
+                WHERE id == ${id}
+            `);
+
+            if(getProduct.length !==0 ) {
+                let updateProduct = await InsertIncludeImage(`
+                UPDATE Product
+                SET 
+                    PdName = '${PdName}',
+                    price = ${price},
+                    image = (?),
+                    unit = '${unit}',
+                    description = '${description}',
+                    modifyDate = date('${new Date().toISOString()}'),
+                    quantity = ${quantity}
+                WHERE id == ${id}
+                `, Buffer.from(image));
+
+                if( updateProduct === "Inserted") {
+                    let updateProductType = await InsertData(`
+                        UPDATE TypeProduct_Product 
+                        SET TypeId = ${typeid}
+                        WHERE PdId == ${id}
+                    `);
+                    responseContext.json = {
+                        status: "accepted"
+                    };
+                    responseContext.status = 200;
+                }
+            }
+        }
+
+        res.status(responseContext.status).json({ ...responseContext.json });
+    });
+
     app.get("/show/order", async (req, res) => {
         let responseContext = {
         json: {

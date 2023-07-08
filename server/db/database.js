@@ -201,6 +201,6 @@ function InsertProduct() {
 //     InsertProductType();
 //     InsertOrderState();
 //     }
-// });    
+// });  
 InsertUser();
-InsertProduct();
+InsertProduct();  

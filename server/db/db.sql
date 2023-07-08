@@ -61,6 +61,8 @@ DROP TABLE IF EXISTS Orders_Product;
 CREATE TABLE IF NOT EXISTS [Orders_Product] (
   [PdId] integer NOT NULL, 
   [OrderId] integer NOT NULL, 
+  [price] float NOT NULL, 
+  [unit] nvarchar(255) NOT NULL, 
   [quantity] integer NOT NULL, 
   PRIMARY KEY ([PdId],  [OrderId]),
 

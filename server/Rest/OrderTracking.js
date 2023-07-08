@@ -117,7 +117,7 @@ function OrderTracking(app) {
 
       let OrderProduct = await fetchData(
       `
-      SELECT p.*, o_d.quantity, (SELECT COUNT(*) FROM Review WHERE UserId == ${userid} AND PdId == p.id AND OrderId == ${orderid}) as 'reviews'
+      SELECT p.image, o_d.*, (SELECT COUNT(*) FROM Review WHERE UserId == ${userid} AND PdId == p.id AND OrderId == ${orderid}) as 'reviews'
       FROM Product as p INNER JOIN Orders_Product as o_d ON p.id = o_d.PdId
                         INNER JOIN [Order] as o ON o_d.OrderId = o.id
       WHERE o.id = ${orderid}

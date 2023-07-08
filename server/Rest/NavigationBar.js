@@ -121,8 +121,9 @@ function NavigationBar(app) {
 
     let { key, page, each } = req.query;
     let ProductFiltered = await fetchData(`
-    SELECT p.*
-    FROM Product as p
+    SELECT p.*, tp.id as 'typeid'
+    FROM Product as p INNER JOIN TypeProduct_Product as tp_p ON p.id = tp_p.PdId
+                      INNER JOIN TypeProduct as tp ON tp_p.TypeId = tp.id
     WHERE PdName LIKE '%${key}%' 
     LIMIT ${each}
     OFFSET ${(page -1) *each}

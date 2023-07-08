@@ -15,7 +15,7 @@ function Cart(app) {
 
     let allCartUser = await fetchData(
       `
-          SELECT c.PdId, c.quantity, p.quantity as 'onstock'
+          SELECT c.PdId, c.quantity, p.quantity as 'onstock', p.price, p.unit
           FROM Cart as c INNER JOIN Product as p ON c.PdId = p.id
           WHERE UserId == ${userinfo.userid}
       `);
@@ -67,8 +67,8 @@ function Cart(app) {
           allCartUser.forEach(async e => {
 
             let InsertProductToOrder = await InsertData(`
-              INSERT INTO Orders_Product (PdId, OrderId, quantity)
-              VALUES (${e.PdId}, ${GetCurrentOrder[0].id}, ${e.quantity});
+              INSERT INTO Orders_Product (PdId, OrderId, price,unit, quantity)
+              VALUES (${e.PdId}, ${GetCurrentOrder[0].id}, ${e.price}, '${e.unit}', ${e.quantity});
             `);
 
             let updateStockProduct= await InsertData(`
