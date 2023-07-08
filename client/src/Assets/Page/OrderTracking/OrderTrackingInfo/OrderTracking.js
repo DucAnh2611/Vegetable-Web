@@ -181,7 +181,7 @@ export default function OrderTrackingInfo() {
 							<div>
 								<p>{e.PdName}</p>
 								<p>
-								{e.price} / {e.unit}
+								{e.price}$ / {e.unit}
 								</p>
 							</div>
 

@@ -121,7 +121,7 @@ export default function Checkout() {
         fetch(`/cart/remove-all?userid=${JSON.parse(localStorage.getItem("auth")).id}`)
         .then(res=> res.json())
         .then(data => {
-            if(data.status === " accepted") {
+            if(data.status === "accepted") {
                 navigate(`/shop-order-tracking/${id}`);
             }
         })

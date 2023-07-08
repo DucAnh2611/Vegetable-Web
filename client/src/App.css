@@ -26,6 +26,7 @@
   text-align: center;
   height: fit-content;
   position: relative;
+  overflow: hidden auto;
   /* Target the scrollbar track */
 }
 
@@ -64,6 +65,10 @@ p {
 }
 button {
   border: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  display: none;
 }
 
 .App-logo {

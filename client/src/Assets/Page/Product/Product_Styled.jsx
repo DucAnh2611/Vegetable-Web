@@ -155,24 +155,48 @@ export const PagenationPage = styled.div`
         display: flex;
         justify-content: center;
         margin-top: 15px;
+        align-items: center;
+    }
+    p{
+        text-align: center;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        margin: 0 5px;
+        letter-spacing: 2px;
     }
 
     button {
+        height: 30px;
+        width: 30px;
         background-color: transparent;
-        border-radius: 50%;
+        border-radius: 100%;
         font-size: 16px;
-        padding: 4px 20px;
+        padding: 10px;
         margin: 0 5px;
-
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--Primary_Green);
+        color: var(--Secondary_White);
         :hover {
             color: var(--Primary_White);
             cursor: pointer;
-            background-color: var(--Fifth_Green)
+            background-color: var(--Fifth_Green);
         }
     }
 
     input {
-        width: 60px;
-        font-size: 16px;
+        width: 50px;
+        font-size: 12px;
+        box-sizing: border-box;
+        padding: 10px;
+        border: 1px solid var(--Fifth_Green);
+        border-radius: 10px;
+        :focus{
+            outline: none;
+            border: 1px solid var(--Primary_Green);
+        }
     }
 `;

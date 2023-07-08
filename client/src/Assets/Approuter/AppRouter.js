@@ -174,7 +174,7 @@ export default function AppRouter() {
         }
     };
 
-    useEffect(() =>{
+    useMemo(() =>{
         getQuantityInCart();
         getQuantityInWishlist();
     }, [update])

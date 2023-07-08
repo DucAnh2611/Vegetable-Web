@@ -49,6 +49,7 @@ export const TableRow = styled.a`
         box-sizing: border-box;
         padding:10px 10px;
         &>p{
+            font-size: 13px;
             word-wrap: wrap;
             word-break: break-word;
         }
