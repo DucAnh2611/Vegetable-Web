@@ -14,7 +14,8 @@
 
 ## About
 
-Briefly describe your project here. Explain what it does and any important details that make it unique or interesting.
+- Trang web được xây dựng để phục vụ nhu cầu mua sắm thực phẩm trực tuyến của mọi người. Khách hàng có thể đăng nhập vào trang web (hoặc tạo tài khoản nếu chưa có) và sau đó bắt đầu mua sắm. Nhân viên quản lý hệ thống có thể quản lý sản phẩm, thay đổi thông tin của sản phẩm, phân loại sản phẩm theo các hạng mục riêng (VD: nguồn gốc, giá cả…) và có thể tra cứu khách hàng, doanh số sản phẩm. Trang web cũng cho phép cả hai bên lưu lại lịch sử giao dịch và cũng cho phép khách hàng đánh giá và nhận xét về sản phẩm.  
+- [Word](https://thanglongedu-my.sharepoint.com/:w:/g/personal/a38520_thanglong_edu_vn/EWK-tpPID-xFiCa0o1JkbnABlVMLHoD6EbAQCxd2M6G62w?e=aVutj9)
 
 ## Technologies Used
 
