@@ -14,7 +14,8 @@
 
 ## About
 
-Briefly describe your project here. Explain what it does and any important details that make it unique or interesting.
+- Serve Online Vegetable Shopping
+- [Word](https://thanglongedu-my.sharepoint.com/:w:/g/personal/a38520_thanglong_edu_vn/EWK-tpPID-xFiCa0o1JkbnABlVMLHoD6EbAQCxd2M6G62w?e=aVutj9)
 
 ## Technologies Used
 
