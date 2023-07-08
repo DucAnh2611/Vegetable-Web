@@ -32,10 +32,10 @@ This project utilizes the following technologies:
 3. Install dependencies: `npm install`
 4. Start backend server: `npm start`
 5. Go back to Vege main folder: `cd ..`
-6. 2. Go to Client folder : `cd .\client`
-3. Install dependencies: `npm install`
-6. Start the frontend development server: `npm start`
-7. Visit `http://localhost:3000` in your browser to access the application.
+6. Go to Client folder : `cd .\client`
+7. Install dependencies: `npm install`
+8. Start the frontend development server: `npm start`
+9. Visit `http://localhost:3000` in your browser to access the application.
 
 Note: Provide any additional instructions or configuration details if required.
 
