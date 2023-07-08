@@ -36,7 +36,7 @@ export const ShopNowImgWrap = styled.div`
 
     img {
         height: 352px;
-        width: 100%;
+        width: 670px;
         object-fit: cover;
     }
 `;
