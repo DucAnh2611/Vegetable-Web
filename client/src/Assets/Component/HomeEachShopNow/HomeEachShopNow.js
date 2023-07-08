@@ -14,12 +14,12 @@ export default function ShopNow() {
             <Style.ShopNowProductWrapper>
                 {/* Ảnh */}
                 <Style.ShopNowImgWrap>
-                    <img src="https://wpbingosite.com/wordpress/vegety/wp-content/uploads/2023/02/banner-1.jpg" alt="Beef"/>
+                    <img src="https://static.toiimg.com/photo/msid-68107293/68107293.jpg" alt="Jack Fruit"/>
                 </Style.ShopNowImgWrap>
                 {/* Description */}
                 <Style.ShopNowProductContent>
-                    <Style_2.SectionTitle style={{ color: "var(--Secondary_White)" }}>Organic Pork</Style_2.SectionTitle>
-                    <Style.ShopNowProductSubTitle style={{ color: "var(--Primary_White)" }}>No Preservatives</Style.ShopNowProductSubTitle>
+                    <Style_2.SectionTitle style={{ color: "var(--Secondary_White)" }}>Jack fruit</Style_2.SectionTitle>
+                    <Style.ShopNowProductSubTitle style={{ color: "var(--Primary_Black)" }}>No Preservatives</Style.ShopNowProductSubTitle>
                     <Style_2.SectionButton onClick={e => navigate("/shop")}>Shop now</Style_2.SectionButton>
                 </Style.ShopNowProductContent>
             </Style.ShopNowProductWrapper>
@@ -27,12 +27,12 @@ export default function ShopNow() {
             <Style.ShopNowProductWrapper>
                 {/* Ảnh */}
                 <Style.ShopNowImgWrap>
-                    <img src="https://wpbingosite.com/wordpress/vegety/wp-content/uploads/2022/11/banner-2.jpg" alt="Beef"/>
+                    <img src="https://www.tastingtable.com/img/gallery/difference-bell-peppers-healthiest/more-importantly-why-are-the-red-ones-always-more-expensive-1641491034.jpg" alt="Bell Pepper"/>
                 </Style.ShopNowImgWrap>
                 {/* Description */}
                 <Style.ShopNowProductContent>
-                    <Style_2.SectionTitle>Scallion</Style_2.SectionTitle>
-                    <Style.ShopNowProductSubTitle style={{color: "var(--Primary_Gray)"}}>10% off today only</Style.ShopNowProductSubTitle>
+                    <Style_2.SectionTitle style={{color: "var(--Primary_Blue)"}}>Bell Pepper</Style_2.SectionTitle>
+                    <Style.ShopNowProductSubTitle style={{color: "var(--Primary_Gray)"}}>No Preservatives</Style.ShopNowProductSubTitle>
                     <Style_2.SectionButton onClick={e => navigate("/shop")}>Shop now</Style_2.SectionButton>
             </Style.ShopNowProductContent>
             </Style.ShopNowProductWrapper>
