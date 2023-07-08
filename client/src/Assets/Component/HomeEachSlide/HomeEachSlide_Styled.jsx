@@ -4,8 +4,11 @@ import styled from "styled-components"
 let AvocadoSlideUrl = "https://wpbingosite.com/wordpress/vegety/wp-content/uploads/2022/12/slider-1-1.jpg"
 
 export const SliderWrapper=styled.div`
-    background: url(${AvocadoSlideUrl}) top center / cover no-repeat;
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
     min-width: 1000px;
+    width: 100vw;
     margin-top: -180px;
     display: flex;
     flex-direction: column;

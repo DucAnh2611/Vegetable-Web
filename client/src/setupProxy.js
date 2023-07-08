@@ -35,6 +35,7 @@ module.exports = function(app) {
         "/show/user/type",
         "/create/product",
         "/change/orderstate",
+        "/change/product",
         "/show/order"
     ];
     

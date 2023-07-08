@@ -28,6 +28,7 @@ import ChangeStateOrder from "../Page/Admin/ChangeStateOrder/ChangeStateOrder";
 import AddNewProduct from "../Page/Admin/AddNewProduct/AddNewProduct";
 import LoadingPage from "../Component/Loading/PageLoading_Dom";
 import NotFound from "../Component/NotFound/NotFound";
+import UpdateProduct from "../Page/Admin/UpdateProduct/UpdateProduct";
 
 export default function AppRouter() {
 
@@ -137,6 +138,7 @@ export default function AppRouter() {
                     {userType === 1 && (<>
                         <button onClick={e=> navigate("/admin/order/state-change")}>Orders Management</button>
                         <button onClick={ e=> navigate("/admin/product/new")}>Add Product</button>
+                        <button onClick={ e=> navigate("/admin/product/update")}>Update Product</button>
                     </>)
                     }
                     <button onClick={logout}>Logout</button>
@@ -213,6 +215,7 @@ export default function AppRouter() {
                                         
                                     <Route exact path="/admin/order/state-change" element={<ChangeStateOrder/>}/>
                                     <Route exact path="/admin/product/new" element={<AddNewProduct/>}/>
+                                    <Route exact path="/admin/product/update" element={<UpdateProduct/>}/>
 
                                 </Route>
                                 <Route exact path="/my-account" element={<Account/>}/>

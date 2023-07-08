@@ -1,5 +1,5 @@
 
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useMemo } from "react";
 import {Outlet, useNavigate} from "react-router-dom";
 import { 
     VerifyDiv,
@@ -89,10 +89,6 @@ function Signup() {
     })
   }
 
-  useEffect(()=>{
-    filterData();
-  }, [userInfo])
-
   const InputChange = useCallback(
     (type) => (e) => {
       SetUserInfo({ ...userInfo, [type]: e.target.value });
@@ -116,8 +112,8 @@ function Signup() {
       .then((data) => {
 
         if(data.status === "accepted") {
-          navigate("/");
-          localStorage.setItem("auth", JSON.stringify({id: data.field.userid, authen: true}));
+          localStorage.setItem("auth", JSON.stringify({id: data.field.userid}));
+          navigate("/")
         }
         else {
           SetField(Object.keys(data.field).map(e => ({
@@ -134,11 +130,15 @@ function Signup() {
 
   const ClickToLogin = () => {
     navigate("/login");
-  }
+  };
+
+  useMemo(() => {
+    filterData();
+  }, [userInfo])
 
   useEffect(() => {
     document.title = "Vegetable - Signup";
-  }, [])
+  }, []);
 
   return (
     <VerifyDiv>

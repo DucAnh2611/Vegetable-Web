@@ -1,5 +1,5 @@
 
-import React, { useState } from "react"; 
+import React, { useEffect, useState } from "react"; 
 import {SliderWrapper,
         SliderContent,
         SlideTitle,
@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 const Home_Slider = () =>{
     const navigate = useNavigate();
 
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(0);    
 
     const goToSlide = (slideIndex) => {
         setCurrentIndex(slideIndex);
@@ -42,8 +42,18 @@ const Home_Slider = () =>{
 
     ];
 
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setCurrentIndex(idx => idx+1 >= slides.length ? 0 : idx +1)
+          }, 2500);
+      
+          return () => {
+            clearInterval(intervalId);
+          };
+    }, [])
+
     return(
-        <SliderWrapper style={{background: `url(${slides[currentIndex].url})`}}>
+        <SliderWrapper style={{backgroundImage: `url(${slides[currentIndex].url})`}}>
 
             <SliderContent>
 

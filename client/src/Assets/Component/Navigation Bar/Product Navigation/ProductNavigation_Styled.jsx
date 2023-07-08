@@ -9,7 +9,7 @@ export const ProductNavigationWrapper=styled.div`
     padding: 0 15%;
     justify-content: space-between;
     align-items: center;
-    z-index: 1;
+    z-index: 2;
     position: relative;
 `;
 
@@ -36,7 +36,7 @@ export const ProductNavigationSearchWrapper=styled.div`
     border-radius: 50px;
     box-sizing: border-box;
     padding: 0 20px;
-    z-index: 1;
+    z-index: 2;
 `;
 
 export const PNSearchButtonWrapper=styled.button`
@@ -86,7 +86,7 @@ export const SearchResPane = styled.div`
     align-items: center;
     gap: 20px;
 
-    &>a {
+    &>a, &>div {
         min-height: 100px;
         height: 100px;
         width: 100%;
@@ -97,6 +97,7 @@ export const SearchResPane = styled.div`
         align-items: center;
         overflow: hidden;
         text-decoration: none;
+        cursor: pointer;
         :hover{
             transform: scale(1.05);
         }

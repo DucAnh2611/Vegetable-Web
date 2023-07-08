@@ -54,7 +54,7 @@ export const InputTextArea = styled.div`
     }
     &>textarea {
         resize: vertical;
-        height: 50px;
+        height: 100px;
         min-height: 50px;
         max-height: 200px;
         width: 100%;

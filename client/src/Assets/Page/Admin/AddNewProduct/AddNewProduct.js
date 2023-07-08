@@ -59,7 +59,7 @@ export default function AddNewProduct() {
     const verifyInput = () => {
         if(Object.keys(regEx).map(e => (regEx[e].test(newProduct[e]))).filter(e => e === false).length ===0 ){
             if( newProduct.typeid !==0 &&
-                (newProduct.description.length >=0 && newProduct.description.length <= 150) && 
+                (newProduct.description.length >=0 && newProduct.description.length <= 250) && 
                 newProduct.image !== "" &&
                 newProduct.price > 0 &&
                 newProduct.quantity > 0
@@ -250,7 +250,7 @@ export default function AddNewProduct() {
                         onChange= {e => handleChangeData("description", e.target.value)}
                         />
                         <ul>
-                            {<li className={newProduct.description.length <= 150  ? "ok" : "not"}>Maximum 150 characters</li>}
+                            {<li className={newProduct.description.length <= 250  ? "ok" : "not"}>Maximum 250 characters</li>}
                         </ul>
                     </InputTextArea>
 
