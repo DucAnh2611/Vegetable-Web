@@ -146,7 +146,6 @@ function Admin(app) {
         };
 
         let { id, userid, PdName, price, unit, description , quantity, image, typeid} = req.body;
-        console.log(req.body)
 
         let userValid = await fetchData(
         `
@@ -215,7 +214,7 @@ function Admin(app) {
         if (userValid[0].id ===1) {
 
             let listOrders = await fetchData(`  
-                SELECT o.*, SUM(op.quantity * p.price) as 'total', os.state
+                SELECT o.*, SUM(op.quantity * op.price) as 'total', os.state
                 FROM OrderState as os INNER JOIN [Order] as o on os.id = o.OrderStateId
                                       INNER JOIN Orders_Product as op ON o.id = op.OrderId
                                       INNER JOIN Product as p ON op.PdId = p.id

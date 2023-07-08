@@ -45,7 +45,7 @@ function OrderTracking(app) {
     let InsertReview = await InsertData(
     `
       INSERT INTO Review (OrderId, PdId, UserId, title, description, rating)
-      VALUES (${ReviewInfo.orderid}, ${ReviewInfo.productid}, ${ReviewInfo.userid}, '${ReviewInfo.title}',' ${ReviewInfo.description}', ${ReviewInfo.rating});
+      VALUES (${ReviewInfo.orderid}, ${ReviewInfo.productid}, ${ReviewInfo.userid}, '${ReviewInfo.title}',' ${ReviewInfo.description}', ${ReviewInfo.rating})
     `);
 
     if (InsertReview ==="Inserted") {

@@ -75,7 +75,7 @@ function Profile(app) {
     let { each, page } = req.query;
 
     let Orders = await fetchData(`
-      SELECT o.id, o.OrderDate, o.OrderFullname, o.OrderEmail, os.state, o.OrderDescription, sum(op.quantity * p.price) as 'total'
+      SELECT o.id, o.OrderDate, o.OrderFullname, o.OrderEmail, os.state, o.OrderDescription, sum(op.quantity * op.price) as 'total'
       FROM OrderState as os INNER JOIN [Order] as o ON os.id = o.OrderStateId
                             INNER JOIN Orders_Product as op ON o.id = op.OrderId
                             INNER JOIN Product as p ON op.PdId = p.id

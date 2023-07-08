@@ -361,7 +361,7 @@ export default function UpdateProduct() {
                         </InputTextArea>
 
                         <InputButton>
-                            <button onClick={changeProductClick} disabled={!verifyInput()}>Add new poduct</button>
+                            <button onClick={changeProductClick} disabled={!verifyInput()}>Update product</button>
                         </InputButton>
 
                     </SectionContent>     

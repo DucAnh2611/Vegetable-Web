@@ -45,7 +45,7 @@ const Home_Slider = () =>{
     useEffect(() => {
         const intervalId = setInterval(() => {
             setCurrentIndex(idx => idx+1 >= slides.length ? 0 : idx +1)
-          }, 2500);
+          }, 3500);
       
           return () => {
             clearInterval(intervalId);

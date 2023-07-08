@@ -255,7 +255,7 @@ export default function AddNewProduct() {
                     </InputTextArea>
 
                     <InputButton>
-                        <button onClick={addNewProd} disabled={!verifyInput()}>Add new poduct</button>
+                        <button onClick={addNewProd} disabled={!verifyInput()}>Add new product</button>
                     </InputButton>
 
                 </SectionContent>     

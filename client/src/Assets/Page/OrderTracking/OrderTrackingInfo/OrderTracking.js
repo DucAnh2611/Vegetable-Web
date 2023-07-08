@@ -75,11 +75,11 @@ export default function OrderTrackingInfo() {
 		.then((res) => res.json())
 		.then((data) => {
 			if (data.status === "accepted") {
-			SetOrderInfo(data.field.OrderState);
-			SetListProduct(data.field.OrderProduct);
+				SetOrderInfo(data.field.OrderState);
+				SetListProduct(data.field.OrderProduct);
 			} else {
-			SetOrderInfo({});
-			SetListProduct([]);
+				SetOrderInfo({});
+				SetListProduct([]);
 			}
 		});
 	};
@@ -191,7 +191,7 @@ export default function OrderTrackingInfo() {
 							{e.reviews === 0 && orderInfo.StateId  === listState.length  &&(
 								<div>
 
-									<button onClick={ev => handleOpenReview(e.id)}>Review</button>
+									<button onClick={ev => handleOpenReview(e.PdId)}>Review</button>
 
 								</div>								
 							)}

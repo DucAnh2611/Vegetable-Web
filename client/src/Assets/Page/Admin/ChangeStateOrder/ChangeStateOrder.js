@@ -111,26 +111,33 @@ export default function ChangeStateOrder () {
                                     </div>
 
                                     <div>
-                                        <p>{e.total}</p>
+                                        <p>{e.total}$</p>
                                     </div>
 
                                     <div>
-                                        <select 
-                                        defaultValue={0}
-                                        onChange={eve => changeState({
-                                            orderid: e.id,
-                                            newstateid: parseInt(eve.target.value),
-                                            userid: JSON.parse(localStorage.getItem("auth")).id
-                                        })
-                                        }
-                                        >   
-                                            <option value={0} hidden={true}>{e.state}</option>
-                                            {
-                                                listType.map(ev=> (
-                                                    <option value={ev.id}>{ev.state}</option>
-                                                ))
+                                        {
+                                            e.OrderStateId === listType.length
+                                            ? <p>Recieved</p>
+                                            :(
+                                            <select 
+                                            defaultValue={0}
+                                            onChange={eve => changeState({
+                                                orderid: e.id,
+                                                newstateid: parseInt(eve.target.value),
+                                                userid: JSON.parse(localStorage.getItem("auth")).id
+                                            })
                                             }
-                                        </select>
+                                            >   
+                                                <option value={0} hidden={true}>{e.state}</option>
+                                                {
+                                                    listType.map(ev=> (
+                                                        <option value={ev.id}>{ev.state}</option>
+                                                    ))
+                                                }
+                                            </select>                                                
+                                            )
+                                        }
+
                                         
                                     </div>
                                 </TableRow>

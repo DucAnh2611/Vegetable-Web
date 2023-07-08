@@ -133,7 +133,7 @@ export default function AboutUs() {
 
                             <p>UX/UI Design, mockup application using dev mode.</p>
 
-                            <a href="https://github.com/about" target="_blank">Read more</a>
+                            <a href="https://www.figma.com/about" target="_blank">Read more</a>
 
                         </div>
 
