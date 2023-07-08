@@ -49,7 +49,7 @@ export default function AboutUs() {
 
                     <h1>VEGETABLE WEBSITE</h1>
                     <p>With any fruit and vegetable on the market, consumers need to pay attention to the origin, how to identify safe food to ensure the health of their.</p>
-                    <button>Shop Now</button>
+                    <button><a href="/shop" style={{color:"var(--Secondary_White)"}}>Shop Now</a> </button>
                                     
                 </div>
 
