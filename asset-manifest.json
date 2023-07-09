@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/Vegetable-Web/static/css/main.092d2b63.css",
-    "main.js": "/Vegetable-Web/static/js/main.c1decc0c.js",
-    "static/js/787.c4e7f8f9.chunk.js": "/Vegetable-Web/static/js/787.c4e7f8f9.chunk.js",
-    "static/media/databse.jpg": "/Vegetable-Web/static/media/databse.91704b918ed6484d91fd.jpg",
-    "static/media/Default-goods.png": "/Vegetable-Web/static/media/Default-goods.af101f4979fb6c4b4eac.png",
-    "static/media/Natural enviroment.svg": "/Vegetable-Web/static/media/Natural enviroment.cec67443f0a48b1e20d1f06ee4e4beb8.svg",
-    "static/media/only_logo.svg": "/Vegetable-Web/static/media/only_logo.c93edee6bf66bf0a5c7726f8ba8d5b37.svg",
-    "static/media/horizon_logo.svg": "/Vegetable-Web/static/media/horizon_logo.f7de5288e74688f5204a6ee0f322620a.svg",
-    "static/media/natural farming method.svg": "/Vegetable-Web/static/media/natural farming method.96a2f2140a0f1564f4f9a22c91e1c0b6.svg",
-    "static/media/FreeShipTruck.svg": "/Vegetable-Web/static/media/FreeShipTruck.2e3f6de1c7bb93f23cc14ab6e78ba158.svg",
-    "static/media/low in pesticides.svg": "/Vegetable-Web/static/media/low in pesticides.da33a89722cfc64b8d8507ee01d0a99f.svg",
-    "static/media/no hormones.svg": "/Vegetable-Web/static/media/no hormones.d4cf5088ea5f6577ab848d0aa3a07d35.svg",
-    "static/media/DeliverBox.svg": "/Vegetable-Web/static/media/DeliverBox.1655ee061f539ab6421278275dfde3ca.svg",
-    "index.html": "/Vegetable-Web/index.html",
-    "main.092d2b63.css.map": "/Vegetable-Web/static/css/main.092d2b63.css.map",
-    "main.c1decc0c.js.map": "/Vegetable-Web/static/js/main.c1decc0c.js.map",
-    "787.c4e7f8f9.chunk.js.map": "/Vegetable-Web/static/js/787.c4e7f8f9.chunk.js.map"
+    "main.css": "/myapp/static/css/main.092d2b63.css",
+    "main.js": "/myapp/static/js/main.99b0542c.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/myapp/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/databse.jpg": "/myapp/static/media/databse.91704b918ed6484d91fd.jpg",
+    "static/media/Default-goods.png": "/myapp/static/media/Default-goods.af101f4979fb6c4b4eac.png",
+    "static/media/Natural enviroment.svg": "/myapp/static/media/Natural enviroment.cec67443f0a48b1e20d1f06ee4e4beb8.svg",
+    "static/media/only_logo.svg": "/myapp/static/media/only_logo.c93edee6bf66bf0a5c7726f8ba8d5b37.svg",
+    "static/media/horizon_logo.svg": "/myapp/static/media/horizon_logo.f7de5288e74688f5204a6ee0f322620a.svg",
+    "static/media/natural farming method.svg": "/myapp/static/media/natural farming method.96a2f2140a0f1564f4f9a22c91e1c0b6.svg",
+    "static/media/FreeShipTruck.svg": "/myapp/static/media/FreeShipTruck.2e3f6de1c7bb93f23cc14ab6e78ba158.svg",
+    "static/media/low in pesticides.svg": "/myapp/static/media/low in pesticides.da33a89722cfc64b8d8507ee01d0a99f.svg",
+    "static/media/no hormones.svg": "/myapp/static/media/no hormones.d4cf5088ea5f6577ab848d0aa3a07d35.svg",
+    "static/media/DeliverBox.svg": "/myapp/static/media/DeliverBox.1655ee061f539ab6421278275dfde3ca.svg",
+    "index.html": "/myapp/index.html",
+    "main.092d2b63.css.map": "/myapp/static/css/main.092d2b63.css.map",
+    "main.99b0542c.js.map": "/myapp/static/js/main.99b0542c.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/myapp/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.092d2b63.css",
-    "static/js/main.c1decc0c.js"
+    "static/js/main.99b0542c.js"
   ]
 }
