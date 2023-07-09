@@ -28,13 +28,8 @@ This project utilizes the following technologies:
 ## How to Use
 
 1. Clone the repository: `git clone https://github.com/DucAnh2611/Vegetable-Web.git`
-2. Go to Server folder : `cd .\server`
-3. Install dependencies: `npm install`
-4. Start backend server: `npm start`
-5. Go back to Vege main folder: `cd ..`
-6. Go to Client folder : `cd .\client`
-7. Install dependencies: `npm install`
-8. Start the frontend development server: `npm start`
+2. Initial node modules and run frontend app `npm run client`
+3. Initial node modules and run backend app `npm run server`
 9. Visit `http://localhost:3000` in your browser to access the application.
 
 Note: Provide any additional instructions or configuration details if required.
