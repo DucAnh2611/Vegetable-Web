@@ -39,7 +39,7 @@ export default function Footer() {
                             </div>
 
                             <div>
-                                <a href="/my-accoount/orders">Order</a>
+                                <a href="/my-account/orders">Order</a>
                                 <a href="/about-us">Our Infomation</a>
                             </div>
                         </DetailContentColumn>
@@ -50,10 +50,10 @@ export default function Footer() {
                             </div>
 
                             <div>
-                                <a href="https://github.com/DucAnh2611/Vegetable-Web">Github</a>
-                                <a href="https://www.figma.com/file/M3IcmYGMJN61Tn4fcVINhI/DaCNTT?type=design&node-id=205%3A238&mode=design&t=wSQl7MiPoCSnG4Ve-1">Figma</a>
-                                <a href="https://thanglongedu-my.sharepoint.com/:w:/g/personal/a38520_thanglong_edu_vn/EWK-tpPID-xFiCa0o1JkbnABlVMLHoD6EbAQCxd2M6G62w?e=72JAOk">Word</a>
-                                <a href="#">Endpoints</a>
+                                <a href="https://github.com/DucAnh2611/Vegetable-Web" target="_blank">Github</a>
+                                <a href="https://www.figma.com/file/M3IcmYGMJN61Tn4fcVINhI/DaCNTT?type=design&node-id=205%3A238&mode=design&t=wSQl7MiPoCSnG4Ve-1" target="_blank">Figma</a>
+                                <a href="https://thanglongedu-my.sharepoint.com/:w:/g/personal/a38520_thanglong_edu_vn/EWK-tpPID-xFiCa0o1JkbnABlVMLHoD6EbAQCxd2M6G62w?e=72JAOk" target="_blank">Word</a>
+                                <a href="https://docs.google.com/spreadsheets/d/1EHRW3mFPunRrWHhDeL0m1v7wrpZSamCOsFWHk28S7Iw/edit?usp=sharing" target="_blank">Endpoints</a>
                             </div>
                         </DetailContentColumn>
 
@@ -64,7 +64,7 @@ export default function Footer() {
 
                             <div>
                                 <a href="/shop-cart">Cart</a>
-                                <a href="/my-account/orders">Favourite</a>
+                                <a href="/my-account/orders">Wishlist</a>
                             </div>
                         </DetailContentColumn>
 
