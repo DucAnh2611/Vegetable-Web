@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Vegetable/static/css/main.092d2b63.css",
+    "main.js": "/Vegetable/static/js/main.bc0b2d7a.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/Vegetable/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/databse.jpg": "/Vegetable/static/media/databse.91704b918ed6484d91fd.jpg",
+    "static/media/Default-goods.png": "/Vegetable/static/media/Default-goods.af101f4979fb6c4b4eac.png",
+    "static/media/Natural enviroment.svg": "/Vegetable/static/media/Natural enviroment.cec67443f0a48b1e20d1f06ee4e4beb8.svg",
+    "static/media/only_logo.svg": "/Vegetable/static/media/only_logo.c93edee6bf66bf0a5c7726f8ba8d5b37.svg",
+    "static/media/horizon_logo.svg": "/Vegetable/static/media/horizon_logo.f7de5288e74688f5204a6ee0f322620a.svg",
+    "static/media/natural farming method.svg": "/Vegetable/static/media/natural farming method.96a2f2140a0f1564f4f9a22c91e1c0b6.svg",
+    "static/media/FreeShipTruck.svg": "/Vegetable/static/media/FreeShipTruck.2e3f6de1c7bb93f23cc14ab6e78ba158.svg",
+    "static/media/low in pesticides.svg": "/Vegetable/static/media/low in pesticides.da33a89722cfc64b8d8507ee01d0a99f.svg",
+    "static/media/no hormones.svg": "/Vegetable/static/media/no hormones.d4cf5088ea5f6577ab848d0aa3a07d35.svg",
+    "static/media/DeliverBox.svg": "/Vegetable/static/media/DeliverBox.1655ee061f539ab6421278275dfde3ca.svg",
+    "index.html": "/Vegetable/index.html",
+    "main.092d2b63.css.map": "/Vegetable/static/css/main.092d2b63.css.map",
+    "main.bc0b2d7a.js.map": "/Vegetable/static/js/main.bc0b2d7a.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/Vegetable/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.092d2b63.css",
+    "static/js/main.bc0b2d7a.js"
+  ]
+}
