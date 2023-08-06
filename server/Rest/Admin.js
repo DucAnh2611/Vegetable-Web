@@ -135,7 +135,6 @@ function Admin(app) {
 
         res.status(responseContext.status).json({ ...responseContext.json });
     });
-
     app.post("/change/product", async (req, res) => {
         let responseContext = {
         json: {

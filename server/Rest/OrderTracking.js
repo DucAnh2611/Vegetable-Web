@@ -108,9 +108,10 @@ function OrderTracking(app) {
     `
     SELECT os.state, os.id as 'StateId', o.id as 'OrderId', o.OrderAdress, o.OrderDate, o.OrderFullname, o.OrderEmail, o.OrderPhoneNum, o.OrderDescription, mu.description, mt.type
     FROM  OrderState as os INNER JOIN [Order] as o ON os.id = o.OrderStateId
-                          INNER JOIN Method_User as mu ON o.MethodId = mu.id
-                          INNER JOIN MethodType as mt ON mu.methodTypeId = mt.id
-    WHERE o.id = ${orderid} AND o.UserId = ${userid}
+                           INNER JOIN Method_User as mu ON o.MethodId = mu.id
+                           INNER JOIN MethodType as mt ON mu.methodTypeId = mt.id
+                           INNER JOIN Users as u ON o.Userid = u.id
+    WHERE o.id = ${orderid} AND o.UserId = ${userid} OR u.typeUserId = 1
     `);
 
     if (OrderState.length !== 0) {
