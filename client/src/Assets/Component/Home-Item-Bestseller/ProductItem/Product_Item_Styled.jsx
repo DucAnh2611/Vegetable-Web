@@ -63,6 +63,28 @@ export const Pic_item_wrap = styled.div`
     }
 `;
 
+// out of stock
+export const OutOfStock = styled.span`
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: rgb(0,0,0, 0.5);
+    height: fit-content;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    place-items: center;
+    backdrop-filter: blur(10px);
+
+    &>p {
+        height: fit-content;
+        width: fit-content;
+        font-size: 13px;
+        padding: 10px;
+        color: var(--Secondary_White);
+    }
+`
+
 // Des ảnh product
 export const Pic_item_des = styled.div`
     width: 100%;

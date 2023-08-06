@@ -58,6 +58,11 @@ function Product_Item({item, setUpdate}) {
                         <a href={`/shop/product/${item.id}`}>
                             <img src={ConvertToImage(item.image)} alt={item.PdName}></img>
                         </a>
+                        {
+                            item.quantity <=0 && (
+                                <Style.OutOfStock><p>Out of stock</p></Style.OutOfStock>
+                            )
+                        }
 
                         <Style.Product_side_btn>
                             <Style.Side_btn_wishlist>
@@ -67,7 +72,7 @@ function Product_Item({item, setUpdate}) {
                             </Style.Side_btn_wishlist>
 
                             {/* Cứ để full side bar nhìn nó đỡ cụt*/}
-                            <Style.Side_btn_quickView>
+                            {/* <Style.Side_btn_quickView>
                                 <button>
                                     <FontAwesomeIcon icon={faRegular.faEye} />
                                 </button>
@@ -77,7 +82,7 @@ function Product_Item({item, setUpdate}) {
                                 <button>
                                     <FontAwesomeIcon icon={faSolid.faArrowRightArrowLeft} />
                                 </button>
-                            </Style.Side_btn_compare>
+                            </Style.Side_btn_compare> */}
 
                             <Style.Side_btn_addToCart>
                                 <button onClick={AddToCart}>
@@ -88,7 +93,7 @@ function Product_Item({item, setUpdate}) {
 
                     </Style.Pic_item_wrap>
 
-                    <Style.Pic_item_des>
+                    <Style.Pic_item_des key={item.id}>
                         <Style.Star_rating>
                             {
                                 new Array(5).fill('').map((_, idx) => (

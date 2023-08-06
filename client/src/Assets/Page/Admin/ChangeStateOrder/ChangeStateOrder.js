@@ -97,7 +97,7 @@ export default function ChangeStateOrder () {
                     <TableContent onScroll={e => scrollToFetchMore(e)}>
                         {
                             listOrder.map(e => (
-                                <TableRow>
+                                <TableRow href={`/shop-order-tracking/${e.id}`}>
                                     <div>
                                         <p>{e.id}</p>
                                     </div>

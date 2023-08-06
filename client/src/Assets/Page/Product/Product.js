@@ -103,11 +103,8 @@ export default function Product({setUpdate}) {
                 {/* Khoảng giá - Double range */}
                 <DoubleRangeSection>
                     <ProductTitle style={{
-                        width: "fit-content",
-                        height: "50px", 
-                        borderRight: "1px solid rgba(0,0,0, .5)",
-                        display: "flex",
-                        alignItems: "center"}}>
+                        width: "100%"
+                        }}>
                         <h1>Price</h1>
                     </ProductTitle>
 
@@ -152,14 +149,14 @@ export default function Product({setUpdate}) {
 
             <ProRangeListPro>
                 <ProductShowWrap>
-                    <ProductShow>
+                    <ProductShow style={{order: "2"}}>
                         <p>Show: </p>
                         <button onClick={e => SetEachPage(5)}>5</button>
                         <button onClick={e => SetEachPage(7)}>7</button>
                         <button onClick={e => SetEachPage(10)}>10</button>
                     </ProductShow>
 
-                    <ProductShowSearch>
+                    <ProductShowSearch style={{order: "1", marginRight: "10px"}}>
                         <input placeholder="Tìm kiếm sản phẩm" type="text" onChange={e => SetKeySearch(e.target.value)} />
                     </ProductShowSearch>
                 </ProductShowWrap>

@@ -2,12 +2,20 @@
 import styled from "styled-components";
 
 export const ProductWrapper = styled.div`
-    padding: 0 15px;
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
 `;
 
 // Heading
 export const ProductHeadingWrap = styled.div`
+    padding: 0 20px 20px 20px;
+    position: sticky;
+    height: fit-content; 
+    width: 25%;   
+    border: 1px solid var(--Primary_Green);
     margin-top: 30px;
+    box-sizing: border-box;
 `;
 
 export const ProductTitle = styled.div`
@@ -15,50 +23,65 @@ export const ProductTitle = styled.div`
     width: 100%;
 
     h1 {
-        margin: 30px 0 20px 0;
+        padding: 20px 0 0 0;
+        font-size: 30px;
+        font-weight: bold;
+        text-align: left;
     }
 `;
 // Menu ở heading
 export const ProductMenuFilter = styled.div`
     height: auto;
-    width: 35%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
+    padding: 5px 0;
     margin-bottom: 20px;
 
     button {
-        font-size: 18px;
+        padding: 10px 0;
+        text-align: left;
+        font-size: 17px;
         background-color: transparent;
+        box-sizing: border-box;
+        border-bottom: 1px solid var(--Secondary_White);
 
         :hover {
             cursor: pointer;
             color: var(--Fifth_Green);
+            border-bottom: 1px solid var(--Primary_Green);
         }
     }
 `;
 
 // Khoảng giá (double range)
 export const DoubleRangeSection = styled.div`
-    width: 35%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 10px;
 
     h1 {
-        padding: 0 10px;
-        font-size: 17px;
-        font-weight: 400;
+        text-align: "left";
+        width: 100%;
+        padding: 20px 0 0 0;
+        font-size: 30px;
+        font-weight: bold;
         margin: 0;
 
     }
 `;
 
 export const DoubleRangeWrap = styled.div`
-
+    width: 100%;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 10px;
     &>div{
         width: fit-content;
@@ -67,7 +90,7 @@ export const DoubleRangeWrap = styled.div`
         display: flex;
         flex-direction: column;
         &> input[type="range" i] {
-            width: 200px;
+            width: 250px;
             -webkit-appearance: none;
             appearance: none;
             background: transparent;
@@ -91,20 +114,24 @@ export const DoubleRangeWrap = styled.div`
     }
     
     &>p{
-        margin-top: 10px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 `;
 
 
 // Product range + list product
 export const ProRangeListPro = styled.div`
+    width: 75%;
     margin-top: 30px;
 `;
 
 export const ProductShowWrap = styled.div`
     display: flex;
     margin: 0 auto;
-    width: 35%;
+    width: 50%;
     height: auto;
     align-items: center;
     padding-bottom: 20px;
@@ -122,8 +149,13 @@ export const ProductShow = styled.div`
     }
 
     button {
+        height: 30px;
+        width: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background-color: transparent;
-        border-radius: 50%;
+        border-radius: 100%;
         font-size: 15px;
         padding: 2px 10px;
 
@@ -136,11 +168,11 @@ export const ProductShow = styled.div`
 `;
 
 export const ProductShowSearch = styled.div`
-    flex: 1;
-    width: 260px;
+    width: 500px;
     height: auto;
 
     input {
+        font-size: 15px;
         padding: 10px 15px;
         width: 100%;
         font-size: 16px;
@@ -161,6 +193,7 @@ export const ProductShowSearch = styled.div`
 // List product
 export const ProductListWrap = styled.div`
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     margin: 0 auto;
     max-width: 1440px;
