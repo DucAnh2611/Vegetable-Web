@@ -33,7 +33,8 @@ export const TableHeader = styled.div`
 
 `;
 
-export const TableRow = styled.a`
+export const TableRow = styled.div`
+    cursor: pointer;
     margin: 1px 0;
     height: fit-content;
     min-height: 50px;

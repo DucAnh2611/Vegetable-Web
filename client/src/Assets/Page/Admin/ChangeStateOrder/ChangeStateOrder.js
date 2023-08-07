@@ -1,10 +1,11 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { PartWrap, SectionContent, SectionHeader, SectionPart } from "../../Profile/Account/Account_Styled";
 import { TableContent, TableHeader, TableRow } from "./ChangeStateOrder_Styled";
 
 export default function ChangeStateOrder () {
 
+    const selectRef = useRef(null);
     const [listType, SetListType] = useState([]);
     const [listOrder, SetListOrder] = useState([]);
     const [page, SetPage] = useState(1);
@@ -97,7 +98,12 @@ export default function ChangeStateOrder () {
                     <TableContent onScroll={e => scrollToFetchMore(e)}>
                         {
                             listOrder.map(e => (
-                                <TableRow href={`/shop-order-tracking/${e.id}`}>
+                                <TableRow 
+                                onDoubleClick = {
+                                    ev => {
+                                            window.location.href = `/shop-order-tracking/${e.id}`
+                                    }
+                                }>
                                     <div>
                                         <p>{e.id}</p>
                                     </div>
@@ -120,6 +126,7 @@ export default function ChangeStateOrder () {
                                             ? <p>Recieved</p>
                                             :(
                                             <select 
+                                            ref={selectRef}
                                             defaultValue={0}
                                             onChange={eve => changeState({
                                                 orderid: e.id,
