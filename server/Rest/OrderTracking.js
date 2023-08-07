@@ -102,19 +102,36 @@ function OrderTracking(app) {
     };
 
     let { userid } = req.query;
-    let {orderid} = req.params;
+    let { orderid } = req.params;
 
-    let OrderState = await fetchData(
-    `
+    query = `
     SELECT os.state, os.id as 'StateId', o.id as 'OrderId', o.OrderAdress, o.OrderDate, o.OrderFullname, o.OrderEmail, o.OrderPhoneNum, o.OrderDescription, mu.description, mt.type
     FROM  OrderState as os INNER JOIN [Order] as o ON os.id = o.OrderStateId
                            INNER JOIN Method_User as mu ON o.MethodId = mu.id
                            INNER JOIN MethodType as mt ON mu.methodTypeId = mt.id
-                           INNER JOIN Users as u ON o.Userid = u.id
-    WHERE o.id = ${orderid} AND o.UserId = ${userid} OR u.typeUserId = 1
-    `);
+    WHERE o.id = ${orderid} AND o.UserId = ${userid}
+    `
+    let permission = await fetchData(
+      `
+      SELECT typeUserId 
+      FROM Users
+      WHERE id = ${userid}
+      `
+    );
 
-    if (OrderState.length !== 0) {
+    if(permission[0].typeUserId === 1 ) {
+      query = `
+      SELECT os.state, os.id as 'StateId', o.id as 'OrderId', o.OrderAdress, o.OrderDate, o.OrderFullname, o.OrderEmail, o.OrderPhoneNum, o.OrderDescription, mu.description, mt.type
+      FROM  OrderState as os INNER JOIN [Order] as o ON os.id = o.OrderStateId
+                             INNER JOIN Method_User as mu ON o.MethodId = mu.id
+                             INNER JOIN MethodType as mt ON mu.methodTypeId = mt.id
+      WHERE o.id = ${orderid}
+      `
+    };
+
+    let OrderState = await fetchData(query);
+
+    if (OrderState.length !== 0 ) {
 
       let OrderProduct = await fetchData(
       `

@@ -170,7 +170,7 @@ export default function ProductDetail({setUpdate}) {
                                     </PDProductSetQuantityWrapper>
 
                                     <PDProductAdd2CartButtonWrapper>
-                                        <PDProductAdd2CartButton onClick={e => AddToCart(productInfo.id)}>Add to card</PDProductAdd2CartButton>
+                                        <PDProductAdd2CartButton onClick={e => AddToCart(productInfo.id)}>Add to cart</PDProductAdd2CartButton>
                                     </PDProductAdd2CartButtonWrapper>
                                     
                                 </PDProductSetQuantityAndAdd2CartButtonWrapper>
